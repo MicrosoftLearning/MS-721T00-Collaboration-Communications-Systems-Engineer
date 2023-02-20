@@ -56,7 +56,7 @@ We will input our network details and review the output report.
 
 In the following task you will create a custom user persona of a network user. In our scenario we have some users that are expected to only use audio for p2p calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
 
-1. Sign into MS720-CLIENT01 as “Admin” with the password provided to you.
+1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
 
 2. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -98,7 +98,7 @@ In this task you will setup your network and sites in Teams Network Planner. Con
 
 6. You will be prompted “You haven't added any network sites yet.” Select **Add a network site**.
 
-7. Enter the **name** as **Tacoma Site**.
+7. Enter the **Network Site Name** as **Tacoma Site**.
 
 8. Enter the description as **Tacoma Office**.
 
@@ -118,7 +118,7 @@ In this task you will setup your network and sites in Teams Network Planner. Con
 
 16. Now select **Add network site** to add our second site, Bellevue.
 
-17. Enter the **name** as **Bellevue Site**.
+17. Enter the **Network Site Name** as **Bellevue Site**.
 
 18. Enter the description as **Bellevue Office**.
 
@@ -150,7 +150,7 @@ In the following task you will run the Network Planner report and review the res
 
 3. You will be prompted with “You haven't generated any reports yet.” Select **Start a report**.
 
-4. Enter the report **name** as **Network Report 1**.
+4. Enter the **Report Name** as **Network Report 1**.
 
 5. Enter a description of **Network report for Tacoma and Bellevue**.
 
@@ -190,7 +190,7 @@ In this exercise, you will install and run the Teams Network Assessment Tool to 
 
 In this task you will sign into a client machine provided by your training provider install the Teams Network Assessment Tool which is required to perform different tests.
 
-1. Sign into MS720-CLIENT01 as “Admin” with the password provided to you.
+1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
 
 2. Open Microsoft Edge from the task bar and browse to the following site: [**https://www.microsoft.com/en-us/download/details.aspx?id=103017**](https://www.microsoft.com/en-us/download/details.aspx?id=103017).
 
@@ -198,7 +198,7 @@ In this task you will sign into a client machine provided by your training provi
 
 4. Go to **Start**, enter **Run** and select **Run**, and enter **Shell:Downloads** in the open dialog and select **OK**, this will open the **Downloads** folder.
 
-5. Find **MicrosoftTeamsNetworkAssessmentTool.exe**, right select it and run as administrator.
+5. Find **MicrosoftTeamsNetworkAssessmentTool.exe**, right select it and **run as administrator**.
 
 6. In the **User Account Control** window that asks “Do you want to allow this app to make changes to your device?”, select **Yes**.
 
@@ -208,7 +208,7 @@ In this task you will sign into a client machine provided by your training provi
 
 9. **Tick** to accept the terms in the license agreement and select **Next**.
 
-10. Change the **destination folder** install path to **C:\NetworkTest**, select next.
+10. Change the **destination folder** install path to **C:\NetworkTest**, select **next**.
 
 11. Select **Install**.
 
@@ -222,9 +222,9 @@ You have successfully installed the Teams Network Assessment Tool onto Client01.
 
 The Teams Network Assessment Tool is run from the command line. We will now run the network connectivity check, which requires no command line switches. Firstly, the tool will check if it has connectivity to the Teams media relay. These are used to relay audio and video when direct connection between clients is not possible. The checker also checks whether the load-balancer relay is QoS (Quality of Service) capable, which means the load-balancer redirects packets to relay instance ports 3479-3481 (instead of 3478) depending on modality (audio = 3479, video = 3480, screenshare/data = 3481).
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to **MS720-CLIENT01** as **Admin** with the password provided to you.
 
-2. Select **Start**, enter command prompt, find command prompt and right select it and chose **Run as administrator**.
+2. Select **Start**, enter command prompt, find **Command Prompt** and right select it and chose **Run as administrator**.
 
 3. At the “do you want to allow this app to make changes to your device” prompt, select **Yes**.
 
@@ -290,7 +290,7 @@ Review Packet Loss, Latency and Jitter by following these steps:
     cd %userprofile%"\AppData\Local\Microsoft Teams Network Assessment Tool\"
     ```
 
-3. Press **Tab** to tab through files in that directory, when you see a file name ending in _quality_check_results.csv press **Enter** to open the file. 
+3. Press **Tab** to tab through files in that directory, when you see a file name ending in **_quality_check_results.csv** press **Enter** to open the file. 
 
 4. Select the top right X to close the activation prompt when excel loads. You can now see your test results in Excel.
 
@@ -320,7 +320,7 @@ Network sites are used for Dynamic emergency calling. Before configuring dynamic
 
 In this task you will sign into client01 and the Teams Admin Center and add our two offices as Network Sites in Network Topology
 
-1. Sign into MS720-CLIENT01 as “Admin” with the password provided to you.
+1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
 
 2. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -564,9 +564,9 @@ At Contoso, you need to enable the option of convenience recording 1:1 calls, wh
 
 3. Select **Add** to add a new policy.
 
-4. Under add a **name** for your calling policy enter **Busy on busy and call recording**.
+4. Under **Add a name for your calling policy** enter **Busy on busy and call recording**.
 
-5. Under add a **friendly description** enter **Busy on busy and allow call recording**.
+5. Under add a **description** enter **Busy on busy and allow call recording**.
 
 6. Switch **Cloud recording for calling** to **On**.
 
@@ -580,7 +580,7 @@ At Contoso, you need to enable the option of convenience recording 1:1 calls, wh
 
 11. Under **Select a group** search for **Contoso All Company** and when **Contoso All Company** group appears select **Add**.
 
-12. Leave rank as 1.
+12. Leave rank as **1**.
 
 13. For select a policy select the new **Busy on busy and call recording** policy.
 
@@ -624,9 +624,9 @@ By default, the user's phone number is displayed when an outbound call is made t
 
 3. Select **Add**.
 
-4. For **name** enter **Block outbound caller ID**.
+4. For **Name** enter **Block outbound caller ID**.
 
-5. For **friendly description** enter **Block outbound caller ID**.
+5. For **description** enter **Block outbound caller ID**.
 
 6. Switch **Override the caller ID policy** to **On**.
 
@@ -690,7 +690,7 @@ In this task you will order a phone number in the Teams Admin Center to assign t
 
 4. At the top of the page, enter a name for your order **New numbers for Bellevue site users**.
 
-5. For friendly description enter **New numbers for users at the Bellevue Office**.
+5. For **description** enter **New numbers for users at the Bellevue Office**.
 
 6. Select **United States** as **Country or region**.
 
@@ -698,7 +698,7 @@ In this task you will order a phone number in the Teams Admin Center to assign t
 						
 8. For Operator, select **Microsoft**.
 
-9. The Quantity field will now appear, enter 1.
+9. The Quantity field will now appear, enter **1**.
 
 10. For **Search for new numbers** select **Search by area code** and enter **206**.
 
@@ -742,7 +742,7 @@ You have successfully assigned a phone number to Isaiah Langer.
 
 Now Isaiah has a calling plan and phone number and we will perform a test call to validate functionality of the configuration.
 
-1. Switch to MS720-CLIENT02 and sign in as “Admin” with the credentials provided to you.
+1. Switch to **MS720-CLIENT02** and sign in as **Admin** with the credentials provided to you.
 
 2. Open the Edge browser and navigate to [https://teams.microsoft.com](https://teams.microsoft.com/). Sign in with the credentials of Isaiah.
 
@@ -804,7 +804,7 @@ The default phone number of your conference bridge defines the caller ID that wi
 
 Contoso does a lot of work with companies in New York and would prefer a New York number is their default audio conference bridge.
 
-1. Switch back to MS720-CLIENT01 and sign in as “Admin” with the password provided to you.
+1. Switch back to **MS720-CLIENT01** and sign in as **Admin** with the password provided to you.
 
 2. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -834,13 +834,13 @@ In this task you will order a new Dedicated conference bridge toll number. This 
 
 4. At the top of the page, enter a name for your order **Dedicated conference number**.
 
-5. For friendly description enter **Dedicated conference number**.
+5. For **description** enter **Dedicated conference number**.
 
 6. Select United States as **Country or region**.
 
 7. For **Number Type**, select **Dedicated conference bridge (Toll)**.
 
-8. Select **Microsoft** in the Operator field, the Quantity field will now appear, enter 1.
+8. Select **Microsoft** in the Operator field, the Quantity field will now appear, enter **1**.
 
 9. For **Search for new numbers** select **search by area code** and enter **920**.
 
@@ -984,7 +984,7 @@ By default, if a call to a call queue isn't answered by an agent within the maxi
 
 5. Set Enable **Transcription On**
 
-6. Select **Add a greeting message** and type **“we are unable to take your call, please leave a message and we will be back with you as soon as possible.”** 
+6. Select **Add a greeting message** and type **“We are unable to take your call, please leave a message and we will be back with you as soon as possible.”** 
 
 7. Select **Submit**
 
@@ -998,7 +998,7 @@ In this task you will enable conference mode that will then make it pass the cal
 
 2. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
 
-3. Under **Call answering** select find **Conferencing mode**, toggle the setting to **On**. 
+3. Under **Call answering** select find **Conference mode**, toggle the setting to **On**. 
 
 4. Click **Submit**.
 
@@ -1046,7 +1046,7 @@ In this task you will obtain a free MP3 to the music on hold solution for the Sa
 
 5. Under **Voice** and **Call Queues**, select **Sales CQ**.
 
-6. to go into edit mode by double clicking **Sales CQ**.
+6. Select **Greeting and music**.
 
 7. Under **Music on hold**, select **Play an audio file**.
 
