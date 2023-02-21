@@ -257,7 +257,7 @@ In this exercise, you will review the overall number of licenses and the number 
 
 ### Task 1 - Validate licenses in the admin portal
 
-In this task you will sign into the clients provided by your training provider and run a certain script also provided by the lab hoster, to understand what licenses are inside the tenant and what licenses are applied.
+In this task you will sing into the clients provided by your training provider and run a certain script also provided by the lab hoster, to understand what licenses are inside the tenant and what licenses are applied.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
