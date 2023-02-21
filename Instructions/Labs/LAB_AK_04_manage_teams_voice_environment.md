@@ -40,7 +40,7 @@ In this task you will sign into the Microsoft Teams Admin Center and make change
 
 1. Select **Manage call group**, then select **Add people**.
 
-1. Search for **Katie Jordan** and select **Add** to include them in the **People list**, then select Apply.
+1. Search for **Katie Jordan** and select **Add** to include them in the **People list**, then select **Apply**.
 
 1. As Katie would prefer an on-screen notification to show, rather than Teams to ring when Isaiah is unavailable, find **Katie Jordan** in the Group Call Pickup list. 
 
@@ -119,7 +119,7 @@ In this task you validate audio conferencing is enabled for Isaiah Langer and ch
 
 1. Select the row with **No toll-free numbers** policy that was just created and select **Assign users**.
 
-1. Search for **Isaiah** from **Manage users**, select **Isaiah Langer**, **Add** and **Apply**.
+1. Search for **Isaiah** from **Manage users**, select **Isaiah Langer**, **Add**, **Apply** and **Confirm**.
 
 1. Select **Users** and **Manage users**.
 
@@ -184,11 +184,11 @@ In this task you will provision a Teams Phone device in the Teams administration
 
 1. The **Provision devices** page shows. Under **Waiting on activation** select **Add MAC addresses manually**.
 
-1. In the **Add MAC** addresses dialogue, enter the MAC address of "ab-cd-12-34-ef-56" and for location enter **Bellevue**, for the Teams IP Phone.
+1. In the **Add MAC** addresses dialogue, enter the MAC address of **ab-cd-12-34-ef-56** and for location enter **Bellevue**, for the Teams IP Phone.
 
 	In a production environment you would enter the actual MAC address of the device you want to connect.
 
-1. Select **Apply** to save the change.
+1. Select **Save** to save the change.
 
 1. The **Waiting on activation page** will show the Teams IP Phone’s MAC address and location. Select the MAC address from the list, then select **Generate verification code**
 
@@ -260,7 +260,7 @@ In this task, we will create and license a Microsoft Teams Room device account u
     Set-CalendarProcessing -Identity "mtr01" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
     ```
 
-1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Katie Jordan**:
+1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Global Administrator**:
 
     ```powershell
     Connect-AzureAD
@@ -351,7 +351,7 @@ In this lab we are going to create and then break a dial plan rule and check Cal
 
 Firstly, we will create a dial plan rule, in this scenario, the organization would like the short code 7786 to translate to +1-877-696-7786.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to **MS720-CLIENT01** as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. Navigate to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -383,7 +383,7 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
 
 You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
 
-1. Sign into MS720-CLIENT02 as “Admin”, required. You may still be signed in from a previous task.
+1. Sign into **MS720-CLIENT02** as **Admin**, required. You may still be signed in from a previous task.
 
 1. From the desktop select and run Microsoft Teams client.
 

@@ -32,11 +32,11 @@ In this exercise, you will run scripts designed to provision user accounts, grou
 
 In the following task you will sign identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
 
-1. Sign in to MS720-CLIENT01 as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
 1. Open Microsoft Edge and then browse to **http://www.bing.com**.
 
-1. In the **Search** box, enter **What is my IP** and then press Enter.
+1. In the **Search** box, enter **What is my IP** and then press **Enter**.
 
 1. The first result box with the label **Your public IP address** is your IP retrieved by Bing.
 
@@ -58,7 +58,7 @@ The lab number task, updates the o365ready.com DNS server with your lab's public
 
 1. In the **IP address** box, enter your public IP address from the previous task.
 
-1. In the **Lab Code** box, enter **MS720**, press Enter or select **Submit**.
+1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit**.
 
 1. This lab code will expire 90 days after the start of this course.
 
@@ -95,7 +95,7 @@ In the following task you will execute a script to setup your lab environment.
 
 1. Open File Explorer and then browse to **C:\Scripts**.
 
-1. Select **CallandMeetLabs.exe**.
+1. Double-click **CallandMeetLabs.exe**.
 
 1. In the **User Account Control** dialog box, select **Yes**.
 
@@ -127,7 +127,7 @@ In the following task you will request your public certificate for the SBC (Sess
 
 1. Open File Explorer and then browse to **C:\LabFiles**.
 
-1. Select **CertReq-lab&lt;customlabnumber&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
+1. Double-click **CertReq-lab&lt;customlabnumber&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
 
     ![Screenshot of the completed certificate request file in Windows Explorer](./Linked_Image_Files/M01_L01_E01_T04.png)
 
@@ -165,7 +165,7 @@ In this exercise, you will assign the required admin permissions to continue wit
 
 In this task you will verify your custom domain so you can work with it and assign it to users.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”. 
+1. You are still on **MS720-CLIENT01** where you are still signed in as **Admin**. 
 
 1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
 
@@ -379,7 +379,7 @@ In this task you will install the latest Teams PowerShell module on your lab cli
 
     ![Screenshot of the connecting to the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01-1.png)
 
-1. When you are successfully signed in you will be returned to the command prompt.
+1. When you are successfully signed in you will be returned to the **PowerShell**.
 
 1. To check you are signed in correctly, you will be able to retrieve objects from your tenant. To get a list of users, run the following command:
 
