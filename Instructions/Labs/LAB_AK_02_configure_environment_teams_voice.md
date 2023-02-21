@@ -86,7 +86,7 @@ You have successfully created our Audio Only User network persona.
 
 In this task you will setup your network and sites in Teams Network Planner. Contoso has 2 offices, Tacoma and Bellevue, so 2 network sites, we need to add to the planner
 
-1. You are in **Network Planner** in the **Microsoft Teams admin center** on MS720-CLIENT01 as “Admin” and signed in as **Katie Jordan**.
+1. You are in **Network Planner** in the **Microsoft Teams admin center** on **MS720-CLIENT01** as **Admin** and signed in as **Katie Jordan**.
 
 1. Select **Network plans**.
 
@@ -198,7 +198,7 @@ In this task you will sign into a client machine provided by your training provi
 
 1. Go to **Start**, enter **Run** and select **Run**, and enter **Shell:Downloads** in the open dialog and select **OK**, this will open the **Downloads** folder.
 
-1. Find **MicrosoftTeamsNetworkAssessmentTool.exe**, right select it and **run as administrator**.
+1. Find **MicrosoftTeamsNetworkAssessmentTool.exe**, right select it and **Run as administrator**.
 
 1. In the **User Account Control** window that asks “Do you want to allow this app to make changes to your device?”, select **Yes**.
 
