@@ -10,7 +10,7 @@ lab:
 
 ## Lab Scenario
 
-Contoso need to make changes to existing users who are enabled for Teams Voice and add Teams Devices. Whilst making changes, support tickets have been raised due to problems users have reported with connectivity and troubleshooting must be performed.
+Contoso needs to make changes to existing users who are enabled for Teams Voice and add Teams Devices. Whilst making changes, support tickets have been raised due to problems users have reported with connectivity and troubleshooting must be performed.
 
 ## Lab Duration
 
@@ -28,7 +28,7 @@ In this exercise, you will perform day-to-day management tasks for Teams Voice u
 
 ### Task 1 - Change user call pickup settings
 
-In this task you will sign into the Microsoft Teams Admin Center and make changes so that Isaiah’s colleague Katie can pick up their calls.
+In this task, you will sign into the Microsoft Teams Admin Center and make changes so that Isaiah’s colleague Katie can pick up their calls.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
@@ -48,7 +48,7 @@ In this task you will sign into the Microsoft Teams Admin Center and make change
 
 1. In the left navigation menu select **Manage users** to exit the properties page for Isaiah Langer.
 
-The changes are now applied, and a banner will show for calls directed to Isaiah on Katie’s Teams client, allowing them to answer in the event that Isaiah is not able to.
+The changes are now applied, and a banner will show for calls directed to Isaiah on Katie’s Teams client, allowing them to answer if Isaiah is unable.
 
 ### Task 2 - Enable user for Teams Direct Routing
 
@@ -79,7 +79,7 @@ Alex Wilber is now configured to use Direct Routing.
 
 ### Task 3 - Configure call delegation
 
-In this task you will configure Alex Wilber so that Katie Jordan is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
+In this task, you will configure Alex Wilber so that Katie Jordan is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
@@ -105,7 +105,7 @@ The changes are now active.
 
 ### Task 4 - Enable audio conferencing
 
-In this task you validate audio conferencing is enabled for Isaiah Langer and change the default settings.
+In this task, you validate audio conferencing is enabled for Isaiah Langer and change the default settings.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
@@ -165,16 +165,16 @@ Outbound calls from Megan Bowen have been restricted.
 
   - **Estimated Time to complete**: 30 minutes
 
-In this exercise we will begin the provisioning process for a Teams Phone. We will then create and license an account to use with a Microsoft Teams Room system.
+In this exercise, we will begin the provisioning process for a Teams Phone. We will then create and license an account to use with a Microsoft Teams Room.
 
 ### Task 1 - Perform remote provisioning of Teams Phones
 
 > [!NOTE]
 > The instructions provided here are for reference only and will not complete successfully.  To view the demonstration of these steps, visit [https://www.microsoft.com/videoplayer/embed/RWN0wC](https://www.microsoft.com/videoplayer/embed/RWN0wC).
 
-In this task you will provision a Teams Phone device in the Teams administration center.
+In this task, you will provision a Teams Phone device in the Teams administration center.
 
-1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
+1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
 1. Sign in as **Katie Jordan**, who has the Teams Administrator role.
 
@@ -186,13 +186,13 @@ In this task you will provision a Teams Phone device in the Teams administration
 
 1. In the **Add MAC** addresses dialogue, enter the MAC address of **ab-cd-12-34-ef-56** and for location enter **Bellevue**, for the Teams IP Phone.
 
-	In a production environment you would enter the actual MAC address of the device you want to connect.
+	In a production environment, you would enter the actual MAC address of the device you want to connect.
 
 1. Select **Save** to save the change.
 
 1. The **Waiting on activation page** will show the Teams IP Phone’s MAC address and location. Select the MAC address from the list, then select **Generate verification code**
 
-**Since there are no physical phones to connect to the lab environment, the lab is complete here. The steps below are strictly informational to demonstrate the remainder of the process. You may now proceed to the next task**.
+    **Since there are no physical phones to connect to the lab environment, the lab is complete here. The steps below are strictly informational to demonstrate the remainder of the process. You may now proceed to the next task**.
 
 1. On the Teams IP Phone, select **Settings,** then choose **Provision phone**
 
@@ -208,7 +208,7 @@ In this task you will provision a Teams Phone device in the Teams administration
 
 The Teams IP Phone can now be signed in to by a user or remotely signed in to a common area account.
 
-### Task 2 - Create license and enable Enterprise Voice for a Microsoft Teams Room account 
+### Task 2 - Create, license and enable Enterprise Voice for a Microsoft Teams Room account 
 
 In this task, we will create and license a Microsoft Teams Room device account using Windows PowerShell. This will be for the Contoso Board Room at the Bellevue site and use Direct Routing for voice calls.
 
@@ -220,7 +220,7 @@ In this task, we will create and license a Microsoft Teams Room device account u
 
 1. Select **Billing** then choose **Purchase Services**.
 
-1. Search for **Microsoft Teams Room Standard** from the list of available services and select **Details**. Filter category by **Collaboration and communication** if you have trouble finding the service.
+1. Search for **Microsoft Teams Room Pro** from the list of available services and select **Details**. Filter the category by **Collaboration** and communication** if you have trouble finding the service.
 
 1. Select **Start free trial,** then on the following page, choose **Try now**, then select **Continue** on the order receipt page.
 
@@ -269,11 +269,11 @@ In this task, we will create and license a Microsoft Teams Room device account u
 
     ```
 
-1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 6070a4c8-34c6-4937-8dfb-39bbc6397a60, and it's assigned to the account **mtr01@lab&lt;customlabnumber&gt;.o365ready.com**:
+1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 4cde982a-ede4-4409-9ae6-b003453c8ea6, and it's assigned to the account **mtr01@lab&lt;customlabnumber&gt;.o365ready.com**:
 
     ```powershell
     $MTRLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense 
-    $MTRLicense.SkuId = "6070a4c8-34c6-4937-8dfb-39bbc6397a60" 
+    $MTRLicense.SkuId = "4cde982a-ede4-4409-9ae6-b003453c8ea6" 
     
     $Licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses 
     
@@ -287,7 +287,7 @@ Upon completion of these steps, you can view the new Teams Room account in the M
 
 ### Task 4 - Prepare to manage devices by creating tags in the Teams Admin Center
 
-In this task you will configure device tags to allow Contoso to identify devices based upon the type of employee that will use the device, so that the importance of the device can be identified by a support technician. We will configure two tags, **Executive** and **Contact Center**.
+In this task, you will configure device tags to allow Contoso to identify devices based on the type of employee that will use the device so that the importance of the device can be identified by a support technician. We will configure two tags, **Executive** and **Contact Center**.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -311,7 +311,7 @@ In this task you will configure device tags to allow Contoso to identify devices
 
 As devices are provisioned or joined, they will be displayed in the **Devices** section of the Teams Admin Center. Although no devices are available during the lab exercise, you will expect after a device is added that you can then assign the tags to a device, by selecting the **Device** in the list and then selecting **Manage Tags**, then searching for a tag, and selecting **Apply**.
 
-After applying a tag to devices, you can then use the **Search** box in the device list to choose **Select what you want to search by**, and then choosing **Tags**. Enter the tag you’ve assigned to devices, and these devices will be displayed in the search results.
+After applying a tag to devices, you can then use the **Search** box in the device list to choose **Select what you want to search by**, and then choose **Tags**. Enter the tag you’ve assigned to devices, and these devices will be displayed in the search results.
 
 ## Exercise 3: Monitor and troubleshoot Teams Phone
 
@@ -323,7 +323,7 @@ In this exercise, you will perform exercises to help troubleshoot specific issue
 
 ### Task 1 - Run self-help diagnostics tool in Microsoft 365 admin center
 
-Megan Bowen has reported they are not receiving voicemails. Microsoft offers some Self-help diagnostics tools that can be run before raising a support ticket. In this task you will run the Voicemail diagnostic that validates that a user is properly configured to use Voicemail in Teams.
+Megan Bowen has reported they are not receiving voicemails. Microsoft offers some Self-help diagnostics tools that can be run before raising a support ticket. In this task, you will run the Voicemail diagnostic that validates that a user is properly configured to use Voicemail in Teams.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -347,7 +347,7 @@ You have successfully used the Microsoft 365 self-help diagnostics to confirm th
 
 ### Task 2 - Break a dial plan and check the issue
 
-In this lab we are going to create and then break a dial plan rule and check Call Analytics to see the issue.
+In this lab, we are going to create and then break a dial plan rule and check Call Analytics to see the issue.
 
 Firstly, we will create a dial plan rule, in this scenario, the organization would like the short code 7786 to translate to +1-877-696-7786.
 
@@ -385,7 +385,7 @@ You have successfully added a normalization rule to a dial plan to meet the exte
 
 1. Sign into **MS720-CLIENT02** as **Admin**, required. You may still be signed in from a previous task.
 
-1. From the desktop select and run Microsoft Teams client.
+1. From the desktop select and run the Microsoft Teams client.
 
 1. You should still be signed in as Megan Bowen on the Teams Desktop client. If not, sign in using the credentials of Megan Bowen.
 
@@ -413,7 +413,7 @@ You have successfully added a normalization rule to a dial plan to meet the exte
 
 1. If you are prompted by Windows Defender Firewall for Microsoft Teams select **Allow Access**.
 
-1. Note that the number has been translated to +18776967786 and the call connects. It is a contact center that will stay connected for around a minute then automatically hang up.
+1. Note that the number has been translated to +18776967786 and the call connects. It is a contact center that will stay connected for around a minute and then automatically hang up.
 
 1. Press the red hang-up button to disconnect the call.
 
@@ -445,7 +445,7 @@ Now we have broken our dial plan, we will sign into Teams again and prove it is 
 
 1. You are still signed into MS720-CLIENT02 as "Admin" from the previous task.
 
-1. From the desktop select and run Microsoft Teams client.
+1. From the desktop select and run the Microsoft Teams client.
 
 1. Select Get started.
 
@@ -483,7 +483,7 @@ You have successfully created a dial plan, proven it works, broken it and seen t
 
 ### Task 3 - Review Call Health Real Time Stats on a live call
 
-Users can check on the network performance of their calls live during the call. In this task we will test the Team call health feature
+Users can check on the network performance of their calls live during the call. In this task, we will test the Team call health feature
 
 1. You are still signed into MS720-CLIENT02 as “Admin” from the previous task
 
@@ -501,7 +501,7 @@ Users can check on the network performance of their calls live during the call. 
 
 1. The call should establish and you should hear a Microsoft support virtual agent.
 
-1. While in the call, press the three dots in the top right of the Teams client and select call health.
+1. While on the call, press the three dots in the top right of the Teams client and select call health.
 
 1. You will see a right-hand menu with the network and audio performance.
 
@@ -533,7 +533,7 @@ Call Health shows you the following:
 
 A Teams Phone user working from home reports they are having call quality issues, we will use the Microsoft 365 connectivity test tool to check they are tasking an optimum network path to Office 365 and check their basic Teams network performance
 
-1. Sign into **MS720-CLIENT01** as “Admin” with the password provided to you. In this task we will treat MS720-CLIENT01 as the PC of the user with the problem.
+1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. In this task, we will treat MS720-CLIENT01 as the PC of the user with the problem.
 
 1. Open Microsoft Edge from the task bar and browse to [https://connectivity.office.com/](https://connectivity.office.com/).
 
@@ -577,9 +577,9 @@ A Teams Phone user working from home reports they are having call quality issues
 
 	- Under Microsoft Teams look for green ticks for connectivity, packet loss, latency and jitter.
 
-If the user does not have green ticks for Microsoft teams network performance, check to see if they are using WiFi or can wire directly into their router to confirm if it is an ISP issue or local network/WiFi issue.
+If the user does not have green ticks for Microsoft teams network performance, check to see if they are using WiFi or can wire directly into their router to confirm if it is an ISP issue or a local network/WiFi issue.
 
-If they front door locations do not have green ticks and they are not using any VPN we may need to contact their local ISP for support. 
+If the front door locations do not have green ticks and they are not using any VPN we may need to contact their local ISP for support. 
 
 You have successfully tested network connectivity and performance from a user’s machine using the Microsoft 365 network test tool.
 
@@ -587,7 +587,7 @@ You have successfully tested network connectivity and performance from a user’
 
 The Teams PSTN (Public Switched Telephone Network) usage report in the Microsoft Teams admin center gives you an overview of calling and audio conferencing activity in your organization. 
 
-In this task we will review the PSTN Usage report.
+In this task, we will review the PSTN Usage report.
 
 1. You are still signed into MS720-CLIENT01 as “Admin” from the previous task.
 
@@ -611,7 +611,7 @@ The report shows:
 
 - **Display name** is the display name of the user. You can click the display name to go to the user's setting page in the Microsoft Teams admin center.
 
-- **Username** is the user's sign in name.
+- **Username** is the user's sign-in name.
 
 - **Phone number** is the number that received the call for inbound calls or the number dialed for outbound calls.
 
@@ -647,7 +647,7 @@ You have successfully generated and reviewed the PSTN usage report
 
 ### Task 6 - Review Calls in Call Analytics
 
-If we want to review the usage and performance of an individuals Teams calling, the first place to look is Call Analytics in the Teams Admin Center. In this task we will review Alex Wilber’s calls in Call Analytics
+If we want to review the usage and performance of an individual's Teams calling, the first place to look is Call Analytics in the Teams Admin Center. In this talk we will review Alex Wilber’s calls in Call Analytics
 
 1. You are still signed into MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
 
@@ -663,7 +663,7 @@ If we want to review the usage and performance of an individuals Teams calling, 
 
 1. In the top bar, note how teams rated the overall Audio quality.
 
-    You can see device, system, connectivity and network information. Note that since we are running tests from a virtual machine information will not be complete, for example device information may not be populated.
+You can see device, system, connectivity and network information. Note that since we are running tests from a virtual machine information will not be complete, for example, device information may not be populated.
 
 1. In the **Overview** tab Select **Network** and review the network metrics.
 
@@ -677,7 +677,7 @@ You now know how to access and review call and meeting information in Call Analy
 
 A Voice Administrator should look at the call and meeting usage and performance across the entire environment. This can be done by reviewing the Microsoft Call Quality Dashboard
 
-In this task you open and review Call Quality Dashboard
+In this task, you open and review Call Quality Dashboard
 
 1. You are still signed into MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
 
@@ -685,12 +685,12 @@ In this task you open and review Call Quality Dashboard
 
 1. This will cause a new browser tab to open going to [https://cqd.teams.microsoft.com/](https://cqd.teams.microsoft.com/).
 
-1. You will need to again login as a Tenant Administrator, select **Sign In** top right.
+1. You will need to again log in as a Tenant Administrator, select **Sign In** top right.
 
 1. You should be automatically signed in, if not, provide your Tenant Administrator credentials.
 
-As we have not made many calls in this environment, and when making calls in lab virtual machine not all metrics are provided to the Teams service, some reports will be blank and incomplete.
+    As we have not made many calls in this environment, and when making calls in lab virtual machine, not all metrics are provided to the Teams service, some reports will be blank and incomplete.
 
 1. As an example, select **Help Desk Reports** from the top menu and on the Help Desk report page select the **Call Details** tab to see recent calls.
 
-In this task you have learnt how to open and navigate Call Quality Dashboard.
+In this task, you have learned how to open and navigate Call Quality Dashboard.

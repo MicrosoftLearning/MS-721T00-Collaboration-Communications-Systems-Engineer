@@ -10,7 +10,7 @@ lab:
 
 ## Lab scenario
 
-As part of the expanding business the organization has an existing SIP trunk into their primary data center. The contractual obligations mean that it’s more cost effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move Megan will be moved from the old telephone system to the new Microsoft Phone System solution.
+As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Megan will be moved from the old telephone system to the new Microsoft Phone System solution.
 
 ## Lab Setup
 
@@ -24,11 +24,11 @@ As part of the expanding business the organization has an existing SIP trunk int
 
   - **Estimated Time to complete**: 60 minutes
 
-In this exercise, you will configure the session boarder controller, install the services needed to ensure the custom domain and SBC work as expected.
+In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
 
 ### Task 1 - Add the SBC to the tenant
 
-In this task you will verify add your SBC to your tenant.
+In this task, you will verify and add your SBC to your tenant.
 
 1. You are still on MS720-CLIENT01 and signed in as “Admin”.
 
@@ -42,11 +42,11 @@ In this task you will verify add your SBC to your tenant.
 
 1. Leave the browser open at the end of this task.
 
-You have successfully verified that your custom domain and added SBC to the to the tenant.
+You have successfully verified your custom domain and added an SBC to the tenant.
 
 ### Task 2 - Retrieve your public certificate file
 
-In the following task you will download the DigiCert certificate you requested earlier in the lab so you can use it for your SBC. This step is required to upload the certificate in the compressed archive container in the next task.
+In the following task, you will download the DigiCert certificate you requested earlier in the lab so you can use it for your SBC. This step is required to upload the certificate in the compressed archive container in the next task.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” 
 
@@ -60,11 +60,12 @@ In the following task you will download the DigiCert certificate you requested e
 
 You have successfully downloaded the certificate you requested in an earlier exercise and it is now available to certify your SBC.
 
-**Warning**: Download the file as is. Do not compress the already compressed zip file. Some web-based email systems allow you to compress or zip your download. This will cause the already compressed file to be compressed again and will cause the script in this lab to fail.
+> [!WARNING]
+> Download the file as is. Do not compress the already compressed zip file. Some web-based email systems allow you to compress or zip your download. This will cause the already compressed file to be compressed again and will cause the script in this lab to fail.
 
 ### Task 3 - Run the ImportLabCert script located in C:\Scripts
 
-In the following task you will import the certificate to the local machine and convert it to a format the SBC can read.
+In the following task, you will import the certificate to the local machine and convert it to a format the SBC can read.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
 
@@ -155,13 +156,14 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 ### Task 6 – Sign into the SBC
 
- In the following task we will configure the Session Boarder Controller (SBC) to work with Microsoft Teams.
+ In the following task, we will configure the Session Boarder Controller (SBC) to work with Microsoft Teams.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
 
 1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;Lab Number&gt;.o365ready.com](*)
 
-**Note**: You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
+> [!NOTE]
+> You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
 
 1. Logon to the SBC using the following credentials you configured earlier:
 
@@ -173,7 +175,7 @@ You have successfully logged onto the SBC.
 
 ### Task 7 - Upload root certificates to the SBC
 
-In the following task you will add the root certificate to the session border controller.
+In the following task, you will add the root certificate to the session border controller.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
 
@@ -215,7 +217,7 @@ You have successfully uploaded the root certificate to your SBC and can now cont
 
 ### Task 8 - Upload the lab certificate to the SBC
 
-In the following task you will upload the lab certificate you requested earlier.  
+In the following task, you will upload the lab certificate you requested earlier.  
 
 1. In the TLS Contexts window, in the TLS Contexts table, select **Teams-TLSContext**.
 
@@ -223,7 +225,7 @@ In the following task you will upload the lab certificate you requested earlier.
 
 1. In the Change Certificates window, scroll down to the **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER** section.
 
-1. In the **Private key pass-phrase (optional)** box, enter the default "Admin" password in the “Resource” section on the right side of the lab window.
+1. In the **Private key pass-phrase (optional)** box, enter the default Admin password in the “Resource” section on the right side of the lab window.
  
 1. Under **Send Private Key file from your computer to the device**, select **Load Private Key File**.  
 
@@ -231,19 +233,19 @@ In the following task you will upload the lab certificate you requested earlier.
 
 1. To the right of the lab certificate file path, select **Load File**.  
 
-    - **IMPORTANT**: After uploading the lab certificate, go back to Task 7 and verify that all 3 trusted root certificates are present.  If not, add any missing certificates and scroll up, select **Save** from the top menu to save the SBC configuration.
+    > [!IMPORTANT]
+    > After uploading the lab certificate, go back to Task 7 and verify that all 3 trusted root certificates are present.  If not, add any missing certificates and scroll up, select **Save** from the top menu to save the SBC configuration.
 
 1. Review the banner and verify that the certificate was loaded. 
 
 1. Select **Apply**, then **Save** at the top of the page, then select **Yes**.
-
 1. Leave the browser window open for the next task.
 
 You have successfully uploaded the lab certificate and prepared your SBC to sign its communication.
 
 ### Task 9 – Configure SIP Interfaces on SBC
 
-In the following task you will configure the SIP interfaces that allow your SBC to identify where to send SIP information.
+In the following task, you will configure the SIP interfaces that allow your SBC to identify where to send SIP information.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
 
@@ -279,7 +281,7 @@ You have successfully configured SIP Interfaces on the SBC.
 
 ### Task 10 – Configure Proxy Sets on SBC
 
-In the following task you will configure the SBC Proxy Sets.
+In the following task, you will configure the SBC Proxy Sets.
 
 1. Select **Proxy Sets**, then select **New** and fill out the following information:
 
@@ -291,7 +293,7 @@ In the following task you will configure the SBC Proxy Sets.
 
 	- **Proxy Keep-alive:** Using OPTIONS
 
-	- **Proxy Hot Swap Mode:** Enable
+	- **Proxy Hot Swap:** Enable
 
 	- **Proxy Load Balancing Method:** Random Weights
 
@@ -301,7 +303,7 @@ You have successfully configured Proxy Sets on the SBC.
 
 ### Task 11 – Configure Proxy Addresses Interfaces on SBC
 
-In the following task you will configure the SBC Proxy Addresses Interfaces.
+In the following task, you will configure the SBC Proxy Addresses Interfaces.
 
 1. Scroll to the bottom of the page and select **Proxy Address 0 items**, select **New** and fill out the following information:
 
@@ -343,7 +345,7 @@ You have successfully configured Proxy Addresses on the SBC.
 
 ### Task 12 – Configure Coder Groups on SBC
 
-In the following task you will configure the Coder Groups on the SBC.
+In the following task, you will configure the Coder Groups on the SBC.
 
 1. Navigate to **Coders &amp; Profiles &gt; Coder Groups**, and highlight "AudioCodersGroup_0" and select "Coders Table 1 items" below.
 
@@ -365,7 +367,7 @@ You have successfully configured Coder Groups on the SBC.
 
 ### Task 13 – Configure IP Profiles on the SBC
 
-In the following task you will configure the IP Profiles for the SBC.
+In the following task, you will configure the IP Profiles for the SBC.
 
 1. To configure IP profiles under **Coders &amp; Profiles**, select **IP Profiles** and then select **New** and configure the following:
 
@@ -399,7 +401,7 @@ You have successfully configured IP Profiles on the SBC.
 
 ### Task 14 – Configure IP Groups on SBC
 
-In the following task you will configure IP groups for the SBC.
+In the following task, you will configure IP groups for the SBC.
 
 1. To configure IP Groups under **Core Entities**, select **IP Groups**, then select **New** and configure the following:
 
@@ -429,7 +431,7 @@ You have successfully configured IP Groups on the SBC.
 
 ### Task 15 – Configure SRTP on SBC
 
-In the following task you will configure the SBC to be ready for Teams.
+In the following task, you will configure the SBC to be ready for Teams.
 
 1. To configure SRTP go to **Media**, then select **Media security**, select **Media Security** and set it to **Enable**.
 
@@ -441,7 +443,7 @@ You have successfully configured SRTP on the SBC.
 
 ### Task 16 – Configure Message Manipulation on SBC
 
-In the following task you will add the message manipulation on the SBC.
+In the following task, you will add the message manipulation on the SBC.
 
 1. To create a Message Condition Rule go to **Message Manipulation**, then select **Message Conditions**
 
@@ -477,7 +479,7 @@ You have successfully configured message manipulation on the SBC.
 
 ### Task 17 – Configure IP to IP Calling rules on SBC
 
-In the following task you will configure 4 IP to IP calling rules on the SBC.
+In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
 1. Go to **SBC**, **Routing**, **IP to IP Routing**, then select **New**
 
@@ -543,7 +545,7 @@ You have successfully configured the AudioCodes SBC to receive requests from the
 
 ### Task 18 - Verify the SBC Connections to Teams
 
-In the following task you will validate the SBC to be ready for Teams
+In the following task, you will validate the SBC to be ready for Teams
 
 On the SBC, select **Monitor** at the top and under **VOIP Status &gt; Proxy Set Status**, the output should be **Online** for the three entries for psthub.Microsoft.com. 
 
@@ -555,11 +557,11 @@ If the output shows the correct value for all three entries your SBC is configur
 
   - **Estimated Time to complete**:  120 minutes
 
-In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Megan Bowen to perform voice calls over the SBC. Megan resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently this is cost prohibitive. 
+In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Megan Bowen to perform voice calls over the SBC. Megan resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider's telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently, this is cost prohibitive. 
 
 ### Task 1 - Create a voice routing policy with one PSTN usage
 
-In the following task you will create your first voice routing policy and PSTN usage so you can later assign this policy to your users.
+In the following task, you will create your first voice routing policy and PSTN usage so you can later assign this policy to your users.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
 
@@ -583,7 +585,7 @@ In the following task you will create your first voice routing policy and PSTN u
 
 1. Review the output of the command.
 
-If you have several usages defined, the names of the usages might truncate. Use the command, (Get-CSOnlinePSTNUsage).Usage, to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
+If you have several usages defined, the names of the usages might truncate. Use the command, (Get-CSOnlinePSTNUsage).Usage, to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
 
 1. Run the Set-CSOnlinePSTNUsage cmdlet is used to add or remove phone usages to or from the usage list. This list is global so it can be used by policies and routes throughout the tenant:
 
@@ -621,7 +623,7 @@ You have successfully created a voice routing policy with a PSTN Usage.
 
 ### Task 2 - Create a new voice routing policy named North America and assign it to Megan Bowen
 
-In the following task you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
+In the following task, you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
@@ -649,7 +651,7 @@ You have successfully used PowerShell to assign your voice routing policy to you
 
 ### Task 3 - Enable users for Direct Routing, voice, and voicemail
 
-In the following task you will enable the end user for voice services through the direct route, assign the telephone number, and enable the user for dial pad service.
+In the following task, you will enable the end user for voice services through the direct route, assign the telephone number, and enable the user for dial pad service.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
@@ -666,7 +668,7 @@ You have successfully assigned a telephone number to the end user and you have e
 
 ### Task 4 - Configure voice routing
 
-In the following task you will assign a voice route to a user, this will grant the user the ability to make calls to the policy applied. 
+In the following task, you will assign a voice route to a user, this will grant the user the ability to make calls to the policy applied. 
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
@@ -683,7 +685,7 @@ You have successfully assigned a telephone number to the end user and you have e
 
 ### Task 5 - Translate numbers to an alternate format
 
-In the following task you will create a normalization record for a 4-digit dial plan
+In the following task, you will create a normalization record for a 4-digit dial plan
 
 1. You are still signed in to MS720-CLIENT01 as “Admin”.
 
@@ -711,7 +713,7 @@ You have successfully you have assigned a 4-digit extension dial to the global g
 
 ### Task 6 - Configure Emergency Location Identification Number (ELIN)
 
-In the following task you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
+In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
@@ -727,9 +729,9 @@ In the following task you will assign the Emergency Location Identification numb
 
 You have successfully assigned the ELIN number to the location for emergency addresses.
 
-### Task 7 - Deploy Location-Based Routing based off of subnets
+### Task 7 - Deploy Location-Based Routing based on subnets
 
-In the following task you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon subnet IP address allocated. 
+In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
@@ -747,4 +749,4 @@ In the following task you will configure location-based routing to allow connect
 
 1. Leave the browser window open.
 
-You have successfully implemented the Location based routing which will route your calls dependent upon the machines local subnet which it is registered to. 
+You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. 

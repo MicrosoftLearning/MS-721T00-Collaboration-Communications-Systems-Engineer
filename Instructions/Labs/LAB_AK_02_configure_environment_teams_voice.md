@@ -10,7 +10,7 @@ lab:
 
 ## Lab scenario
 
-Contoso want to setup Teams Phone for their users. 
+Contoso wants to set up Teams Phone for their users. 
 
 Firstly, our administrator wants to ensure the network is capable of running Microsoft teams, we will do this by completing the following tasks:
 
@@ -18,11 +18,11 @@ Firstly, our administrator wants to ensure the network is capable of running Mic
 
 - Test our network performance with the Teams Network Assessment
 
-Next, we need to configure our tenant ready for acquiring phone numbers and assigning them to users, before we can acquire and assign phone numbers we need to configure out network topology and emergency calling addresses
+Next, we need to configure our tenant ready for acquiring phone numbers and assigning them to users, before we can acquire and assign phone numbers we need to configure our network topology and emergency calling addresses
 
 - Configure a basic network topology and emergency calling addresses
 
-Voice Policies allow us to configure specific parts of Teams Phone. We have a requirement for extension dialing and call park and some of our users do not want their number presented when making outbound calls. Finally, there is a number we wish to block from making inbound calls to Contoso. 
+Voice Policies allow us to configure specific parts of Teams Phone. We require extension dialing and call park and some of our users do not want their numbers presented when making outbound calls. Finally, there is a number we wish to block from making inbound calls to Contoso. 
 
 - Configure Voice policies to meet Contoso requirements
 
@@ -32,7 +32,7 @@ Now we will acquire and assign phone numbers to a user and perform a test call a
 
 - Configure audio conferencing
 
-Finally we will configure Call Queues and Auto Attendants for inbound calls to Contoso
+Finally, we will configure Call Queues and Auto Attendants for inbound calls to Contoso
 
 - Configure Call Queues and Auto Attendants 
 
@@ -48,19 +48,19 @@ Finally we will configure Call Queues and Auto Attendants for inbound calls to C
 
   - **Estimated Time to complete**: 20 minutes
 
-In this exercise, you will determine if your organizations network has enough bandwidth to run Microsoft Teams successfully using Network Planner.
+In this exercise, you will determine if your organization's network has enough bandwidth to run Microsoft Teams successfully using Network Planner.
 
 We will input our network details and review the output report.
 
 ### Task 1 - Create Personas
 
-In the following task you will create a custom user persona of a network user. In our scenario we have some users that are expected to only use audio for p2p calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
+In the following task, you will create a custom user persona of a network user. In our scenario, we have some users that are expected to only use audio for p2p calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
 
 1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
 
-1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
+1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. You are still signed in as **MOD Administrator**. To follow the principal of least privilege, select the circle in the upper right-side corner and select **Sign out**.
+1. You are still signed in as **MOD Administrator**. To follow the principle of least privilege, select the circle in the upper right-side corner and select **Sign out**.
 
 1. Sign in with the credentials of **Katie Jordan**, the Teams Administrator for this lab.
 
@@ -84,7 +84,7 @@ You have successfully created our Audio Only User network persona.
 
 ### Task 2 - Create Network and Network Sites
 
-In this task you will setup your network and sites in Teams Network Planner. Contoso has 2 offices, Tacoma and Bellevue, so 2 network sites, we need to add to the planner
+In this task, you will set up your network and sites in Teams Network Planner. Contoso has 2 offices, Tacoma and Bellevue, so 2 network sites, we need to add to the planner
 
 1. You are in **Network Planner** in the **Microsoft Teams admin center** on **MS720-CLIENT01** as **Admin** and signed in as **Katie Jordan**.
 
@@ -142,7 +142,7 @@ You have successfully added our two sites, user numbers and bandwidth details to
 
 ### Task 3 - Run Reports
 
-In the following task you will run the Network Planner report and review the results.
+In the following task, you will run the Network Planner report and review the results.
 
 1. You are in **Network Planner** in the **Microsoft Teams admin center** on MS720-CLIENT01 as “Admin” and signed in as Katie Jordan.
 
@@ -154,7 +154,7 @@ In the following task you will run the Network Planner report and review the res
 
 1. Enter a description of **Network report for Tacoma and Bellevue**.
 
-For each site we must now define the number of users of each profile type. 
+For each site, we must now define the number of users of each profile type. 
 
 1. For **Tacoma Site**, in the **Office Worker** row, set Network users to **30**.
 
@@ -188,7 +188,7 @@ In this exercise, you will install and run the Teams Network Assessment Tool to 
 
 ### Task 1 - Install the Tool
 
-In this task you will sign into a client machine provided by your training provider install the Teams Network Assessment Tool which is required to perform different tests.
+In this task, you will sign into a client machine provided by your training provider and install the Teams Network Assessment Tool which is required to perform different tests.
 
 1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
 
@@ -240,9 +240,9 @@ The Teams Network Assessment Tool is run from the command line. We will now run 
 
 You have started the Network Assessment Tool for the first time.
 
-### Task 3 - Interpret Results of the Network Connectivity Check
+### Task 3 - Interpret the results of the Network Connectivity Check
 
-In the following task you will read the results from the network connectivity check.:
+In the following task, you will read the results from the network connectivity check.:
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and with the Network Assessment Tool open.
 
@@ -272,11 +272,11 @@ The network quality check (performance test) is run with the NetworkAssessmentTo
 
 ### Task 5 - Interpret Results of the Network Quality Check
 
-In the following task you will review the results of the Network Quality Check.
+In the following task, you will review the results of the Network Quality Check.
 
 - **Packet loss**: This is often defined as a percentage of packets that are lost in a given window of time. Packet loss directly affects audio quality—from small, individual lost packets having almost no impact to back-to-back burst losses that cause audio to cut out completely.
 
-- **Latency:** This is the time it takes to get an IP packet from point A to point B on the network. This network propagation delay is essentially tied to physical distance between the two points and the speed of light, including additional overhead taken by the various routers in between. Latency is measured as one-way or round-trip time.
+- **Latency:** This is the time it takes to get an IP packet from point A to point B on the network. This network propagation delay is essentially tied to the physical distance between the two points and the speed of light, including additional overhead taken by the various routers in between. Latency is measured as one-way or round-trip time.
 
 - **Inter-packet arrival jitter, or simply jitter:** This is the average change in delay between successive packets. Most modern VoIP software, including Skype for Business, can adapt to some levels of jitter through buffering. It's only when the jitter exceeds the buffering that a participant will notice the effects of jitter.
 
@@ -314,13 +314,13 @@ At the end of this task, you have successfully reviewed the results of the Netwo
 
   - **Estimated Time to complete**: 20 minutes
 
-Network sites are used for Dynamic emergency calling. Before configuring dynamic emergency calling we must map the relevant Network Regions, Network sites, network subnets and Trusted IP addresses. In this exercise we will configure a network region and sites
+Network sites are used for Dynamic emergency calling. Before configuring dynamic emergency calling we must map the relevant Network Regions, Network sites, network subnets and Trusted IP addresses. In this exercise, we will configure a network region and sites
 
 ### Task 1 - Add Network Region and sites to Network Topology
 
-In this task you will sign into client01 and the Teams Admin Center and add our two offices as Network Sites in Network Topology
+In this task, you will sign into client01 and the Teams Admin Center and add our two offices as Network Sites in Network Topology
 
-1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
+1. Sign in to **MS720-CLIENT01** as **Admin** with the password provided to you.
 
 1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -372,9 +372,9 @@ You have now added our 2 network sites, Tacoma, and Bellevue.
 
 ### Task 2 - Add a trusted IP address
 
-In this task you will add a trusted IP addresses for each the Tacoma and Bellevue Offices. Trusted IP address are the enterprises public external IP addresses that a Teams user will show as routing from on the public internet. These are important as they validate that the user is on an enterprise network and the system should check if they are on a mapped subnet. We have two offices, each with their own internet connection and therefor public IP address. You do not need to map Trusted IPs to specific networks.
+In this task, you will add a trusted IP addresses for each of the Tacoma and Bellevue Offices. Trusted IP addresses are the enterprise's public external IP addresses that a Teams user will show as routing from on the public internet. These are important as they validate that the user is on an enterprise network and the system should check if they are on a mapped subnet. We have two offices, each with its own internet connection and therefore its own public IP address. You do not need to map Trusted IPs to specific networks.
 
-1. From the last task you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. On **Network topology**, select the **Trusted IPs** tab.
 
@@ -396,9 +396,9 @@ You have successfully added the public IP that clients will appear from for the 
 
 ### Task 3 - Add an emergency address
 
-In this task you will create an emergency location. This is needed before you can order calling plan numbers.
+In this task, you will create an emergency location. This is needed before you can order calling plan numbers.
 
-1. From the last task you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. Select the **Locations** then **Emergency addresses**.
 
@@ -458,7 +458,7 @@ You can map emergency location\addresses to:
 
 Perform the following steps.
 
-1. From the last task you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft** **Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft** **Teams Admin Center** open as **Katie Jordan**.
 
 1. Navigate to **Locations** and **Networks &amp; locations**.
 
@@ -468,7 +468,7 @@ Perform the following steps.
 
 1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.20.0/24, the network ID is **10.10.20.0**.
 
-1. Do **not** set a description (there is a bug which stops the UI working when you add a description)
+1. Do **not** set a description (there is a bug that stops the UI from working when you add a description)
 
 1. Under Emergency location, **Search by City** enter **Bellevue** and select our Bellevue emergency address.
 
@@ -480,9 +480,9 @@ You have aligned a network subnet to a physical emergency address.
 
 ### Task 5 - Configure Emergency Calling Policies
 
-In this task you will configure an emergency calling policy. Emergency calling policies define what happens when a user in your organization makes an emergency call. We would like Alex Wilber to receive a notification whenever an emergency call is made.
+In this task, you will configure an emergency calling policy. Emergency calling policies define what happens when a user in your organization makes an emergency call. We would like Alex Wilber to receive a notification whenever an emergency call is made.
 
-1. From the last task you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. In the left navigation pane select **Voice** and **Emergency polices**.
 
@@ -500,7 +500,7 @@ In this task you will configure an emergency calling policy. Emergency calling p
 
 1. Leave the browser open in the **Microsoft Teams admin center** at the end of this task.
 
-You have successfully setup notifications for Alex Wilber whenever emergency calls are made.
+You have successfully set up notifications for Alex Wilber whenever emergency calls are made.
 
 ## Exercise 4: Configure voice policies
 
@@ -508,11 +508,11 @@ You have successfully setup notifications for Alex Wilber whenever emergency cal
 
   - **Estimated Time to complete**: 20 minutes
 
-In this exercise, you will configure some key voice setting and policies required for the Contoso users to utilize voice services in context with the company policies.
+In this exercise, you will configure some key voice settings and policies required for the Contoso users to utilize voice services in context with the company policies.
 
 ### Task 1 - Create a Dial Plan for extension dialing
 
-In this task you will sign into the Client01 and the Teams Admin Center and configure a dial plan. Our Tacoma office users are used to using 3 digit short codes to call users internally, from 500 to 550. These 3 digit codes map 1:1 to the last 3 digits of their PSTN number. In Tacoma the numbers are +44208 566 5xx. XX represents 00 to 99, We own this number range for the Tacoma users.
+In this task, you will sign into the Client01 and the Teams Admin Center and configure a dial plan. Our Tacoma office users are used to using 3 digit short codes to call users internally, from 500 to 550. These 3 digit codes map 1:1 to the last 3 digits of their PSTN number. In Tacoma, the numbers are +44208 566 5xx. XX represents 00 to 99, We own this number range for the Tacoma users.
 
 So, for example, if a user’s phone number is +44208 566 511, employees are used to being able to dial 511 to ring that user.
 
@@ -526,7 +526,7 @@ Since we want all users to be able to do 5xx extension dialing, we will add a ne
 
 1. Select the **Global (org wide default)** dial plan.
 
-1. Under Normalization rules you will see “You don't have any normalization rules yet”, select **Add** to get to the add new rule dialogue.
+1. Under Normalization rules, you will see “You don't have any normalization rules yet”, select **Add** to get to the add new rule dialogue.
 
 1. For **Name** enter **Tacoma 5xx extension dialing**.
 
@@ -616,7 +616,7 @@ The call pickup range is from 10 to 99 but can be customized here. You have succ
 
 Caller ID policies are used to change or block the Caller ID or phone number presented when making or receiving PSTN calls.
 
-By default, the user's phone number is displayed when an outbound call is made to a PSTN phone number such as a landline or mobile phone. In most cases most companies will be happy with this default. Some users in our organization do not want their number presented when they make outbound PSTN calls. In this task we will create a Caller ID policy to block the presentation of any PSTN number, ready to be assigned to those users.
+By default, the user's phone number is displayed when an outbound call is made to a PSTN phone number such as a landline or mobile phone. In most cases, most companies will be happy with this default. Some users in our organization do not want their number presented when they make outbound PSTN calls. In this task, we will create a Caller ID policy to block the presentation of any PSTN number, ready to be assigned to those users.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -676,11 +676,11 @@ You have successfully blocked all inbound calls from 1 (412) 555-1111 via PowerS
 
   - **Estimated Time to complete**: 20 minutes
 
-In this exercise, you will setup a user for Teams Phone with a Microsoft Calling plan. 
+In this exercise, you will set up a user for Teams Phone with a Microsoft Calling plan. 
 
 ### Task 1 - Order a phone number
 
-In this task you will order a phone number in the Teams Admin Center to assign to Isaiah Langer.
+In this task, you will order a phone number in the Teams Admin Center to assign to Isaiah Langer.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **Katie Jordan**
 
@@ -702,7 +702,8 @@ In this task you will order a phone number in the Teams Admin Center to assign t
 
 1. For **Search for new numbers** select **Search by area code** and enter **206**.
 
-**Note**: The phone numbers that are available in different regions will vary and **206** numbers may not be available. Try other area codes in the US and Canada, such as **308** in Nebraska.  The area code of the phone number does not need to match the emergency address location.
+> [!NOTE]
+> The phone numbers that are available in different regions will vary and **206** numbers may not be available. Try other area codes in the US and Canada, such as **308** in Nebraska.  The area code of the phone number does not need to match the emergency address location.
 
 1. When all fields are complete, select **Next**. Microsoft will now reserve phone numbers in the chosen area code. If there are no numbers available for your selected State/City combination, select another State/City and try again.
 
@@ -718,7 +719,7 @@ You have successfully ordered a phone number through the Teams admin center.
 
 ### Task 2 - Assign a phone number to Isaiah Langer
 
-Before a user can make calls, they need a phone number. In this task you will assign the phone number you ordered earlier to Isaiah Langer.
+Before a user can make calls, they need a phone number. In this task, you will assign the phone number you ordered earlier to Isaiah Langer.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -740,7 +741,7 @@ You have successfully assigned a phone number to Isaiah Langer.
 
 ### Task 3 - Test phone calls
 
-Now Isaiah has a calling plan and phone number and we will perform a test call to validate functionality of the configuration.
+Now Isaiah has a calling plan and phone number and we will perform a test call to validate the functionality of the configuration.
 
 1. Switch to **MS720-CLIENT02** and sign in as **Admin** with the credentials provided to you.
 
@@ -756,7 +757,7 @@ Now Isaiah has a calling plan and phone number and we will perform a test call t
 
 1. Select **Get started**.
 
-1. When prompted for sign in, enter Isaiah Langer’s username.
+1. When prompted to sign in, enter Isaiah Langer’s username.
 
 1. When prompted enter Isaiah Langer’s password reset in a previous exercise.
 
@@ -796,13 +797,13 @@ Now we confirmed that Isaiah can make a PSTN call in Teams
 
   - **Estimated Time to complete**: 10 minutes
 
-In this exercise, you will configure Microsoft PSTN audio conferencing to meet the organizations requirements.
+In this exercise, you will configure Microsoft PSTN audio conferencing to meet the organization's requirements.
 
 ### Task 1 - Set a default Audio Conferencing Bridge
 
 The default phone number of your conference bridge defines the caller ID that will be used when an outbound call is placed by a participant or the organizer from within a meeting. E.g., they are dialing out to either connect themselves via PSTN or to “dial in” another participant on PSTN.
 
-Contoso does a lot of work with companies in New York and would prefer a New York number is their default audio conference bridge.
+Contoso does a lot of work with companies in New York and would prefer a New York number as their default audio conference bridge.
 
 1. Switch back to **MS720-CLIENT01** and sign in as **Admin** with the password provided to you.
 
@@ -822,9 +823,9 @@ You have successfully set a New York City, United States number as the default a
 
 ### Task 2 – Order a new Conference Bridge Number
 
-Contoso would like to have a conference number for their customers to dial into specifically in the United States 920 area code. In this task we will order that number and add it to our tenant.
+Contoso would like to have a conference number for their customers to dial specifically in the United States 920 area code. In this task, we will order that number and add it to our tenant.
 
-In this task you will order a new Dedicated conference bridge toll number. This will be a dedicated number for people to dial into Contoso conferences.
+In this task, you will order a new Dedicated conference bridge toll number. This will be a dedicated number for people to dial into Contoso conferences.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -868,11 +869,11 @@ You have successfully ordered a new dedicated conference toll phone number throu
 
 1. Select **Apply**.
 
-1. You will be back at the list of conference bridge numbers, sort the list by type to confirm you have a new Dedicated conference bridge. It may take a few minutes for the bridge to appear. You can refresh the page by moving to a different page in the Teams Admin Center then returning to the **Conference bridges** page.
+1. You will be back at the list of conference bridge numbers, sort the list by type to confirm you have a new Dedicated conference bridge. It may take a few minutes for the bridge to appear. You can refresh the page by moving to a different page in the Teams Admin Center and then returning to the **Conference bridges** page.
 
 1. Leave the browser window open at the end of the task.
 
-You have successfully setup a new dedicated conference bridge number.
+You have successfully set up a new dedicated conference bridge number.
 
 ## Exercise 7: Configure call queues and auto attendants
 
@@ -880,11 +881,11 @@ You have successfully setup a new dedicated conference bridge number.
 
   - **Estimated Time to complete**: 45 minutes
 
-In this exercise, you will gain an understanding of how to configure Call Queues and Auto Attendants. Auto attendant being configured today is for the Sales Team. The sales team take sales queries and then apply them to different parts of the business. On this occasion Alex Wilber is going to be part of the call queue and later in the module we will see how to then assign it to a Team.
+In this exercise, you will gain an understanding of how to configure Call Queues and Auto Attendants. Auto attendant being configured today is for the Sales Team. The sales team takes sales queries and then applies them to different parts of the business. On this occasion, Alex Wilber is going to be part of the call queue and later in the module, we will see how to then assign it to a Team.
 
 ### Task 1 - Create a call queue in the Teams Admin Center
 
-In this task you will create a call queue. A call queue is a group of agents that you can direct calls to.
+In this task, you will create a call queue. A call queue is a group of agents that you can direct calls to.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -898,7 +899,7 @@ In this task you will create a call queue. A call queue is a group of agents tha
 
 1. Enter **Sales CQ** as **Display name**
 
-1. **SalesCQ** as **Username,** leave domain as is, 
+1. **SalesCQ** as **Username,** leave domain as-is.
 
 1. **Resource account type** select **Call queue**, then select **Save**.
 
@@ -910,7 +911,7 @@ In this task you will create a call queue. A call queue is a group of agents tha
 
 1. Under **Call answering** select **Choose users and group, Add users**, search for Isaiah Langer. and select **Add**.
 
-1. Leave the other options as default
+1. Leave the other options as default.
 
 1. Scroll down the page and select **Submit**. You will see your call queue in the call queues list
 
@@ -956,7 +957,7 @@ You have successfully created an Auto Attendant, and aligned it to a Call Queue
 
 ### Task 3 – Configure a Call Queue to use a channel
 
-Collaborative calling enables you to connect a call queue to a channel in Teams. Users can collaborate and share information in the channel while taking calls in the queue. Instead of defining the agents in the Teams Admin Center, the agents are defined by who is members of the team.
+Collaborative calling enables you to connect a call queue to a channel in Teams. Users can collaborate and share information in the channel while taking calls in the queue. Instead of defining the agents in the Teams Admin Center, the agents are defined by who are members of the team.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -992,7 +993,7 @@ You have successfully assigned a voicemail to the Call Queue should it reach a t
 
 ### Task 5 - Explore conference mode toggle
 
-In this task you will enable conference mode that will then make it pass the call between the inbound calls more quickly.
+In this task, you will enable conference mode that will pass the call between the inbound calls more quickly.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -1006,7 +1007,7 @@ You have successfully enabled conferencing mode for **Sales CQ** call queue.
 
 ### Task 6 - Set holiday modes within AA
 
-In this task you will create the relevant holiday configuration. Holidays differ from country to country but in this instance, we will just create a new holiday time that’s relevant to yourself. 
+In this task, you will create the relevant holiday configuration. Holidays differ from country to country but in this instance, we will just create a new holiday time that’s relevant to you. 
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -1034,7 +1035,7 @@ You have successfully created a holiday relevant to your area and assigned it to
 
 ### Task 7 - Import MP4 file in as custom music on hold
 
-In this task you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
+In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
@@ -1042,7 +1043,7 @@ In this task you will obtain a free MP3 to the music on hold solution for the Sa
 
 1. Under **Voice** and **Call Queues**, select **Sales CQ**.
 
-1. to go into edit mode by double clicking **Sales CQ**.
+1. Select **Greeting and music**.
 
 1. Under **Music on hold**, select **Play an audio file**.
 
