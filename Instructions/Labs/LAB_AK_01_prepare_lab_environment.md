@@ -10,9 +10,9 @@ lab:
 
 ## Lab scenario
 
-In the labs for this course, you are taking on the role of Katie Jordan, Contoso Ltd.’s Teams Voice Engineer. You have deployed Microsoft 365 in a virtualized lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
+In the labs for this course, you are taking on the role of Katie Jordan, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
 
-You have just started the pilot project; therefore, in this first lab you will set up a personalized Microsoft 365 user account for Katie that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
+You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Katie that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
 
 ## Lab Duration
 
@@ -26,11 +26,11 @@ You have just started the pilot project; therefore, in this first lab you will s
 
   - **Estimated Time to complete**: 25 minutes
 
-In this exercise, you will run scripts designed to provision user accounts, groups, teams, and other resources used by the labs in this course. This script will also add your lab's custom domain to Office 365. If you have already added your lab's custom domain, the script will verify that it exists. 
+In this exercise, you will run scripts to provision user accounts, groups, teams, and other resources used by the labs in this course. This script will also add your lab's custom domain to Office 365. If you have already added your lab's custom domain, the script will verify that it exists. 
 
 ### Task 1 - Identify your lab's public IP address
 
-In the following task you will sign identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
+In the following task, you will identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
 
 1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
@@ -99,9 +99,9 @@ In the following task you will execute a script to setup your lab environment.
 
 1. In the **User Account Control** dialog box, select **Yes**.
 
-1. In the **Office 365 Admin username** box, enter your M365 tenant MOD Administrators account name. You can find your tenant username in the resource section on the right side of the lab window.
+1. In the **Office 365 Admin username** box, enter your M365 tenant MOD Administrator account name. You can find your tenant username in the resource section on the right side of the lab window.
 
-1. In the **Office 365 Admin password** box, enter the MOD Administrators password, provided to you.
+1. In the **Office 365 Admin password** box, enter the MOD Administrator password, provided to you.
 
 1. In the **5-digit lab number** box, enter your lab number from the previous task and select **Verify**.
 
@@ -121,7 +121,7 @@ As soon as the script finishes successfully, you have successfully configured yo
 
 ### Task 4 - Request your public certificate from DigiCert
 
-In the following task you will request your public certificate for the SBC (Session Border Controller) so you can use it later in the labs. This is used to authenticate connections to multiple tenants and networks served from a single SBC.
+In the following task, you will request your public certificate for the SBC (Session Border Controller) so you can use it later in the labs. This is used to authenticate connections to multiple tenants and networks served from a single SBC.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
 
@@ -141,7 +141,7 @@ In the following task you will request your public certificate for the SBC (Sess
 
 1. Under **Certificate Details**, review the common name and subject alternative names (SAN) information that will be assigned to the certificate. Ensure that all SAN entries are lowercase. All SAN entries may not be used for this lab.
 
-1. Under Certificate Delivery, in the **Email Address** and **Email Address (again)** boxes, enter the MOD Administrators account name, which is also used as the users email address.
+1. Under Certificate Delivery, in the **Email Address** and **Email Address (again)** boxes, enter the MOD Administrator account name, which is also the user's email address.
 
 1. Select the **I agree to the Terms of Service above** check box.
 
@@ -163,7 +163,7 @@ In this exercise, you will assign the required admin permissions to continue wit
 
 ### Task 1 - Verify the custom domain has been added to your Microsoft 365 subscription
 
-In this task you will verify your custom domain so you can work with it and assign it to users.
+In this task, you will verify your custom domain so you can work with it and assign it to users.
 
 1. You are still on **MS720-CLIENT01** where you are still signed in as **Admin**. 
 
@@ -185,11 +185,11 @@ In this task you will verify your custom domain so you can work with it and assi
 
     ![Screenshot of the Microsoft 365 admin center Domains page, showing the custom lab domain as Default.](./Linked_Image_Files/M01_L01_E02_T01.png)
 
-You have successfully verified the custom domain created from the script is set as default domain to your tenant, which is important for later tasks.
+You have successfully verified the custom domain created from the script is set as the default domain for your tenant, which is important for later tasks.
 
 ### Task 2 - Assign Katie Jordan to the Teams Administrator
 
-In the following task you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to a personalized account for Katie Jordan.
+In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Katie Jordan.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -225,7 +225,7 @@ You have successfully assigned the Teams Service administrator permission to Kat
 
 ### Task 3 - Assign the custom lab domain to Megan Bowen
 
-In the following task you will add the custom domain to Megan Bowen.
+In the following task, you will add the custom domain to Megan Bowen.
 
 1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”, and you are still in the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -265,7 +265,7 @@ In this task you will sign into the clients provided by your training provider a
 
 1. When the Licenses Panel is shown, validate you can see 5 of the **Office 365 E5** licenses are now applied to users.
 
-1. Select **Office 365 E5** to see who have the licenses applied.
+1. Select **Office 365 E5** to see who has the licenses applied.
 
 1. Leave the browser open at the end of the task.
 
@@ -273,11 +273,11 @@ You have successfully signed into your test clients and reviewed the overall num
 
 ### Task 2 - Add the Domestic Calling Plan trial license to your tenant
 
-As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task you will activate the trial for domestic calling.
+As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left-side, select **Billing**, then **Purchase services**.
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase services**.
 
 1. Under **View by category**, select **Add-ons**.
 
@@ -295,7 +295,7 @@ You have successfully activated the Calling Plan trial in your tenant.
 
 ### Task 3 - Assign the Domestic Calling Plan license to Isaiah Langer
 
-As an admin, you can assign the calling plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
+As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -337,7 +337,7 @@ Several configuration steps of Microsoft Teams in this lab can also be done or m
 
 ### Task 1 – Install the latest Teams PowerShell module
 
-In this task you will install the latest Teams PowerShell module on your lab client and check the correct version number.
+In this task, you will install the latest Teams PowerShell module on your lab client and check the correct version number.
 
 1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
 
@@ -365,9 +365,9 @@ In this task you will install the latest Teams PowerShell module on your lab cli
     Get-Module -Name MicrosoftTeams
     ```
 
-1. You should see a version number of 4.9.1 or above and a multi value field with different cmdlets available.
+1. You should see a version number of 4.9.1 or above and a multi-value field with different cmdlets available.
 
-    ![Screenshot of the installing and importing the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01.png)
+    ![Screenshot of the process of installing and importing the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01.png)
 
 1. Now login to Microsoft Teams via PowerShell to confirm you can connect. At the command prompt type the following cmdlet:
 
