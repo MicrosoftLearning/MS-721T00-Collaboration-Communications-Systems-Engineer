@@ -578,7 +578,7 @@ At Contoso, you need to enable the option of convenience recording 1:1 calls, wh
 
 1. Select **Add** to open the **Assign policy to group** dialogue.
 
-1. Under **Select a group** search for **Sales Group** and when **Sales Group** group appears select **Add**.
+1. Under **Select a group** search for **Sales Group** and when **Sales Group** appears, select **Add**.
 
 1. Leave rank as **1**.
 
