@@ -392,7 +392,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
 1. Create a new Team to be used throughout the labs in this course by running the following command:
 
     ```powershell
-    New-Team -DisplayName "Contoso All Company" -Description "Team for the entire Contoso Company" -Visibility Public
+    New-Team -DisplayName "Sales Group" -Description "Sellers at Contoso" -Visibility Public
     ```
 
 1. Disconnect your session by running the following command at the command prompt.

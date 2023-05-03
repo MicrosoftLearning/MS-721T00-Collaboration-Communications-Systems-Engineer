@@ -91,7 +91,7 @@ In the following task you will create the new session boarder controller resourc
 
 1. Open a new Microsoft Edge browser window and navigate to **https://portal.azure.com**.
 
-1. Log in with the Azure Portal username and password provided to you by your ALH.  **Do not** log in with your Microsoft 365 account.
+1. Log in with the Azure Portal username and password provided to you by your lab provider.  **Do not** log in with your Microsoft 365 account.
 
 1. Select **create a resource**.
 
@@ -111,7 +111,7 @@ In the following task you will create the new session boarder controller resourc
 
 	- **Username:** sbcadmin
 
-	- **Password:** P@55w.rd1234
+	- **Password:** *Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.*
 
 1. Select **Review + Create** (If you see a "Validation failed" message, you need to select **Previous** and select **Review + Create** again).
 
@@ -140,7 +140,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 	- **User name:** Administrator
 
-	- **Password:** Enter the default Admin password in the “Resource” section on the right side of the lab window.
+	- **Password:** *Enter the default Admin password in the _"Resource"_ section on the right side of the lab window.*
 
 1. Once the module is installed you will see the command prompt again.
 
@@ -169,7 +169,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 	- **Username:** sbcadmin
 
-	- **Password:** P@55w.rd1234
+	- **Password:** *Enter the default Admin password in the _“Resource”_ section on the right side of the lab window.*
 
 You have successfully logged onto the SBC.
 

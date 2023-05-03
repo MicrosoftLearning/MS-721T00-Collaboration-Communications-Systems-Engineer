@@ -159,7 +159,189 @@ In this task you will assign a new Dial out policy to Megan Bowen, to restrict h
 
 Outbound calls from Megan Bowen have been restricted.
 
-## Exercise 2: Manage Teams devices
+## Exercise 2: Configure call queues and auto attendants
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 45 minutes
+
+In this exercise, you will gain an understanding of how to configure Call Queues and Auto Attendants. Auto attendant being configured today is for the Sales Team. The Sales Team takes sales queries and then applies them to different parts of the business. On this occasion, Alex Wilber is going to be part of the call queue and later in the module, we will see how to then assign it to a Team.
+
+### Task 1 - Create a call queue in the Teams admin center
+
+In this task, you will create a call queue. A call queue is a group of agents that you can direct calls to.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Select **Voice** and then select **Call queues**.
+
+1. Select **Add** and enter the **Sales CQ** as the name
+
+1. Under **Resource accounts**, select **Add**.
+
+1. Enter **Sales** in the search box, when no results are found, select **Add resource account**.
+
+1. Enter **Sales CQ** as **Display name**
+
+1. **SalesCQ** as **Username,** leave domain as-is.
+
+1. **Resource account type** select **Call queue**, then select **Save**.
+
+1. Once saved, you will see Sales CQ under accounts to add, select **Add**.
+
+1. You do not need to assign a Calling ID for this lab
+
+1. Set **Language** to **English (United States)**.
+
+1. Under **Call answering** select **Choose users and group, Add users**, search for Isaiah Langer. and select **Add**.
+
+1. Leave the other options as default.
+
+1. Scroll down the page and select **Submit**. You will see your call queue in the call queues list
+
+1. Leave the Teams Admin Center Open for the next steps
+
+You have successfully created the Sales CQ call queue and added Isaiah Langer as an agent
+
+### Task 2 - Create an auto attendant for the Sales call queue
+
+Now we will create an auto attendant and direct one of the options to send calls to our Sales CQ call queue. This will ready the Microsoft 365 Auto Attendant to become functional. 
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Under **Voice**, select **Auto Attendants** and select **Add**.
+
+1. Enter **Sales AA** for the name, 
+
+1. Time zone of **(UTC-08:00) Pacific Time (US…)**,
+
+1. Leave the Language as default
+
+1. select **Next**.
+
+1. Under **Call flow**, select **Add a greeting message** and enter, “Thank you for calling Contoso, your call is important to us, please be patient while we handle your call”.
+
+1. Under **Call routing options**, select **Redirect Call**, then select Redirect to **Voice App**, enter **Sales CQ**, then select **Next**
+
+1. Under **Set business hours** leave the defaults and select **next**, 
+
+1. Under set Holiday call settings select **Next**, 
+
+1. Under Dial scope select **Next**.
+
+1. Under **Resource Accounts**, Select **Add**, enter **Sales AA** in the search box, then select **Add Resource Account**, enter **Display Name** of **Sales AA**, Username is **SalesAA**, and **Resource account type** of **Auto Attendant**, select **Save**.
+
+1. Select **Add**, select **Submit** under **Resource Accounts** menu.
+
+1. You will see your Sales AA auto attendant in the auto attendants list
+
+1. Leave the Teams Admin Center open for the next task
+
+You have successfully created an Auto Attendant, and aligned it to a Call Queue
+
+### Task 3 – Configure a Call Queue to use a channel
+
+Collaborative calling enables you to connect a call queue to a channel in Teams. Users can collaborate and share information in the channel while taking calls in the queue. Instead of defining the agents in the Teams Admin Center, the agents are defined by who are members of the team.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Under **Voice**, and **Call Queues**, select **Sales CQ**.
+
+1. Under **Call answering** select **Choose a team**, select **Add a channel**. 
+
+1. Type **Sales Group**, select the **General** channel and select **Add**, select **General**, select **Apply** and select **Submit**.  
+
+1. Leave the Teams Admin Center open for the next task
+
+You have successfully assigned the call answering for the Call Queue to the General channel within the Sales Group team.
+
+### Task 4 - Configure a Call Queue to forward to voicemail if busy
+
+By default, if a call to a call queue isn't answered by an agent within the maximum wait time, it will be disconnected. We would like to configure unanswered calls to go to voicemail instead. The voicemail must be an Office 365 Group voicemail.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Under **Voice**, and **Call Queues**, select **Sales CQ**
+
+1. Under **Call time out handling**, select **Redirect this call to**, select Redirect to, from the drop-down menu select **Voicemail (Shared)**
+
+1. In the search type **Sales Group**, select **Sales Group**, 
+
+1. Set Enable **Transcription On**
+
+1. Select **Add a greeting message** and type **“We are unable to take your call, please leave a message and we will be back with you as soon as possible.”** 
+
+1. Select **Submit**
+
+You have successfully assigned a voicemail to the Call Queue should it reach a time out period. 
+
+### Task 5 - Explore conference mode toggle
+
+In this task, you will enable conference mode that will pass the call between the inbound calls more quickly.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
+
+1. Under **Call answering** select find **Conference mode**, toggle the setting to **On**. 
+
+1. Click **Submit**.
+
+You have successfully enabled conferencing mode for **Sales CQ** call queue.
+
+### Task 6 - Set holiday modes within AA
+
+In this task, you will create the relevant holiday configuration. Holidays differ from country to country but in this instance, we will just create a new holiday time that’s relevant to you. 
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. In the Microsoft Teams admin center, go to **Voice &gt; Holidays**.
+
+1. Select **Add** to start the creation of a new holiday.
+
+1. Enter a name for the holiday.
+
+1. Select **Add new date**.
+
+1. Under **Start time**, select the calendar icon and choose the date when you'd like the holiday to begin.
+
+1. Use the drop-down list to select a start time for the holiday.
+
+1. Under **End time**, select the calendar icon and choose the date when you'd like the holiday to end.
+
+1. Use the drop-down list to select an end time for the holiday. **The End** time must be after the **Start time**.
+
+1. Optionally, add more dates for recurring holidays.
+
+1. Select **Save**.
+
+You have successfully created a holiday relevant to your area and assigned it to a Call queue. 
+
+### Task 7 - Import MP4 file in as custom music on hold
+
+In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+
+1. Close the tab and switch back to the Microsoft Teams admin center.
+
+1. Under **Voice** and **Call Queues**, select **Sales CQ**.
+
+1. Select **Greeting and music**.
+
+1. Under **Music on hold**, select **Play an audio file**.
+
+1. Select **Upload file**, navigate to the **C:\Labfiles** folder, select **MoH-sample.mp3** and select **Open**.
+
+1. Select **Submit**.
+
+1. Select the circle with the KJ initials in the upper right-side and select **Sign out**.
+
+1. Close all browser windows currently open.
+
+You have successfully signed into your test clients and assigned a new MP3 file to the call queue.
+
+## Exercise 3: Manage Teams devices
 
 ### Exercise Duration
 
@@ -313,7 +495,7 @@ As devices are provisioned or joined, they will be displayed in the **Devices** 
 
 After applying a tag to devices, you can then use the **Search** box in the device list to choose **Select what you want to search by**, and then choose **Tags**. Enter the tag you’ve assigned to devices, and these devices will be displayed in the search results.
 
-## Exercise 3: Monitor and troubleshoot Teams Phone
+## Exercise 4: Monitor and troubleshoot Teams Phone
 
 ### Exercise Duration
 
