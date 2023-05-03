@@ -140,7 +140,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 	- **User name:** Administrator
 
-	- **Password:** *Enter the default Admin password in the _"Resource"_ section on the right side of the lab window.*
+	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
 
 1. Once the module is installed you will see the command prompt again.
 
@@ -169,7 +169,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 	- **Username:** sbcadmin
 
-	- **Password:** *Enter the default Admin password in the _“Resource”_ section on the right side of the lab window.*
+	- **Password:** *Enter the MOD Administrator password in the _“Resource”_ section on the right side of the lab window.*
 
 You have successfully logged onto the SBC.
 
