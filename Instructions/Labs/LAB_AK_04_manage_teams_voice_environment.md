@@ -432,7 +432,7 @@ In this task, we will create and license a Microsoft Teams Room device account u
 1. Run the following command to create a new resource account with an Exchange Online mailbox:
 
     ```powershell
-    New-Mailbox -MicrosoftOnlineServicesID mtr01@lab<customlabnumber>.o365ready.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true  -RoomMailboxPassword (ConvertTo-SecureString -String 'P@ssw!rd1' -AsPlainText -Force)
+    New-Mailbox -MicrosoftOnlineServicesID mtr01@lab<customlabnumber>.o365ready.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true  -RoomMailboxPassword (ConvertTo-SecureString -String '<Insert MOD Administrator password' -AsPlainText -Force)
 
     ```
 
@@ -715,7 +715,7 @@ Call Health shows you the following:
 
 A Teams Phone user working from home reports they are having call quality issues, we will use the Microsoft 365 connectivity test tool to check they are tasking an optimum network path to Office 365 and check their basic Teams network performance
 
-1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. In this task, we will treat MS720-CLIENT01 as the PC of the user with the problem.
+1. Sign in to **MS720-CLIENT01** as “Admin”. In this task, we will treat MS720-CLIENT01 as the PC of the user with the problem.
 
 1. Open Microsoft Edge from the task bar and browse to [https://connectivity.office.com/](https://connectivity.office.com/).
 

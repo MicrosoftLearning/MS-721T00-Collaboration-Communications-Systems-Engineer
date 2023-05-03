@@ -314,7 +314,7 @@ As an admin, you can assign the Calling Plan license that gives users the right 
 
 1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
 
-1. Enter a password that meets the complexity requirements and you will remember for later in the lab, e.g. the password of your Microsoft 365 tenant administrator.
+1. Enter the MOD Administrator password in the _“Resource”_ section on the right side of the lab window.
 
 1. Press **Reset password**.
 
