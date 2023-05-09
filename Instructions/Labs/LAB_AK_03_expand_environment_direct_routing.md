@@ -14,17 +14,200 @@ As part of the expanding business, the organization has an existing SIP trunk in
 
 ## Lab Setup
 
-  - **Estimated Time to complete**: 180 minutes
+  - **Estimated Time to complete**: 200 minutes
 
 ## Instructions
 
-## Exercise 1: Configure the session border controller
+## Exercise 1: Configure lab for Direct Routing
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 60 minutes
+  - **Estimated Time to complete**: 25 minutes
 
-In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
+In this exercise, you will run scripts to provision user accounts, groups, teams, and other resources used by the labs in this course. This script will also add your lab's custom domain to Office 365. If you have already added your lab's custom domain, the script will verify that it exists. 
+
+### Task 1 - Identify your lab's public IP address
+
+In the following task, you will identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
+
+1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+
+1. Open Microsoft Edge and then browse to **http://www.bing.com**.
+
+1. In the **Search** box, enter **What is my IP** and then press **Enter**.
+
+1. The first result box with the label **Your public IP address** is your IP retrieved by Bing.
+
+1. Copy or write down your public IP address. 
+
+You have successfully identified and stored your IP address. When you restart your lab environment, you will possibly be assigned a new public IP address and need to perform the first task again.
+
+### Task 2 - Retrieve your lab number
+
+The lab number task, updates the o365ready.com DNS server with your lab's public IP address and creates a DNS delegation zone for your lab domain pointing to the DNS server running on MS720-RRAS01. Requests for hosts in your lab domain will be resolved by the DNS server running on MS720-RRAS01.
+
+**Note**: If you have restarted this lab or if it expired and the virtual machines were reset, perform the steps in the knowledge section at the end of this task. You do not need to be issued a new lab number.  
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+
+1. In Microsoft Edge, browse to **http://www.o365ready.com**.
+
+1. On the Welcome page, select the **Generate Lab Number** tab.
+
+1. In the **IP address** box, enter your public IP address from the previous task.
+
+1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit**.
+
+1. This lab code will expire 90 days after the start of this course.
+
+1. When the process is completed, you will see a **Student Lab Number** dialog, followed by a 5 digit number. Note this number down and remember it. You will refer to this five-digit number throughout the labs.
+
+1. You will be using all five digits as part of your organization's on-premises domain.
+
+1. Leave the browser window open and continue with the next task.
+
+    ![Screenshot of the o365ready.com website showing the lab number provisioning tool form.](./Linked_Image_Files/M01_L01_E01_T02.png)
+
+> [!NOTE]
+> If you have restarted this lab or if the lab timer has expired and the virtual machines were reset, you will likely have a new public IP address. Perform the following steps to update your lab domain delegation zone's public IP address.
+
+1. In Microsoft Edge, browse to [http://www.o365ready.com](http://www.o365ready.com/).
+
+1. On the Welcome page, select the **Update Public IP Address** tab.
+
+1. In the **Student Lab Number** box, type your five-digit lab number. If you did not write down your original lab number, you can find it by signing in to Microsoft 365 and browsing to the **Domains** feature.
+
+1. In the **Old public IP address** box, type the previously used public IP address. If you did not write down your original public IP address, open a command prompt and try to ping your lab domain name. Although you will not receive a response, the domain name should resolve to IP.
+
+1. In the **New public IP address** box, type the new public IP address retrieved from Bing and then press Enter.
+
+1. Select **Submit** and wait for the update to complete. This may take a couple of minutes.
+
+You have successfully identified your lab number and updated your public IP address.
+
+### Task 3 - Run the CallandMeetLabs.exe script
+
+In the following task you will execute a script to setup your lab environment.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+
+1. Open File Explorer and then browse to **C:\Scripts**.
+
+1. Double-click **CallandMeetLabs.exe**.
+
+1. In the **User Account Control** dialog box, select **Yes**.
+
+1. In the **Office 365 Admin username** box, enter your M365 tenant MOD Administrator account name. You can find your tenant username in the resource section on the right side of the lab window.
+
+1. In the **Office 365 Admin password** box, enter the MOD Administrator password, provided to you.
+
+1. In the **5-digit lab number** box, enter your lab number from the previous task and select **Verify**.
+
+1. The script tries to use the delivered credentials to access your tenant. Ensure the credentials were verified and review the identified public IP address in the blank window.
+
+    **Note**: If the reported public IP address is not the same as your lab's **&lt;public IP&gt;**, verify your public IP address is correct using the steps found earlier in this exercise. If the public IP addresses do not match, cancel and run the script again. If the public IP address you have identified and the public IP found by the script still do not match, contact a lab proctor.
+
+    ![Screenshot of the Lab Provisioning Tool](./Linked_Image_Files/M01_L01_E01_T03.png)
+
+1. If you see a **Ready to run script message**, select **Run Script** to prepare your lab tenant.
+
+1. When the script has completed and you can see a **Complete** message, select **Finish**.
+
+    ![Screenshot of the completed Lab Provisioning Tool](./Linked_Image_Files/M01_L01_E01_T03-1.png)
+
+As soon as the script finishes successfully, you have successfully configured your lab environment with the provided scripts.
+
+### Task 4 - Request your public certificate from DigiCert
+
+In the following task, you will request your public certificate for the SBC (Session Border Controller) so you can use it later in the labs. This is used to authenticate connections to multiple tenants and networks served from a single SBC.
+
+1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+
+1. Open File Explorer and then browse to **C:\LabFiles**.
+
+1. Double-click **CertReq-lab&lt;customlabnumber&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
+
+    ![Screenshot of the completed certificate request file in Windows Explorer](./Linked_Image_Files/M01_L01_E01_T04.png)
+
+1. In Notepad, select all the text in the file and then press Ctrl+C or right-click or tap and hold and select **Copy** to copy the contents to the clipboard.
+
+1. Open Microsoft Edge, open a new tab and then browse to **https://www.digicert.com/friends/exchange.php**.
+
+1. On the Microsoft Event CSR Submission page, in the **Paste CSR** box, right-click or tap and hold inside the box, and then select **Paste**.
+
+1. Verify that you have pasted the contents of your certificate request.
+
+1. Under **Certificate Details**, review the common name and subject alternative names (SAN) information that will be assigned to the certificate. Ensure that all SAN entries are lowercase. All SAN entries may not be used for this lab.
+
+1. Under Certificate Delivery, in the **Email Address** and **Email Address (again)** boxes, enter the MOD Administrator account name, which is also the user's email address.
+
+1. Select the **I agree to the Terms of Service above** check box.
+
+1. Select **Submit**.
+
+    ![Screenshot of the Microsoft Event CSR Submission form](./Linked_Image_Files/M01_L01_E01_T04.png)
+
+1. Close File Explorer.
+
+You have successfully requested the certificate from DigiCert and will download it later.
+
+### Task 5 - Verify the custom domain has been added to your Microsoft 365 subscription
+
+In this task, you will verify your custom domain so you can work with it and assign it to users.
+
+1. You are still on **MS720-CLIENT01** where you are still signed in as **Admin**. 
+
+1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+
+1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
+
+1. When a **Save password** dialog is displayed, select **Never**.
+
+1. When a **Stay signed in?** dialog is displayed, select **No**.
+
+1. In the left navigation, select the three dashes and select **… Show all**.
+
+1. Select **Settings** then select **Domains**.
+
+1. Verify your custom domain has been added to Office 365 and is set as Default. This domain starts with a **Lab** string and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
+
+1. Leave the browser window open.
+
+    ![Screenshot of the Microsoft 365 admin center Domains page, showing the custom lab domain as Default.](./Linked_Image_Files/M01_L01_E02_T01.png)
+
+You have successfully verified the custom domain created from the script is set as the default domain for your tenant, which is important for later tasks.
+
+### Task 6 - Assign the custom lab domain to Megan Bowen
+
+In the following task, you will add the custom domain to Megan Bowen.
+
+1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”, and you are still in the **Microsoft 365 admin center** as **MOD Administrator**.
+
+1. In the left navigation, select **Users** and **Active users**.
+
+1. In the **Active users** list, select **Megan Bowen** to open the right-side menu.
+
+1. In the Megan Bowen user card, select the **Account** tab under **Username and email** select **Manage username and email**.
+
+1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;customlabnumber&gt;.o365ready.com**.
+
+1. Select **Done**, then select **Save changes**.
+
+    ![Screenshot of the Microsoft 365 admin center user detail page for Megan Bowen.](./Linked_Image_Files/M01_L01_E02_T03.png)
+
+1. Close the **Manage username and email** pane and then close the Megan Bowen user card.
+
+1. Leave the browser open for the next task.
+
+You have successfully added the custom domain to Megan Bowen.
+
+## Exercise 2: Deploy the session border controller
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 30 minutes
+
+In this exercise, you will deploy the AudioCodes Mediant VE Session Border Controller (SBC) from the Azure Marketplace, and install the services needed to ensure the custom domain and SBC work as expected.
 
 ### Task 1 - Add the SBC to the tenant
 
@@ -187,7 +370,7 @@ In the following task, you will add the root certificate to the session border c
 
 1. Enter **Teams-TLSContext** as the Name.
 
-1. Change the **TLS Version** option to **TLSv1.2** and leave everthing else the same.
+1. Change the **TLS Version** option to **TLSv1.2** and leave everything else the same.
 
 1. Select **APPLY**.
 
@@ -243,7 +426,15 @@ In the following task, you will upload the lab certificate you requested earlier
 
 You have successfully uploaded the lab certificate and prepared your SBC to sign its communication.
 
-### Task 9 – Configure SIP Interfaces on SBC
+## Exercise 3: Configure the session border controller
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 30 minutes
+
+In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
+
+### Task 1 – Configure SIP Interfaces on SBC
 
 In the following task, you will configure the SIP interfaces that allow your SBC to identify where to send SIP information.
 
@@ -279,7 +470,7 @@ In the following task, you will configure the SIP interfaces that allow your SBC
 
 You have successfully configured SIP Interfaces on the SBC.
 
-### Task 10 – Configure Proxy Sets on SBC
+### Task 2 – Configure Proxy Sets on SBC
 
 In the following task, you will configure the SBC Proxy Sets.
 
@@ -301,7 +492,7 @@ In the following task, you will configure the SBC Proxy Sets.
 
 You have successfully configured Proxy Sets on the SBC.
 
-### Task 11 – Configure Proxy Addresses Interfaces on SBC
+### Task 3 – Configure Proxy Addresses Interfaces on SBC
 
 In the following task, you will configure the SBC Proxy Addresses Interfaces.
 
@@ -343,7 +534,7 @@ In the following task, you will configure the SBC Proxy Addresses Interfaces.
 
 You have successfully configured Proxy Addresses on the SBC.
 
-### Task 12 – Configure Coder Groups on SBC
+### Task 4 – Configure Coder Groups on SBC
 
 In the following task, you will configure the Coder Groups on the SBC.
 
@@ -365,7 +556,7 @@ In the following task, you will configure the Coder Groups on the SBC.
 
 You have successfully configured Coder Groups on the SBC.
 
-### Task 13 – Configure IP Profiles on the SBC
+### Task 5 – Configure IP Profiles on the SBC
 
 In the following task, you will configure the IP Profiles for the SBC.
 
@@ -399,7 +590,7 @@ In the following task, you will configure the IP Profiles for the SBC.
 
 You have successfully configured IP Profiles on the SBC.
 
-### Task 14 – Configure IP Groups on SBC
+### Task 6 – Configure IP Groups on SBC
 
 In the following task, you will configure IP groups for the SBC.
 
@@ -429,7 +620,7 @@ In the following task, you will configure IP groups for the SBC.
 
 You have successfully configured IP Groups on the SBC.
 
-### Task 15 – Configure SRTP on SBC
+### Task 7 – Configure SRTP on SBC
 
 In the following task, you will configure the SBC to be ready for Teams.
 
@@ -441,7 +632,7 @@ In the following task, you will configure the SBC to be ready for Teams.
 
 You have successfully configured SRTP on the SBC.
 
-### Task 16 – Configure Message Manipulation on SBC
+### Task 8 – Configure Message Manipulation on SBC
 
 In the following task, you will add the message manipulation on the SBC.
 
@@ -477,7 +668,7 @@ In the following task, you will add the message manipulation on the SBC.
 
 You have successfully configured message manipulation on the SBC.
 
-### Task 17 – Configure IP to IP Calling rules on SBC
+### Task 9 – Configure IP to IP Calling rules on SBC
 
 In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
@@ -543,7 +734,7 @@ In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
 You have successfully configured the AudioCodes SBC to receive requests from the Microsoft 365 Direct Routing service. 
 
-### Task 18 - Verify the SBC Connections to Teams
+### Task 10 - Verify the SBC Connections to Teams
 
 In the following task, you will validate the SBC to be ready for Teams
 
@@ -551,7 +742,7 @@ On the SBC, select **Monitor** at the top and under **VOIP Status &gt; Proxy Set
 
 If the output shows the correct value for all three entries your SBC is configured correctly and you will be able to continue with the next exercise.
 
-## Exercise 2: Configure direct routing settings
+## Exercise 4: Configure Teams for Direct Routing
 
 ### Exercise Duration
 
