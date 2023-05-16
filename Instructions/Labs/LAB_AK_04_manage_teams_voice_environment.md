@@ -30,7 +30,7 @@ In this exercise, you will perform day-to-day management tasks for Teams Voice u
 
 In this task, you will sign into the Microsoft Teams Admin Center and make changes so that Isaiah’s colleague Katie can pick up their calls.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. In the left navigation menu select **Users** and **Manage users** and find **Isaiah Langer** and select the name to open the user’s properties.
 
@@ -54,7 +54,7 @@ The changes are now applied, and a banner will show for calls directed to Isaiah
 
 In this task, an existing user who isn’t enabled for voice services must be enabled for Direct Routing. We’ll ensure the necessary licenses are assigned, then enable the user for Direct Routing.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
 
@@ -81,7 +81,7 @@ Alex Wilber is now configured to use Direct Routing.
 
 In this task, you will configure Alex Wilber so that Katie Jordan is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. Select **Users** and **Manage users**.
 
@@ -107,7 +107,7 @@ The changes are now active.
 
 In this task, you validate audio conferencing is enabled for Isaiah Langer and change the default settings.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. Select **Meetings** and **Audio Conferencing**.
 
@@ -141,7 +141,7 @@ You have successfully modified the audio-conferencing settings for Isaiah Langer
 
 In this task you will assign a new Dial out policy to Megan Bowen, to restrict her from making outbound calls.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. Select **Users** and **Manage users**.
 
@@ -171,7 +171,7 @@ In this exercise, you will gain an understanding of how to configure Call Queues
 
 In this task, you will create a call queue. A call queue is a group of agents that you can direct calls to.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Select **Voice** and then select **Call queues**.
 
@@ -207,7 +207,7 @@ You have successfully created the Sales CQ call queue and added Isaiah Langer as
 
 Now we will create an auto attendant and direct one of the options to send calls to our Sales CQ call queue. This will ready the Microsoft 365 Auto Attendant to become functional. 
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Under **Voice**, select **Auto Attendants** and select **Add**.
 
@@ -243,7 +243,7 @@ You have successfully created an Auto Attendant, and aligned it to a Call Queue
 
 Collaborative calling enables you to connect a call queue to a channel in Teams. Users can collaborate and share information in the channel while taking calls in the queue. Instead of defining the agents in the Teams Admin Center, the agents are defined by who are members of the team.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**.
 
@@ -259,7 +259,7 @@ You have successfully assigned the call answering for the Call Queue to the Gene
 
 By default, if a call to a call queue isn't answered by an agent within the maximum wait time, it will be disconnected. We would like to configure unanswered calls to go to voicemail instead. The voicemail must be an Office 365 Group voicemail.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**
 
@@ -279,7 +279,7 @@ You have successfully assigned a voicemail to the Call Queue should it reach a t
 
 In this task, you will enable conference mode that will pass the call between the inbound calls more quickly.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
 
@@ -293,7 +293,7 @@ You have successfully enabled conferencing mode for **Sales CQ** call queue.
 
 In this task, you will create the relevant holiday configuration. Holidays differ from country to country but in this instance, we will just create a new holiday time that’s relevant to you. 
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. In the Microsoft Teams admin center, go to **Voice &gt; Holidays**.
 
@@ -321,7 +321,7 @@ You have successfully created a holiday relevant to your area and assigned it to
 
 In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Close the tab and switch back to the Microsoft Teams admin center.
 
@@ -394,7 +394,7 @@ The Teams IP Phone can now be signed in to by a user or remotely signed in to a 
 
 In this task, we will create and license a Microsoft Teams Room device account using Windows PowerShell. This will be for the Contoso Board Room at the Bellevue site and use Direct Routing for voice calls.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin”.
+1. You are still signed in to MS721-CLIENT01 as “Admin”.
 
 1. Open Microsoft Edge from the task bar and browse to the Microsoft 365 admin center at [https://admin.microsoft.com](https://admin.microsoft.com/).
 
@@ -471,7 +471,7 @@ Upon completion of these steps, you can view the new Teams Room account in the M
 
 In this task, you will configure device tags to allow Contoso to identify devices based on the type of employee that will use the device so that the importance of the device can be identified by a support technician. We will configure two tags, **Executive** and **Contact Center**.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. Navigate to the Microsoft Teams admin center at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -507,7 +507,7 @@ In this exercise, you will perform exercises to help troubleshoot specific issue
 
 Megan Bowen has reported they are not receiving voicemails. Microsoft offers some Self-help diagnostics tools that can be run before raising a support ticket. In this task, you will run the Voicemail diagnostic that validates that a user is properly configured to use Voicemail in Teams.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. Navigate to the **Microsoft 365 admin center** at admin.microsoft.com.
 
@@ -533,7 +533,7 @@ In this lab, we are going to create and then break a dial plan rule and check Ca
 
 Firstly, we will create a dial plan rule, in this scenario, the organization would like the short code 7786 to translate to +1-877-696-7786.
 
-1. You are still signed in to **MS720-CLIENT01** as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to **MS721-CLIENT01** as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. Navigate to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -565,7 +565,7 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
 
 You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
 
-1. Sign into **MS720-CLIENT02** as **Admin**, required. You may still be signed in from a previous task.
+1. Sign into **MS721-CLIENT02** as **Admin**, required. You may still be signed in from a previous task.
 
 1. From the desktop select and run the Microsoft Teams client.
 
@@ -601,7 +601,7 @@ You have successfully added a normalization rule to a dial plan to meet the exte
 
 Now we have proven the rule works, we will break the rule and confirm the rule.
 
-1. You are still signed into MS720-CLIENT01 as “Admin” from the previous task.
+1. You are still signed into MS721-CLIENT01 as “Admin” from the previous task.
 
 1. Open Microsoft Edge from the task bar and browse to the Microsoft Teams admin center at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -625,7 +625,7 @@ Now we have proven the rule works, we will break the rule and confirm the rule.
 
 Now we have broken our dial plan, we will sign into Teams again and prove it is no longer working
 
-1. You are still signed into MS720-CLIENT02 as "Admin" from the previous task.
+1. You are still signed into MS721-CLIENT02 as "Admin" from the previous task.
 
 1. From the desktop select and run the Microsoft Teams client.
 
@@ -667,7 +667,7 @@ You have successfully created a dial plan, proven it works, broken it and seen t
 
 Users can check on the network performance of their calls live during the call. In this task, we will test the Team call health feature
 
-1. You are still signed into MS720-CLIENT02 as “Admin” from the previous task
+1. You are still signed into MS721-CLIENT02 as “Admin” from the previous task
 
 1. From the desktop select and run **Microsoft Teams** client
 
@@ -715,7 +715,7 @@ Call Health shows you the following:
 
 A Teams Phone user working from home reports they are having call quality issues, we will use the Microsoft 365 connectivity test tool to check they are tasking an optimum network path to Office 365 and check their basic Teams network performance
 
-1. Sign in to **MS720-CLIENT01** as “Admin”. In this task, we will treat MS720-CLIENT01 as the PC of the user with the problem.
+1. Sign in to **MS721-CLIENT01** as “Admin”. In this task, we will treat MS721-CLIENT01 as the PC of the user with the problem.
 
 1. Open Microsoft Edge from the task bar and browse to [https://connectivity.office.com/](https://connectivity.office.com/).
 
@@ -771,7 +771,7 @@ The Teams PSTN (Public Switched Telephone Network) usage report in the Microsoft
 
 In this task, we will review the PSTN Usage report.
 
-1. You are still signed into MS720-CLIENT01 as “Admin” from the previous task.
+1. You are still signed into MS721-CLIENT01 as “Admin” from the previous task.
 
 1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -831,7 +831,7 @@ You have successfully generated and reviewed the PSTN usage report
 
 If we want to review the usage and performance of an individual's Teams calling, the first place to look is Call Analytics in the Teams Admin Center. In this talk we will review Alex Wilber’s calls in Call Analytics
 
-1. You are still signed into MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
+1. You are still signed into MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
 
 1. Select **Users** and **Manage users** on the left menu.
 
@@ -861,7 +861,7 @@ A Voice Administrator should look at the call and meeting usage and performance 
 
 In this task, you open and review Call Quality Dashboard
 
-1. You are still signed into MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
+1. You are still signed into MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
 
 1. At the bottom of the left menu, select **Call Quality Dashboard**.
 
