@@ -30,7 +30,7 @@ In this exercise, you will run scripts to provision user accounts, groups, teams
 
 In the following task, you will identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
 
-1. Sign in to **MS720-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+1. Sign in to **MS721-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
 1. Open Microsoft Edge and then browse to **http://www.bing.com**.
 
@@ -44,11 +44,11 @@ You have successfully identified and stored your IP address. When you restart yo
 
 ### Task 2 - Retrieve your lab number
 
-The lab number task, updates the o365ready.com DNS server with your lab's public IP address and creates a DNS delegation zone for your lab domain pointing to the DNS server running on MS720-RRAS01. Requests for hosts in your lab domain will be resolved by the DNS server running on MS720-RRAS01.
+This task updates the o365ready.com DNS server with your lab's public IP address and creates a DNS delegation zone for your lab domain pointing to the DNS server running on MS721-RRAS01. Requests for hosts in your lab domain will be resolved by the DNS server running on MS721-RRAS01.
 
 **Note**: If you have restarted this lab or if it expired and the virtual machines were reset, perform the steps in the knowledge section at the end of this task. You do not need to be issued a new lab number.  
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
 1. In Microsoft Edge, browse to **http://www.o365ready.com**.
 
@@ -56,7 +56,7 @@ The lab number task, updates the o365ready.com DNS server with your lab's public
 
 1. In the **IP address** box, enter your public IP address from the previous task.
 
-1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit**.
+1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** ((Note: Do not enter MS721.)).
 
 1. This lab code will expire 90 days after the start of this course.
 
@@ -89,7 +89,7 @@ You have successfully identified your lab number and updated your public IP addr
 
 In the following task you will execute a script to setup your lab environment.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
 1. Open File Explorer and then browse to **C:\Scripts**.
 
@@ -121,7 +121,7 @@ As soon as the script finishes successfully, you have successfully configured yo
 
 In the following task, you will request your public certificate for the SBC (Session Border Controller) so you can use it later in the labs. This is used to authenticate connections to multiple tenants and networks served from a single SBC.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
 1. Open File Explorer and then browse to **C:\LabFiles**.
 
@@ -155,7 +155,7 @@ You have successfully requested the certificate from DigiCert and will download 
 
 In this task, you will verify your custom domain so you can work with it and assign it to users.
 
-1. You are still on **MS720-CLIENT01** where you are still signed in as **Admin**. 
+1. You are still on **MS721-CLIENT01** where you are still signed in as **Admin**. 
 
 1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
 
@@ -181,7 +181,7 @@ You have successfully verified the custom domain created from the script is set 
 
 In the following task, you will add the custom domain to Megan Bowen.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”, and you are still in the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you are still in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. In the left navigation, select **Users** and **Active users**.
 
@@ -213,7 +213,7 @@ In this exercise, you will deploy the AudioCodes Mediant VE Session Border Contr
 
 In this task, you will verify and add your SBC to your tenant.
 
-1. You are still on MS720-CLIENT01 and signed in as “Admin”.
+1. You are still on MS721-CLIENT01 and signed in as “Admin”.
 
 1. Open a new tab in Microsoft Edge and then browse to [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -231,7 +231,7 @@ You have successfully verified your custom domain and added an SBC to the tenant
 
 In the following task, you will download the DigiCert certificate you requested earlier in the lab so you can use it for your SBC. This step is required to upload the certificate in the compressed archive container in the next task.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” 
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” 
 
 1. Open Microsoft Edge and then browse to **Outlook on the web** [**https://outlook.office.com**](https://outlook.office.com/), where you should still be signed in as the **MOD Administrator**.
 
@@ -250,7 +250,7 @@ You have successfully downloaded the certificate you requested in an earlier exe
 
 In the following task, you will import the certificate to the local machine and convert it to a format the SBC can read.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
 1. Switch to File Explorer and then browse to **C:\Scripts**.
 
@@ -270,7 +270,7 @@ You have successfully converted the certificate for the SBC.
 
 In the following task you will create the new session boarder controller resource hosted within Microsoft Azure.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
 1. Open a new Microsoft Edge browser window and navigate to **https://portal.azure.com**.
 
@@ -312,7 +312,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu.
 
-1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server:
+1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
     $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential)
@@ -327,7 +327,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. Once the module is installed you will see the command prompt again.
 
-1. Enter and modify the following cmdlet with your **Lab Number** and **Public SBC IP Address** to configure the DNS Record for the SBC:
+1. Enter and modify the following cmdlet with your **Lab Number** and **Public SBC IP Address** to configure the DNS Record for the SBC (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
     Add-DnsServerResourceRecordA -ComputerName MS720-RRAS01 -CimSession $Cimsession -ZoneName lab<Lab Number>.o365ready.com -Name sbc01 -IPv4Address <Public SBC IP>
@@ -341,7 +341,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
  In the following task, we will configure the Session Boarder Controller (SBC) to work with Microsoft Teams.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
 1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;Lab Number&gt;.o365ready.com](*)
 
@@ -360,7 +360,7 @@ You have successfully logged onto the SBC.
 
 In the following task, you will add the root certificate to the session border controller.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
 
 1. On the top menu, select **IP NETWORK**.
 
@@ -438,7 +438,7 @@ In this exercise, you will configure the session border controller, and install 
 
 In the following task, you will configure the SIP interfaces that allow your SBC to identify where to send SIP information.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
 
 1. On the top menu, select **Signaling &amp; Media.**
 
@@ -754,7 +754,7 @@ In this exercise, you will create a direct route routing policy, PSTN Usage poli
 
 In the following task, you will create your first voice routing policy and PSTN usage so you can later assign this policy to your users.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
 1. Select the Windows symbol in the task bar, type **PowerShell** and open a regular PowerShell window.
 
@@ -816,7 +816,7 @@ You have successfully created a voice routing policy with a PSTN Usage.
 
 In the following task, you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
@@ -844,7 +844,7 @@ You have successfully used PowerShell to assign your voice routing policy to you
 
 In the following task, you will enable the end user for voice services through the direct route, assign the telephone number, and enable the user for dial pad service.
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
 1. Run the Set-CsPhoneNumberAssignment command, the command assigns a phone number to a user or resource account. When you assign a phone number the EnterpriseVoiceEnabled flag is automatically set to True.:
 
@@ -861,7 +861,7 @@ You have successfully assigned a telephone number to the end user and you have e
 
 In the following task, you will assign a voice route to a user, this will grant the user the ability to make calls to the policy applied. 
 
-1. You are still on MS720-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
 
 1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowan**, we will be assigning her the **North American** Policy. 
 
@@ -878,7 +878,7 @@ You have successfully assigned a telephone number to the end user and you have e
 
 In the following task, you will create a normalization record for a 4-digit dial plan
 
-1. You are still signed in to MS720-CLIENT01 as “Admin”.
+1. You are still signed in to MS721-CLIENT01 as “Admin”.
 
 1. Open Microsoft Edge and then browse to the **Microsoft Teams admin center** at https://admin.teams.microsoft.com.
 
@@ -906,7 +906,7 @@ You have successfully you have assigned a 4-digit extension dial to the global g
 
 In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. In the left navigation pane select the three dashes, select **Locations** and select **Emergency addresses.**
 
@@ -924,7 +924,7 @@ You have successfully assigned the ELIN number to the location for emergency add
 
 In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
 
 1. Select the three dashes, select **Locations**, then **Network topology.**
 

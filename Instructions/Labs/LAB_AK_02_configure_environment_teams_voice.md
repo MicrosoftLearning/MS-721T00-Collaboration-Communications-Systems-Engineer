@@ -56,7 +56,7 @@ We will input our network details and review the output report.
 
 In the following task, you will create a custom user persona of a network user. In our scenario, we have some users that are expected to only use audio for p2p calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
 
-1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
+1. Sign into **MS721-CLIENT01** as **Admin** with the password provided to you.
 
 1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -86,7 +86,7 @@ You have successfully created our Audio Only User network persona.
 
 In this task, you will set up your network and sites in Teams Network Planner. Contoso has 2 offices, Tacoma and Bellevue, so 2 network sites, we need to add to the planner
 
-1. You are in **Network Planner** in the **Microsoft Teams admin center** on **MS720-CLIENT01** as **Admin** and signed in as **Katie Jordan**.
+1. You are in **Network Planner** in the **Microsoft Teams admin center** on **MS721-CLIENT01** as **Admin** and signed in as **Katie Jordan**.
 
 1. Select **Network plans**.
 
@@ -144,7 +144,7 @@ You have successfully added our two sites, user numbers and bandwidth details to
 
 In the following task, you will run the Network Planner report and review the results.
 
-1. You are in **Network Planner** in the **Microsoft Teams admin center** on MS720-CLIENT01 as “Admin” and signed in as Katie Jordan.
+1. You are in **Network Planner** in the **Microsoft Teams admin center** on MS721-CLIENT01 as “Admin” and signed in as Katie Jordan.
 
 1. Select **Report**.
 
@@ -190,7 +190,7 @@ In this exercise, you will install and run the Teams Network Assessment Tool to 
 
 In this task, you will sign into a client machine provided by your training provider and install the Teams Network Assessment Tool which is required to perform different tests.
 
-1. Sign into **MS720-CLIENT01** as **Admin** with the password provided to you.
+1. Sign into **MS721-CLIENT01** as **Admin** with the password provided to you.
 
 1. Open Microsoft Edge from the task bar and browse to the following site: [**https://www.microsoft.com/en-us/download/details.aspx?id=103017**](https://www.microsoft.com/en-us/download/details.aspx?id=103017).
 
@@ -222,7 +222,7 @@ You have successfully installed the Teams Network Assessment Tool onto Client01.
 
 The Teams Network Assessment Tool is run from the command line. We will now run the network connectivity check, which requires no command line switches. Firstly, the tool will check if it has connectivity to the Teams media relay. These are used to relay audio and video when direct connection between clients is not possible. The checker also checks whether the load-balancer relay is QoS (Quality of Service) capable, which means the load-balancer redirects packets to relay instance ports 3479-3481 (instead of 3478) depending on modality (audio = 3479, video = 3480, screenshare/data = 3481).
 
-1. You are still signed in to **MS720-CLIENT01** as **Admin** with the password provided to you.
+1. You are still signed in to **MS721-CLIENT01** as **Admin** with the password provided to you.
 
 1. Select **Start**, enter command prompt, find **Command Prompt** and right select it and chose **Run as administrator**.
 
@@ -244,7 +244,7 @@ You have started the Network Assessment Tool for the first time.
 
 In the following task, you will read the results from the network connectivity check.:
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and with the Network Assessment Tool open.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and with the Network Assessment Tool open.
 
 1. You can see from the command prompt output that the tests have been completed successfully, you can see:
 
@@ -258,7 +258,7 @@ You have successfully reviewed the results of the network connectivity check.
 
 The network quality check (performance test) is run with the NetworkAssessmentTool.exe /qualitycheck switch. This will test sending real packets across the network.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the command prompt running.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the command prompt running.
 
 1. Enter **cd C:\NetworkTest** and press enter, this changes our directory to the NetworkTest Directory.
 
@@ -282,7 +282,7 @@ In the following task, you will review the results of the Network Quality Check.
 
 Review Packet Loss, Latency and Jitter by following these steps:
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and at the command prompt.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and at the command prompt.
 
 1. Enter the following into the command prompt:
 
@@ -320,7 +320,7 @@ Network sites are used for Dynamic emergency calling. Before configuring dynamic
 
 In this task, you will sign into client01 and the Teams Admin Center and add our two offices as Network Sites in Network Topology
 
-1. Sign in to **MS720-CLIENT01** as **Admin** with the password provided to you.
+1. Sign in to **MS721-CLIENT01** as **Admin** with the password provided to you.
 
 1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -374,7 +374,7 @@ You have now added our 2 network sites, Tacoma, and Bellevue.
 
 In this task, you will add a trusted IP addresses for each of the Tacoma and Bellevue Offices. Trusted IP addresses are the enterprise's public external IP addresses that a Teams user will show as routing from on the public internet. These are important as they validate that the user is on an enterprise network and the system should check if they are on a mapped subnet. We have two offices, each with its own internet connection and therefore its own public IP address. You do not need to map Trusted IPs to specific networks.
 
-1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. On **Network topology**, select the **Trusted IPs** tab.
 
@@ -398,7 +398,7 @@ You have successfully added the public IP that clients will appear from for the 
 
 In this task, you will create an emergency location. This is needed before you can order calling plan numbers.
 
-1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. Select the **Locations** then **Emergency addresses**.
 
@@ -458,7 +458,7 @@ You can map emergency location\addresses to:
 
 Perform the following steps.
 
-1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft** **Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft** **Teams Admin Center** open as **Katie Jordan**.
 
 1. Navigate to **Locations** and **Networks &amp; locations**.
 
@@ -482,7 +482,7 @@ You have aligned a network subnet to a physical emergency address.
 
 In this task, you will configure an emergency calling policy. Emergency calling policies define what happens when a user in your organization makes an emergency call. We would like Alex Wilber to receive a notification whenever an emergency call is made.
 
-1. From the last task, you are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
+1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Katie Jordan**.
 
 1. In the left navigation pane select **Voice** and **Emergency polices**.
 
@@ -520,7 +520,7 @@ We need to create a dial plan for Tacoma users to enable that scenario. While it
 
 Since we want all users to be able to do 5xx extension dialing, we will add a new normalization rule to the Global dial plan, as this applies to all tenant users by default. If you only wanted to have the rule apply to selected users, you could create a specific dial plan and assign it to those users.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. In the left navigation pane expand **Voice** then select **Dial plans**. 
 
@@ -558,7 +558,7 @@ Calling policies are used to control which features are available to users. By d
 
 At Contoso, you need to enable the option of convenience recording 1:1 calls, which is disabled by default. Your labs Teams Administrator, Katie Jordan will create a custom calling policy and apply it to all users via a Group policy assignment.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. In the left navigation menu select **Voice** and **Calling policies**. 
 
@@ -598,7 +598,7 @@ Call Park and retrieve lets users put calls on hold and enables the same user or
 
 Call Park is disabled by default. Our organization would like the option to use call park so we will enable it.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. In the left navigation menu select **Voice** and **Call park policies**. 
 
@@ -618,7 +618,7 @@ Caller ID policies are used to change or block the Caller ID or phone number pre
 
 By default, the user's phone number is displayed when an outbound call is made to a PSTN phone number such as a landline or mobile phone. In most cases, most companies will be happy with this default. Some users in our organization do not want their number presented when they make outbound PSTN calls. In this task, we will create a Caller ID policy to block the presentation of any PSTN number, ready to be assigned to those users.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Select **Voice** and **Caller ID policies**.
 
@@ -642,7 +642,7 @@ You have successfully created a caller ID policy to block the outgoing caller ID
 
 There is a persistent nuisance caller calling users in the Bellevue office and we need to block all inbound calls from that number for the organization. The calling number is 1 (412) 555-1111.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
 1. Press the start button and enter **PowerShell**.
 
@@ -682,7 +682,7 @@ In this exercise, you will set up a user for Teams Phone with a Microsoft Callin
 
 In this task, you will order a phone number in the Teams Admin Center to assign to Isaiah Langer.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **Katie Jordan**
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **Katie Jordan**
 
 1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Phone numbers**.
 
@@ -721,7 +721,7 @@ You have successfully ordered a phone number through the Teams admin center.
 
 Before a user can make calls, they need a phone number. In this task, you will assign the phone number you ordered earlier to Isaiah Langer.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Select **Voice** and the **Phone numbers** tab.
 
@@ -743,7 +743,7 @@ You have successfully assigned a phone number to Isaiah Langer.
 
 Now Isaiah has a calling plan and phone number and we will perform a test call to validate the functionality of the configuration.
 
-1. Switch to **MS720-CLIENT02** and sign in as **Admin** with the credentials provided to you.
+1. Switch to **MS721-CLIENT02** and sign in as **Admin** with the credentials provided to you.
 
 1. Open the Edge browser and navigate to [https://teams.microsoft.com](https://teams.microsoft.com/). Sign in with the credentials of Isaiah.
 
@@ -805,7 +805,7 @@ The default phone number of your conference bridge defines the caller ID that wi
 
 Contoso does a lot of work with companies in New York and would prefer a New York number as their default audio conference bridge.
 
-1. Switch back to **MS720-CLIENT01** and sign in as **Admin** with the password provided to you.
+1. Switch back to **MS721-CLIENT01** and sign in as **Admin** with the password provided to you.
 
 1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
@@ -827,7 +827,7 @@ Contoso would like to have a conference number for their customers to dial speci
 
 In this task, you will order a new Dedicated conference bridge toll number. This will be a dedicated number for people to dial into Contoso conferences.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. Navigate and select **Voice** on the left menu, then select **Phone numbers**.
 
@@ -859,7 +859,7 @@ You have successfully ordered a new dedicated conference toll phone number throu
 
 ### Task 3 - Configure a New Conference Bridge Number
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
 
 1. In the left navigation menu select **Meetings** and **Conference bridges**. 
 

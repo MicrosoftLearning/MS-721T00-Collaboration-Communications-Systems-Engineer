@@ -39,7 +39,7 @@ In this exercise, you will assign the required admin permissions to continue wit
 
 In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Katie Jordan.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. In the upper left navigation, select the three dashes to the left of the organization name to open the full left-side menu.
 
@@ -61,7 +61,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
 
-1. Enter a password that meets the complexity requirements and you will remember for later in the lab, e.g. the password of your Microsoft 365 tenant administrator.
+1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
 
 1. Press **Reset password**.
 
@@ -75,7 +75,7 @@ You have successfully assigned the Teams Service administrator permission to Kat
 
 In this task you will sign into the clients provided by your training provider and run a certain script also provided by the lab hoster, to understand what licenses are inside the tenant and what licenses are applied.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
@@ -91,7 +91,7 @@ You have successfully signed into your test clients and reviewed the overall num
 
 As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase services**.
 
@@ -113,7 +113,7 @@ You have successfully activated the Calling Plan trial in your tenant.
 
 As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. On the Microsoft 365 admin center page, in the left navigation, select **Users**, then **Active users**.
 
@@ -155,7 +155,7 @@ Several configuration steps of Microsoft Teams in this lab can also be done or m
 
 In this task, you will install the latest Teams PowerShell module on your lab client and check the correct version number.
 
-1. You are still signed in to MS720-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
 1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu.
 
