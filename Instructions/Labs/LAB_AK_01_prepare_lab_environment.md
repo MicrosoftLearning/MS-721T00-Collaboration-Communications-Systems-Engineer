@@ -2,7 +2,7 @@
 lab:
     title: 'Lab 01: Configure the lab environment'
     type: 'Answer Key'
-    module: 'Module 01: Plan and configure Teams Phone'
+    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
 ---
 
 # Lab 01: Configure the lab environment
@@ -35,7 +35,7 @@ You have just started the pilot project. In this first lab you will set up a per
 
 In this exercise, you will assign the required admin permissions to continue with the other labs and exercises in this course.
 
-### Task 1 - Assign Katie Jordan to the Teams Administrator
+### Task 1 - Assign Katie Jordan to the Teams Administrator role
 
 In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Katie Jordan.
 
