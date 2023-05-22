@@ -2,7 +2,7 @@
 lab:
     title: 'Lab 04: Manage your Teams Voice Environment'
     type: 'Answer Key'
-    module: 'Module 1: Plan and configure Teams Phone'
+    module: 'Learning Path 02: Manage Teams collaboration communications systems'
 ---
 
 # Lab 04: Manage your Teams Phone environment
@@ -317,7 +317,7 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 You have successfully created a holiday relevant to your area and assigned it to a Call queue. 
 
-### Task 7 - Import MP4 file in as custom music on hold
+### Task 7 - Import MP4 file for custom music on hold
 
 In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
@@ -390,7 +390,7 @@ In this task, you will provision a Teams Phone device in the Teams administratio
 
 The Teams IP Phone can now be signed in to by a user or remotely signed in to a common area account.
 
-### Task 2 - Create, license and enable Enterprise Voice for a Microsoft Teams Room account 
+### Task 2 - Create, license, and enable Enterprise Voice for a Microsoft Teams Room account 
 
 In this task, we will create and license a Microsoft Teams Room device account using Windows PowerShell. This will be for the Contoso Board Room at the Bellevue site and use Direct Routing for voice calls.
 

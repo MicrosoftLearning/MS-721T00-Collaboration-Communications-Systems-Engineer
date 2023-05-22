@@ -2,7 +2,7 @@
 lab:
     title: 'Lab 02: Configure your environment for Teams Voice Usage'
     type: 'Answer Key'
-    module: 'Module 01: Plan and configure Teams Phone'
+    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
 ---
 
 # Lab 02: Configure your environment for Teams Phone

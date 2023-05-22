@@ -2,7 +2,7 @@
 lab:
     title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
     type: 'Answer Key'
-    module: 'Module 1: Plan and configure Teams Phone'
+    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
 ---
 
 # Lab 03: Expand your Teams Phone Environment to use Direct Routing
@@ -151,7 +151,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
 You have successfully requested the certificate from DigiCert and will download it later.
 
-### Task 5 - Verify the custom domain has been added to your Microsoft 365 subscription
+### Task 5 - Verify the custom domain has been added to your Microsoft 365 tenant
 
 In this task, you will verify your custom domain so you can work with it and assign it to users.
 
@@ -430,7 +430,7 @@ You have successfully uploaded the lab certificate and prepared your SBC to sign
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 30 minutes
+  - **Estimated Time to complete**: 45 minutes
 
 In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
 
