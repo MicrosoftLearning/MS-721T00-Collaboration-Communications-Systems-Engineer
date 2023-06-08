@@ -258,11 +258,13 @@ You have successfully reviewed the results of the network connectivity check.
 
 The network quality check (performance test) is run with the NetworkAssessmentTool.exe /qualitycheck switch. This will test sending real packets across the network.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” with the command prompt running.
+1. You are still signed in to MS721-CLIENT01 as **Admin** with the command prompt running.
 
 1. Enter **cd C:\NetworkTest** and press enter, this changes our directory to the NetworkTest Directory.
 
 1. Enter **NetworkAssessmentTool.exe /qualitycheck** and press enter to run that program.
+
+1. Select **Allow** on any Windows Firewall popups that appear, to let the Network Assessment Tool through the firewall.
 
 1. This will now run the test, you will see output come up on the command prompt, note you can see the **Loss Rate**, **Latency** and **Jitter** as the tests are performed.
 
@@ -282,7 +284,7 @@ In the following task, you will review the results of the Network Quality Check.
 
 Review Packet Loss, Latency and Jitter by following these steps:
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and at the command prompt.
+1. You are still signed in to MS721-CLIENT01 as **Admin** and at the command prompt.
 
 1. Enter the following into the command prompt:
 

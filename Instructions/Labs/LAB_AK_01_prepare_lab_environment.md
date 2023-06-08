@@ -39,7 +39,11 @@ In this exercise, you will assign the required admin permissions to continue wit
 
 In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Allan Deyoung.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
+1. Log in to MS721-CLIENT01 as “Admin”.
+
+1. Open **Microsoft Edge** and browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+
+1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
 
 1. In the upper left navigation, select the three dashes to the left of the organization name to open the full left-side menu.
 
@@ -77,7 +81,7 @@ In this task you will sign into the clients provided by your training provider a
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
-1. When the Licenses Panel is shown, validate you can see 5 of the **Office 365 E5** licenses are now applied to users.
+1. When the Licenses Panel is shown, validate you can see 10 of the **Office 365 E5** licenses are now applied to users, with 5 remaining licenses available.
 
 1. Select **Office 365 E5** to see who has the licenses applied.
 
@@ -85,17 +89,17 @@ In this task you will sign into the clients provided by your training provider a
 
 You have successfully signed into your test clients and reviewed the overall number of licenses applied to the Office 365 tenant.
 
-### Task 3 - Add the Domestic Calling Plan trial license to your tenant
+### Task 3 - Add the Microsoft Teams Domestic Calling Plan trial license to your tenant
 
 As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase services**.
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
 
-1. Under **View by category**, select **Add-ons**.
+1. Under **View by category**, clear all categories except **Add-ons**.
 
-1. In the **Add-ons** list, locate and then select **Microsoft Teams Domestic Calling Plan for US and Canada Trial**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
+1. In the search box, search for and select **Microsoft Teams Domestic Calling Plan for US and Canada Trial**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
 
 1. Select **Details** and select **Start free trial**. 
 
@@ -107,7 +111,29 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 You have successfully activated the Calling Plan trial in your tenant.
 
-### Task 4 - Assign the Domestic Calling Plan license to Isaiah Langer
+### Task 4 - Start a trial for Microsoft Teams Rooms Pro licenses
+
+As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
+
+1. Under **View by category**, clear all categories except **Collaboration and Communication**.
+
+1. In the search box, search for and select **Microsoft Teams Rooms Pro**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
+
+1. Select **Details** and select **Start free trial**. 
+
+1. On the Check out page, select **Try now**.
+
+1. On the order receipt page, select **Continue**.
+
+1. Leave the browser window open at the end of the task.
+
+You have successfully activated the Calling Plan trial in your tenant.
+
+### Task 5 - Assign the Domestic Calling Plan license to Isaiah Langer
 
 As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
 
@@ -131,7 +157,7 @@ As an admin, you can assign the Calling Plan license that gives users the right 
 
 1. In the **Isaiah Langer** card, select **Licenses and apps** tab.
 
-1. In the **Licenses** list, select the **Microsoft 365 Domestic Calling Plan** check box.
+1. In the **Licenses** list, select the **Microsoft Teams Domestic Calling Plan** check box.
 
 1. Select **Save changes** and then close the user card.
 

@@ -193,13 +193,21 @@ In the following task, you will add the custom domain to Megan Bowen.
 
 1. Select **Done**, then select **Save changes**.
 
-    ![Screenshot of the Microsoft 365 admin center user detail page for Megan Bowen.](./Linked_Image_Files/M01_L01_E02_T03.png)
+1. Close the **Manage username and email** pane.
 
-1. Close the **Manage username and email** pane and then close the Megan Bowen user card.
+1. Return to the **Megan Bowen** and then select **Reset Password**.
+
+1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
+
+1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
+
+1. Press **Reset password**.
+
+1. Press **Close**.
 
 1. Leave the browser open for the next task.
 
-You have successfully added the custom domain to Megan Bowen.
+You have successfully added the custom domain to Megan Bowen and reset their password.
 
 ## Exercise 2: Deploy the session border controller
 
@@ -863,7 +871,7 @@ In the following task, you will assign a voice route to a user, this will grant 
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
-1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowan**, we will be assigning her the **North American** Policy. 
+1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowen**, we will be assigning her the **North American** Policy. 
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<customlabnumer>.o365ready.com -PolicyName "North America"
