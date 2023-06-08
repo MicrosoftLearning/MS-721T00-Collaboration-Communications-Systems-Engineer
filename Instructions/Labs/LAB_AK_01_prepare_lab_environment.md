@@ -10,9 +10,9 @@ lab:
 
 ## Lab scenario
 
-In the labs for this course, you are taking on the role of Katie Jordan, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
+In the labs for this course, you are taking on the role of Allan Deyoung, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
 
-You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Katie that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
+You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Allan that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
 
 ## Lab Duration
 
@@ -35,9 +35,9 @@ You have just started the pilot project. In this first lab you will set up a per
 
 In this exercise, you will assign the required admin permissions to continue with the other labs and exercises in this course.
 
-### Task 1 - Assign Katie Jordan to the Teams Administrator role
+### Task 1 - Assign Allan Deyoung to the Teams Administrator role
 
-In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Katie Jordan.
+In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Allan Deyoung.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -45,7 +45,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. Select **Users** and **Active users** from the menu below.
 
-1. In the **Active users** list, select **Katie Jordan** to open the right-side panel.
+1. In the **Active users** list, select **Allan Deyoung** to open the right-side panel.
 
 1. Under **Roles**, select **Manage roles**.
 
@@ -55,9 +55,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. At the bottom of the card, select **Save changes**. Admin roles are updated.
 
-      ![Screenshot of the Microsoft 365 admin center user detail page for Katie Jordan.](./Linked_Image_Files/M01_L01_E02_T02.png)
-
-1. Return to the **Katie Jordan** card by pressing the **left arrow**, and then select **Reset Password**.
+1. Return to the **Allan Deyoung** card by pressing the **left arrow**, and then select **Reset Password**.
 
 1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
 
@@ -69,7 +67,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. Leave the browser window open for the next task.
 
-You have successfully assigned the Teams Service administrator permission to Katie Jordan.
+You have successfully assigned the Teams Service administrator permission to Allan Deyoung.
 
 ### Task 2 - Validate licenses in the admin portal
 
@@ -191,7 +189,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Connect-MicrosoftTeams
     ```
 
-1. When the **Sign in to your account** window opens, enter the credentials of Katie Jordan (KatieJ@M365x&lt;tenantnumber&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
+1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@M365x&lt;tenantnumber&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
 
     ![Screenshot of the connecting to the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01-1.png)
 

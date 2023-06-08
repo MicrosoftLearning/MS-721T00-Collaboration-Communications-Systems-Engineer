@@ -30,7 +30,7 @@ In this exercise, you will perform day-to-day management tasks for Teams Voice u
 
 In this task, you will sign into the Microsoft Teams Admin Center and make changes so that Isaiah’s colleague Katie can pick up their calls.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. In the left navigation menu select **Users** and **Manage users** and find **Isaiah Langer** and select the name to open the user’s properties.
 
@@ -40,9 +40,9 @@ In this task, you will sign into the Microsoft Teams Admin Center and make chang
 
 1. Select **Manage call group**, then select **Add people**.
 
-1. Search for **Katie Jordan** and select **Add** to include them in the **People list**, then select **Apply**.
+1. Search for **Allan Deyoung** and select **Add** to include them in the **People list**, then select **Apply**.
 
-1. As Katie would prefer an on-screen notification to show, rather than Teams to ring when Isaiah is unavailable, find **Katie Jordan** in the Group Call Pickup list. 
+1. As Katie would prefer an on-screen notification to show, rather than Teams to ring when Isaiah is unavailable, find **Allan Deyoung** in the Group Call Pickup list. 
 
 1. In the **Notification** column, update the value from **Ring** to **Banner** from the drop-down menu. Then select **Save**.
 
@@ -54,7 +54,7 @@ The changes are now applied, and a banner will show for calls directed to Isaiah
 
 In this task, an existing user who isn’t enabled for voice services must be enabled for Direct Routing. We’ll ensure the necessary licenses are assigned, then enable the user for Direct Routing.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
 
@@ -65,7 +65,7 @@ In this task, an existing user who isn’t enabled for voice services must be en
     Connect-MicrosoftTeams
     ```
 
-1. When prompted for credentials, enter the credentials of **Katie Jordan**.
+1. When prompted for credentials, enter the credentials of **Allan Deyoung**.
 
 1. Type the following command to enable Alex Wilber for **Direct Routing**:
 
@@ -79,9 +79,9 @@ Alex Wilber is now configured to use Direct Routing.
 
 ### Task 3 - Configure call delegation
 
-In this task, you will configure Alex Wilber so that Katie Jordan is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
+In this task, you will configure Alex Wilber so that Allan Deyoung is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select **Users** and **Manage users**.
 
@@ -93,9 +93,9 @@ In this task, you will configure Alex Wilber so that Katie Jordan is a delegate 
 
 1. Scroll down to **Call delegation** and select **Add people**
 
-1. Search for **Katie Jordan**, and select **Add** to include them on the **People list**, then select **Apply**.
+1. Search for **Allan Deyoung**, and select **Add** to include them on the **People list**, then select **Apply**.
 
-1. In the list below **Call delegation**, find **Katie Jordan** and leave the **Permission** value as **Make and receive calls**. Switch the **Allow changing call settings** radio button to **Off**.
+1. In the list below **Call delegation**, find **Allan Deyoung** and leave the **Permission** value as **Make and receive calls**. Switch the **Allow changing call settings** radio button to **Off**.
 
 1. Select **Save**. 
 
@@ -107,7 +107,7 @@ The changes are now active.
 
 In this task, you validate audio conferencing is enabled for Isaiah Langer and change the default settings.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select **Meetings** and **Audio Conferencing**.
 
@@ -141,7 +141,7 @@ You have successfully modified the audio-conferencing settings for Isaiah Langer
 
 In this task you will assign a new Dial out policy to Megan Bowen, to restrict her from making outbound calls.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select **Users** and **Manage users**.
 
@@ -171,7 +171,7 @@ In this exercise, you will gain an understanding of how to configure Call Queues
 
 In this task, you will create a call queue. A call queue is a group of agents that you can direct calls to.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Select **Voice** and then select **Call queues**.
 
@@ -207,7 +207,7 @@ You have successfully created the Sales CQ call queue and added Isaiah Langer as
 
 Now we will create an auto attendant and direct one of the options to send calls to our Sales CQ call queue. This will ready the Microsoft 365 Auto Attendant to become functional. 
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Under **Voice**, select **Auto Attendants** and select **Add**.
 
@@ -243,7 +243,7 @@ You have successfully created an Auto Attendant, and aligned it to a Call Queue
 
 Collaborative calling enables you to connect a call queue to a channel in Teams. Users can collaborate and share information in the channel while taking calls in the queue. Instead of defining the agents in the Teams Admin Center, the agents are defined by who are members of the team.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**.
 
@@ -259,7 +259,7 @@ You have successfully assigned the call answering for the Call Queue to the Gene
 
 By default, if a call to a call queue isn't answered by an agent within the maximum wait time, it will be disconnected. We would like to configure unanswered calls to go to voicemail instead. The voicemail must be an Office 365 Group voicemail.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**
 
@@ -279,7 +279,7 @@ You have successfully assigned a voicemail to the Call Queue should it reach a t
 
 In this task, you will enable conference mode that will pass the call between the inbound calls more quickly.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
 
@@ -293,7 +293,7 @@ You have successfully enabled conferencing mode for **Sales CQ** call queue.
 
 In this task, you will create the relevant holiday configuration. Holidays differ from country to country but in this instance, we will just create a new holiday time that’s relevant to you. 
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. In the Microsoft Teams admin center, go to **Voice &gt; Holidays**.
 
@@ -321,7 +321,7 @@ You have successfully created a holiday relevant to your area and assigned it to
 
 In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Close the tab and switch back to the Microsoft Teams admin center.
 
@@ -358,7 +358,7 @@ In this task, you will provision a Teams Phone device in the Teams administratio
 
 1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
-1. Sign in as **Katie Jordan**, who has the Teams Administrator role.
+1. Sign in as **Allan Deyoung**, who has the Teams Administrator role.
 
 1. Select **Teams devices** and then select **Phones**.
 
@@ -422,7 +422,7 @@ In this task, we will create and license a Microsoft Teams Room device account u
 
     ```
 
-1. Connect to Exchange Online PowerShell, when prompted for credentials, enter the credentials of **Katie Jordan**.:
+1. Connect to Exchange Online PowerShell, when prompted for credentials, enter the credentials of **Allan Deyoung**.:
 
     ```powershell
     Connect-ExchangeOnline
