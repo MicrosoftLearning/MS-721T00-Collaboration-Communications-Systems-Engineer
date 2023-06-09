@@ -137,7 +137,7 @@ You have successfully activated the Calling Plan trial in your tenant.
 
 As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as **Admin** and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. On the Microsoft 365 admin center page, in the left navigation, select **Users**, then **Active users**.
 
@@ -147,7 +147,7 @@ As an admin, you can assign the Calling Plan license that gives users the right 
 
 1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
 
-1. Enter the MOD Administrator password in the _“Resource”_ section on the right side of the lab window.
+1. Enter the **MOD Administrator** password in the _“Resource”_ section on the right side of the lab window.
 
 1. Press **Reset password**.
 
@@ -188,7 +188,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
 1. When Windows PowerShell window has opened, enter the following cmdlet to download the Microsoft Teams PowerShell module from the PSGallery and Install it:
 
     ```powershell
-    Install-Module -Name MicrosoftTeams -Repository PSGallery -Force
+    Install-Module MicrosoftTeams -Force
     ```
 
 1. Once the module is installed you will see the command prompt again.
@@ -196,7 +196,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
 1. Enter the following cmdlet to import the newly installed Microsoft Teams PowerShell module:
 
     ```powershell
-    Import-Module -Name MicrosoftTeams
+    Import-Module MicrosoftTeams
     ```
 
 1. After importing the module, you are back on the command prompt again. Enter the following cmdlet to get the module version and available commands:
@@ -215,9 +215,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Connect-MicrosoftTeams
     ```
 
-1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@M365x&lt;tenantnumber&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
-
-    ![Screenshot of the connecting to the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01-1.png)
+1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@M365x&lt;TenantName&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
 
 1. When you are successfully signed in you will be returned to the **PowerShell**.
 

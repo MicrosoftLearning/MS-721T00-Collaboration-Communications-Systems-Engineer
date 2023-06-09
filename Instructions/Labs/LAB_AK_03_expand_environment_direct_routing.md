@@ -56,9 +56,9 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 1. In the **IP address** box, enter your public IP address from the previous task.
 
-1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** ((Note: Do not enter MS721.)).
+1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** ((**Note**: Do not enter MS721.)).
 
-1. This lab code will expire 90 days after the start of this course.
+1. Take note your Lab Number. This lab code will expire 90 days after the start of this course. We will refer to this as your **Lab Number** going forward in the lab.
 
 1. When the process is completed, you will see a **Student Lab Number** dialog, followed by a 5 digit number. Note this number down and remember it. You will refer to this five-digit number throughout the labs.
 
@@ -101,7 +101,7 @@ In the following task you will execute a script to setup your lab environment.
 
 1. In the **Office 365 Admin password** box, enter the MOD Administrator password, provided to you.
 
-1. In the **5-digit lab number** box, enter your lab number from the previous task and select **Verify**.
+1. In the **5-digit lab number** box, enter your **Lab Number** from the previous task and select **Verify**.
 
 1. The script tries to use the delivered credentials to access your tenant. Ensure the credentials were verified and review the identified public IP address in the blank window.
 
@@ -125,7 +125,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
 1. Open File Explorer and then browse to **C:\LabFiles**.
 
-1. Double-click **CertReq-lab&lt;customlabnumber&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
+1. Double-click **CertReq-lab&lt;Lab Number&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
 
     ![Screenshot of the completed certificate request file in Windows Explorer](./Linked_Image_Files/M01_L01_E01_T04.png)
 
@@ -189,7 +189,7 @@ In the following task, you will add the custom domain to Megan Bowen.
 
 1. In the Megan Bowen user card, select the **Account** tab under **Username and email** select **Manage username and email**.
 
-1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;customlabnumber&gt;.o365ready.com**.
+1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;Lab Number&gt;.o365ready.com**.
 
 1. Select **Done**, then select **Save changes**.
 
@@ -225,11 +225,11 @@ In this task, you will verify and add your SBC to your tenant.
 
 1. Open a new tab in Microsoft Edge and then browse to [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. Sign in as **MOD Administrator** with the credentials provided to you.
+1. Sign in to the Teams admin center as **MOD Administrator**.
 
-1. In the left navigation select **Voice**, select **Direct Routing** and select **Add**.
+1. In the left navigation select **Voice**, select **Direct Routing**, and under SBCs, select **Add**.
 
-1. Add the FQDN **sbc01.lab&lt;customlabnumber&gt;.o365ready.com** and select **Save**. Please note, use lower case, it is case sensitive. 
+1. Add the FQDN **sbc01.lab&lt;Lab Number&gt;.o365ready.com** and select **Save**. Please note, use ALL lower case, it is case sensitive. Leave all the other settings as-is. 
 
 1. Leave the browser open at the end of this task.
 
@@ -245,14 +245,14 @@ In the following task, you will download the DigiCert certificate you requested 
 
 1. In the message list, locate and select the email from **DigiCert** with the zip file attachment. The message may arrive in the Focused or Other folder and should arrive within 2-5 minutes.
 
-1. Download the **sbc01_lab&lt;customlabnumber&gt;.o365ready.comXXXXXXX.zip** file attachment, it will be saved to the default Downloads folder.
+1. Download the **sbc01_lab&lt;Lab Number&gt;.o365ready.comXXXXXXX.zip** file attachment, it will be saved to the default Downloads folder.
 
 1. Close the browser window to end the task.
 
 You have successfully downloaded the certificate you requested in an earlier exercise and it is now available to certify your SBC.
 
 > [!WARNING]
-> Download the file as is. Do not compress the already compressed zip file. Some web-based email systems allow you to compress or zip your download. This will cause the already compressed file to be compressed again and will cause the script in this lab to fail.
+> Download the file as-is. Do not compress the already compressed zip file. Some web-based email systems allow you to compress or zip your download. This will cause the already compressed file to be compressed again and will cause the script in this lab to fail.
 
 ### Task 3 - Run the ImportLabCert script located in C:\Scripts
 
@@ -278,11 +278,13 @@ You have successfully converted the certificate for the SBC.
 
 In the following task you will create the new session boarder controller resource hosted within Microsoft Azure.
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
+1. You are still on MS721-CLIENT01 where you are still signed in as **Admin**.
 
-1. Open a new Microsoft Edge browser window and navigate to **https://portal.azure.com**.
+1. Open a new **In-Private Microsoft Edge browser window** by right-clicking on the Microsoft Edge icon in the taskbar and selecting **New InPrivate Window** and then navigate to **https://portal.azure.com**.
 
-1. Log in with the Azure Portal username and password provided to you by your lab provider.  **Do not** log in with your Microsoft 365 account.
+1. Log in with the **Azure Portal username and password** provided to you by your lab provider.  **DO NOT** log in with your Microsoft 365 account.
+
+1. Select **maybe later** when offered a tour of the Azure Portal.
 
 1. Select **create a resource**.
 
@@ -290,7 +292,7 @@ In the following task you will create the new session boarder controller resourc
 
 1. Select **Mediant VE Session Border Controller (SBC)**.
 
-1. Select **Create.**
+1. Select **Create > AudioCodes Mediant VE SBC for Microsoft Azure**
 
 1. For **Resource group**, select **Create New**.
 
@@ -316,11 +318,11 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. Select **sbc01-ip**.
 
-1. Make Note of the Public IP Address.
+1. Make note of the Public IP Address to use later.
 
 1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu.
 
-1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
+1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
     $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential)
@@ -340,6 +342,13 @@ In the following task you will retrieve the public IP address of the SBC and rou
     ```powershell
     Add-DnsServerResourceRecordA -ComputerName MS720-RRAS01 -CimSession $Cimsession -ZoneName lab<Lab Number>.o365ready.com -Name sbc01 -IPv4Address <Public SBC IP>
     ```
+
+1. Verify the DNS zone was created successfully by running the following command.  You should see it pointing to the Public IP Address that the SBC was assigned through Azure:
+
+    ```powershell
+	nslookup sbc01.lab<Lab Number>.o365ready.com
+
+	```
 
 1. You can close the Windows PowerShell window by selecting the **X** in the top right.
 
@@ -386,8 +395,6 @@ In the following task, you will add the root certificate to the session border c
 
 1. In the Trusted Root Certificates window, select **Import**.
 
-1. In the **Import New Certificate** dialog box, select **Choose File**.
-
 1. Browse to **C:\LabFiles**, select **BaltimoreTrustedRootCA.cer**, and then select **Open**. If you cannot find the certificate, select **All files (\*.\*)** in the bottom right corner.
 
 1. In the **File upload** dialog box, select **Close**.
@@ -416,7 +423,7 @@ In the following task, you will upload the lab certificate you requested earlier
 
 1. In the Change Certificates window, scroll down to the **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER** section.
 
-1. In the **Private key pass-phrase (optional)** box, enter the default Admin password in the “Resource” section on the right side of the lab window.
+1. In the **Private key pass-phrase (optional)** box, enter the **Admin** password for MS721-CLIENT01 virtual machine.
  
 1. Under **Send Private Key file from your computer to the device**, select **Load Private Key File**.  
 
@@ -576,7 +583,7 @@ In the following task, you will configure the IP Profiles for the SBC.
 
 	- **Remote Early Media RTP Detection Mode:** By Media
 
-	- **Extension Coders Group:** #0
+	- **Extension Coders Group:** #0 [AudioCodersGroups_0]
 
 	- **RTCP Mode:** Generate Always
 
@@ -592,9 +599,7 @@ In the following task, you will configure the IP Profiles for the SBC.
 
 	- **Remote Hold Format:** Inactive 
 
-1. Select **Apply** and then **Save**. 
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured IP Profiles on the SBC.
 
@@ -616,15 +621,13 @@ In the following task, you will configure IP groups for the SBC.
 
 	- **Classify By Proxy Set:** Disable
 
-	- **Local Host Name:** the name given to the device during creation - **sbc01.lab&lt;customlabnumber&gt;.o365ready.com**
+	- **Local Host Name:** the name given to the device during creation - **sbc01.lab&lt;Lab Number&gt;.o365ready.com**
 
 	- **Always Use Src Address:** Yes
 
 	- **Proxy Keep-Alive using IP Group settings:** Enable
 
-1. Select **Apply** and then **Save**.
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured IP Groups on the SBC.
 
@@ -634,9 +637,7 @@ In the following task, you will configure the SBC to be ready for Teams.
 
 1. To configure SRTP go to **Media**, then select **Media security**, select **Media Security** and set it to **Enable**.
 
-1. Select **Apply** and then **Save**.
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured SRTP on the SBC.
 
@@ -650,9 +651,7 @@ In the following task, you will add the message manipulation on the SBC.
 
 1. To configure the condition, select **Editor** and fill out **Header.Contact.URL.Host contains 'pstnhub.microsoft.com'**, select **Save**.
 
-1. select **Apply**, then select **Save**.
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 1. Next, create a Classification Rule by navigating to **SBC &gt; Classification**, then select **New** and configure the following settings:
 
@@ -662,17 +661,15 @@ In the following task, you will add the message manipulation on the SBC.
 
 	- **Source IP Address:** 52.114.\*.\* 
 
-	- **Destination Host:** FQDN of SBC (**sbc01.lab&lt;customlabnumber&gt;.o365ready.com)**
+	- **Destination Host:** FQDN of SBC (**sbc01.lab&lt;Lab Number&gt;.o365ready.com)**
 
-	- **Message Condition:** Teams 
+	- **Message Condition:** #0 [Teams] 
 
 	- **Action type:** Allow
 
-	- **Source IP Group:** #1 Teams
+	- **Source IP Group:** #1 [Teams]
 
-1. Select **Apply** and then **Save**.
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured message manipulation on the SBC.
 
@@ -704,11 +701,11 @@ In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
 	- **Call Trigger:** REFER
 
-	- **ReRoute IP Group:** Teams
+	- **ReRoute IP Group:** #1 [Teams]
 
 	- **Destination Type:** Request URI
 
-	- **Destination IP Group:** Teams
+	- **Destination IP Group:** #1 [Teams]
 
 1. Select **Apply**.
 
@@ -716,7 +713,7 @@ In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
 	- **Name:** Teams -> SIP Trunk
 
-	- **Source IP Group:** Teams
+	- **Source IP Group:** #1 [Teams]
 
 	- **Destination Type:** IP Group
 
@@ -734,11 +731,9 @@ In the following task, you will configure 4 IP to IP calling rules on the SBC.
 
 	- **Destination Type:** IP Group
 
-	- **Destination IP Group:** Teams 
+	- **Destination IP Group:** #1 [Teams]
 
-1. Select **Apply** and then **Save**.
-
-1. In the **Save Configuration** dialogue, select **Yes**.
+1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured the AudioCodes SBC to receive requests from the Microsoft 365 Direct Routing service. 
 
@@ -784,7 +779,7 @@ In the following task, you will create your first voice routing policy and PSTN 
 
 1. Review the output of the command.
 
-If you have several usages defined, the names of the usages might truncate. Use the command, (Get-CSOnlinePSTNUsage).Usage, to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
+If you have several usages defined, the names of the usages might truncate. Use the command Get-CSOnlinePSTNUsage to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
 
 1. Run the Set-CSOnlinePSTNUsage cmdlet is used to add or remove phone usages to or from the usage list. This list is global so it can be used by policies and routes throughout the tenant:
 
@@ -803,7 +798,7 @@ If you have several usages defined, the names of the usages might truncate. Use 
 1. Run the New-CsOnlineVoiceRoute command - Creates a new online voice route. Online voice routes contain instructions that tell Microsoft Teams how to route calls from Office 365 users to phone numbers on the public switched telephone network (PSTN) or a private branch exchange (PBX):
 
     ```powershell
-    New-CsOnlineVoiceRoute -Identity "10 Digit Dialing" -NumberPattern "^\+1(\d{10})$" -OnlinePstnGatewayList sbc01.lab<customlabnumber>.o365ready.com -OnlinePstnUsages "US and Canada"
+    New-CsOnlineVoiceRoute -Identity "10 Digit Dialing" -NumberPattern "^\+1(\d{10})$" -OnlinePstnGatewayList sbc01.lab<Lab Number>.o365ready.com -OnlinePstnUsages "US and Canada"
 
     ```
 
@@ -829,7 +824,7 @@ In the following task, you will create another voice routing policy with the PST
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
     ```powershell
-    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<customlabnumber>.o365ready.com -PolicyName "North America"
+    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<Lab Number>.o365ready.com -PolicyName "North America"
 
     ```
 
@@ -857,7 +852,7 @@ In the following task, you will enable the end user for voice services through t
 1. Run the Set-CsPhoneNumberAssignment command, the command assigns a phone number to a user or resource account. When you assign a phone number the EnterpriseVoiceEnabled flag is automatically set to True.:
 
     ```powershell
-    Set-CsPhoneNumberAssignment -Identity MeganB@lab<customlabnumer>.o365ready.com -PhoneNumber "+14255551234" -PhoneNumberType DirectRouting
+    Set-CsPhoneNumberAssignment -Identity MeganB@lab<Lab Number>.o365ready.com -PhoneNumber "+14255551234" -PhoneNumberType DirectRouting
 
     ```
 
@@ -865,24 +860,7 @@ In the following task, you will enable the end user for voice services through t
 
 You have successfully assigned a telephone number to the end user and you have enabled the end user for the dial pad.
 
-### Task 4 - Configure voice routing
-
-In the following task, you will assign a voice route to a user, this will grant the user the ability to make calls to the policy applied. 
-
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
-
-1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowen**, we will be assigning her the **North American** Policy. 
-
-    ```powershell
-    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<customlabnumer>.o365ready.com -PolicyName "North America"
-
-    ```
-
-1. The cmdlet does not provide any output. Close the PowerShell window to end this task.
-
-You have successfully assigned a telephone number to the end user and you have enabled the end user for the dial pad.
-
-### Task 5 - Translate numbers to an alternate format
+### Task 4 - Translate numbers to an alternate format
 
 In the following task, you will create a normalization record for a 4-digit dial plan
 
@@ -910,7 +888,7 @@ In the following task, you will create a normalization record for a 4-digit dial
 
 You have successfully you have assigned a 4-digit extension dial to the global group.
 
-### Task 6 - Configure Emergency Location Identification Number (ELIN)
+### Task 5 - Configure Emergency Location Identification Number (ELIN)
 
 In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
 
@@ -928,7 +906,7 @@ In the following task, you will assign the Emergency Location Identification num
 
 You have successfully assigned the ELIN number to the location for emergency addresses.
 
-### Task 7 - Deploy Location-Based Routing based on subnets
+### Task 6 - Deploy Location-Based Routing based on subnets
 
 In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
 
@@ -936,7 +914,7 @@ In the following task, you will configure location-based routing to allow connec
 
 1. Select the three dashes, select **Locations**, then **Network topology.**
 
-1. Select **Add**, give the Network Site a name of **Washington** and description as **Washington Network.** Select **Location based routing** to **On.**
+1. Select **Add**, give the Network Site a name of **Washington** and description as **Washington Network**. Change **Location based routing** to **On**.
 
 1. Select **Add subnets,** for **IP address** enter **192.168.0.0** and a **Network Range** of **32,** select **Apply,** select **Save**
 
@@ -944,7 +922,9 @@ In the following task, you will configure location-based routing to allow connec
 
 1. Select **sbc01**, select **settings** and **edit SBC**
 
-1. Under **Location based routing and media optimization**, turn **on Location based routing**, select **Gateway site ID** to **Washington**, then select **Save**.
+1. Toggle the **Enabled** setting to **On**.
+
+1. Under **Location based routing and media optimization**, turn on **Location based routing**, select **Gateway site ID** to **Washington**, then select **Save**.
 
 1. Leave the browser window open.
 

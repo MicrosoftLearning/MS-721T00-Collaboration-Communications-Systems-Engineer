@@ -28,7 +28,7 @@ In this exercise, you will perform day-to-day management tasks for Teams Voice u
 
 ### Task 1 - Change user call pickup settings
 
-In this task, you will sign into the Microsoft Teams Admin Center and make changes so that Isaiah’s colleague Katie can pick up their calls.
+In this task, you will sign into the Microsoft Teams admin center and make changes so that Isaiah’s colleague Allan can pick up their calls.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -42,13 +42,13 @@ In this task, you will sign into the Microsoft Teams Admin Center and make chang
 
 1. Search for **Allan Deyoung** and select **Add** to include them in the **People list**, then select **Apply**.
 
-1. As Katie would prefer an on-screen notification to show, rather than Teams to ring when Isaiah is unavailable, find **Allan Deyoung** in the Group Call Pickup list. 
+1. As Allan would prefer an on-screen notification to show, rather than Teams to ring when Isaiah is unavailable, find **Allan Deyoung** in the Group Call Pickup list. 
 
 1. In the **Notification** column, update the value from **Ring** to **Banner** from the drop-down menu. Then select **Save**.
 
 1. In the left navigation menu select **Manage users** to exit the properties page for Isaiah Langer.
 
-The changes are now applied, and a banner will show for calls directed to Isaiah on Katie’s Teams client, allowing them to answer if Isaiah is unable.
+The changes are now applied, and a banner will show for calls directed to Isaiah on Allan’s Teams client, allowing them to answer if Isaiah is unable.
 
 ### Task 2 - Enable user for Teams Direct Routing
 
@@ -513,7 +513,7 @@ Megan Bowen has reported they are not receiving voicemails. Microsoft offers som
 
 1. On the left menu, select **Show all**, then **Users** and **Active Users**. 
 
-1. Find Megan Bowen and note down their username and email address, you will need it to run the test. Note this is one value in the format MeganB@lab&lt;customlabnumber&gt;.o365ready.com
+1. Find Megan Bowen and note down their username and email address, you will need it to run the test. Note this is one value in the format MeganB@lab&lt;Lab Number&gt;.o365ready.com
 
 1. On the left menu, select **show all**, then **Support** and under the support menu **Help & support**.
 
