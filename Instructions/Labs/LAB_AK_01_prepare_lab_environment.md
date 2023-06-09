@@ -10,9 +10,9 @@ lab:
 
 ## Lab scenario
 
-In the labs for this course, you are taking on the role of Katie Jordan, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
+In the labs for this course, you are taking on the role of Allan Deyoung, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
 
-You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Katie that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
+You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Allan that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
 
 ## Lab Duration
 
@@ -35,17 +35,21 @@ You have just started the pilot project. In this first lab you will set up a per
 
 In this exercise, you will assign the required admin permissions to continue with the other labs and exercises in this course.
 
-### Task 1 - Assign Katie Jordan to the Teams Administrator role
+### Task 1 - Assign Allan Deyoung to the Teams Administrator role
 
-In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Katie Jordan.
+In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Allan Deyoung.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and to the **Microsoft 365 admin center** as **MOD Administrator**.
+1. Log in to MS721-CLIENT01 as “Admin”.
+
+1. Open **Microsoft Edge** and browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+
+1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
 
 1. In the upper left navigation, select the three dashes to the left of the organization name to open the full left-side menu.
 
 1. Select **Users** and **Active users** from the menu below.
 
-1. In the **Active users** list, select **Katie Jordan** to open the right-side panel.
+1. In the **Active users** list, select **Allan Deyoung** to open the right-side panel.
 
 1. Under **Roles**, select **Manage roles**.
 
@@ -55,9 +59,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. At the bottom of the card, select **Save changes**. Admin roles are updated.
 
-      ![Screenshot of the Microsoft 365 admin center user detail page for Katie Jordan.](./Linked_Image_Files/M01_L01_E02_T02.png)
-
-1. Return to the **Katie Jordan** card by pressing the **left arrow**, and then select **Reset Password**.
+1. Return to the **Allan Deyoung** card by pressing the **left arrow**, and then select **Reset Password**.
 
 1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
 
@@ -69,7 +71,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. Leave the browser window open for the next task.
 
-You have successfully assigned the Teams Service administrator permission to Katie Jordan.
+You have successfully assigned the Teams Service administrator permission to Allan Deyoung.
 
 ### Task 2 - Validate licenses in the admin portal
 
@@ -79,7 +81,7 @@ In this task you will sign into the clients provided by your training provider a
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
-1. When the Licenses Panel is shown, validate you can see 5 of the **Office 365 E5** licenses are now applied to users.
+1. When the Licenses Panel is shown, validate you can see 10 of the **Office 365 E5** licenses are now applied to users, with 5 remaining licenses available.
 
 1. Select **Office 365 E5** to see who has the licenses applied.
 
@@ -87,17 +89,17 @@ In this task you will sign into the clients provided by your training provider a
 
 You have successfully signed into your test clients and reviewed the overall number of licenses applied to the Office 365 tenant.
 
-### Task 3 - Add the Domestic Calling Plan trial license to your tenant
+### Task 3 - Add the Microsoft Teams Domestic Calling Plan trial license to your tenant
 
 As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase services**.
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
 
-1. Under **View by category**, select **Add-ons**.
+1. Under **View by category**, clear all categories except **Add-ons**.
 
-1. In the **Add-ons** list, locate and then select **Microsoft Teams Domestic Calling Plan for US and Canada Trial**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
+1. In the search box, search for and select **Microsoft Teams Domestic Calling Plan for US and Canada Trial**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
 
 1. Select **Details** and select **Start free trial**. 
 
@@ -109,7 +111,29 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 You have successfully activated the Calling Plan trial in your tenant.
 
-### Task 4 - Assign the Domestic Calling Plan license to Isaiah Langer
+### Task 4 - Start a trial for Microsoft Teams Rooms Pro licenses
+
+As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
+
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
+
+1. Under **View by category**, clear all categories except **Collaboration and Communication**.
+
+1. In the search box, search for and select **Microsoft Teams Rooms Pro**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
+
+1. Select **Details** and select **Start free trial**. 
+
+1. On the Check out page, select **Try now**.
+
+1. On the order receipt page, select **Continue**.
+
+1. Leave the browser window open at the end of the task.
+
+You have successfully activated the Calling Plan trial in your tenant.
+
+### Task 5 - Assign the Domestic Calling Plan license to Isaiah Langer
 
 As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
 
@@ -133,7 +157,7 @@ As an admin, you can assign the Calling Plan license that gives users the right 
 
 1. In the **Isaiah Langer** card, select **Licenses and apps** tab.
 
-1. In the **Licenses** list, select the **Microsoft 365 Domestic Calling Plan** check box.
+1. In the **Licenses** list, select the **Microsoft Teams Domestic Calling Plan** check box.
 
 1. Select **Save changes** and then close the user card.
 
@@ -191,7 +215,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Connect-MicrosoftTeams
     ```
 
-1. When the **Sign in to your account** window opens, enter the credentials of Katie Jordan (KatieJ@M365x&lt;tenantnumber&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
+1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@M365x&lt;tenantnumber&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
 
     ![Screenshot of the connecting to the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01-1.png)
 

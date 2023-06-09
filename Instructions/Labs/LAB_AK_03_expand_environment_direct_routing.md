@@ -193,13 +193,21 @@ In the following task, you will add the custom domain to Megan Bowen.
 
 1. Select **Done**, then select **Save changes**.
 
-    ![Screenshot of the Microsoft 365 admin center user detail page for Megan Bowen.](./Linked_Image_Files/M01_L01_E02_T03.png)
+1. Close the **Manage username and email** pane.
 
-1. Close the **Manage username and email** pane and then close the Megan Bowen user card.
+1. Return to the **Megan Bowen** and then select **Reset Password**.
+
+1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
+
+1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
+
+1. Press **Reset password**.
+
+1. Press **Close**.
 
 1. Leave the browser open for the next task.
 
-You have successfully added the custom domain to Megan Bowen.
+You have successfully added the custom domain to Megan Bowen and reset their password.
 
 ## Exercise 2: Deploy the session border controller
 
@@ -765,7 +773,7 @@ In the following task, you will create your first voice routing policy and PSTN 
 
     ```
 
-1. In the prompt sign in as **Katie Jordan** with the credentials provided to you.
+1. In the prompt sign in as **Allan Deyoung** with the credentials provided to you.
 
 1. In Windows Powershell, enter the following and then press **Enter**. By running the command you will see that the existing PSTN usages in place. You can see what is in place and what usage plans are being assigned to the identity. 
 
@@ -816,7 +824,7 @@ You have successfully created a voice routing policy with a PSTN Usage.
 
 In the following task, you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
@@ -844,7 +852,7 @@ You have successfully used PowerShell to assign your voice routing policy to you
 
 In the following task, you will enable the end user for voice services through the direct route, assign the telephone number, and enable the user for dial pad service.
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
 1. Run the Set-CsPhoneNumberAssignment command, the command assigns a phone number to a user or resource account. When you assign a phone number the EnterpriseVoiceEnabled flag is automatically set to True.:
 
@@ -861,9 +869,9 @@ You have successfully assigned a telephone number to the end user and you have e
 
 In the following task, you will assign a voice route to a user, this will grant the user the ability to make calls to the policy applied. 
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Katie Jordan**.
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
-1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowan**, we will be assigning her the **North American** Policy. 
+1. In Windows PowerShell, enter the following and then press **Enter**, this will assign the policy to the identified user, in this instance the identity is **Megan Bowen**, we will be assigning her the **North American** Policy. 
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<customlabnumer>.o365ready.com -PolicyName "North America"
@@ -882,7 +890,7 @@ In the following task, you will create a normalization record for a 4-digit dial
 
 1. Open Microsoft Edge and then browse to the **Microsoft Teams admin center** at https://admin.teams.microsoft.com.
 
-1. Sign in with **Katie Jordans** credentials, who is your Teams Administrator in this lab.
+1. Sign in with **Allan Deyoung**, who is your Teams Administrator in this lab.
 
 1. In the left navigation pane select **Voice,** select **Dial Plans** and select **Global (Org-wide default).**
 
@@ -906,7 +914,7 @@ You have successfully you have assigned a 4-digit extension dial to the global g
 
 In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. In the left navigation pane select the three dashes, select **Locations** and select **Emergency addresses.**
 
@@ -924,7 +932,7 @@ You have successfully assigned the ELIN number to the location for emergency add
 
 In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Katie Jordan**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select the three dashes, select **Locations**, then **Network topology.**
 
