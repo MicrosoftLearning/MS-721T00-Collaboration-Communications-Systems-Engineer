@@ -128,7 +128,7 @@ In this task, you will set up your network and sites in Teams Network Planner. C
 
 1. Network subnets are just for reference in the report, our Bellevue offices network subnet is **10.10.20.0** with a network range of **24**. Enter these values.
 
-1. Tacoma has local internet breakout, enter **20** for **Internet link capacity**.
+1. Bellevue has local internet breakout, enter **20** for **Internet link capacity**.
 
 1. It is not **connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
 
@@ -156,14 +156,6 @@ In the following task, you will run the Network Planner report and review the re
 
 For each site, we must now define the number of users of each profile type. 
 
-1. For **Tacoma Site**, in the **Office Worker** row, set Network users to **30**.
-
-1. Remove the **Remote Worker** row by selecting the **X** at the end of the row.
-
-1. Click **+Add** and choose **Audio Only User** 
-
-1. In the **Audio Only User** row, set Network Users to **20**.
-
 1. For **Bellevue Site**, in the **Office Worker** row, set Network users to **80**.
 
 1. Remove the **Remote Worker** row by selecting the **X** at the end of the row.
@@ -171,6 +163,14 @@ For each site, we must now define the number of users of each profile type.
 1. Click **+Add** and choose **Audio Only User**
 
 1. In the  **Audio Only User** row, set Network Users to **10**.
+
+1. For **Tacoma Site**, in the **Office Worker** row, set Network users to **30**.
+
+1. Remove the **Remote Worker** row by selecting the **X** at the end of the row.
+
+1. Click **+Add** and choose **Audio Only User** 
+
+1. In the **Audio Only User** row, set Network Users to **20**.
 
 1. Now select **Generate report**.
 
@@ -460,7 +460,7 @@ You can map emergency location\addresses to:
 
 Perform the following steps.
 
-1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft** **Teams Admin Center** open as **Allan Deyoung**.
+1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Allan Deyoung**.
 
 1. Navigate to **Locations** and **Networks &amp; locations**.
 
@@ -470,7 +470,7 @@ Perform the following steps.
 
 1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.20.0/24, the network ID is **10.10.20.0**.
 
-1. Do **not** set a description (there is a bug that stops the UI from working when you add a description)
+1. Enter **Bellevue Subnet** as the **Description**.
 
 1. Under Emergency location, **Search by City** enter **Bellevue** and select our Bellevue emergency address.
 
@@ -493,6 +493,8 @@ In this task, you will configure an emergency calling policy. Emergency calling 
 1. For **Name** enter **Contoso Emergency Policy**.
 
 1. For **Description** enter **Contoso Emergency Policy**.
+
+1. Turn on **Enable location lookup mode**.
 
 1. Under **Notification mode**, select **Send notification only**: A Teams chat message is sent to the users and groups that you specify.
 
@@ -665,7 +667,7 @@ There is a persistent nuisance caller calling users in the Bellevue office and w
 1. Run the following to block incoming calls.
 
     ```powershell
-    New-CsInboundBlockedNumberPattern -Name "BlockNusance1" -Enabled $True -Description "Block Fabrikam" -Pattern "^\+?14125551111"
+    New-CsInboundBlockedNumberPattern -Name "BlockNuisance1" -Enabled $True -Description "Block Fabrikam" -Pattern "^\+?14125551111"
     ```
 
 1. Close the PowerShell window at the end of the task with the **X** in the upper right-side corner.
@@ -690,9 +692,9 @@ In this task, you will order a phone number in the Teams Admin Center to assign 
 
 1. Under **Numbers**, select **Add**.
 
-1. At the top of the page, enter a name for your order **New numbers for Bellevue site users**.
+1. At the top of the page, enter a name for your order **New numbers for Sales Group**.
 
-1. For **description** enter **New numbers for users at the Bellevue Office**.
+1. For **description** enter **New numbers for users in the Sales Group**.
 
 1. Select **United States** as **Country or region**.
 
@@ -735,7 +737,7 @@ Before a user can make calls, they need a phone number. In this task, you will a
 
 1. Under **Emergency location**, select **Search by city**, and then enter **Bellevue** and select the address you verified earlier.
 
-1. Select **Apply**.
+1. Select **Apply** and close any additional windows.
 
 1. The phone number is now assigned to Isaiah. Close the browser window at the end of the task.
 
@@ -749,7 +751,7 @@ Now Isaiah has a calling plan and phone number and we will perform a test call t
 
 1. Open the Edge browser and navigate to [https://teams.microsoft.com](https://teams.microsoft.com/). Sign in with the credentials of Isaiah.
 
-1. Log in as Isaiah Langer using the password you assigned in the previous lab. When a **Save password** dialog is displayed, select **Never**.
+1. Log in as Isaiah Langer (*IsaiahL@<TenantName>.onmicrosoft.com*) using the password you assigned in the previous lab. When a **Save password** dialog is displayed, select **Never**.
 
 1. When a **Stay signed in?** dialog is displayed, select **No**.
 
@@ -867,11 +869,11 @@ You have successfully ordered a new dedicated conference toll phone number throu
 
 1. Select **Add** and select **Toll number**. 
 
-1. Select the new conference number you acquired in task 2.
+1. Select the new conference number you acquired in task 2 from the drop-down list of Toll numbers.
 
 1. Select **Apply**.
 
-1. You will be back at the list of conference bridge numbers, sort the list by type to confirm you have a new Dedicated conference bridge. It may take a few minutes for the bridge to appear. You can refresh the page by moving to a different page in the Teams Admin Center and then returning to the **Conference bridges** page.
+1. You will be back at the list of conference bridge numbers, sort the list by **Type** to confirm you have a new Dedicated conference bridge. It may take a few minutes for the bridge to appear. You can refresh the page by moving to a different page in the Teams Admin Center and then returning to the **Conference bridges** page.
 
 1. Leave the browser window open at the end of the task.
 
