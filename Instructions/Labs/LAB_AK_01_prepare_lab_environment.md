@@ -111,7 +111,7 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 You have successfully activated the Calling Plan trial in your tenant.
 
-### Task 4 - Start a trial for Microsoft Teams Rooms Pro licenses
+### Task 4 - Start a trial for Microsoft Teams Rooms Pro and Teams Premium
 
 As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
 
@@ -121,7 +121,7 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 1. Under **View by category**, clear all categories except **Collaboration and Communication**.
 
-1. In the search box, search for and select **Microsoft Teams Rooms Pro**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
+1. In the results, find **Microsoft Teams Rooms Pro**.
 
 1. Select **Details** and select **Start free trial**. 
 
@@ -129,9 +129,11 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 1. On the order receipt page, select **Continue**.
 
+1. Repeat the steps above, but search for and add a trial for the **Microsoft Teams Premium Introductory Pricing** license.
+
 1. Leave the browser window open at the end of the task.
 
-You have successfully activated the Calling Plan trial in your tenant.
+You have successfully activated the Teams Rooms Pro and Teams Premium trials in your tenant.
 
 ### Task 5 - Assign the Domestic Calling Plan license to Isaiah Langer
 
