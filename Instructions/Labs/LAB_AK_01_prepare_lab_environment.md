@@ -95,7 +95,7 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase Services**.
 
 1. Under **View by category**, clear all categories except **Add-ons**.
 
@@ -117,7 +117,7 @@ As an admin, you can enable users to make phone calls with a Domestic Calling Pl
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Marketplace**, then **All products**.
+1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase Services**.
 
 1. Under **View by category**, clear all categories except **Collaboration and Communication**.
 
