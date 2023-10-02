@@ -402,20 +402,22 @@ In this task, we will create and license a Microsoft Teams Room device account u
 
 1. Select **Billing** then choose **Purchase Services**.
 
-1. Search for **Microsoft Teams Room Pro** from the list of available services and select **Details**. Filter the category by **Collaboration** and communication** if you have trouble finding the service.
+1. Search for **Microsoft Teams Room Pro** from the list of available services and select **Details**. Filter the category by **Collaboration and communication** if you have trouble finding the service.
 
 1. Select **Start free trial,** then on the following page, choose **Try now**, then select **Continue** on the order receipt page.
 
 ### Task 3 - Create a resource account and Exchange Online mailbox
 
-1. Open Windows PowerShell as **Administrator** and make sure you have the latest MSOnline PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **Yes to all**.
+1. Open Windows PowerShell as **Administrator** and make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
+    > [!NOTE]
+    > This command can take some time to run, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
 
     ```powershell
-    Update-Module MSOnline
+    Install-Module Microsoft.Graph
 
     ```
 
-1. Make sure you have the latest Exchange Online PowerShell modules installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **Yes to all**.
+1. Make sure you have the latest Exchange Online PowerShell modules installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
     ```powershell
     Install-Module ExchangeOnlineManagement
@@ -432,7 +434,7 @@ In this task, we will create and license a Microsoft Teams Room device account u
 1. Run the following command to create a new resource account with an Exchange Online mailbox:
 
     ```powershell
-    New-Mailbox -MicrosoftOnlineServicesID mtr01@<TenantName>.onmicrosoft.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true  -RoomMailboxPassword (ConvertTo-SecureString -String '<Insert MOD Administrator password>' -AsPlainText -Force)
+    New-Mailbox -MicrosoftOnlineServicesID mtr01@<TenantName>.onmicrosoft.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true -RoomMailboxPassword (ConvertTo-SecureString -String '<Insert Tenant User Password>' -AsPlainText -Force)
 
     ```
 
@@ -442,26 +444,22 @@ In this task, we will create and license a Microsoft Teams Room device account u
     Set-CalendarProcessing -Identity "mtr01" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
     ```
 
-1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Global Administrator**:
+1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Global Administrator** and check the box give consent for Graph to manage your organization:
 
     ```powershell
-    Connect-AzureAD
+    Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 
-    Set-AzureADUser -ObjectID mtr01@<TenantName>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration -UsageLocation 'US'
+    Update-MgUser -UserId "mtr01@<TenantName>.onmicrosoft.com" -UsageLocation US -PasswordPolicies DisablePasswordExpiration
 
     ```
 
 1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 4cde982a-ede4-4409-9ae6-b003453c8ea6, and it's assigned to the account **mtr01@&gt;TenantName&lt;.onmicrosoft.com**:
 
     ```powershell
-    $MTRLicense = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicense 
-    $MTRLicense.SkuId = "4cde982a-ede4-4409-9ae6-b003453c8ea6" 
     
-    $Licenses = New-Object -TypeName Microsoft.Open.AzureAD.Model.AssignedLicenses 
+    $MTRProSku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'Microsoft_Teams_Rooms_Pro'
     
-    $Licenses.AddLicenses = $MTRLicense 
-    
-    Set-AzureADUserLicense -ObjectId mtr01@<TenantName>.onmicrosoft.com -AssignedLicenses $Licenses
+    Set-MgUserLicense -UserId "mtr01@<TenantName>.onmicrosoft.com" -AddLicenses @{SkuId = $MTRProSku.SkuId} -RemoveLicenses @()
 
     ```
 
