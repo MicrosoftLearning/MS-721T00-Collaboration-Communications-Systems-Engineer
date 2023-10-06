@@ -18,13 +18,17 @@ Contoso needs to make changes to existing users who are enabled for Teams Voice 
 
 ## Instructions
 
+> [!IMPORTANT]
+> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
+> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. M365x01234567) for your Microsoft 365 account.
+
 ## Exercise 1: Manage voice users
 
 ### Exercise Duration
 
   - **Estimated Time to complete**: 30 minutes
 
-In this exercise, you will perform day-to-day management tasks for Teams Voice users.
+In this exercise, you will perform day-to-day management tasks for Teams Phone users.
 
 ### Task 1 - Change user call pickup settings
 
@@ -58,7 +62,7 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
 
-1. Use the following cmdlet to import the module and connect **to Microsoft Teams**:
+1. Use the following cmdlet to import the module and connect to Microsoft Teams:
 
     ```powershell
     Import-Module MicrosoftTeams  
@@ -67,10 +71,10 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. When prompted for credentials, enter the credentials of **Allan Deyoung**.
 
-1. Type the following command to enable Alex Wilber for **Direct Routing**:
+1. Type the following command to enable Alex Wilber for Direct Routing:
 
     ```powershell
-    Set-CsPhoneNumberAssignment -Identity AlexW@<tenant>.onmicrosoft.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
+    Set-CsPhoneNumberAssignment -Identity AlexW@<TENANT NAME>.onmicrosoft.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
 
 1. Close the PowerShell Window at the end of the task.
@@ -95,7 +99,7 @@ In this task, you will configure Alex Wilber so that Allan Deyoung is a delegate
 
 1. Search for **Allan Deyoung**, and select **Add** to include them on the **People list**, then select **Apply**.
 
-1. In the list below **Call delegation**, find **Allan Deyoung** and leave the **Permission** value as **Make and receive calls**. Switch the **Allow changing call settings** radio button to **Off**.
+1. In the list below **Call delegation**, find **Allan Deyoung** and leave the **Permission** value as **Make calls**. Switch the **Allow changing call settings** radio button to **Off**.
 
 1. Select **Save**. 
 
@@ -153,7 +157,7 @@ In this task you will assign a new Dial out policy to Megan Bowen, to restrict h
 
 1. Wait until the notification **The dial out policy was assigned** shows, then select **Manage users** to exit the properties page.
 
-1. Select the circle with the **KJ** initials in the upper right-side and select **Sign out**.
+1. Select the circle with the **AD** initials in the upper right-side and select **Sign out**.
 
 1. Close the browser window open for the end of this task.
 
@@ -171,7 +175,7 @@ In this exercise, you will gain an understanding of how to configure Call Queues
 
 In this task, you will create a call queue. A call queue is a group of agents that you can direct calls to.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
+1. You are still signed in to MS721-CLIENT01 as **Admin** and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Select **Voice** and then select **Call queues**.
 
@@ -183,25 +187,30 @@ In this task, you will create a call queue. A call queue is a group of agents th
 
 1. Enter **Sales CQ** as **Display name**
 
-1. **SalesCQ** as **Username,** leave domain as-is.
+1. **SalesCQ** as **Username** and leave the domain as-is.
 
 1. **Resource account type** select **Call queue**, then select **Save**.
 
 1. Once saved, you will see Sales CQ under accounts to add, select **Add**.
 
-1. You do not need to assign a Calling ID for this lab
+1. You do not need to assign a Calling ID for this lab.
 
 1. Set **Language** to **English (United States)**.
 
-1. Under **Call answering** select **Choose users and group, Add users**, search for Isaiah Langer. and select **Add**.
+1. Select **Next** to skip **Greeting and music** for now, and go to **Call answering**. 
+
+1. Under **Call answering** select **Choose users and group > Add users**, search for Isaiah Langer. and select **Add**.
 
 1. Leave the other options as default.
 
-1. Scroll down the page and select **Submit**. You will see your call queue in the call queues list
+1. Scroll down the page and select **Submit**. You will see **Sales CQ** in the call queues list, but with a notice that the Resource account is unlicensed. 
 
-1. Leave the Teams Admin Center Open for the next steps
+    > [!NOTE]
+    > All resource accounts associated with voice applications need a Microsoft Teams Phone Resource Account license to work, but not having one for this lab will not prevent completion. Microsoft 365 does not offer trial licenses for Resource Accounts, and despite being free, administrators are still required to enter billing information.
 
-You have successfully created the Sales CQ call queue and added Isaiah Langer as an agent
+1. Leave the Teams admin center Open for the next steps.
+
+You have successfully created the Sales CQ call queue and added Isaiah Langer as an agent.
 
 ### Task 2 - Create an auto attendant for the Sales call queue
 
@@ -263,13 +272,13 @@ By default, if a call to a call queue isn't answered by an agent within the maxi
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**
 
-1. Under **Call time out handling**, select **Redirect this call to**, select Redirect to, from the drop-down menu select **Voicemail (Shared)**
+1. Under **Exception handling > Call timeout**, select **Redirect this call to**, select Redirect to, from the drop-down menu select **Voicemail (Shared)**
 
 1. In the search type **Sales Group**, select **Sales Group**, 
 
 1. Set Enable **Transcription On**
 
-1. Select **Add a greeting message** and type **“We are unable to take your call, please leave a message and we will be back with you as soon as possible.”** 
+1. Select **Add a greeting message** and type **We are unable to take your call, please leave a message and we will be back with you as soon as possible.** 
 
 1. Select **Submit**
 
@@ -279,11 +288,11 @@ You have successfully assigned a voicemail to the Call Queue should it reach a t
 
 In this task, you will enable conference mode that will pass the call between the inbound calls more quickly.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
+1. You are still signed in to MS721-CLIENT01 as **Admin** and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
 
-1. Under **Call answering** select find **Conference mode**, toggle the setting to **On**. 
+1. Under **Call answering**, find **Conference mode** and validate the toggle is **On**.
 
 1. Click **Submit**.
 
@@ -335,7 +344,7 @@ In this task, you will obtain a free MP3 to the music on hold solution for the S
 
 1. Select **Submit**.
 
-1. Select the circle with the KJ initials in the upper right-side and select **Sign out**.
+1. Select the circle with the **AD** initials in the upper right-side and select **Sign out**.
 
 1. Close all browser windows currently open.
 
@@ -384,38 +393,15 @@ In this task, you will provision a Teams Phone device in the Teams administratio
 
 1. In the Teams Admin Center, on the **Provision devices** page, choose **Refresh**, then choose the **Waiting for sign in** tab. The Teams IP Phone will show in the list.
 
-1. Select the circle in the upper right-side with the **KJ** initials and select Sign out.
+1. Select the circle in the upper right-side with the **AD** initials and select Sign out.
 
 1. Close the browser window at the end of this task.
 
 The Teams IP Phone can now be signed in to by a user or remotely signed in to a common area account.
 
-### Task 2 - Create, license, and enable Enterprise Voice for a Microsoft Teams Room account 
+### Task 2 - Create a resource account and Exchange Online mailbox for Teams Rooms
 
-In this task, we will create and license a Microsoft Teams Room device account using Windows PowerShell. This will be for the Contoso Board Room at the Bellevue site and use Direct Routing for voice calls.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin”.
-
-1. Open Microsoft Edge from the task bar and browse to the Microsoft 365 admin center at [https://admin.microsoft.com](https://admin.microsoft.com/).
-
-1. Sign in as the **MOD Administrator** with the credentials provided.
-
-1. Select **Billing** then choose **Purchase Services**.
-
-1. Search for **Microsoft Teams Room Pro** from the list of available services and select **Details**. Filter the category by **Collaboration and communication** if you have trouble finding the service.
-
-1. Select **Start free trial,** then on the following page, choose **Try now**, then select **Continue** on the order receipt page.
-
-### Task 3 - Create a resource account and Exchange Online mailbox
-
-1. Open Windows PowerShell as **Administrator** and make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
-    > [!NOTE]
-    > This command can take some time to run, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
-
-    ```powershell
-    Install-Module Microsoft.Graph
-
-    ```
+In the following task, we will use a combination of Microsoft Graph PowerShell, Exchange Online PowerShell, and Teams PowerShell to create and configure a resource account with an Exchange Online mailbox. 
 
 1. Make sure you have the latest Exchange Online PowerShell modules installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
@@ -431,10 +417,10 @@ In this task, we will create and license a Microsoft Teams Room device account u
     
     ```
 
-1. Run the following command to create a new resource account with an Exchange Online mailbox:
+1. Run the following command to create a new resource account with an Exchange Online mailbox.  Replace &lt;TENANT NAME&gt; and &lt;USER PASSWORD&gt; with the correct values:
 
     ```powershell
-    New-Mailbox -MicrosoftOnlineServicesID mtr01@<TenantName>.onmicrosoft.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true -RoomMailboxPassword (ConvertTo-SecureString -String '<Insert Tenant User Password>' -AsPlainText -Force)
+    New-Mailbox -MicrosoftOnlineServicesID mtr01@<TENANT NAME>.onmicrosoft.com -Name "mtr01" -Alias mtr01 -Room -EnableRoomMailboxAccount $true -RoomMailboxPassword (ConvertTo-SecureString -String '<USER PASSWORD>' -AsPlainText -Force)
 
     ```
 
@@ -444,22 +430,36 @@ In this task, we will create and license a Microsoft Teams Room device account u
     Set-CalendarProcessing -Identity "mtr01" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
     ```
 
+### Task 3 - Configure and license resource account with Microsoft Graph
+
+Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license you acquired in a previous lab and configure the resource account password policy.
+
+1. Open Windows PowerShell as **Administrator** and make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
+
+    > [!NOTE]
+    > This command can take some time to run, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+
+    ```powershell
+    Install-Module Microsoft.Graph
+
+    ```
+
 1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Global Administrator** and check the box give consent for Graph to manage your organization:
 
     ```powershell
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 
-    Update-MgUser -UserId "mtr01@<TenantName>.onmicrosoft.com" -UsageLocation US -PasswordPolicies DisablePasswordExpiration
+    Update-MgUser -UserId "mtr01@<TENANT NAME>.onmicrosoft.com" -UsageLocation US -PasswordPolicies DisablePasswordExpiration
 
     ```
 
-1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 4cde982a-ede4-4409-9ae6-b003453c8ea6, and it's assigned to the account **mtr01@&gt;TenantName&lt;.onmicrosoft.com**:
+1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 4cde982a-ede4-4409-9ae6-b003453c8ea6, and it's assigned to the account **mtr01@&gt;TENANT NAME&lt;.onmicrosoft.com**:
 
     ```powershell
     
     $MTRProSku = Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'Microsoft_Teams_Rooms_Pro'
     
-    Set-MgUserLicense -UserId "mtr01@<TenantName>.onmicrosoft.com" -AddLicenses @{SkuId = $MTRProSku.SkuId} -RemoveLicenses @()
+    Set-MgUserLicense -UserId "mtr01@<TENANT NAME>.onmicrosoft.com" -AddLicenses @{SkuId = $MTRProSku.SkuId} -RemoveLicenses @()
 
     ```
 
@@ -511,7 +511,7 @@ Megan Bowen has reported they are not receiving voicemails. Microsoft offers som
 
 1. On the left menu, select **Show all**, then **Users** and **Active Users**. 
 
-1. Find Megan Bowen and note down their username and email address, you will need it to run the test. Note this is one value in the format MeganB@lab&lt;Lab Number&gt;.o365ready.com
+1. Find Megan Bowen and note down their username and email address, you will need it to run the test. Note this is one value in the format MeganB@lab&lt;LAB NUMBER&gt;.o365ready.com
 
 1. On the left menu, select **show all**, then **Support** and under the support menu **Help & support**.
 
@@ -769,7 +769,7 @@ In this task, we will review the PSTN Usage report.
 
 1. Select **Analytics &amp; reports** on the left menu then **Usage reports**.
 
-1. Under report select the **PSTN usage** report.
+1. Under report select the **PSTN & SMS (preview) usage** report.
 
 1. Under Date range select **last 7 days**.
 
@@ -779,7 +779,7 @@ You will see a report showing all the PSTN calls made in the last 7 days. You sh
 
 The report shows:
 
-- **Time stamp (UTC)** is the time the call started.
+- **Start time (UTC)** is the time the call started.
 
 - **Display name** is the display name of the user. You can click the display name to go to the user's setting page in the Microsoft Teams admin center.
 
@@ -787,17 +787,15 @@ The report shows:
 
 - **Phone number** is the number that received the call for inbound calls or the number dialed for outbound calls.
 
+- **Caller ID** is the number of the source caller.
+
+- **Operator** is the operator in which the number was routed through.
+
 - **Call type** is whether the call was a PSTN outbound or inbound call and the type of call such as a call placed by a user or an audio conference. 
 
-- **Called to** is the number dialed.
+- **Destination dialed** is the number dialed.
 
-- **To country or region** is the country or region dialed.
-
-- **Called from** is the number that placed the call.
-
-- **From country or region** is the country or region from where the call was placed.
-
-- **Charge** is the amount of money or cost of the call that's charged to your account.
+- **Cost** is the amount of money or cost of the call that's charged to your account.
 
 - **Currency** is the type of currency used to calculate the cost of the call.
 
@@ -809,7 +807,7 @@ The report shows:
 
 - **Number type** is the user's phone number type, such as a service of toll-free number.
 
-- **Country or region** is the usage location.
+- **User's location** is the usage location.
 
 - **Conference ID** is the conference ID of the audio conference.
 
@@ -857,11 +855,10 @@ In this task, you open and review Call Quality Dashboard
 
 1. This will cause a new browser tab to open going to [https://cqd.teams.microsoft.com/](https://cqd.teams.microsoft.com/).
 
-1. You will need to again log in as a Tenant Administrator, select **Sign In** top right.
+1. Select **Sign In** top right, and sign in as **Allan Deyoung**,
 
-1. You should be automatically signed in, if not, provide your Tenant Administrator credentials.
-
-    As we have not made many calls in this environment, and when making calls in lab virtual machine, not all metrics are provided to the Teams service, some reports will be blank and incomplete.
+    > [!NOTE]
+    > As we have not made many calls in this environment, and when making calls in lab virtual machine, not all metrics are provided to the Teams service, some reports will be blank and incomplete.
 
 1. As an example, select **Help Desk Reports** from the top menu and on the Help Desk report page select the **Call Details** tab to see recent calls.
 

@@ -18,6 +18,9 @@ As part of the expanding business, the organization has an existing SIP trunk in
 
 ## Instructions
 
+> [!IMPORTANT]
+> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2.
+
 ## Exercise 1: Configure lab for Direct Routing
 
 ### Exercise Duration
@@ -58,9 +61,9 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** ((**Note**: Do not enter MS721.)).
 
-1. Take note your Lab Number. This lab code will expire 90 days after the start of this course. We will refer to this as your **Lab Number** going forward in the lab.
+1. Take note your LAB NUMBER. This lab code will expire 90 days after the start of this course. We will refer to this as your **LAB NUMBER** going forward in the lab.
 
-1. When the process is completed, you will see a **Student Lab Number** dialog, followed by a 5 digit number. Note this number down and remember it. You will refer to this five-digit number throughout the labs.
+1. When the process is completed, you will see a **Student LAB NUMBER** dialog, followed by a 5 digit number. Note this number down and remember it. You will refer to this five-digit number throughout the labs.
 
 1. You will be using all five digits as part of your organization's on-premises domain.
 
@@ -75,7 +78,7 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 1. On the Welcome page, select the **Update Public IP Address** tab.
 
-1. In the **Student Lab Number** box, type your five-digit lab number. If you did not write down your original lab number, you can find it by signing in to Microsoft 365 and browsing to the **Domains** feature.
+1. In the **Student LAB NUMBER** box, type your five-digit lab number. If you did not write down your original lab number, you can find it by signing in to Microsoft 365 and browsing to the **Domains** feature.
 
 1. In the **Old public IP address** box, type the previously used public IP address. If you did not write down your original public IP address, open a command prompt and try to ping your lab domain name. Although you will not receive a response, the domain name should resolve to IP.
 
@@ -101,7 +104,7 @@ In the following task you will execute a script to setup your lab environment.
 
 1. In the **Office 365 Admin password** box, enter the MOD Administrator password, provided to you.
 
-1. In the **5-digit lab number** box, enter your **Lab Number** from the previous task and select **Verify**.
+1. In the **5-digit lab number** box, enter your **LAB NUMBER** from the previous task and select **Verify**.
 
 1. The script tries to use the delivered credentials to access your tenant. Ensure the credentials were verified and review the identified public IP address in the blank window.
 
@@ -125,7 +128,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
 1. Open File Explorer and then browse to **C:\LabFiles**.
 
-1. Double-click **CertReq-lab&lt;Lab Number&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
+1. Double-click **CertReq-lab&lt;LAB NUMBER&gt;.o365ready.com.txt**. This certificate request was created by the configuration script.
 
     ![Screenshot of the completed certificate request file in Windows Explorer](./Linked_Image_Files/M01_L01_E01_T04.png)
 
@@ -189,7 +192,7 @@ In the following task, you will add the custom domain to Megan Bowen.
 
 1. In the Megan Bowen user card, select the **Account** tab under **Username and email** select **Manage username and email**.
 
-1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;Lab Number&gt;.o365ready.com**.
+1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;LAB NUMBER&gt;.o365ready.com**.
 
 1. Select **Done**, then select **Save changes**.
 
@@ -229,7 +232,7 @@ In this task, you will verify and add your SBC to your tenant.
 
 1. In the left navigation select **Voice**, select **Direct Routing**, and under SBCs, select **Add**.
 
-1. Add the FQDN **sbc01.lab&lt;Lab Number&gt;.o365ready.com** and select **Save**. Please note, use ALL lower case, it is case sensitive. Leave all the other settings as-is. 
+1. Add the FQDN **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com** and select **Save**. Please note, use ALL lower case, it is case sensitive. Leave all the other settings as-is. 
 
 1. Leave the browser open at the end of this task.
 
@@ -245,7 +248,7 @@ In the following task, you will download the DigiCert certificate you requested 
 
 1. In the message list, locate and select the email from **DigiCert** with the zip file attachment. The message may arrive in the Focused or Other folder and should arrive within 2-5 minutes.
 
-1. Download the **sbc01_lab&lt;Lab Number&gt;.o365ready.comXXXXXXX.zip** file attachment, it will be saved to the default Downloads folder.
+1. Download the **sbc01_lab&lt;LAB NUMBER&gt;.o365ready.comXXXXXXX.zip** file attachment, it will be saved to the default Downloads folder.
 
 1. Close the browser window to end the task.
 
@@ -337,16 +340,16 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. Once the module is installed you will see the command prompt again.
 
-1. Enter and modify the following cmdlet with your **Lab Number** and **Public SBC IP Address** to configure the DNS Record for the SBC (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
+1. Enter and modify the following cmdlet with your **LAB NUMBER** and **Public SBC IP Address** to configure the DNS Record for the SBC (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
-    Add-DnsServerResourceRecordA -ComputerName MS720-RRAS01 -CimSession $Cimsession -ZoneName lab<Lab Number>.o365ready.com -Name sbc01 -IPv4Address <Public SBC IP>
+    Add-DnsServerResourceRecordA -ComputerName MS720-RRAS01 -CimSession $Cimsession -ZoneName lab<LAB NUMBER>.o365ready.com -Name sbc01 -IPv4Address <Public SBC IP>
     ```
 
 1. Verify the DNS zone was created successfully by running the following command.  You should see it pointing to the Public IP Address that the SBC was assigned through Azure:
 
     ```powershell
-	nslookup sbc01.lab<Lab Number>.o365ready.com
+	nslookup sbc01.lab<LAB NUMBER>.o365ready.com
 
 	```
 
@@ -360,7 +363,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
-1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;Lab Number&gt;.o365ready.com](*)
+1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com](*)
 
 > [!NOTE]
 > You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
@@ -621,7 +624,7 @@ In the following task, you will configure IP groups for the SBC.
 
 	- **Classify By Proxy Set:** Disable
 
-	- **Local Host Name:** the name given to the device during creation - **sbc01.lab&lt;Lab Number&gt;.o365ready.com**
+	- **Local Host Name:** the name given to the device during creation - **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com**
 
 	- **Always Use Src Address:** Yes
 
@@ -661,7 +664,7 @@ In the following task, you will add the message manipulation on the SBC.
 
 	- **Source IP Address:** 52.114.\*.\* 
 
-	- **Destination Host:** FQDN of SBC (**sbc01.lab&lt;Lab Number&gt;.o365ready.com)**
+	- **Destination Host:** FQDN of SBC (**sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com)**
 
 	- **Message Condition:** #0 [Teams] 
 
@@ -798,7 +801,7 @@ If you have several usages defined, the names of the usages might truncate. Use 
 1. Run the New-CsOnlineVoiceRoute command - Creates a new online voice route. Online voice routes contain instructions that tell Microsoft Teams how to route calls from Office 365 users to phone numbers on the public switched telephone network (PSTN) or a private branch exchange (PBX):
 
     ```powershell
-    New-CsOnlineVoiceRoute -Identity "10 Digit Dialing" -NumberPattern "^\+1(\d{10})$" -OnlinePstnGatewayList sbc01.lab<Lab Number>.o365ready.com -OnlinePstnUsages "US and Canada"
+    New-CsOnlineVoiceRoute -Identity "10 Digit Dialing" -NumberPattern "^\+1(\d{10})$" -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -OnlinePstnUsages "US and Canada"
 
     ```
 
@@ -824,7 +827,7 @@ In the following task, you will create another voice routing policy with the PST
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
     ```powershell
-    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<Lab Number>.o365ready.com -PolicyName "North America"
+    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PolicyName "North America"
 
     ```
 
@@ -852,7 +855,7 @@ In the following task, you will enable the end user for voice services through t
 1. Run the Set-CsPhoneNumberAssignment command, the command assigns a phone number to a user or resource account. When you assign a phone number the EnterpriseVoiceEnabled flag is automatically set to True.:
 
     ```powershell
-    Set-CsPhoneNumberAssignment -Identity MeganB@lab<Lab Number>.o365ready.com -PhoneNumber "+14255551234" -PhoneNumberType DirectRouting
+    Set-CsPhoneNumberAssignment -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551234" -PhoneNumberType DirectRouting
 
     ```
 
