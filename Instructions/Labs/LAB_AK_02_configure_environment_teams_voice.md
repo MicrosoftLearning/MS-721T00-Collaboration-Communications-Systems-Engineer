@@ -54,7 +54,7 @@ We will input our network details and review the output report.
 
 ### Task 1 - Create Personas
 
-In the following task, you will create a custom user persona of a network user. In our scenario, we have some users that are expected to only use audio for p2p calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
+In the following task, you will create a custom user persona of a network user. In our scenario, we have some users that are expected to only use audio for peer-to-peer calls and PSTN calls. They will not use video or desktop sharing as part of their role. We need to create a persona to reflect their use when planning our network.
 
 1. Sign into **MS721-CLIENT01** as **Admin** with the password provided to you.
 
