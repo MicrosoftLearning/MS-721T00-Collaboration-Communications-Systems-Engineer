@@ -444,7 +444,7 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
 
     ```
 
-1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **Global Administrator** and check the box give consent for Graph to manage your organization:
+1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **MOD Administrator** and check the box give consent for Graph to manage your organization:
 
     ```powershell
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
@@ -453,7 +453,7 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
 
     ```
 
-1. To assign the license, use the **Set-AzureADUser** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, the license SKU ID is 4cde982a-ede4-4409-9ae6-b003453c8ea6, and it's assigned to the account **mtr01@&gt;TENANT NAME&lt;.onmicrosoft.com**:
+1. To assign the license, use the **Set-MgUserLicense** cmdlet, and convert the license SKU ID into a PowerShell license type object which is then assigned to the resource account. In the following example, we search for the **Sku  Part Number** to obtain the **SkuId** and then assign it to the account **mtr01@&gt;TENANT NAME&lt;.onmicrosoft.com**:
 
     ```powershell
     
