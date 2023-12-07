@@ -59,7 +59,7 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 1. In the **IP address** box, enter your public IP address from the previous task.
 
-1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** ((**Note**: Do not enter MS721.)).
+1. In the **Lab Code** box, enter **MS720**, press **Enter** or select **Submit** (**Note**: Do not enter MS721.).
 
 1. Take note your LAB NUMBER. This lab code will expire 90 days after the start of this course. We will refer to this as your **LAB NUMBER** going forward in the lab.
 
