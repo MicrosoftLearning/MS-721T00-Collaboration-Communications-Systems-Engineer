@@ -81,87 +81,46 @@ In this task you will sign into the clients provided by your training provider a
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
-1. When the Licenses Panel is shown, validate you can see 10 of the **Office 365 E5** licenses are now applied to users, with 5 remaining licenses available.
+1. When the Licenses Panel is shown, validate you can see 10 of the **Microsoft 365 E5** licenses are now applied to users, with 5 remaining licenses available. You should also see licenses for the following:
+    
+    - Microsoft Teams Domestic Calling Plan Trial
+    
+    - Microsoft Teams Phone Resource Account Trial
 
-1. Select **Office 365 E5** to see who has the licenses applied.
+    - Microsoft Teams Premium Introductory Pricing Trial
+
+    - Microsoft Teams Rooms Pro Trial
+
+1. Select **Microsoft 365 365 E5** to see who has the licenses applied.
 
 1. Leave the browser open at the end of the task.
 
 You have successfully signed into your test clients and reviewed the overall number of licenses applied to the Office 365 tenant.
 
-### Task 3 - Add the Microsoft Teams Domestic Calling Plan trial license to your tenant
+### Task 3 - Assign additional Teams licenses to users
 
-As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
-
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase Services**.
-
-1. Under **View by category**, clear all categories except **Add-ons**.
-
-1. In the search box, search for and select **Microsoft Teams Domestic Calling Plan for US and Canada Trial**, note you may need to expand the list to see all the add-ons and be sure to select the trial version.
-
-1. Select **Details** and select **Start free trial**. 
-
-1. On the Check out page, select **Try now**.
-
-1. On the order receipt page, select **Continue**.
-
-1. Leave the browser window open at the end of the task.
-
-You have successfully activated the Calling Plan trial in your tenant.
-
-### Task 4 - Start a trial for Microsoft Teams Rooms Pro and Teams Premium
-
-As an admin, you can enable users to make phone calls with a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the trial for domestic calling.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
-
-1. On the Microsoft 365 admin center page, select the three dashed in the upper left side, select **Billing**, then **Purchase Services**.
-
-1. Under **View by category**, clear all categories except **Collaboration and Communication**.
-
-1. In the results, find **Microsoft Teams Rooms Pro**.
-
-1. Select **Details** and select **Start free trial**. 
-
-1. On the Check out page, select **Try now**.
-
-1. On the order receipt page, select **Continue**.
-
-1. Repeat the steps above, but search for and add a trial for the **Microsoft Teams Premium Introductory Pricing** license.
-
-1. Leave the browser window open at the end of the task.
-
-You have successfully activated the Teams Rooms Pro and Teams Premium trials in your tenant.
-
-### Task 5 - Assign the Domestic Calling Plan license to Isaiah Langer
-
-As an admin, you can assign the Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. This is a Domestic Calling Plan or an International Calling Plan in Office 365. Isaiah Langer recently joined Contoso and his job requires him to make domestic phone calls. In this task, you will activate the Calling Plan license for Isaiah Langer. Isaiah already has an E5 license, so has a Teams Phone System license, but requires a calling plan license.
+As an admin, you can assign the Teams Domestic Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. In this task, you will activate the Teams Domestic Calling Plan license for five users. All users already have an E5 license, so all they need is a calling plan license.
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. On the Microsoft 365 admin center page, in the left navigation, select **Users**, then **Active users**.
 
-1. In the **Active users** list, select **Isaiah Langer**.
+1. In the **Active users** list, select the checkboxes next to the following users:
 
-1. In the **Isaiah Langer** card, select **Reset Password**.
+    - Alex Wilber
+    - Allan Deyoung
+    - Diego Siciliani
+    - Isaiah Langer
+    - Joni Sherman
 
-1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
+1. Select **Manage product licenses** at the top of the list of user.
 
-1. Enter the **MOD Administrator** password in the _“Resource”_ section on the right side of the lab window.
+1. In the **Manage product licenses** pane, select **Assign more** and then select the following licenses from the list:
 
-1. Press **Reset password**.
+    - Microsoft Teams Domestic Calling Plan
+    - Microsoft Teams Premium Introductory Pricing
 
-1. Press **Close**.
-
-1. In the **Active users** list, again select **Isaiah Langer**.
-
-1. In the **Isaiah Langer** card, select **Licenses and apps** tab.
-
-1. In the **Licenses** list, select the **Microsoft Teams Domestic Calling Plan** check box.
-
-1. Select **Save changes** and then close the user card.
+1. Select **Save changes** and then close the pane.
 
 1. Sign out the **MOD Administrator** with the MA initials in the circle in the upper right-side corner and select **Sign out**.
 

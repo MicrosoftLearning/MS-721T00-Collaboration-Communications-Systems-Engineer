@@ -290,7 +290,7 @@ In this task, you will enable conference mode that will pass the call between th
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
-1. Under **Voice**, and **Call Queues**, select **Sales CQ**, 
+1. Under **Voice**, and **Call Queues**, select **Sales CQ**.
 
 1. Under **Call answering**, find **Conference mode** and validate the toggle is **On**.
 
@@ -446,6 +446,8 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
 
 1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **MOD Administrator** and check the box give consent for Graph to manage your organization:
 
+    ![A screenshot asking to provide consent for Microsfot Graph.](Linked_Image_Files/M03_E03_T01_01.png)
+
     ```powershell
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 
@@ -463,7 +465,7 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
 
     ```
 
-Upon completion of these steps, you can view the new Teams Room account in the Microsoft 365 admin center and the account can now be signed-in to a Microsoft Teams Room system using the password provided in step **4**.
+Upon completion of these steps, you can view the new Teams Room account in the Microsoft 365 admin center and the account can now be signed-in to a Microsoft Teams Room system using the password provided earlier.
 
 ### Task 4 - Prepare to manage devices by creating tags in the Teams Admin Center
 
