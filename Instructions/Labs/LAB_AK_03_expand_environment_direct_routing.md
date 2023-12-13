@@ -115,6 +115,12 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
 
+1. You will be prompted again to enter the username and password for the Administrator account on MS721-RRAS01.  When prompted, fill out the following information and select **OK**:
+
+	- **User name:** Administrator
+
+	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
+
 1. When you see "Lab setup complete" you may continue to Task 4.
 
 ### Task 4 - Request your public certificate from DigiCert
