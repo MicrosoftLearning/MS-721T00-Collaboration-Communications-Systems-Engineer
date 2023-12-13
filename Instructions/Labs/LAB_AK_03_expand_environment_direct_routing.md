@@ -8,6 +8,10 @@ lab:
 # Lab 03: Expand your Teams Phone Environment to use Direct Routing
 # Student lab answer key
 
+> [!IMPORTANT]
+> At this time, Lab 3 will not work using the existing instructions. The CallandMeetLabs.exe script that is used for tenant and lab configuration is currently failing with an error. We are working on a resolution, and in the meantime, please continue to Lab 4.
+
+
 ## Lab scenario
 
 As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Megan will be moved from the old telephone system to the new Microsoft Phone System solution.
