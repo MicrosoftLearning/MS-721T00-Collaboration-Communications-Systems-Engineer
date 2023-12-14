@@ -19,7 +19,7 @@ As part of the expanding business, the organization has an existing SIP trunk in
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2.
+> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2. LAB DOMAIN refers to the full lab domain (i.e. lab12345.o365ready.com).
 
 ## Exercise 1: Configure lab for Direct Routing
 
@@ -100,6 +100,16 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 1. In the **User Account Control** dialog box, select **Yes**.
 
+1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
+
+    > [!NOTE]
+    > This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+
+    ```powershell
+    Install-Module Microsoft.Graph -Force -AllowClobber
+
+    ```
+
 1. Change directories and run MS-721TeamsDirectRoutingLabSetup.ps1:
 
     ```powershell
@@ -109,7 +119,11 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 	```
 
-1. When prompted, enter the **Microsoft 365 Administrator** email address and password.
+1. When prompted, enter the **Microsoft 365 Administrator** email address and password. Do not use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
+
+1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box and click **Accept**.
+
+    ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
 
 1. Next, enter the **5-digit Lab Number** you generated in Task 2.
 
@@ -121,7 +135,7 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
 
-1. When you see "Lab setup complete" you may continue to Task 4.
+1. When you see **Lab setup complete.** you may continue to Task 4.
 
 ### Task 4 - Request your public certificate from DigiCert
 
@@ -175,7 +189,7 @@ In this task, you will verify your custom domain so you can work with it and ass
 
 1. Select **Settings** then select **Domains**.
 
-1. Verify your custom domain has been added to Office 365 and is set as Default. This domain starts with a **Lab** string and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
+1. Verify your custom domain has been added to Microsoft 365. This domain starts with a **lab** and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
 
 1. Leave the browser window open.
 
@@ -198,18 +212,6 @@ In the following task, you will add the custom domain to Megan Bowen.
 1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;LAB NUMBER&gt;.o365ready.com**.
 
 1. Select **Done**, then select **Save changes**.
-
-1. Close the **Manage username and email** pane.
-
-1. Return to the **Megan Bowen** and then select **Reset Password**.
-
-1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
-
-1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
-
-1. Press **Reset password**.
-
-1. Press **Close**.
 
 1. Leave the browser open for the next task.
 
@@ -331,7 +333,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
-    $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential)
+    $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential -Credential Administrator)
 
     ```
 

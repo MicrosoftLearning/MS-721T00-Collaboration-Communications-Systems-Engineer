@@ -60,11 +60,11 @@ In the following task, you will create a custom user persona of a network user. 
 
 1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. You are still signed in as **MOD Administrator**. To follow the principle of least privilege, select the circle in the upper right-side corner and select **Sign out**.
+1. You are still signed in as **MOD Administrator**. To follow the principle of least privilege, select the circle in the upper right-side corner and select **Sign in with a different account**.
 
 1. Sign in with the credentials of **Allan Deyoung**, the Teams Administrator for this lab.
 
-1. Expand the left navigation menu, select and expand **Planning** and select **Network planner**.
+1. Expand the left navigation menu by selecting **Show all** and expand **Planning** and select **Network planner**.
 
 1. Select **Personas**, you will see the default personas provided by Microsoft.
 
@@ -332,11 +332,11 @@ In this task, you will sign into client01 and the Teams Admin Center and add our
 
 1. You will be prompted with **You haven't created any network sites yet**. Select **Add**.
 
-1. Enter the **name** for the first Network Site as **Tacoma Network Site** and **Description** as **Tacoma Office**.
+1. Enter the **Name** for the first Network Site as **Tacoma Network Site** and **Description** as **Tacoma Office**.
 
-1. Select **Add a Network Region**, enter **UK** and select **Add**.
+1. Select **Add a Network Region**, enter **US** and select **Add**.
 
-1. Select UK (select the circle) then select **Link**.
+1. Select **US** and then select **Link**.
 
 1. Select **Add subnets**.
 
@@ -346,15 +346,15 @@ In this task, you will sign into client01 and the Teams Admin Center and add our
 
 1. Select **Apply**.
 
-1. You have now added a subnet for the Tacoma site, select **Save** to save the Tacoma site, note you may need to scroll down the page.
+1. You have now added a subnet for the Tacoma site, select **Save** to save the Tacoma site.
 
 1. You can now see the Tacoma Network Site in the Network Sites List.
 
 1. To add the Bellevue site select **Add**.
 
-1. Enter the **name** for the first Network Site as **Bellevue Network Site** and **Description** as **Bellevue Office**.
+1. Enter the **Name** for the second Network Site as **Bellevue Network Site** and **Description** as **Bellevue Office**.
 
-1. Select **Add a Network Region**, select **UK** and select **Link**.
+1. Select **Add a Network Region**, select **US** and select **Link**.
 
 1. Select **Add subnets**.
 
@@ -364,13 +364,13 @@ In this task, you will sign into client01 and the Teams Admin Center and add our
 
 1. Select **Apply**.
 
-1. You have now added a subnet for the Bellevue site, select **Save** to save the Tacoma site, note you may need to scroll down the page.
+1. You have now added a subnet for the Bellevue site, select **Save** to save the Tacoma site.
 
-1. You can now see the Bellevue Network Site in the Network Sites List.
+1. You can now see both the Bellevue Network Site and Tacoma Network Site in the Network Sites List.
 
 1. Leave the browser open in the **Microsoft Teams admin center** at the end of this task.
 
-You have now added our 2 network sites, Tacoma, and Bellevue.
+You have now added our network sites; Tacoma, and Bellevue.
 
 ### Task 2 - Add a trusted IP address
 
@@ -382,13 +382,13 @@ In this task, you will add a trusted IP addresses for each of the Tacoma and Bel
 
 1. You will see “You haven't added any trusted IP addresses yet”. Select **Add**
 
-1. You can add a specific IP or a subnet of public IPs, For the Bellevue office add **151.101.128.81** and **32** as the network range and in the description enter **Bellevue Office Public IP**.
+1. You can add a specific IP or a subnet of public IPs, For the Bellevue office add **151.101.128.81** and **32** as the network range and in the description enter **Bellevue Office Public IP Addresses**.
 
 1. Select **Apply**.
 
 1. Select **Add** to add our second Public IP address.
 
-1. For the Tacoma office add **151.101.128.91** and **32** as the network range and in the description enter **Tacoma Office Public IP**.
+1. For the Tacoma office add **151.101.128.91** and **32** as the network range and in the description enter **Tacoma Office Public IP Addresses**.
 
 1. Select **Apply**.
 
@@ -446,7 +446,8 @@ You have successfully added an emergency address
 
 Now that we have added our network Region, Sites and Subnets we can map our network locations to physical office addresses for emergency calling. 
 
-TIP: This configuration refers to Emergency Locations, but when you are defining them, the Teams Admin Center calls them Emergency Addresses. They are the same thing.
+> [!TIP]
+> This configuration refers to Emergency Locations, but when you are defining them, the Teams Admin Center calls them Emergency Addresses. They are the same thing.
 
 You can map emergency location\addresses to:
 
@@ -534,7 +535,7 @@ Since we want all users to be able to do 5xx extension dialing, we will add a ne
 
 1. For **Name** enter **Tacoma 5xx extension dialing**.
 
-1. For **Description** enter **Converts 5xx dialed extensions to full E.164 +44208 566 5xx number**.
+1. For **Description** enter **Converts 5xx dialed extensions to full E.164 +142555515xx numbers**.
 
 1. Ensure **Basic** rule is selected, it should be by default.
 
@@ -546,9 +547,9 @@ Since we want all users to be able to do 5xx extension dialing, we will add a ne
 
 1. Check **Remove this many digits from the start of the number** and enter **1**.
 
-1. Check **Add this number to the beginning** and enter **+442085665**.
+1. Check **Add this number to the beginning** and enter **+142555515**.
 
-1. Test the rule by entering **503** and selecting **Test**. The output should be +44208566503, if the output is correct select **Save**.
+1. Test the rule by entering **503** and selecting **Test**. The output should be +14255551503, if the output is correct select **Save**.
 
 1. You will see your rule as rule 1 in the global dial plan, select **Save**.
 
@@ -598,9 +599,7 @@ You have successfully created and assigned a calling policy.
 
 ### Task 3 - Configure Call Park policies
 
-Call Park and retrieve lets users put calls on hold and enables the same user or someone else to retrieve and continue the call.
-
-Call Park is disabled by default. Our organization would like the option to use call park so we will enable it.
+Call Park and retrieve lets users put calls on hold and enables the same user or someone else to retrieve and continue the call. Call Park is disabled by default. Our organization would like the option to use call park so we will enable it.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
@@ -660,8 +659,6 @@ There is a persistent nuisance caller calling users in the Bellevue office and w
 
 1. It may take around a minute to connect, when prompted enter the username of **Allan Deyoung** and select **Next**.
 
-1. When prompted enter the password of the M365 Tenant Administrator and select **Sign In**.
-
 1. When signed in you will be returned to the command prompt.
 
 1. Run the following to block incoming calls.
@@ -670,11 +667,11 @@ There is a persistent nuisance caller calling users in the Bellevue office and w
     New-CsInboundBlockedNumberPattern -Name "BlockNuisance1" -Enabled $True -Description "Block Fabrikam" -Pattern "^\+?14125551111"
     ```
 
-1. Close the PowerShell window at the end of the task with the **X** in the upper right-side corner.
+1. Leave the PowerShell window open and/or minimize it, you will use it in future exercises.
 
 You have successfully blocked all inbound calls from 1 (412) 555-1111 via PowerShell to end the unwanted calls from that number. 
 
-## Exercise 5: Prepare users for calling
+## Exercise 5: Prepare for calling
 
 ### Exercise Duration
 
@@ -682,9 +679,9 @@ You have successfully blocked all inbound calls from 1 (412) 555-1111 via PowerS
 
 In this exercise, you will set up a user for Teams Phone with a Microsoft Calling plan. 
 
-### Task 1 - Order a phone number
+### Task 1 - Order a service number
 
-In this task, you will order a phone number in the Teams Admin Center to assign to Isaiah Langer.
+In this task, you will order a phone number in the Teams Admin Center to assign to an auto attendant in a future lab.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **Allan Deyoung**
 
@@ -692,14 +689,14 @@ In this task, you will order a phone number in the Teams Admin Center to assign 
 
 1. Under **Numbers**, select **Add**.
 
-1. At the top of the page, enter a name for your order **New numbers for Sales Group**.
+1. At the top of the page, enter a name for your order **New service number for Sales Group**.
 
-1. For **description** enter **New numbers for users in the Sales Group**.
+1. For **description** enter **New service number for Shared Calling users in the Sales Group**.
 
 1. Select **United States** as **Country or region**.
 
-1. For Number Type, select **User (subscriber)**.
-						
+1. For Number Type, select **Auto Attendant (Toll)**.
+
 1. For Operator, select **Microsoft**.
 
 1. The Quantity field will now appear, enter **1**.
@@ -721,7 +718,46 @@ In this task, you will order a phone number in the Teams Admin Center to assign 
 
 You have successfully ordered a phone number through the Teams admin center.
 
-### Task 2 - Assign a phone number to Isaiah Langer
+### Task 2 - Order a user (subscriber) number
+
+In this task, you will order a phone number in the Teams Admin Center to assign to Isaiah Langer.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **Allan Deyoung**
+
+1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Phone numbers**.
+
+1. Under **Numbers**, select **Add**.
+
+1. At the top of the page, enter a name for your order **New user (subscriber) number for Isaiah Langer**.
+
+1. For **description** enter **New user (subscriber) number for Isaiah Langer**.
+
+1. Select **United States** as **Country or region**.
+
+1. For Number Type, select **User (subscriber)**.
+
+1. For Operator, select **Microsoft**.
+
+1. The Quantity field will now appear, enter **1**.
+
+1. For **Search for new numbers** select **Search by area code** and enter **206**.
+
+> [!NOTE]
+> The phone numbers that are available in different regions will vary and **206** numbers may not be available. Try other area codes in the US and Canada, such as **308** in Nebraska.  The area code of the phone number does not need to match the emergency address location.
+
+1. When all fields are complete, select **Next**. Microsoft will now reserve phone numbers in the chosen area code. If there are no numbers available for your selected State/City combination, select another State/City and try again.
+
+1. Verify the area code and phone number, then select **Place Order**.
+
+1. You will see “Thank you, your order has been placed!”, select **Finish**.
+
+1. In the voice, under **phone numbers**, you should see your number. Note in some cases this may take 5-10 minutes to appear.
+
+1. Leave the browser window open at the end of the task.
+
+You have successfully ordered an auto attendant service number through the Teams admin center.
+
+### Task 3 - Assign a phone number to Isaiah Langer
 
 Before a user can make calls, they need a phone number. In this task, you will assign the phone number you ordered earlier to Isaiah Langer.
 
@@ -729,7 +765,7 @@ Before a user can make calls, they need a phone number. In this task, you will a
 
 1. Select **Voice** and the **Phone numbers** tab.
 
-1. Select the new phone number we ordered in Task 1.
+1. Select the new user phone number we ordered in Task 2 for Isaiah Langer.
 
 1. Select **Edit** from the top table menu.
 
@@ -739,11 +775,11 @@ Before a user can make calls, they need a phone number. In this task, you will a
 
 1. Select **Apply** and close any additional windows.
 
-1. The phone number is now assigned to Isaiah. Close the browser window at the end of the task.
+1. The phone number is now assigned to Isaiah.
 
 You have successfully assigned a phone number to Isaiah Langer.
 
-### Task 3 - Test phone calls
+### Task 4 - Test phone calls
 
 Now Isaiah has a calling plan and phone number and we will perform a test call to validate the functionality of the configuration.
 
@@ -753,37 +789,13 @@ Now Isaiah has a calling plan and phone number and we will perform a test call t
 
 1. Log in as Isaiah Langer (*IsaiahL@<TenantName>.onmicrosoft.com*) using the password you assigned in the previous lab. When a **Save password** dialog is displayed, select **Never**.
 
-1. When a **Stay signed in?** dialog is displayed, select **No**.
+1. When a **Stay signed in?** dialog is displayed, select **Yes**.
 
-1. Close the **Bring your team together** message and select the download button in the lower left-side of the window.
-
-1. When the download has finished, select **Open file** below **Teams_windows_x64.exe**.
-
-1. Select **Get started**.
-
-1. When prompted to sign in, enter Isaiah Langer’s username.
-
-1. When prompted enter Isaiah Langer’s password reset in a previous exercise.
-
-1. You will be prompted with “Stay signed into all your apps” select **No, sign in to this app only**.
-
-1. If you are prompted with the Teams welcome information:
-
-	- Bring your team together, select **Next**.
-
-	- Chat 1:1 and with groups, select **Next**.
-
-	- Connect through online meetings, select **Next**.
-
-	- Files, notes, apps, and more, all in one place, select **Next**.
-
-	- You're ready!, select **Let’s go**.
-
-1. If you are prompted **Get the Teams mobile app**, select the top right X to close the prompt.
+1. Close any popup or welcome messages until you are at the Teams main screen..
 
 1. Select the **Calls** button on the left rail.
 
-1. Dial +18776967786 and press call.
+1. Dial **+18776967786** and press call.
 
 1. If your lab machine prompted, you to use your microphone select **Allow**.
 
@@ -793,7 +805,7 @@ Now Isaiah has a calling plan and phone number and we will perform a test call t
 
 1. Press the red hang-up button to disconnect the call.
 
-Now we confirmed that Isaiah can make a PSTN call in Teams
+Now we confirmed that Isaiah can make a PSTN call in Teams.
 
 ## Exercise 6: Configure audio conferencing settings
 
@@ -878,3 +890,7 @@ You have successfully ordered a new dedicated conference toll phone number throu
 1. Leave the browser window open at the end of the task.
 
 You have successfully set up a new dedicated conference bridge number.
+
+## Next Steps
+
+At this time, you have completed Lab 1 and Lab 2.  Lab 3 will continue on with the same tenant, but introduce an AudioCodes SBC from the Azure Marketplace, which requires additional lab resources.  Launch Lab 3 separately, and when completed, continue on with Lab 4 in this environment.

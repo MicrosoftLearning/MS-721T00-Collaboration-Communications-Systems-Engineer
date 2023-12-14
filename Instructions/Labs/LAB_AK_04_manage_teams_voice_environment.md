@@ -71,25 +71,25 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. When prompted for credentials, enter the credentials of **Allan Deyoung**.
 
-1. Type the following command to enable Alex Wilber for Direct Routing:
+1. Type the following command to enable Nestor Wilke for Direct Routing:
 
     ```powershell
-    Set-CsPhoneNumberAssignment -Identity AlexW@<TENANT NAME>.onmicrosoft.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
+    Set-CsPhoneNumberAssignment -Identity NestorW@<TENANT NAME>.onmicrosoft.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
 
 1. Close the PowerShell Window at the end of the task.
 
-Alex Wilber is now configured to use Direct Routing.
+Nestor Wilke is now configured to use Direct Routing.
 
 ### Task 3 - Configure call delegation
 
-In this task, you will configure Alex Wilber so that Allan Deyoung is a delegate of Alex Wilber and is allowed to make calls on their behalf, but not receive calls.
+In this task, you will configure Nestor Wilke so that Allan Deyoung is a delegate of Nestor Wilke and is allowed to make calls on their behalf, but not receive calls.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select **Users** and **Manage users**.
 
-1. Find **Alex Wilber** and select the name to open the user’s properties.
+1. Find **Nestor Wilke** and select the name to open the user’s properties.
 
 1. On the user’s properties page, select the **Voice** tab.
 
@@ -440,7 +440,7 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
     > This command can take some time to run, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
 
     ```powershell
-    Install-Module Microsoft.Graph
+    Install-Module Microsoft.Graph -Force -AllowClobber
 
     ```
 
