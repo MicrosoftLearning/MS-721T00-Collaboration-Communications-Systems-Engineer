@@ -43,71 +43,77 @@ If ($PublicDNSZone -notcontains $labDomain) {
 
     Set-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -NewInputObject $NewSOARecord -OldInputObject $OldSOARecord -ZoneName $labDomain
     Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -NS -Name $labDomain -NameServer $labDomain
+    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -NS -Name $labDomain -NameServer 'ms720-rras01'
     Remove-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType NS -RecordData $RRAS -Name "@" -Force
 
-    # Add lab domain to Microsoft 365 tenant if it doesn't already exist
-    $existingDomains = Get-MgDomain
-    $domainExists = $existingDomains | Where-Object { $_.Id -eq $labDomain }
-
-    if ($domainExists) {
-        Write-Host "`n`n$labDomain already exists in the Microsoft 365 tenant. Skipping domain creation." -ForegroundColor Yellow
-    }
-    else {
-        $domainParams = @{
-            id        = $labDomain;
-            IsDefault = "True"
-        }
-        $domainAdded = New-MgDomain -BodyParameter $domainParams
-
-        # Get the verification code for the domain
-        $labDomainVerificationCode = (Get-MgDomainVerificationDnsRecord -DomainId "$labDomain" | Where-Object { $_.RecordType -eq "Txt" }).AdditionalProperties.text
-        Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "@" -Txt -DescriptiveText "$labDomainVerificationCode"
-        Write-Host "`tTXT Verification record created successfully for $labDomain." -ForegroundColor Green
-
-        Add-DnsServerResourceRecordA -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name $labDomain -IPv4Address $labDomainIP
-        Write-Host "`tDNS A record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordMX -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "." -MailExchange "$($labDomain.Split(".") -join "-").mail.protection.outlook.com" -Preference 5
-        Write-Host "`tDNS MX record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "@" -Txt -DescriptiveText "v=spf1 include:spf.protection.outlook.com -all"
-        Write-Host "`tTXT SPF record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "autodiscover" -HostNameAlias "autodiscover.outlook.com"
-        Write-Host "`tCNAME autodiscover record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "sip" -HostNameAlias "sipdir.online.lync.com"
-        Write-Host "`tCNAME sip record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "lyncdiscover" -HostNameAlias "webdir.online.lync.com"
-        Write-Host "`tCNAME lyncdiscover record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "enterpriseregistration" -HostNameAlias "enterpriseregistration.windows.net"
-        Write-Host "`tCNAME enterpriseregistration record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "enterpriseenrollment" -HostNameAlias "enterpriseenrollment.manage.microsoft.com"
-        Write-Host "`tCNAME enterpriseenrollment record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Srv -Name "_sip._tls" -DomainName "sipdir.online.lync.com" -Priority 100 -Weight 1 -Port 443
-        Write-Host "`tSRV _sip._tls record created successfully for $labDomain." -ForegroundColor Green
-        
-        Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Srv -Name "_sipfederationtls._tcp" -DomainName "sipfed.online.lync.com" -Priority 100 -Weight 1 -Port 5061
-        Write-Host "`tSRV _sipfederationtls._tcp record created successfully for $labDomain." -ForegroundColor Green
-        
-        Set-DnsServerRecursion -ComputerName $RRAS -CimSession $Cimsession -Enable $False
-
-        Start-Sleep -s 10
-        $domainVerified = Confirm-MgDomain -DomainId "$labDomain"
-        if ($domainVerified) { 
-            Write-Host "`t$labDomain successfully verified in the Microsoft 365 tenant." -ForegroundColor Green }
-        else { Write-Host "`t$labDomain failed to verify in the Microsoft 365 tenant." -ForegroundColor Red }
-
-        Write-Host "`n`nSuccessfully created and verified $labDomain in the Microsoft 365 tenant." -ForegroundColor Green
-    }
+    Add-DnsServerResourceRecordA -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name $labDomain -IPv4Address $labDomainIP
+    Write-Host "`tDNS A record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordMX -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "." -MailExchange "$($labDomain.Split(".") -join "-").mail.protection.outlook.com" -Preference 5
+    Write-Host "`tDNS MX record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "@" -Txt -DescriptiveText "v=spf1 include:spf.protection.outlook.com -all"
+    Write-Host "`tTXT SPF record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "autodiscover" -HostNameAlias "autodiscover.outlook.com"
+    Write-Host "`tCNAME autodiscover record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "sip" -HostNameAlias "sipdir.online.lync.com"
+    Write-Host "`tCNAME sip record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "lyncdiscover" -HostNameAlias "webdir.online.lync.com"
+    Write-Host "`tCNAME lyncdiscover record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "enterpriseregistration" -HostNameAlias "enterpriseregistration.windows.net"
+    Write-Host "`tCNAME enterpriseregistration record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecordCName -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "enterpriseenrollment" -HostNameAlias "enterpriseenrollment.manage.microsoft.com"
+    Write-Host "`tCNAME enterpriseenrollment record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Srv -Name "_sip._tls" -DomainName "sipdir.online.lync.com" -Priority 100 -Weight 1 -Port 443
+    Write-Host "`tSRV _sip._tls record created successfully for $labDomain." -ForegroundColor Green
+    
+    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Srv -Name "_sipfederationtls._tcp" -DomainName "sipfed.online.lync.com" -Priority 100 -Weight 1 -Port 5061
+    Write-Host "`tSRV _sipfederationtls._tcp record created successfully for $labDomain." -ForegroundColor Green
+    
+    Set-DnsServerRecursion -ComputerName $RRAS -CimSession $Cimsession -Enable $False
 }
 Else {
     Write-Host "`n`n$labDomain already exists in DNS. Skipping DNS zone creation." -ForegroundColor Yellow
 }
+
+# Check to see if the lab domain already exists in the Microsoft 365 tenant
+$existingDomains = Get-MgDomain
+$domainExists = $existingDomains | Where-Object { $_.Id -eq $labDomain }
+
+if ($domainExists) {
+    Write-Host "`n`n$labDomain already exists in the Microsoft 365 tenant. Skipping domain creation." -ForegroundColor Yellow
+}
+else {
+    $domainParams = @{
+        id        = $labDomain;
+        IsDefault = "True"
+    }
+    $domainAdded = New-MgDomain -BodyParameter $domainParams
+
+    # Get the verification code for the domain
+    $labDomainVerificationCode = (Get-MgDomainVerificationDnsRecord -DomainId "$labDomain" | Where-Object { $_.RecordType -eq "Txt" }).AdditionalProperties.text
+    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "@" -Txt -DescriptiveText "$labDomainVerificationCode"
+    Write-Host "`tTXT Verification record created successfully for $labDomain." -ForegroundColor Green
+    
+    Set-DnsServerRecursion -ComputerName $RRAS -CimSession $Cimsession -Enable $False
+
+    Start-Sleep -s 10
+    $domainVerified = Confirm-MgDomain -DomainId "$labDomain"
+    if ($domainVerified) { 
+        Write-Host "`t$labDomain successfully verified in the Microsoft 365 tenant." -ForegroundColor Green 
+        Remove-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType TXT -RecordData $labDomainVerificationCode -Name "@"
+    }
+    else { Write-Host "`t$labDomain failed to verify in the Microsoft 365 tenant." -ForegroundColor Red }
+
+    Write-Host "`n`nSuccessfully created and verified $labDomain in the Microsoft 365 tenant." -ForegroundColor Green
+}
+
 
 # Remove any existing certificate requests in case of previous failure
 Get-ChildItem "Cert:\localmachine\request" | where { $_.Subject -eq "CN=sbc01.$labDomain" } | Remove-Item
