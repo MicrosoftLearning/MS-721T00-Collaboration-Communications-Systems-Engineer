@@ -94,7 +94,7 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
-1. Download the script from: [MS-721TeamsDirectRoutingLabSetup.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/MS-721TeamsDirectRoutingLabSetup.ps1) and save it to **C:\Scripts**.
+1. Download the script from: [MS-721TeamsDirectRoutingLabSetup.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup.ps1) and save it to **C:\Scripts**.
 
 1. Open **Windows PowerShell as Administrator**.
 
