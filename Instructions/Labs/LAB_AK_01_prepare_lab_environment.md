@@ -43,7 +43,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. Open **Microsoft Edge** and browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
 
-1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
+1. On the **Sign in** screen, enter the credentials of the Microsoft 365 **MOD Administrator** with the username and password provided to you.
 
 1. In the upper left navigation, select the three dashes to the left of the organization name to open the full left-side menu.
 
@@ -59,17 +59,7 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. At the bottom of the card, select **Save changes**. Admin roles are updated.
 
-1. Return to the **Allan Deyoung** card by pressing the **left arrow**, and then select **Reset Password**.
-
-1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
-
-1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
-
-1. Press **Reset password**.
-
-1. Press **Close**.
-
-1. Leave the browser window open for the next task.
+1. **Close** the settings pane and leave the browser window open for the next task.
 
 You have successfully assigned the Teams Service administrator permission to Allan Deyoung.
 
@@ -81,7 +71,7 @@ In this task you will sign into the clients provided by your training provider a
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
-1. When the Licenses Panel is shown, validate you can see 10 of the **Microsoft 365 E5** licenses are now applied to users, with 5 remaining licenses available. You should also see licenses for the following:
+1. Validate you can see 10 of the **Microsoft 365 E5** licenses are now applied to users, with 5 remaining licenses available. You should also see licenses for the following:
     
     - Microsoft Teams Domestic Calling Plan Trial
     
@@ -91,7 +81,7 @@ In this task you will sign into the clients provided by your training provider a
 
     - Microsoft Teams Rooms Pro Trial
 
-1. Select **Microsoft 365 365 E5** to see who has the licenses applied.
+1. Select **Microsoft 365 365 E5** to see the users that are assigned that license.
 
 1. Leave the browser open at the end of the task.
 
@@ -99,7 +89,7 @@ You have successfully signed into your test clients and reviewed the overall num
 
 ### Task 3 - Assign additional Teams licenses to users
 
-As an admin, you can assign the Teams Domestic Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. In this task, you will activate the Teams Domestic Calling Plan license for five users. All users already have an E5 license, so all they need is a calling plan license.
+As an admin, you can assign the Teams Domestic Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. In this task, you will activate the **Teams Domestic Calling Plan license** for five users. All users already have an E5 license, so all they need is a calling plan license.
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -120,13 +110,13 @@ As an admin, you can assign the Teams Domestic Calling Plan license that gives u
     - Microsoft Teams Domestic Calling Plan
     - Microsoft Teams Premium Introductory Pricing
 
-1. Select **Save changes** and then close the pane.
+1. Select **Save changes** and then **Done** to close the pane.
 
 1. Sign out the **MOD Administrator** with the MA initials in the circle in the upper right-side corner and select **Sign out**.
 
 1. Close the browser window at the end of the task.
 
-You have successfully assigned the license to Isaiah Langer, activated additional features for this account and reset his password. Remember or write down the password. You will continue with additional tasks for assigning phone numbers in a later exercise. 
+You have successfully assigned the licenses to five users and activated Teams Premium features for these accounts. You will continue with additional tasks for assigning phone numbers in a later exercise. 
 
 ## Exercise 2: Setup PowerShell for Microsoft Teams administration
 
@@ -166,7 +156,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Get-Module -Name MicrosoftTeams
     ```
 
-1. You should see a version number of 4.9.1 or above and a multi-value field with different cmdlets available.
+1. You should see a version number of 5.8.0 or above and a multi-value field with different cmdlets available.
 
     ![Screenshot of the process of installing and importing the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01.png)
 
@@ -183,10 +173,10 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
 1. To check you are signed in correctly, you will be able to retrieve objects from your tenant. To get a list of users, run the following command:
 
     ```powershell
-    Get-CSOnlineUser
+    Get-CSOnlineUser | Select DisplayName, UserPrincipalName
     ```
 
-1. You should see some users and their attributes scroll across the screen. If you see this, you have signed in successfully and can interact with Teams in your tenant.
+1. You should see all the users with Microsoft 365 E5 and their attributes scroll across the screen. If you see this, you have signed in successfully and can interact with Teams in your tenant.
 
 1. Create a new Team to be used throughout the labs in this course by running the following command:
 
@@ -200,8 +190,8 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Disconnect-MicrosoftTeams
     ```
 
-1. You can close the Windows PowerShell window by selecting the **X** in the top right.
+1. Leave the PowerShell window open and/or minimize it, you will use it in future exercises.
 
     ![Screenshot of the disconnecting to the Microsoft Teams PowerShell module.](./Linked_Image_Files/M01_L01_E04_T01-2.png)
 
-You have successfully installed the Teams PowerShell Module, signed into Teams and tested a PowerShell command.
+You have successfully installed the Teams PowerShell Module, signed into Teams, tested a PowerShell command, and created a new Team for the sales team at Contoso.

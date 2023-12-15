@@ -8,10 +8,6 @@ lab:
 # Lab 03: Expand your Teams Phone Environment to use Direct Routing
 # Student lab answer key
 
-> [!IMPORTANT]
-> At this time, Lab 3 will not work using the existing instructions. The CallandMeetLabs.exe script that is used for tenant and lab configuration is currently failing with an error. We are working on a resolution, and in the meantime, please continue to Lab 4.
-
-
 ## Lab scenario
 
 As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Megan will be moved from the old telephone system to the new Microsoft Phone System solution.
@@ -23,7 +19,7 @@ As part of the expanding business, the organization has an existing SIP trunk in
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2.
+> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2. LAB DOMAIN refers to the full lab domain (i.e. lab12345.o365ready.com).
 
 ## Exercise 1: Configure lab for Direct Routing
 
@@ -92,37 +88,54 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 You have successfully identified your lab number and updated your public IP address.
 
-### Task 3 - Run the CallandMeetLabs.exe script
+### Task 3 - Run MS-721TeamsDirectRoutingLabSetup.ps1
 
-In the following task you will execute a script to setup your lab environment.
+In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and the DNS records for Microsoft 365 services.  The script will also connect to Microsoft Graph and add your new student lab domain. Lastly, the script will generate a certificate signing request (CSR) for DigiCert to provision a signed certificate for the SBC.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
-1. Open File Explorer and then browse to **C:\Scripts**.
+1. Download the script from: [MS-721TeamsDirectRoutingLabSetup.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup.ps1) and save it to **C:\Scripts**.
 
-1. Double-click **CallandMeetLabs.exe**.
+1. Open **Windows PowerShell as Administrator**.
 
 1. In the **User Account Control** dialog box, select **Yes**.
 
-1. In the **Office 365 Admin username** box, enter your M365 tenant MOD Administrator account name. You can find your tenant username in the resource section on the right side of the lab window.
+1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
-1. In the **Office 365 Admin password** box, enter the MOD Administrator password, provided to you.
+    > [!NOTE]
+    > This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
 
-1. In the **5-digit lab number** box, enter your **LAB NUMBER** from the previous task and select **Verify**.
+    ```powershell
+    Install-Module Microsoft.Graph -Force -AllowClobber
 
-1. The script tries to use the delivered credentials to access your tenant. Ensure the credentials were verified and review the identified public IP address in the blank window.
+    ```
 
-    **Note**: If the reported public IP address is not the same as your lab's **&lt;public IP&gt;**, verify your public IP address is correct using the steps found earlier in this exercise. If the public IP addresses do not match, cancel and run the script again. If the public IP address you have identified and the public IP found by the script still do not match, contact a lab proctor.
+1. Change directories and run MS-721TeamsDirectRoutingLabSetup.ps1:
 
-    ![Screenshot of the Lab Provisioning Tool](./Linked_Image_Files/M01_L01_E01_T03.png)
+    ```powershell
+	cd C:\Scripts
 
-1. If you see a **Ready to run script message**, select **Run Script** to prepare your lab tenant.
+    .\MS-721TeamsDirectRoutingLabSetup.ps1
 
-1. When the script has completed and you can see a **Complete** message, select **Finish**.
+	```
 
-    ![Screenshot of the completed Lab Provisioning Tool](./Linked_Image_Files/M01_L01_E01_T03-1.png)
+1. When prompted, enter the **Microsoft 365 Administrator** email address and password. Do not use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
 
-As soon as the script finishes successfully, you have successfully configured your lab environment with the provided scripts.
+1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box and click **Accept**.
+
+    ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
+
+1. Next, enter the **5-digit Lab Number** you generated in Task 2.
+
+1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
+
+1. You will be prompted again to enter the username and password for the Administrator account on MS721-RRAS01.  When prompted, fill out the following information and select **OK**:
+
+	- **User name:** Administrator
+
+	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
+
+1. When you see **Lab setup complete.** you may continue to Task 4.
 
 ### Task 4 - Request your public certificate from DigiCert
 
@@ -176,7 +189,7 @@ In this task, you will verify your custom domain so you can work with it and ass
 
 1. Select **Settings** then select **Domains**.
 
-1. Verify your custom domain has been added to Office 365 and is set as Default. This domain starts with a **Lab** string and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
+1. Verify your custom domain has been added to Microsoft 365. This domain starts with a **lab** and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
 
 1. Leave the browser window open.
 
@@ -199,18 +212,6 @@ In the following task, you will add the custom domain to Megan Bowen.
 1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;LAB NUMBER&gt;.o365ready.com**.
 
 1. Select **Done**, then select **Save changes**.
-
-1. Close the **Manage username and email** pane.
-
-1. Return to the **Megan Bowen** and then select **Reset Password**.
-
-1. Deselect **Automatically create a password** and **Require this user to change their password when they first sign in**.
-
-1. Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.
-
-1. Press **Reset password**.
-
-1. Press **Close**.
 
 1. Leave the browser open for the next task.
 
@@ -332,7 +333,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should stay as MS720-RRAS01, despite the course being MS-721):
 
     ```powershell
-    $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential)
+    $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential -Credential Administrator)
 
     ```
 
