@@ -43,7 +43,6 @@ If ($PublicDNSZone -notcontains $labDomain) {
 
     Set-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -NewInputObject $NewSOARecord -OldInputObject $OldSOARecord -ZoneName $labDomain
     Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -NS -Name $labDomain -NameServer $labDomain
-    Add-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -NS -Name $labDomain -NameServer 'ms720-rras01'
     Remove-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType NS -RecordData $RRAS -Name "@" -Force
 
     Add-DnsServerResourceRecordA -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name $labDomain -IPv4Address $labDomainIP
@@ -107,7 +106,6 @@ else {
     $domainVerified = Confirm-MgDomain -DomainId "$labDomain"
     if ($domainVerified) { 
         Write-Host "`t$labDomain successfully verified in the Microsoft 365 tenant." -ForegroundColor Green 
-        Remove-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType TXT -RecordData $labDomainVerificationCode -Name "@"
     }
     else { Write-Host "`t$labDomain failed to verify in the Microsoft 365 tenant." -ForegroundColor Red }
 
