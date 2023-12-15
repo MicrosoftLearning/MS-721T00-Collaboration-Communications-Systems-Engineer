@@ -133,7 +133,7 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 	- **User name:** Administrator
 
-	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
+	- **Password:** *Enter the local Administrator password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
 
 1. When you see **Lab setup complete.** you may continue to Task 4.
 
@@ -341,7 +341,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 	- **User name:** Administrator
 
-	- **Password:** *Enter the default Admin password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
+	- **Password:** *Enter the local Administrator password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
 
 1. Once the module is installed you will see the command prompt again.
 
