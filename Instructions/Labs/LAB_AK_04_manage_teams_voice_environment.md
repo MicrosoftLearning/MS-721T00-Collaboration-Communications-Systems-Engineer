@@ -74,12 +74,12 @@ In this task, an existing user who isn’t enabled for voice services must be en
 1. Type the following command to enable Nestor Wilke for Direct Routing:
 
     ```powershell
-    Set-CsPhoneNumberAssignment -Identity NestorW@<TENANT NAME>.onmicrosoft.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
+    Set-CsPhoneNumberAssignment -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
 
 1. Close the PowerShell Window at the end of the task.
 
-Nestor Wilke is now configured to use Direct Routing.
+Nestor is now configured to use Direct Routing.
 
 ### Task 3 - Configure call delegation
 

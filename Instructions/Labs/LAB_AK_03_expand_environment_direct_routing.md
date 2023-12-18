@@ -769,7 +769,7 @@ In the following task, you will create your first voice routing policy and PSTN 
 
 1. Select the Windows symbol in the task bar, type **PowerShell** and open a regular PowerShell window.
 
-2. In Windows PowerShell, enter the following cmdlet to connect to Teams in your tenant:
+1. In Windows PowerShell, enter the following cmdlet to connect to Teams in your tenant:
 
     ```powershell
     Connect-MicrosoftTeams
