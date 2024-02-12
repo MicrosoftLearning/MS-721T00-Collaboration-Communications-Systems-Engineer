@@ -559,6 +559,8 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
     
     1. Test the rule by entering **7786** and pressing Test. The output should be **+18776967786**, if the output is correct select **Save**.
     
+    1. In the list of normalization rules, select the rule you just created and choose **Move up** from the action menu at the top of the table.
+    
     1. You will see your new rule in the global dial plan, select **Save**. If you receive an error while attempting to save, enter a number in **External dialing prefix** for the Dial Plan, remove it again, and then click **Save**.
     
     1. Close the browser window.
