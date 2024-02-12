@@ -549,13 +549,13 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
     
     1. Ensure **Basic** rule is selected, it should be by default.
     
-    1. Tick **The number dialed begins with** and enter 7.
+    1. Tick **The number dialed begins with** and enter **7786**.
     
-    1. Tick **The length of the number being dialed is** and enter 4.
+    1. Tick **The length of the number being dialed is** and enter **4**.
     
     1. Ensure **Exactly** is selected for length of number to be dialed.
     
-    1. Tick **Add this number to the beginning** and enter +1877696.
+    1. Tick **Add this number to the beginning** and enter **+1877696**.
     
     1. Test the rule by entering **7786** and pressing Test. The output should be **+18776967786**, if the output is correct select **Save**.
     
@@ -603,9 +603,9 @@ Now we have proven the rule works, we will break the rule and confirm the rule.
 
 1. Note it will be converted to an advanced regular expression now.
 
-1. In the field the number dialed matches this regular expression, it will read **^(7\d{3})$**
+1. In the field the number dialed matches this regular expression, it will read **^(7786)$**.
 
-1. Replace the 7 with a 6 to now read, **^(6\d{3})$** 
+1. Remove the first 7 to now read, **^(786)$**.
 
 1. Test the rule by entering 7786 and pressing Test. The output should be the translated number isn't an E.164 phone number.
 
