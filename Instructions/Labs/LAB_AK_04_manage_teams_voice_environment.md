@@ -71,11 +71,20 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. When prompted for credentials, enter the credentials of **Allan Deyoung**.
 
+1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
+
+    ```powershell
+    Grant-CsOnlineVoiceRoutingPolicy -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PolicyName "North America"
+
+    ```
+
 1. Type the following command to enable Nestor Wilke for Direct Routing:
 
     ```powershell
     Set-CsPhoneNumberAssignment -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
+
+
 
 1. Close the PowerShell Window at the end of the task.
 
@@ -220,7 +229,7 @@ Now we will create an auto attendant and direct one of the options to send calls
 
 1. Under **Voice**, select **Auto Attendants** and select **Add**.
 
-1. Enter **Sales AA** for the name, 
+1. Enter **Sales AA** for the name. 
 
 1. Time zone of **(UTC-08:00) Pacific Time (US…)**,
 
