@@ -455,7 +455,7 @@ Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license 
 
 1. Now that the resource account and mailbox have been created, set the usage location and configure the password to never expire. When prompted for credentials, enter the credentials of **MOD Administrator** and check the box give consent for Graph to manage your organization:
 
-    ![A screenshot asking to provide consent for Microsfot Graph.](Linked_Image_Files/M03_E03_T01_01.png)
+    ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
 
     ```powershell
     Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
