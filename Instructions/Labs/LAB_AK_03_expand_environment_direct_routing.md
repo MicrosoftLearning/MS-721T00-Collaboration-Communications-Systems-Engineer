@@ -10,7 +10,7 @@ lab:
 
 ## Lab scenario
 
-As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Nestor will be moved from the old telephone system to the new Microsoft Phone System solution.
+As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Megan will be moved from the old telephone system to the new Microsoft Phone solution.
 
 ## Lab Setup
 
@@ -197,25 +197,27 @@ In this task, you will verify your custom domain so you can work with it and ass
 
 You have successfully verified the custom domain created from the script is set as the default domain for your tenant, which is important for later tasks.
 
-### Task 6 - Assign the custom lab domain to Nestor Wilke
+### Task 6 - Assign the custom lab domain to Megan Bowen
 
-In the following task, you will add the custom domain to Nestor Wilke.
+In the following task, you will add the custom domain to Megan Bowen.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you are still in the **Microsoft 365 admin center** as **MOD Administrator**.
 
 1. In the left navigation, select **Users** and **Active users**.
 
-1. In the **Active users** list, select **Nestor Wilke** to open the right-side menu.
+1. In the **Active users** list, select **Megan Bowen** to open the right-side menu.
 
-1. In the Nestor Wilke user card, select the **Account** tab under **Username and email** select **Manage username and email**.
+1. In the Megan Bowen user card, select the **Account** tab under **Username and email** select **Manage username and email**.
 
-1. Below **Primary email address and username**, you can see the default UPN of Nestor Wilke. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;LAB NUMBER&gt;.o365ready.com**.
+1. Below **Primary email address and username**, you can see the default UPN of Megan Bowen. Select the pencil symbol, select the textbox under **Domains** and select **lab&lt;LAB NUMBER&gt;.o365ready.com**.
 
 1. Select **Done**, then select **Save changes**.
 
+1. Repeat steps 3-6 with user **Nestor Wilke**.
+
 1. Leave the browser open for the next task.
 
-You have successfully added the custom domain to Nestor Wilke and reset their password.
+You have successfully added the custom domain to Megan Bowen and Nestor Wilke.
 
 ## Exercise 2: Deploy the session border controller
 
@@ -368,7 +370,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
-1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com](*)
+1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;LAB NUMBER&gt;. o365ready.com](*). Ensure that you replace &lt;SBCpublicIPAddress&gt; or &lt;LAB NUMBER&gt; with the IP address of the SBC instance or the lab number you got from o365ready.com.
 
 > [!NOTE]
 > You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
@@ -759,7 +761,7 @@ If the output shows the correct value for all three entries your SBC is configur
 
   - **Estimated Time to complete**:  120 minutes
 
-In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Nestor Wilke to perform voice calls over the SBC. Nestor resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider's telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently, this is cost prohibitive. 
+In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Megan Bowen to perform voice calls over the SBC. Megan resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider's telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently, this is cost prohibitive. 
 
 ### Task 1 - Create a voice routing policy with one PSTN usage
 
@@ -823,7 +825,7 @@ If you have several usages defined, the names of the usages might truncate. Use 
 
 You have successfully created a voice routing policy with a PSTN Usage.
 
-### Task 2 - Create a new voice routing policy named North America and assign it to Nestor Wilke
+### Task 2 - Create a new voice routing policy named North America and assign it to Megan Bowen
 
 In the following task, you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
 
