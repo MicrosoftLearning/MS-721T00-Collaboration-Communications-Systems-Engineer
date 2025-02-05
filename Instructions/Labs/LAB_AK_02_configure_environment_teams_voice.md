@@ -364,7 +364,7 @@ In this task, you will sign into client01 and the Teams Admin Center and add our
 
 1. Select **Apply**.
 
-1. You have now added a subnet for the Bellevue site, select **Save** to save the Tacoma site.
+1. You have now added a subnet for the Bellevue site, select **Save** to save the Bellevue site.
 
 1. You can now see both the Bellevue Network Site and Tacoma Network Site in the Network Sites List.
 
