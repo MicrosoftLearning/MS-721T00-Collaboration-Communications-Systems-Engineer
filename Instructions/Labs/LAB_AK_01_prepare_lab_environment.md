@@ -166,7 +166,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Connect-MicrosoftTeams
     ```
 
-1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@M365x&lt;TenantName&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
+1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@&lt;TenantName&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
 
 1. When you are successfully signed in you will be returned to the **PowerShell**.
 

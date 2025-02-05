@@ -60,7 +60,7 @@ In the following task, you will create a custom user persona of a network user. 
 
 1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. You are still signed in as **MOD Administrator**. To follow the principle of least privilege, select the circle in the upper right-side corner and select **Sign in with a different account**.
+1. To adhere the zero-trust security principle of _least privileged access_, you will use **Allan Deyoung** going forward, since you don't need **Global Administrator** permissions for most of the remaining labs. Select the circle in the upper right-side corner and select **Sign in with a different account**.
 
 1. Sign in with the credentials of **Allan Deyoung**, the Teams Administrator for this lab.
 
@@ -497,11 +497,15 @@ In this task, you will configure an emergency calling policy. Emergency calling 
 
 1. Turn on **Enable location lookup mode**.
 
+1. Under **Emergency numbers**, select **+ Add**
+
+1. Enter **999** as the **Emergency dial string**.
+
 1. Under **Notification mode**, select **Send notification only**: A Teams chat message is sent to the users and groups that you specify.
 
 1. In **Users and groups for emergency calls notifications**, enter Alex and then select Alex Wilber and select **Add**.
 
-1. Select **Apply**.
+1. Select **Apply** and then **Save** to finish creating your emergency calling policy.
 
 1. Leave the browser open in the **Microsoft Teams admin center** at the end of this task.
 
@@ -575,7 +579,7 @@ At Contoso, you need to enable the option of convenience recording 1:1 calls, wh
 
 1. Switch **Cloud recording for calling** to **On**.
 
-1. For **Busy on busy when in a call** to **Enabled**.
+1. For **Busy on busy during calls** to **On**.
 
 1. Select **Save**.
 
@@ -716,7 +720,7 @@ In this task, you will order a phone number in the Teams Admin Center to assign 
 
 1. Leave the browser window open at the end of the task.
 
-You have successfully ordered a phone number through the Teams admin center.
+You have successfully ordered an auto attendant service number through the Teams admin center.
 
 ### Task 2 - Order a user (subscriber) number
 
@@ -755,7 +759,7 @@ In this task, you will order a phone number in the Teams Admin Center to assign 
 
 1. Leave the browser window open at the end of the task.
 
-You have successfully ordered an auto attendant service number through the Teams admin center.
+You have successfully ordered a User (subscriber) phone number through the Teams admin center.
 
 ### Task 3 - Assign a phone number to Isaiah Langer
 
@@ -831,7 +835,7 @@ Contoso does a lot of work with companies in New York and would prefer a New Yor
 
 1. You will see all the conference bridge numbers listed; one number will have (Default) beside it. That is the current default.
 
-1. Select Location in the top table menu to sort the Locations in the table alphabetically, scroll down to find the New York City, United States number, select to highlight it and select the **Set as default** on the top menu.
+1. Select Location in the top table menu to sort the Locations in the table alphabetically, scroll down and choose any one of the bridges in the US and select the **Set as default** on the top menu.
 
 1. Leave the browser window open at the end of the task.
 
