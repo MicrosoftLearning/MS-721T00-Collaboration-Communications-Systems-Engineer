@@ -71,9 +71,11 @@ In this task you will sign into the clients provided by your training provider a
 
 1. On the upper left side, select the **Navigation menu** with the three dashes then select **Billing** and then select **Licenses**. 
 
-1. Validate you can see 10 of the **Microsoft 365 E5** licenses are now applied to users, with 5 remaining licenses available. You should also see licenses for the following:
+1. Validate you can see 10 of the **Microsoft 365 E5 (no Teams)** licenses are now applied to users, with 5 remaining licenses available. You should also see licenses for the following:
     
     - Microsoft Teams Domestic Calling Plan Trial
+
+    - Microsoft Teams Enterprise
     
     - Microsoft Teams Phone Resource Account Trial
 
@@ -81,7 +83,7 @@ In this task you will sign into the clients provided by your training provider a
 
     - Microsoft Teams Rooms Pro Trial
 
-1. Select **Microsoft 365 365 E5** to see the users that are assigned that license.
+1. Select **Microsoft 365 E5 (no Teams)** to see the users that are assigned that license.
 
 1. Leave the browser open at the end of the task.
 

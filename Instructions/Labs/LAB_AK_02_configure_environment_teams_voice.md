@@ -495,7 +495,7 @@ In this task, you will configure an emergency calling policy. Emergency calling 
 
 1. For **Description** enter **Contoso Emergency Policy**.
 
-1. Turn on **Enable location lookup mode**.
+1. Turn on **External location lookup mode**.
 
 1. Under **Emergency numbers**, select **+ Add**
 
@@ -503,7 +503,7 @@ In this task, you will configure an emergency calling policy. Emergency calling 
 
 1. Under **Notification mode**, select **Send notification only**: A Teams chat message is sent to the users and groups that you specify.
 
-1. In **Users and groups for emergency calls notifications**, enter Alex and then select Alex Wilber and select **Add**.
+1. Under **Users and groups for emergency calls notifications**, enter Alex and then select Alex Wilber and select **Add**.
 
 1. Select **Apply** and then **Save** to finish creating your emergency calling policy.
 
