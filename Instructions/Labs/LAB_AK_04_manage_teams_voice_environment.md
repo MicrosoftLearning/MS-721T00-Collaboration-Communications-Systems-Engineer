@@ -62,10 +62,15 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
 
-1. Use the following cmdlet to import the module and connect to Microsoft Teams:
+1. Use the following commands to import the module and connect to Microsoft Teams:
 
     ```powershell
     Import-Module MicrosoftTeams  
+    ```
+
+1. Then connect to Microsoft Teams:
+
+    ```powershell 
     Connect-MicrosoftTeams
     ```
 
@@ -108,9 +113,9 @@ In this task, you will configure Nestor Wilke so that Allan Deyoung is a delegat
 
 1. Search for **Allan Deyoung**, and select **Add** to include them on the **People list**, then select **Apply**.
 
-1. In the list below **Call delegation**, find **Allan Deyoung** and leave the **Permission** value as **Make calls**. Switch the **Allow changing call settings** radio button to **Off**.
+1. In the list below **Call delegation**, find **Allan Deyoung** and leave the **Permission** value as **Make and Receive calls**. Switch the **Allow changing call settings** radio button to **Off**.
 
-1. Select **Save**. 
+1. Select **Save**.
 
 1. Leave the browser window open.
 
@@ -514,7 +519,7 @@ In this exercise, you will perform exercises to help troubleshoot specific issue
 
 ### Task 1 - Run self-help diagnostics tool in Microsoft 365 admin center
 
-Megan Bowen has reported they are not receiving voicemails. Microsoft offers some Self-help diagnostics tools that can be run before raising a support ticket. In this task, you will run the Voicemail diagnostic that validates that a user is properly configured to use Voicemail in Teams.
+Isaiah Langer has reported they are not receiving voicemails. Microsoft offers some self-help diagnostics tools that can be run before raising a support ticket. In this task, you will run the Voicemail diagnostic that validates that a user is properly configured to use Voicemail in Teams.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -522,7 +527,7 @@ Megan Bowen has reported they are not receiving voicemails. Microsoft offers som
 
 1. On the left menu, select **Show all**, then **Users** and **Active Users**. 
 
-1. Find Megan Bowen and note down their username and email address, you will need it to run the test. Note this is one value in the format MeganB@lab&lt;LAB NUMBER&gt;.o365ready.com
+1. Find Isaiah Langer and note down their username and email address, you will need it to run the test. Note this is one value in the format IsaiahL@lab&lt;LAB NUMBER&gt;.o365ready.com.
 
 1. On the left menu, select **show all**, then **Support** and under the support menu **Help & support**.
 
@@ -534,7 +539,7 @@ Megan Bowen has reported they are not receiving voicemails. Microsoft offers som
 
 1. The result should be **No Teams Voicemail issues were detected**.
 
-You have successfully used the Microsoft 365 self-help diagnostics to confirm that there are no configuration issues with Megan Bowen’s voicemail.
+You have successfully used the Microsoft 365 self-help diagnostics to confirm that there are no configuration issues with Isaiah Langers’s voicemail.
 
 ### Task 2 - Break a dial plan and check the issue
 
@@ -576,11 +581,14 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
 
 You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
 
+> [!IMPORTANT]
+> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu.
+
 1. Sign into **MS721-CLIENT02** as **Admin**. You may still be signed in from a previous task.
 
 1. From the desktop, select and run **Microsoft Teams**.
 
-1. Sign in as Megan Bowen on the Teams Desktop client.
+1. Sign in as **Isaiah Langer** on the Teams Desktop client.
 
 1. You will be prompted with **Stay signed into all your apps** select **No, sign in to this app only**.
 
@@ -618,7 +626,7 @@ Now we have proven the rule works, we will break the rule and confirm the rule.
 
 1. Remove the first 7 to now read, **^(786)$**.
 
-1. Test the rule by entering 7786 and pressing Test. The output should be the translated number isn't an E.164 phone number.
+1. Test the rule by entering 7786 and pressing Test. The output of the translated number isn't an E.164 phone number.
 
 1. Select **Save**.
 
@@ -830,7 +838,7 @@ You have successfully generated and reviewed the PSTN usage report
 
 ### Task 6 - Review Calls in Call Analytics
 
-If we want to review the usage and performance of an individual's Teams calling, the first place to look is Call Analytics in the Teams Admin Center. In this talk we will review Alex Wilber’s calls in Call Analytics
+If we want to review the usage and performance of an individual's Teams calling, the first place to look is Call Analytics in the Teams Admin Center. In this task we will review Isaiah Langers’s calls in Call Analytics.
 
 1. You are still signed into MS721-CLIENT01 as “Admin” and in the **Microsoft Teams admin center** as **MOD Administrator**.
 

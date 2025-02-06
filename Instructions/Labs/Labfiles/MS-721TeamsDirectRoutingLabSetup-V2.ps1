@@ -144,7 +144,7 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
 try {
     Connect-MgGraph -Scopes "User.ReadWrite.All", "Organization.Read.All", "Domain.ReadWrite.All" -NoWelcome
-    Write-Host "`nSuccessfully connected to Microsfot Graph PowerShell."
+    Write-Host "`nSuccessfully connected to Microsoft Graph PowerShell."
 } catch {
     Write-Host "`n`nError connecting to Microsoft Graph PowerShell.  Please check your credentials and try again." -ForegroundColor Red
     Write-Host "Error details: $_" -ForegroundColor Red
