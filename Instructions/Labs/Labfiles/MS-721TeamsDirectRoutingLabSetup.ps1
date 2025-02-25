@@ -112,6 +112,8 @@ else {
     Write-Host "`n`nSuccessfully created and verified $labDomain in the Microsoft 365 tenant." -ForegroundColor Green
 }
 
+# Disconnect from Microsoft Graph
+Disconnect-MgGraph
 
 # Remove any existing certificate requests in case of previous failure
 Get-ChildItem "Cert:\localmachine\request" | where { $_.Subject -eq "CN=sbc01.$labDomain" } | Remove-Item

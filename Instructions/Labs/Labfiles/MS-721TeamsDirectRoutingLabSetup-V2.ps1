@@ -254,6 +254,9 @@ else {
     else { Write-Host "`t$labDomain failed to verify in the Microsoft 365 tenant." -ForegroundColor Red }
 }
 
+# Disconnect from Microsoft Graph
+Disconnect-MgGraph
+
 Write-Host "`nGenerating certificate signing request (CSR) for $labDomain." -ForegroundColor Yellow
 Write-Host "`nPress any key to continue..." -ForegroundColor Yellow
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
