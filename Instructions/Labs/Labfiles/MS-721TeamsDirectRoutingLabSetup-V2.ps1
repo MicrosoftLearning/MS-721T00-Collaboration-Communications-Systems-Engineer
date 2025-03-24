@@ -255,7 +255,7 @@ else {
 }
 
 # Disconnect from Microsoft Graph
-Disconnect-MgGraph
+$status = Disconnect-MgGraph
 
 Write-Host "`nGenerating certificate signing request (CSR) for $labDomain." -ForegroundColor Yellow
 Write-Host "`nPress any key to continue..." -ForegroundColor Yellow
