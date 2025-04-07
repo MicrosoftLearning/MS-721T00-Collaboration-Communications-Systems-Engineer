@@ -294,9 +294,7 @@ In the following task you will create the new session boarder controller resourc
 
 1. Log in with the **Azure Portal username and password** provided to you by your lab provider.  **DO NOT** log in with your Microsoft 365 account.
 
-1. Select **maybe later** when offered a tour of the Azure Portal.
-
-1. Select **create a resource**.
+1. Select **Create a resource**.
 
 1. Search for **Mediant VE Session Border Controller (SBC)**.
 
@@ -315,6 +313,10 @@ In the following task you will create the new session boarder controller resourc
 	- **Username:** sbcadmin
 
 	- **Password:** *Enter the MOD Administrator password in the _"Resource"_ section on the right side of the lab window.*
+
+1. Select **Next** to configure **Virtual Machine Settings**
+
+1. Select **Change size** and then choose **D2s_v3** from the list and then choose **Select** at the bottom.
 
 1. Select **Review + Create** (If you see a "Validation failed" message, you need to select **Previous** and select **Review + Create** again).
 
