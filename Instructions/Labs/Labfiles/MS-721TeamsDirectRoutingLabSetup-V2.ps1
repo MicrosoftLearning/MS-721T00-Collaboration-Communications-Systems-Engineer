@@ -76,7 +76,7 @@ function Add-RRASDnsRecord {
             }
         }
         'A' {
-            $existingRecord = Get-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name @labDomain -ErrorAction SilentlyContinue | Where-Object { $_.IPv4Address -eq $IPv4Address }
+            $existingRecord = Get-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name $labDomain -ErrorAction SilentlyContinue | Where-Object { $_.IPv4Address -eq $IPv4Address }
 
             if ($existingRecord) {
                 Write-Host "The A record already exists."
@@ -86,7 +86,7 @@ function Add-RRASDnsRecord {
             }
         }
         'MX' {
-            $existingRecord = Get-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "." -ErrorAction SilentlyContinue
+            $existingRecord = Get-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -Name "." -RRType MX -ErrorAction SilentlyContinue
 
             if ($existingRecord) {
                 Write-Host "The MX record already exists."
@@ -193,9 +193,10 @@ If ($PublicDNSZone -contains $labDomain) {
     Start-Sleep -s 5
 }
 
+Write-Host "`nChecking for Microsoft 365 DNS records and adding to MS721-RRA01 if not present." -ForegroundColor Yellow
+
 # Create the DNS zone on the server
 Add-DnsServerPrimaryZone -ComputerName $RRAS -CimSession $Cimsession -Name $labDomain -ZoneFile "$labDomain.dns"
-Start-Sleep -s 5
 
 # Create new hosts in the lab domain DNS zones
 $OldSOARecord = Get-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType SOA
@@ -208,7 +209,6 @@ Add-RRASDnsRecord -NameServer $labDomain
 Remove-DnsServerResourceRecord -ComputerName $RRAS -CimSession $Cimsession -ZoneName $labDomain -RRType NS -RecordData $RRAS -Name "@" -Force
 
 # Add the individual DNS records for Microsoft 365 services
-Write-Host "`nChecking for Microsoft 365 DNS records and adding to MS721-RRA01 if not present." -ForegroundColor Yellow
 Add-RRASDnsRecord -IPv4Address $labDomainIP
 Add-RRASDnsRecord -Preference 5
 Add-RRASDnsRecord -DescriptiveText "v=spf1 include:spf.protection.outlook.com -all"
@@ -253,6 +253,9 @@ else {
     }
     else { Write-Host "`t$labDomain failed to verify in the Microsoft 365 tenant." -ForegroundColor Red }
 }
+
+# Disconnect from Microsoft Graph
+$status = Disconnect-MgGraph
 
 Write-Host "`nGenerating certificate signing request (CSR) for $labDomain." -ForegroundColor Yellow
 Write-Host "`nPress any key to continue..." -ForegroundColor Yellow
@@ -304,7 +307,7 @@ try {
     # Output the contents of the certificate request
     $certReqFileContent = Get-Content -Path $certReqFilePath
     Write-Host "`nCSR generated successfully:`n" -ForegroundColor Green
-    Write-Output "`t" + $certReqFileContent
+    Write-Output $certReqFileContent
 }
 catch {
     Write-Host "`n`nError occurred while creating certificate signing request (CSR)." -ForegroundColor Red
