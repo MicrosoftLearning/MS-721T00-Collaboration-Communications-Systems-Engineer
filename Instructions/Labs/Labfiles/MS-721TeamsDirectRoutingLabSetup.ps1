@@ -4,7 +4,7 @@ Write-Host "`nEnter your Microsoft 365 Administrator credentials to connect to M
 
 Connect-MgGraph -Scopes "User.ReadWrite.All", "Organization.Read.All", "Domain.ReadWrite.All" -NoWelcome
 
-Write-Host "`nSuccessfully connected to Microsfot Graph PowerShell."
+Write-Host "`nSuccessfully connected to Microsoft Graph PowerShell."
 
 do {
     #Hardcode lab variables
