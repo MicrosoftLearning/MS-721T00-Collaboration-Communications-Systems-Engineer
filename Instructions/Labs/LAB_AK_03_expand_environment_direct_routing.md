@@ -739,7 +739,5 @@ In the following task, you will configure location-based routing to allow connec
 
 1. Leave the browser window open.
 
-
-
 You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. Additionally, you have sucvcessfully implemented dynamic Emergency Calling Policy and Emergency Call Routing policy assignment for users as they visit this network site.
 
