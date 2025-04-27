@@ -707,26 +707,39 @@ In the following task, you create a Emergency Calling Policy in Microsoft Teams 
     ![Screenshot of the Teams Admin Center Emergency Calling Policy page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T07_01.png)
 
 
-### Task 8 - Deploy Location-Based Routing based on subnets
+### Task 8 - Deploy Location-Based Routing & Dynamic Emergency Policy Assignment based on subnets
 
-In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
+In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. Additionally, you will set the Emergency Calling Policy and Emergency Call Routing policy created previously to be dynamically assigned to users as they visit this network site. This will override any user-level emergency policies.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select the three dashes, select **Locations**, then **Network topology.**
 
-1. Select **Add**, give the Network Site a name of **Washington** and description as **Washington Network**. Change **Location based routing** to **On**.
+1. Select **Add**, give the Network Site a name of **Washington** and description as **Washington Network**. Set the **Network region** to **US** and then hange **Location based routing** to **On**.
 
-1. Select **Add subnets,** for **IP address** enter **192.168.0.0** and a **Network Range** of **32,** select **Apply,** select **Save**
+1. Under **Emergency calling policy** and **Emergency call routing policy**, select **Washington**.
+
+1. Select **Add subnets,** for **IP address** enter **192.168.0.0** and a **Network Range** of **24,** select **Apply,** and then select **Save**
+
+    ![Screenshot of the Teams Admin Center Network Topology Network Sites page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T08_01.png)
+
+1. Within the Teams Admin Center select **Locations**, then **Netowork topology.**
+
+1. Select **Trusted IPs**, then **Add**. Enter the workstation IP found in Exercise 1, Task 1 with a **Network Range** of **32**, a **Description** of **Washington.**, and then select **Save**
+
+    ![Screenshot of the Teams Admin Center Network Topology Trusted IPs page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T08_02.png)
 
 1. Within the Teams Admin Center select **Voice**, then **Direct Routing.**
 
 1. Select **sbc01**, select **settings** and **edit SBC**
 
-1. Toggle the **Enabled** setting to **On**.
-
 1. Under **Location based routing and media optimization**, turn on **Location based routing**, select **Gateway site ID** to **Washington**, then select **Save**.
+
+    ![Screenshot of the Teams Admin Center SBC Page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T08_03.png)
 
 1. Leave the browser window open.
 
-You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. 
+
+
+You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. Additionally, you have sucvcessfully implemented dynamic Emergency Calling Policy and Emergency Call Routing policy assignment for users as they visit this network site.
+
