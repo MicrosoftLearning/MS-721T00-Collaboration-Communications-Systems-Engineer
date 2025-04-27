@@ -673,9 +673,9 @@ In the following task, you create a Emergency Call Routing Policy in Microsoft T
 
 	- **PSTN Usage** NA-Emergency
 
-    ![Screenshot of the Teams Admin Center Emergency Call Routing Policy page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T06_01.png)
-
 1. Select **Save** and leave the browser window open.
+
+    ![Screenshot of the Teams Admin Center Emergency Call Routing Policy page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T06_01.png)
 
 
 ### Task 7 - Configure Emergency Calling Policy
@@ -692,7 +692,6 @@ In the following task, you create a Emergency Calling Policy in Microsoft Teams 
 
     ```
     If you are working offsite, please set your location by clicking "Location Not Detected" below
-
     ```
 
 1. Under **Emergency Numbers** select **Add** and then provide the following configuration:
@@ -703,6 +702,9 @@ In the following task, you create a Emergency Calling Policy in Microsoft Teams 
 
 	- **Users and Groups for emergency calls notifications** Alex Wilber
 
+1. Select **Save** and leave the browser window open.
+
+    ![Screenshot of the Teams Admin Center Emergency Calling Policy page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T07_01.png)
 
 
 ### Task 8 - Deploy Location-Based Routing based on subnets
