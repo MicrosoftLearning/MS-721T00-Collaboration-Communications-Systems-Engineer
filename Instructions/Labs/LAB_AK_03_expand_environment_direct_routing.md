@@ -88,13 +88,13 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 You have successfully identified your lab number and updated your public IP address.
 
-### Task 3 - Run MS-721TeamsDirectRoutingLabSetup.ps1
+### Task 3 - Run MS-721TeamsDirectRoutingLabSetup-V2.ps1
 
 In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and the DNS records for Microsoft 365 services.  The script will also connect to Microsoft Graph and add your new student lab domain. Lastly, the script will generate a certificate signing request (CSR) for DigiCert to provision a signed certificate for the SBC.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as **Admin*** with the password provided to you.
 
-1. Download the script from: [MS-721TeamsDirectRoutingLabSetup.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup.ps1) and save it to **C:\Scripts**.
+1. Download the latest version of the script from: [MS-721TeamsDirectRoutingLabSetup-V2.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup-V2.ps1) and save it to **C:\Scripts**.
 
 1. Open **Windows PowerShell as Administrator**.
 
@@ -110,30 +110,37 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
     ```
 
-1. Change directories and run MS-721TeamsDirectRoutingLabSetup.ps1:
+1. Change directories and run MS-721TeamsDirectRoutingLabSetup-V2.ps1:
 
     ```powershell
 	cd C:\Scripts
 
-    .\MS-721TeamsDirectRoutingLabSetup.ps1
+    .\MS-721TeamsDirectRoutingLabSetup-V2.ps1
 
 	```
 
 1. When prompted, enter the **Microsoft 365 Administrator** email address and password. Do not use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
 
-1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box and click **Accept**.
+1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box for **Consent on behalf of your organization** and then click **Accept**.
 
     ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
-
-1. Next, enter the **5-digit Lab Number** you generated in Task 2.
-
-1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
 
 1. You will be prompted again to enter the username and password for the Administrator account on MS721-RRAS01.  When prompted, fill out the following information and select **OK**:
 
 	- **User name:** Administrator
 
 	- **Password:** *Enter the local Administrator password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
+
+	![A screenshot asking for local administrator credentials.](Linked_Image_Files/M03_E03_T02_01.png)
+
+1. Next, enter the **5-digit Lab Number** you generated in Task 2.
+
+1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
+
+    > [!NOTE]
+    > DNS Records for your lab domain will be created. If it appears that the script has stopped after the _sipfederationtls SRV record has been created, click the PowerShell icon on the taskbar and sign in again to the MOD Administrator account. 
+
+1. When prompted to **Press any key to continue** to generate a CSR for the lab, press enter.
 
 1. When you see **Lab setup complete.** you may continue to Task 4.
 
@@ -165,7 +172,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
 1. Select **Submit**.
 
-    ![Screenshot of the Microsoft Event CSR Submission form](./Linked_Image_Files/M01_L01_E01_T04.png)
+    ![Screenshot of the Microsoft Event CSR Submission form](./Linked_Image_Files/M01_L01_E01_T04-1.png)
 
 1. Close File Explorer.
 
@@ -239,7 +246,17 @@ In this task, you will verify and add your SBC to your tenant.
 
 1. In the left navigation select **Voice**, select **Direct Routing**, and under SBCs, select **Add**.
 
-1. Add the FQDN **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com** and select **Save**. Please note, use ALL lower case, it is case sensitive. Leave all the other settings as-is. 
+1. Add the FQDN **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com** and then set the following parameters and then click **Save**. Please note, use **ALL lower case** letters as it is case sensitive. Leave all the other settings as-is. 
+
+	- **Enabled** Toggle On
+
+	- **Forward call history** Toggle On
+
+	- **Forward P-Asserted-Identity (PAI) header** Toggle On
+
+	- **SBC supports PIDF/LO for emergency Calls** Toggle On
+
+    ![Screenshot of the Teams Admin Center Add SBC page, showing the settings required.](./Linked_Image_Files/M03_E02_T01_01.png)
 
 1. Leave the browser open at the end of this task.
 
@@ -383,7 +400,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 You have successfully logged onto the SBC.
 
-### Task 7 - Upload root certificates to the SBC
+### Task 7 - Create TLS Context for Microsoft Teams
 
 In the following task, you will add the root certificate to the session border controller.
 
@@ -395,41 +412,21 @@ In the following task, you will add the root certificate to the session border c
 
 1. Above the results pane, in the **TLS Contexts** table, select **New**.
 
-1. Enter **Teams-TLSContext** as the Name.
+1. Enter **External** as the Name.
 
-1. Change the **TLS Version** option to **TLSv1.2** and leave everything else the same.
+1. Change the **TLS Version** option to **TLSv1.2**, Change the **Use default CA bundle** option to **Enable** and leave everything else the same.
 
-1. Select **APPLY**.
+1. Select **APPLY** and then leave the browser window open for the next task.
 
-1. Scroll down, and below the **Teams-TLSContext** information, select **Trusted Root Certificates**.
-
-1. In the Trusted Root Certificates window, select **Import**.
-
-1. Browse to **C:\LabFiles**, select **BaltimoreTrustedRootCA.cer**, and then select **Open**. If you cannot find the certificate, select **All files (\*.\*)** in the bottom right corner.
-
-1. In the **File upload** dialog box, select **Close**.
-
-1. Review the information for the selected root certificate that was installed.
-
-1. Perform the steps above and load the following root certificates:
-
-	- **DigicertTrustedRoot.cer**
-
-	- **DigicertTrustedRootIntermediate.cer**
-
-1. When complete, in the Trusted Root Certificates window, to the left of **TLS Context[#1]**, select the back arrow icon.
-
-1. Leave the browser window open for the next task.
-
-You have successfully uploaded the root certificate to your SBC and can now continue uploading the lab certificate in the chain.
+You have successfully created a TLS Context for Microsoft Teams on your SBC and can now continue uploading the lab certificate to the SBC.
 
 ### Task 8 - Upload the lab certificate to the SBC
 
 In the following task, you will upload the lab certificate you requested earlier.  
 
-1. In the TLS Contexts window, in the TLS Contexts table, select **Teams-TLSContext**.
+1. In the TLS Contexts window, in the TLS Contexts table, select **External**.
 
-1. Scroll down, and below the **Teams-TLSContext** information, select **Change Certificate**.
+1. Scroll down, and below the **External** information, select **Change Certificate**.
 
 1. In the Change Certificates window, scroll down to the **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER** section.
 
@@ -442,11 +439,12 @@ In the following task, you will upload the lab certificate you requested earlier
 1. To the right of the lab certificate file path, select **Load File**.  
 
     > [!IMPORTANT]
-    > After uploading the lab certificate, go back to Task 7 and verify that all 3 trusted root certificates are present.  If not, add any missing certificates and scroll up, select **Save** from the top menu to save the SBC configuration.
+    > After uploading the lab certificate, go back and verify that the **DigiCert Global Root G2** and **DigiCert Global G2 TLS RSA SHA2** trusted certificate authorities are present. If not, repeat task 8 again.
 
 1. Review the banner and verify that the certificate was loaded. 
 
-1. Select **Apply**, then **Save** at the top of the page, then select **Yes**.
+1. Select **Save** at the top right of the page, then select **Yes**.
+
 1. Leave the browser window open for the next task.
 
 You have successfully uploaded the lab certificate and prepared your SBC to sign its communication.
@@ -469,281 +467,7 @@ In the following task, you will configure the SIP interfaces that allow your SBC
 
 1. Select **Core Entities**, **SIP Interfaces**, and select **New**.
 
-1. Fill out the following information:
 
-	- **Name:** Teams 
-
-	- **Network Interface:** #0 [eth0]
-
-	- **UDP Port:** 0 
-
-	- **TCP port:** 0 
-
-	- **TLS Port:** 5067 
-
-	- **Enable TCP Keepalive:** Enable 
-
-	- **Classification Failure Response Type:** 0
-
-	- **Media Realm:** #0 
-
-	- **TLS Context Name:** Teams-TLSContext
-
-	- **TLS Mutual Authentication:** Enable
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured SIP Interfaces on the SBC.
-
-### Task 2 – Configure Proxy Sets on SBC
-
-In the following task, you will configure the SBC Proxy Sets.
-
-1. Select **Proxy Sets**, then select **New** and fill out the following information:
-
-	- **Name:** Teams
-
-	- **SBC IPv4 SIP Interface:** #1 Teams
-
-	- **TLS Context name:** Teams-TLSContext
-
-	- **Proxy Keep-alive:** Using OPTIONS
-
-	- **Proxy Hot Swap:** Enable
-
-	- **Proxy Load Balancing Method:** Random Weights
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured Proxy Sets on the SBC.
-
-### Task 3 – Configure Proxy Addresses Interfaces on SBC
-
-In the following task, you will configure the SBC Proxy Addresses Interfaces.
-
-1. Scroll to the bottom of the page and select **Proxy Address 0 items**, select **New** and fill out the following information:
-
-	- **Proxy address:** sip.pstnhub.microsoft.com:5061
-
-	- **Transport type:** TLS
-
-	- **Proxy Priority:** 1
-
-	- **Proxy Random weight:** 1
-
-1. Select **Apply**.
-
-1. Add another Proxy Address by selecting **New** and fill out the following information:
-
-	- **Proxy address:** sip2.pstnhub.microsoft.com:5061
-
-	- **Transport type:** TLS
-
-	- **Proxy Priority:** 2
-
-	- **Proxy Random weight:** 1
-
-1. Select **Apply**.
-
-1. Add another Proxy Address by selecting **New** and fill out the following information:
-
-	- **Proxy address:** sip3.pstnhub.microsoft.com:5061
-
-	- **Transport type:** TLS
-
-	- **Proxy Priority:** 3
-
-	- **Proxy Random weight:** 1
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured Proxy Addresses on the SBC.
-
-### Task 4 – Configure Coder Groups on SBC
-
-In the following task, you will configure the Coder Groups on the SBC.
-
-1. Navigate to **Coders &amp; Profiles &gt; Coder Groups**, and highlight "AudioCodersGroup_0" and select "Coders Table 1 items" below.
-
-1. Add and configure the following **Coder Names:**
-
-	- SILK-NB with a pay lode type of 103
-
-	- Silk-WB with a pay lode type of 104
-
-	- G.711A-law
-
-	- G.711U-Law
-
-	- G.729
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured Coder Groups on the SBC.
-
-### Task 5 – Configure IP Profiles on the SBC
-
-In the following task, you will configure the IP Profiles for the SBC.
-
-1. To configure IP profiles under **Coders &amp; Profiles**, select **IP Profiles** and then select **New** and configure the following:
-
-	- **Name:** Teams
-
-	- **SBC Media Security Mode:** Secured
-
-	- **Remote Early Media RTP Detection Mode:** By Media
-
-	- **Extension Coders Group:** #0 [AudioCodersGroups_0]
-
-	- **RTCP Mode:** Generate Always
-
-	- **SIP UPDATE Support:** Not Supported
-
-	- **Remote re-INVITE:** Supported only with SDP
-
-	- **Remote Delayed Offer Support:** Not Supported
-
-	- **Remote REFER Mode:** Handle Locally
-
-	- **Remote 3xx Mode:** Handle Locally
-
-	- **Remote Hold Format:** Inactive 
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured IP Profiles on the SBC.
-
-### Task 6 – Configure IP Groups on SBC
-
-In the following task, you will configure IP groups for the SBC.
-
-1. To configure IP Groups under **Core Entities**, select **IP Groups**, then select **New** and configure the following:
-
-	- **Name:** Teams
-
-	- **Topology Location:** Up
-
-	- **Proxy Set:** #1 [Teams]
-
-	- **IP Profile:** #0 [Teams]
-
-	- **Media Realm:** #0 [DefaultRealm]
-
-	- **Classify By Proxy Set:** Disable
-
-	- **Local Host Name:** the name given to the device during creation - **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com**
-
-	- **Always Use Src Address:** Yes
-
-	- **Proxy Keep-Alive using IP Group settings:** Enable
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured IP Groups on the SBC.
-
-### Task 7 – Configure SRTP on SBC
-
-In the following task, you will configure the SBC to be ready for Teams.
-
-1. To configure SRTP go to **Media**, then select **Media security**, select **Media Security** and set it to **Enable**.
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured SRTP on the SBC.
-
-### Task 8 – Configure Message Manipulation on SBC
-
-In the following task, you will add the message manipulation on the SBC.
-
-1. To create a Message Condition Rule go to **Message Manipulation**, then select **Message Conditions**
-
-1. Select **New**, and configure the **Name** as **Teams**
-
-1. To configure the condition, select **Editor** and fill out **Header.Contact.URL.Host contains 'pstnhub.microsoft.com'**, select **Save**.
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-1. Next, create a Classification Rule by navigating to **SBC &gt; Classification**, then select **New** and configure the following settings:
-
-	- **Name:** Teams
-
-	- **Source SIP Interface:** #1 [Teams]
-
-	- **Source IP Address:** 52.114.\*.\* 
-
-	- **Destination Host:** FQDN of SBC (**sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com)**
-
-	- **Message Condition:** #0 [Teams] 
-
-	- **Action type:** Allow
-
-	- **Source IP Group:** #1 [Teams]
-
-1. Select **Apply**, then **Save**, then select **Yes**.
-
-You have successfully configured message manipulation on the SBC.
-
-### Task 9 – Configure IP to IP Calling rules on SBC
-
-In the following task, you will configure 4 IP to IP calling rules on the SBC.
-
-1. Go to **SBC**, **Routing**, **IP to IP Routing**, then select **New**
-
-1. Create a rule with the following options: 
-
-	- **Name:** Terminate OPTIONS
-
-	- **Source IP Group:** Any
-
-	- **Request type:** OPTIONS
-
-	- **Destination type:** Dest Address
-
-	- **Destination Address:** Internal
-
-1. Select **Apply**.
-
-1. Select **New** again and create another rule with the following options:
-
-	- **Name:** REFER From Teams
-
-	- **Source IP Group:** Any
-
-	- **Call Trigger:** REFER
-
-	- **ReRoute IP Group:** #1 [Teams]
-
-	- **Destination Type:** Request URI
-
-	- **Destination IP Group:** #1 [Teams]
-
-1. Select **Apply**.
-
-1. Select **New** again and create another rule with the following options:
-
-	- **Name:** Teams -> SIP Trunk
-
-	- **Source IP Group:** #1 [Teams]
-
-	- **Destination Type:** IP Group
-
-1. Open the Dropdown menu **Destination IP Group** select **Add new** and fill out the following information:
-
-	- **Name:** SIP Trunk
-
-1. Select **Apply** twice.
-
-1. Select **New** again and create another rule with the following options:
-
-	- **Name:** SIP Trunk -> Teams
-
-	- **Source IP Group:** SIP Trunk
-
-	- **Destination Type:** IP Group
-
-	- **Destination IP Group:** #1 [Teams]
-
-1. Select **Apply**, then **Save**, then select **Yes**.
 
 You have successfully configured the AudioCodes SBC to receive requests from the Microsoft 365 Direct Routing service. 
 
@@ -778,7 +502,10 @@ In the following task, you will create your first voice routing policy and PSTN 
 
     ```
 
-1. In the prompt sign in as **Allan Deyoung** with the credentials provided to you.
+	> [!NOTE]
+    > If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams**.
+
+1. In the PowerShell prompt, sign in as **Allan Deyoung** with the credentials provided to you.
 
 1. In Windows Powershell, enter the following and then press **Enter**. By running the command you will see that the existing PSTN usages in place. You can see what is in place and what usage plans are being assigned to the identity. 
 
@@ -794,21 +521,23 @@ If you have several usages defined, the names of the usages might truncate. Use 
 1. Run the Set-CSOnlinePSTNUsage cmdlet is used to add or remove phone usages to or from the usage list. This list is global so it can be used by policies and routes throughout the tenant:
 
     ```powershell
-    Set-CsOnlinePstnUsage -Identity Global -Usage @{Add="US and Canada"}
+	Set-CsOnlinePstnUsage -Identity Global -Usage @{Add = 'NA-Emergency', 'NA-Service', 'NA-National'}
 
     ```
 
 1. Run the New-CSOnlineVoiceRoutingPolicy to create a new online voice routing policy. Online voice routing policies are used in Microsoft Phone System Direct Routing scenarios. Assigning your Teams users an online voice routing policy enables those users to receive and to place phone calls to the public switched telephone network by using your on-premises SIP trunks:
 
     ```powershell
-    New-CsOnlineVoiceRoutingPolicy "North America" -OnlinePstnUsages "US and Canada"
+    New-CsOnlineVoiceRoutingPolicy "NA-National" -OnlinePstnUsages 'NA-Emergency','NA-Service','NA-National'
 
     ```
 
 1. Run the New-CsOnlineVoiceRoute command - Creates a new online voice route. Online voice routes contain instructions that tell Microsoft Teams how to route calls from Office 365 users to phone numbers on the public switched telephone network (PSTN) or a private branch exchange (PBX):
 
     ```powershell
-    New-CsOnlineVoiceRoute -Identity "10 Digit Dialing" -NumberPattern "^\+1(\d{10})$" -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -OnlinePstnUsages "US and Canada"
+	New-CsOnlineVoiceRoute -Identity "NA-Emergency" -NumberPattern '^\+?(911|933)$' -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -Priority 1 -OnlinePstnUsages 'NA-Emergency'
+	New-CsOnlineVoiceRoute -Identity "NA-Service" -NumberPattern '^\+?([2-9]\d{2})$' -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -Priority 2 -OnlinePstnUsages 'NA-Service'
+	New-CsOnlineVoiceRoute -Identity "NA-National" -NumberPattern '^\+1[2-9]\d\d[2-9]\d{6}$' -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -Priority 3 -OnlinePstnUsages 'NA-National'
 
     ```
 
@@ -819,11 +548,11 @@ If you have several usages defined, the names of the usages might truncate. Use 
 
     ```
 
-1. Review the output of the command and verify that your new voice route has been added.
+1. Review the output of the command and verify that your new voice routes have been added.
 
 1. Leave the PowerShell window open for the next task.
 
-You have successfully created a voice routing policy with a PSTN Usage.
+You have successfully created a voice routing policy with a PSTN Usages containing voice routes.
 
 ### Task 2 - Create a new voice routing policy named North America and assign it to Megan Bowen
 
