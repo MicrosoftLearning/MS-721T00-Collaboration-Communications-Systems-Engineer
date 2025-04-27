@@ -400,7 +400,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 You have successfully logged onto the SBC.
 
-### Task 7 - Create TLS Context for Microsoft Teams
+### Task 7 - Create a TLS Context for Microsoft Teams
 
 In the following task, you will add the root certificate to the session border controller.
 
@@ -487,7 +487,7 @@ If the output shows the correct value for all three entries your SBC is configur
 
 In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Megan Bowen to perform voice calls over the SBC. Megan resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider's telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently, this is cost prohibitive. 
 
-### Task 1 - Create a voice routing policy with one PSTN usage
+### Task 1 - Create a voice routing policy with PSTN usages containing voice routes
 
 In the following task, you will create your first voice routing policy and PSTN usage so you can later assign this policy to your users.
 
@@ -552,22 +552,22 @@ If you have several usages defined, the names of the usages might truncate. Use 
 
 1. Leave the PowerShell window open for the next task.
 
-You have successfully created a voice routing policy with a PSTN Usages containing voice routes.
+You have successfully created a voice routing policy with PSTN Usages containing voice routes.
 
-### Task 2 - Create a new voice routing policy named North America and assign it to Megan Bowen
+### Task 2 - Assign the voice routing policy named NA-National to Megan Bowen
 
-In the following task, you will create another voice routing policy with the PSTN usage you created in an earlier task and assign this policy to your users.
+In the following task, you will asign the voice routing policy you created in an earlier task to your users.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
     ```powershell
-    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PolicyName "North America"
+    Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PolicyName "NA-National"
 
     ```
 
-If you receive an error stating that the **Policy "North America" is not a user policy. You can assign only a user policy to a specific user**., wait 2-3 minutes and then retry the command. You may need to retry the command several times before it is successful and it may take up to 15 minutes before it becomes available. If the policy is still not updated in the service, you continue to the next lab and return later.
+If you receive an error stating that the **Policy "NA-National" is not a user policy. You can assign only a user policy to a specific user**., wait 2-3 minutes and then retry the command. You may need to retry the command several times before it is successful and it may take up to 15 minutes before it becomes available. If the policy is still not updated in the service, you continue to the next lab and return later.
 
 1. Run the Get-CsOnlineUser command, the command returns information about users who have accounts homed on Microsoft Teams:
 
@@ -582,9 +582,9 @@ If you receive an error stating that the **Policy "North America" is not a user 
 
 You have successfully used PowerShell to assign your voice routing policy to your users.
 
-### Task 3 - Enable users for Direct Routing, voice, and voicemail
+### Task 3 - Enable users for Direct Routing
 
-In the following task, you will enable the end user for voice services through the direct route, assign the telephone number, and enable the user for dial pad service.
+In the following task, you will enable the end user for voice services through the direct routing SBC, assign the telephone number, and enable the user for dial pad service.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
@@ -627,6 +627,7 @@ In the following task, you will create a normalization record for a 4-digit dial
 
 You have successfully you have assigned a 4-digit extension dial to the global group.
 
+
 ### Task 5 - Configure Emergency Location Identification Number (ELIN)
 
 In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
@@ -645,7 +646,38 @@ In the following task, you will assign the Emergency Location Identification num
 
 You have successfully assigned the ELIN number to the location for emergency addresses.
 
-### Task 6 - Deploy Location-Based Routing based on subnets
+
+### Task 6 - Configure Emergency Call Routing Policy
+
+In the following task, you create a Emergency Call Routing Policy in Microsoft Teams Admin center. This will enable Dynamic Emergency Calling and route emergency calls to the SBC.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
+
+1. Select the three dashes, select **Voice**, then **Emergency policies.**, and then **Call routing policies** across the top.
+
+1. Select **Add**, give the policy a name of **Washington** and description as **Washington Direct Routing**. Change **Dynamic emergency calling** to **On**.
+
+1. Select **Add** and then provide the following configuration:
+
+	- **Emergency dial string** 911
+
+	- **Emergency dial mask** 911;9911;999;112
+
+	- **PSTN Usage** NA-Emergency
+
+1. Select **Add** again and then provide the following configuration for the second line:
+
+	- **Emergency dial string** 933
+
+	- **Emergency dial mask** 933;9933
+
+	- **PSTN Usage** NA-Emergency
+
+    ![Screenshot of the Teams Admin Center Emergency Call Routing Policy page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T06_01.png)
+
+1. Select **Save** and leave the browser window open.
+
+### Task 7 - Deploy Location-Based Routing based on subnets
 
 In the following task, you will configure location-based routing to allow connectivity to the local SBC to the end user depending upon the subnet IP address allocated. 
 
