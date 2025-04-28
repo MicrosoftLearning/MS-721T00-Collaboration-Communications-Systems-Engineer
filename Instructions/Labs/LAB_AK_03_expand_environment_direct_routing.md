@@ -409,7 +409,15 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 You have successfully performed the base configuration of the AudioCodes SBC.
 
-### Task 7 - Upload the lab certificate to the SBC
+## Exercise 3: Configure the session border controller
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 10 minutes
+
+In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
+
+### Task 1 - Upload the lab certificate to the SBC
 
 In the following task, you will upload the lab certificate you requested earlier to the SBC. This is needed to secure the connection between the SBC and Microsoft Teams  
 
@@ -436,38 +444,16 @@ In the following task, you will upload the lab certificate you requested earlier
 
 1. Leave the browser window open for the next task.
 
-You have successfully uploaded the lab certificate, completed the SBC configuration, and signed its communication to Microsoft Teams.
+You have successfully uploaded the lab certificate, and signed its communication to Microsoft Teams.
 
-
-## Exercise 3: Configure the session border controller
-
-### Exercise Duration
-
-  - **Estimated Time to complete**: 45 minutes
-
-In this exercise, you will configure the session border controller, and install the services needed to ensure the custom domain and SBC work as expected.
-
-### Task 1 – Configure SIP Interfaces on SBC
-
-In the following task, you will configure the SIP interfaces that allow your SBC to identify where to send SIP information.
-
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
-
-1. On the top menu, select **Signaling &amp; Media.**
-
-1. Select **Core Entities**, **SIP Interfaces**, and select **New**.
-
-
-
-You have successfully configured the AudioCodes SBC to receive requests from the Microsoft 365 Direct Routing service. 
-
-### Task 10 - Verify the SBC Connections to Teams
+### Task 2 - Verify the SBC Connections to Teams
 
 In the following task, you will validate the SBC to be ready for Teams
 
 On the SBC, select **Monitor** at the top and under **VOIP Status &gt; Proxy Set Status**, the output should be **Online** for the three entries for psthub.Microsoft.com. 
 
 If the output shows the correct value for all three entries your SBC is configured correctly and you will be able to continue with the next exercise.
+
 
 ## Exercise 4: Configure Teams for Direct Routing
 
