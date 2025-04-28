@@ -455,6 +455,8 @@ Now that we have added our network Region, Sites and Subnets we can map our netw
 - https://www.intrado.com/enterprise-solutions/e911-regulations
 - https://www.911.gov/
 
+US law states that a user utilizing a phone system that supports dynamic emergency dialing must be able to be dynamically have their location determined at the time of the 911 call in order to route the call to the correct/nearest Public Service Answering Point (PSAP). (Kari's Law). It also states that an internal notification be setup to where at least one individual in the organization be notified that a person placed and emergency call and where their location is. (Ray Baums Act) We use the LIS database in Microsoft Teams to map our physical sites out so that emergency calls will connect.
+
 You can map emergency location\addresses to:
 
 - Wireless Access Point (WAP) by BSSID (Basic Service Set Identifier) - Each AP radio has its own unique BSSID per SSID.
