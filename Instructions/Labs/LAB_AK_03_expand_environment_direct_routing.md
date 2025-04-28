@@ -752,6 +752,6 @@ In this task, you will validate that Location-Based Routing is blocking calls th
 
 1. After about 30 minutes, attempt to place the call again to +14255550001. The call should connect. While you will not hear anything in the lab, the call should show a connected window with a timer in the top left as shown below:
 
-    ![Screenshot of the Teams client, showing a test call connected through the SBC.](./Linked_Image_Files/M03_L03_E05_T01_02.png)
+    ![Screenshot of the Teams client, showing a test call connected through the SBC.](./Linked_Image_Files/M03_L03_E05_T01_03.png)
 
 You have successfully placed a test call in the lab through your SBC and validated correct routing.
