@@ -449,6 +449,12 @@ Now that we have added our network Region, Sites and Subnets we can map our netw
 > [!TIP]
 > This configuration refers to Emergency Locations, but when you are defining them, the Teams Admin Center calls them Emergency Addresses. They are the same thing.
 
+> [!NOTE]
+> The below information explains general best practices for implementing emergency services in Microsoft Teams. None of the information in this document should be interpreted as legal advice. Please consult with your organization's legal department and the following resources for specific requirements by state.
+
+- https://www.intrado.com/enterprise-solutions/e911-regulations
+- https://www.911.gov/
+
 You can map emergency location\addresses to:
 
 - Wireless Access Point (WAP) by BSSID (Basic Service Set Identifier) - Each AP radio has its own unique BSSID per SSID.
@@ -462,13 +468,6 @@ You can map emergency location\addresses to:
 Microsoft Teams utilizes the following flowchart of determining a user's network location:
 
   ![Flowchart of How Microsoft Teams utilizes the network data of determining a user to determine their location.](./Linked_Image_Files/M02_L02_E04_T04_01.png)
-
-> [!NOTE]
-> The below information explains general best practices for implementing emergency services in Microsoft Teams. None of the information in this document should be interpreted as legal advice. Please consult with your organization's legal department and the following resources for specific requirements by state.
-
-- https://www.intrado.com/enterprise-solutions/e911-regulations
-- https://www.911.gov/
-
 
 Perform the following steps.
 
