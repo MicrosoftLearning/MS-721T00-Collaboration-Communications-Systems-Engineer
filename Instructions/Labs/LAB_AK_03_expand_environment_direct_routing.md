@@ -630,7 +630,7 @@ You have successfully you have assigned a 4-digit extension dial to the global g
 
 ### Task 5 - Configure Emergency Location Identification Number (ELIN)
 
-In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. 
+In the following task, you will assign the Emergency Location Identification number to a location existing in Microsoft Teams Admin center already. This field is optional and not required in most E911 deployments.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -731,7 +731,7 @@ In the following task, you will configure location-based routing to allow connec
 
 1. Within the Teams Admin Center select **Voice**, then **Direct Routing.**
 
-1. Select **sbc01**, select **settings** and **edit SBC**
+1. Select **sbc01**, select **settings** and then **edit SBC.**
 
 1. Under **Location based routing and media optimization**, turn on **Location based routing**, select **Gateway site ID** to **Washington**, then select **Save**.
 
@@ -741,3 +741,41 @@ In the following task, you will configure location-based routing to allow connec
 
 You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. Additionally, you have sucvcessfully implemented dynamic Emergency Calling Policy and Emergency Call Routing policy assignment for users as they visit this network site.
 
+
+## Exercise 5: Test and Validate your Configuration
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 60 minutes
+
+In this exercise, you will validate that the SBC is accepting calls, and test E911 configuration to ensure items created work as expected.
+
+### Task 1 - Validate Location-Based Routing blocks calls not allowed
+
+In this task, you will validate that Location-Based Routing is blocking calls that are not permitted on the gateway defined.
+
+1. Sign in to **MS721-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+
+1. Open an InPrivate tab in Microsoft Edge and then browse to **https://teams.microsoft.com**.
+
+1. Sign in as **MeganB@lab<LAB NUMBER>.o365ready.com** using the User Password in the "Resource" section on the right side of the lab window.
+
+1. Once signed into Microsoft Teams, navigate to the **Calls** tab and place a call to "+14255550001". The call should fail and show the below error:
+
+    ![Screenshot of the Teams client for Michelle, showing location-based routing blocking calls.](./Linked_Image_Files/M03_L03_E05_T01_01.png)
+
+1. To correct this issue, we are going to disable Location-Based Routing. Open the **Microsoft Teams admin center** as **Allan Deyoung**.
+
+1. Select the three dashes, select **Locations**, then **Network topology**, and then select **Washington**. Turn off **Location Based Routing** and then click **Save**
+
+1. Within the Teams Admin Center select **Voice**, then **Direct Routing.** Select **sbc01**, select **settings** and then **edit SBC.**
+
+1. Under **Location based routing and media optimization**, turn off **Location based routing**, clear the **Gateway site ID**, then select **Save**.
+
+    ![Screenshot of the Teams Admin Center, showing location-based routing being turned off.](./Linked_Image_Files/M03_L03_E05_T01_02.png)
+
+1. After about 30 minutes, attempt to place the call again to +14255550001. The call should connect. While you will not hear anything in the lab, the call should show a connected window with a timer in the top left as shown below:
+
+    ![Screenshot of the Teams client, showing a test call connected through the SBC.](./Linked_Image_Files/M03_L03_E05_T01_02.png)
+
+You have successfully placed a test call in the lab through your SBC and validated correct routing.
