@@ -461,7 +461,7 @@ You can map emergency location\addresses to:
 
 Microsoft Teams utilizes the following flowchart of determining a user's network location:
 
-    ![Flowchart of How Microsoft Teams utilizes the network data of determining a user to determine their location.](./Linked_Image_Files/M02_L02_E04_T04_01.png)
+  ![Flowchart of How Microsoft Teams utilizes the network data of determining a user to determine their location.](./Linked_Image_Files/M02_L02_E04_T04_01.png)
 
 Perform the following steps.
 
