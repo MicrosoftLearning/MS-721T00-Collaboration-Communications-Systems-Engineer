@@ -451,11 +451,11 @@ Now that we have added our network Region, Sites and Subnets we can map our netw
 
 You can map emergency location\addresses to:
 
-- Wireless Access Point (WAP) by BSSID (Basic Service Set Identifier) - Each AP has a BSSID.
-
-- Ethernet switch by Chassis ID. Each network switch is stamped with a Chassis ID that is used to identify a specific switch on a network.
+- Wireless Access Point (WAP) by BSSID (Basic Service Set Identifier) - Each AP radio has its own unique BSSID per SSID.
 
 - Ethernet switch port, which maps both the Chassis ID and the port ID. This allows a switch that spans multiple locations to be more accurately mapped down to the port.
+
+- Ethernet switch by Chassis ID. Each network switch is stamped with a Chassis ID that is used to identify a specific switch on a network.
 
 - Subnet. Not tied to any physical equipment address, this is the network address the user has. Unlike mapped subnets in the Teams Network topology, The Location Information Service (LIS) doesn’t maintain a list of Networks and Subnet masks, it relies on the NetworkID of the subnet.
 
@@ -469,7 +469,7 @@ Perform the following steps.
 
 1. Leave IPv4 Selected for **IP Version**.
 
-1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.20.0/24, the network ID is **10.10.20.0**.
+1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.20.0/24, the network ID is **10.10.20.0**. Additionally also add **192.168.0.0** for a later task.
 
 1. Enter **Bellevue Subnet** as the **Description**.
 

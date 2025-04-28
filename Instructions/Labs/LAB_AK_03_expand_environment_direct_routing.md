@@ -381,7 +381,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 You have successfully created an SBC hosted inside Microsoft Azure.
 
-### Task 6 – Sign into the SBC
+### Task 6 – Sign into and apply a base configuration to the SBC
 
  In the following task, we will configure the Session Boarder Controller (SBC) to work with Microsoft Teams.
 
@@ -398,31 +398,20 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 	- **Password:** *Enter the MOD Administrator password in the _“Resource”_ section on the right side of the lab window.*
 
-You have successfully logged onto the SBC.
+1. Once you have successfully logged onto the SBC, click on **Actions** and then **Configuration File**.
 
-### Task 7 - Create a TLS Context for Microsoft Teams
+1. Under the **Configuration File** section, select **Choose File**, select the file named **Lab<LAB NUMBER>-SBC01-Config.ini** inside of the **C:\LabFiles** directory, and then click **Upload INI File**. The SBC will reboot
 
-In the following task, you will add the root certificate to the session border controller.
+1. Upon reboot of the SBC, log back into the box. To confirm successful configuration, ensure that you see two IP Groups at the top of **Topology View**
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and on the SBC configuration website as **sbcadmin**.
 
-1. On the top menu, select **IP NETWORK**.
+    ![Screenshot of the AudioCodes SBC, showing the Topology View before SSL Cert Import.](./Linked_Image_Files/M03_L03_E03_T06_03.png)
 
-1. In the left navigation, select **SECURITY &gt; TLS Contexts**.
+You have successfully performed the base configuration of the AudioCodes SBC.
 
-1. Above the results pane, in the **TLS Contexts** table, select **New**.
+### Task 7 - Upload the lab certificate to the SBC
 
-1. Enter **External** as the Name.
-
-1. Change the **TLS Version** option to **TLSv1.2**, Change the **Use default CA bundle** option to **Enable** and leave everything else the same.
-
-1. Select **APPLY** and then leave the browser window open for the next task.
-
-You have successfully created a TLS Context for Microsoft Teams on your SBC and can now continue uploading the lab certificate to the SBC.
-
-### Task 8 - Upload the lab certificate to the SBC
-
-In the following task, you will upload the lab certificate you requested earlier.  
+In the following task, you will upload the lab certificate you requested earlier to the SBC. This is needed to secure the connection between the SBC and Microsoft Teams  
 
 1. In the TLS Contexts window, in the TLS Contexts table, select **External**.
 
@@ -439,7 +428,7 @@ In the following task, you will upload the lab certificate you requested earlier
 1. To the right of the lab certificate file path, select **Load File**.  
 
     > [!IMPORTANT]
-    > After uploading the lab certificate, go back and verify that the **DigiCert Global Root G2** and **DigiCert Global G2 TLS RSA SHA2** trusted certificate authorities are present. If not, repeat task 8 again.
+    > After uploading the lab certificate, go back and verify that the **DigiCert Global Root G2** and **DigiCert Global G2 TLS RSA SHA2** trusted certificate authorities are present in the External TLS context. If not, repeat task 7 again.
 
 1. Review the banner and verify that the certificate was loaded. 
 
@@ -447,7 +436,8 @@ In the following task, you will upload the lab certificate you requested earlier
 
 1. Leave the browser window open for the next task.
 
-You have successfully uploaded the lab certificate and prepared your SBC to sign its communication.
+You have successfully uploaded the lab certificate, completed the SBC configuration, and signed its communication to Microsoft Teams.
+
 
 ## Exercise 3: Configure the session border controller
 
