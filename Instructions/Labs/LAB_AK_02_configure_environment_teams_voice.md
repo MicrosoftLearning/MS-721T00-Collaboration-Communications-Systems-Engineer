@@ -459,6 +459,10 @@ You can map emergency location\addresses to:
 
 - Subnet. Not tied to any physical equipment address, this is the network address the user has. Unlike mapped subnets in the Teams Network topology, The Location Information Service (LIS) doesn’t maintain a list of Networks and Subnet masks, it relies on the NetworkID of the subnet.
 
+Microsoft Teams utilizes the following flowchart of determining a user's network location:
+
+    ![Flowchart of How Microsoft Teams utilizes the network data of determining a user to determine their location.](./Linked_Image_Files/M02_L02_E04_T04_01.png)
+
 Perform the following steps.
 
 1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Allan Deyoung**.
