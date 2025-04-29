@@ -115,6 +115,8 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
     ```powershell
 	cd C:\Scripts
 
+    Set-ExecutionPolicy Unrestricted
+
     .\MS-721TeamsDirectRoutingLabSetup-V2.ps1
 
 	```
@@ -762,13 +764,13 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
-1. Launch the Microsoft Edge and download the **AudioCodes Syslog Viewer** at: http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe
+1. Launch the **Microsoft Edge** and download the **AudioCodes Syslog Viewer** at: http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe
 
 1. Run **syslogViewer-setup.exe** once downloaded keeping all defaults in the setup wizard.
 
 1. Once installed, open Syslog Viewer and then press the Chain-Link icon in the top toolbar
 
-    ![Screenshot of Syslog Viewer, Showing the "Connect To" button](./Linked_Image_Files/M03_L03_E05_T02_01.png)
+    ![Screenshot of Syslog Viewer, showing the "Connect To" button](./Linked_Image_Files/M03_L03_E05_T02_01.png)
 
 1. On the **Web Connection** window, provide the following configuration and then click **Connect:**
 
@@ -778,6 +780,10 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 	- **Password** The MOD Administrator account password. You can find the password in the “Resource” section on the right side of the lab window.
 
-    ![Screenshot of Syslog Viewer, Showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
+    ![Screenshot of Syslog Viewer, showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
 
-1. On t
+1. Now that the syslog capture is running, open the Microsoft Teams client, click on **Calls** and you should see the Belleview Address previously created.
+
+    ![Screenshot of the Microsoft Teams Client, showing the emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
+
+1. Dial **933** in Microsoft Teams and then click **Call**. 
