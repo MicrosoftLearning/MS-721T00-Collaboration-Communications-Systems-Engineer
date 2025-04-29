@@ -423,9 +423,11 @@ In this exercise, you will configure the session border controller, and install 
 
 In the following task, you will upload the lab certificate you requested earlier to the SBC. This is needed to secure the connection between the SBC and Microsoft Teams  
 
-1. In the TLS Contexts window, in the TLS Contexts table, select **External**.
+1. Login again to the SBC after the reboot. Once signed in Navigate to **Setup -> IP Netowork -> Security -> TLS Contexts**
 
-1. Scroll down, and below the **External** information, select **Change Certificate**.
+1. In the TLS Contexts table, select the context called **External**.
+
+1. Scroll down below the **External** TLS Context's information and select **Change Certificate**.
 
 1. In the Change Certificates window, scroll down to the **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER** section.
 
