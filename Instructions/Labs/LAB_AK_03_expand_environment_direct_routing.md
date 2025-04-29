@@ -721,12 +721,23 @@ In the following task, you will configure location-based routing to allow connec
 
 You have successfully implemented the Location based routing which will route your calls dependent upon the machine's local subnet to which it is registered. Additionally, you have sucvcessfully implemented dynamic Emergency Calling Policy and Emergency Call Routing policy assignment for users as they visit this network site.
 
+### Task 9 - Modify the Global Dial Plan to Support Dialing 911 and 933
+
+In the following task, you will configure a Microsoft teams dial plan rule to allow 911 and 933 to be sent ouit
+
+1. In the PowerShell window from Task 1, run the following commands:
+
+    ```powershell
+    $nr1=New-CsVoiceNormalizationRule -Parent Global -Name 'NA-Emergency' -Pattern '^9?(911|933)$' -Translation '$1' -InMemory
+    Set-CsTenantDialPlan -Identity 'Global' -NormalizationRules @{Add =$nr1}
+    ```
+You have successfully created a dial plan rule that supports sending 911 and 933 to the sbc as-is with no modifications. 
 
 ## Exercise 5: Test and Validate your Configuration
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 60 minutes
+  - **Estimated Time to complete**: 30 minutes
 
 In this exercise, you will validate that the SBC is accepting calls, and test E911 configuration to ensure items created work as expected.
 
