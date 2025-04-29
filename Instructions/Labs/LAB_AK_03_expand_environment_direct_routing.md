@@ -730,11 +730,9 @@ In this exercise, you will validate that the SBC is accepting calls, and test E9
 
 In this task, you will validate that Location-Based Routing is blocking calls that are not permitted on the gateway defined.
 
-1. Sign in to **MS721-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
-1. Open an InPrivate tab in Microsoft Edge and then browse to **https://teams.microsoft.com**.
-
-1. Sign in as **MeganB@lab<LAB NUMBER>.o365ready.com** using the User Password in the "Resource" section on the right side of the lab window.
+1. Launch the Microsoft Teams client and sign in as **MeganB@lab<LAB NUMBER>.o365ready.com** using the User Password in the "Resource" section on the right side of the lab window.
 
 1. Once signed into Microsoft Teams, navigate to the **Calls** tab and place a call to "+14255550001". The call should fail and show the below error:
 
@@ -754,4 +752,32 @@ In this task, you will validate that Location-Based Routing is blocking calls th
 
     ![Screenshot of the Teams client, showing a test call connected through the SBC.](./Linked_Image_Files/M03_L03_E05_T01_03.png)
 
+1. Leave the Teams client window open and continue with the next task.
+
 You have successfully placed a test call in the lab through your SBC and validated correct routing.
+
+### Task 2 - Validate PIDF/LO Information is being sent to the SBC
+
+In this task, you will validate that PIDF/LO information from the LIS database in Microsoft Teams is being sent to the SBC. 
+
+1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+
+1. Launch the Microsoft Edge and download the **AudioCodes Syslog Viewer** at: http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe
+
+1. Run **syslogViewer-setup.exe** once downloaded keeping all defaults in the setup wizard.
+
+1. Once installed, open Syslog Viewer and then press the Chain-Link icon in the top toolbar
+
+    ![Screenshot of Syslog Viewer, Showing the "Connect To" button](./Linked_Image_Files/M03_L03_E05_T02_01.png)
+
+1. On the **Web Connection** window, provide the following configuration and then click **Connect:**
+
+	- **Address** the IP address or fqdn of your Azure SBC
+
+	- **Username** sbcadmin
+
+	- **Password** The MOD Administrator account password. You can find the password in the “Resource” section on the right side of the lab window.
+
+    ![Screenshot of Syslog Viewer, Showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
+
+1. On t
