@@ -723,7 +723,7 @@ You have successfully implemented the Location based routing which will route yo
 
 ### Task 9 - Modify the Global Dial Plan to Support Dialing 911 and 933
 
-In the following task, you will configure a Microsoft teams dial plan rule to allow 911 and 933 to be sent ouit
+In the following task, you will configure a Microsoft teams dial plan rule to allow 911 and 933 to be sent out to the SBC as is. Without this rule, Microsoft Teams' Tenant Dial Plan rules will normalize this to +1911 as an example.
 
 1. In the PowerShell window from Task 1, run the following commands:
 
