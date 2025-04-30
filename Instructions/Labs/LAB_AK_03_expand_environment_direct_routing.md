@@ -8,7 +8,7 @@ lab:
 # Lab 03: Expand your Teams Phone Environment to use Direct Routing
 # Student lab answer key
 
-## Lab scenario
+## Lab Scenario
 
 As part of the expanding business, the organization has an existing SIP trunk in its primary data center. The contractual obligations mean that it’s more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans later. As part of the move, Megan will be moved from the old telephone system to the new Microsoft Phone solution.
 
