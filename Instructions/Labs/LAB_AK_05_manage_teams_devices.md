@@ -108,7 +108,7 @@ The accounts are now licensed and ready for configuration steps.
 
 In this task, you will sign into the Microsoft Graph PowerShell Module and disable Password Expiration on the accounts. Based on organization policies, resource account passwords may be set to expire automatically after a period of time. If the resource account password expires, the Teams Rooms device with sign out and can't sign in again without manual intervention.
 
-1. You are still signed in to MS721-CLIENT01 as **Admin*** with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as **Admin** with the password provided to you.
 
 1. Open **Windows PowerShell as Administrator**. In the **User Account Control** dialog box, select **Yes**.
 

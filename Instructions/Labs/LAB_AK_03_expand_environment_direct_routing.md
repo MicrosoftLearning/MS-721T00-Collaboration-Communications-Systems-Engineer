@@ -92,7 +92,7 @@ You have successfully identified your lab number and updated your public IP addr
 
 In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and the DNS records for Microsoft 365 services.  The script will also connect to Microsoft Graph and add your new student lab domain. Lastly, the script will generate a certificate signing request (CSR) for DigiCert to provision a signed certificate for the SBC.
 
-1. You are still signed in to MS721-CLIENT01 as **Admin*** with the password provided to you.
+1. You are still signed in to MS721-CLIENT01 as **Admin** with the password provided to you.
 
 1. Download the latest version of the script from: [MS-721TeamsDirectRoutingLabSetup-V2.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup-V2.ps1) and save it to **C:\Scripts**.
 
