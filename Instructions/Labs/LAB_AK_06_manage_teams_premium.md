@@ -84,6 +84,36 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
+1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Call Queues.**
+
+1. Click **+ Add** and set the following parameters across multiple pages:
+
+  - **General Info Tab**
+
+	  - **Add a name for your call queue:** CQ_MainLine
+
+	  - **Resource Accounts:** CQ_MainLine@<Lab Domain>.onmicrosoft.com
+
+	  - **Language:** English (Untied States)
+
+  - **Call Answering Tab**
+
+	  - **Users:** Megan Bowen
+
+	  - **Conference Mode:** Toggle On
+
+  - **Agent Selection Tab**
+
+	  - **Presence-based routing** Toggle Off
+
+  - **Authorized Users Tab**
+
+	  - **Add** Megan Bowen
+
+1. Click **Submit** to create the Call Queue.
+
+You have successfully created a Call queue and added an authorized user to the queue.
+
 ### Task 4 - Configuring Voice Application Policies
 
 In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
@@ -102,7 +132,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
   - **Estimated Time to complete**: 30 minutes
 
-In this exercise, you will create custom meeting templates with Microsoft Teams Premium licensing.
+In this exercise, you will test the Queues app.
 
 ### Task 1 - Accessing the Queues App
 
@@ -173,3 +203,5 @@ In this task, you will sign into the Microsoft Teams client, create a meeting, a
 > If you do not see the customizations, wait 30 minutes and retry **Task 2** again.
 
 You have successfully created a meeting as a Teams Premium user and validated that your organization's meeting customization policy has taken effect.
+
+Advanced Meeting Protections???
