@@ -123,15 +123,15 @@ In this task, you will create a voice application policy which will give users r
 1. Click **+ Add**, set the following parameters, and then click **Submit** to create the Voice Application policy.:
 
   - **Name:** Managers
-
-	- **Call Queue Greetings:** Toggle All Settings **On**
+  
+  - **Call Queue Greetings:** Toggle All Settings **On**
 
   - **Call Queue General:** Toggle All Settings **On**
 
   - **Call Queue Exception Handling:** Toggle All Settings **On**
 
 	- **Call Queue Agent Monitoring:**
-
+  
     - **Agent Monitor Mode:** Takeover
 
     - **Agent Monitoring:** Agent
