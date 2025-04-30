@@ -317,7 +317,7 @@ You have successfully setup calendar processing on a Teams Rooms Account.
 
 In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms on Windows and will validate that the account was setup properly.
 
-1.  Connect to **SH3-VM** under the **Resources** in the lab. You will see a **Welcome to Microsoft Teams! A happier place for teams to work together** message.
+1.  Connect to **SH3-VM** under the **Resources** in the lab. You will see a **Welcome to Microsoft Teams! A happier place for teams to work together** message. Click **Get Started.**
 
     ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
 
@@ -330,7 +330,11 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
 	- **Password:** *Enter the MOD Administrator account password from the _“Resource”_ section on the right side of the lab window.*
 
-1. The screen will go black a few times before it will eventually login.
+1. The screen will go black a few times before it will eventually login. You will see the screen below and are now able to use the Surface Hub 3.
+
+    ![A screenshot showing the Teams Rooms home screen.](Linked_Image_Files/M05_L05_E03_T02_02.png)
+
+You have successfully setup a Surface Hub 3 with the Microsoft Teams Rooms on Windows App.
 
 ### Task 3 - Manage Surface Hub 3 with the Pro Management Portal.
 
