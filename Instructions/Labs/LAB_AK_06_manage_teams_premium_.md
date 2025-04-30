@@ -150,6 +150,26 @@ You have successfully modified the Global meeting customization policy and appli
 
 ### Task 2 - Create a Meeting as a Teams Premium User and validate the branding has applied.
 
-In this task, you will sign into the Microsoft Teams admin center and modify the Global Meeting Customization policy so that organizers with a Teams Premium license can brand their Teams meeting join experience with their company's branding.
+In this task, you will sign into the Microsoft Teams client, create a meeting, and validate that the theming has been applied for those joining the meeting. 
 
-1. You
+> [!IMPORTANT]
+> Please allow at least 30 minutes before performing these tasks as it takes time for the policies to propagate down to a user.
+
+1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
+
+1. In the Microsoft Teams client, click on **Calendar** and then click **New Meeting**. Create a Meeting with any name you would like and then click **Save**.
+
+1. Click once on the meeting and then click the **Copy** button to the right of the meeting join URL.
+
+    ![A screenshot showing the meeting join URL.](Linked_Image_Files/M06_L06_E03_T02_01.png)
+
+1. Open a new **In-Private Microsoft Edge browser window** by right-clicking on the Microsoft Edge icon in the taskbar and selecting **New InPrivate Window** and then navigate to the copied meeting join URL. When there click on **Join in this Browser**
+
+1. You should now see the meeting join page has the customizations applied previously.
+
+    ![A screenshot showing the meeting join page.](Linked_Image_Files/M06_L06_E03_T02_02.png)
+
+> [!NOTE]
+> If you do not see the customizations, wait 30 minutes and retry task 2 again.
+
+You have successfully created a meeting as a Teams Premium user and validated that your organization's meeting customization policy has taken effect.
