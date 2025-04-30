@@ -124,21 +124,19 @@ In this task, you will create a voice application policy which will give users r
 
   - **Name:** Managers
 
-	- **Call Queues Settings Block**
+	  - **Call Queue Greetings:** Toggle All Settings **On**
 
-	  - **Greetings:** Toggle All Settings **On**
+    - **Call Queue General:** Toggle All Settings **On**
 
-    - **General:** Toggle All Settings **On**
+    - **Call Queue Exception Handling:** Toggle All Settings **On**
 
-    - **Exception Handling:** Toggle All Settings **On**
-
-	  - **Agent Monitoring:**
+	  - **Call Queue Agent Monitoring:**
 
       - **Agent Monitor Mode:** Takeover
 
       - **Agent Monitoring:** Agent
 
-	  - **Reporting** Toggle All Settings to **Only Authorized Queues**
+	  - **Call Queue Reporting** Toggle All Settings to **Only Authorized Queues**
 
     ![A screenshot showing Voice Application Policy.](Linked_Image_Files/M06_L06_E01_T04_01.png)
 
