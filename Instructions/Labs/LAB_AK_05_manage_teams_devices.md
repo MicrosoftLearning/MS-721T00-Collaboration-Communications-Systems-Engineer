@@ -281,7 +281,7 @@ You have successfully provisioned an account for use with a Common Area Phone in
 
 In this exercise, you will deploy finish configuration of a room resource account for Microsoft Teams Rooms on Windows and Surface Hub 3. You will then test the account and sign into a virtual Surface Hub 3 virtual machine and then manage the room from the Teams Rooms Pro Portal.
 
-### Task 1 - Configure the Room Resource Account
+### Task 1 - Configure the Room Resource Account's Calendar Processing Settings
 
 In this task, you will sign into Microsoft Exchange PowerShell and configure the mailbox for the room resource account as a Room and Modify Calendar Processing.
 
@@ -311,12 +311,26 @@ In this task, you will sign into Microsoft Exchange PowerShell and configure the
     Set-CalendarProcessing -Identity "CONF_Room1" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -AllowRecurringMeetings $true -DeleteAttachments $true -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
 
     ```
+You have successfully setup calendar processing on a Teams Rooms Account.
 
 ### Task 2 - Setup Surface Hub 3.
 
-In this task, you will sign into the Microsoft Teams admin center and blah.
+In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms on Windows and will validate that the account was setup properly.
 
-1. Blah
+1.  Connect to **SH3-VM** under the **Resources** in the lab. You will see a **Welcome to Microsoft Teams! A happier place for teams to work together** message.
+
+    ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
+
+    > [!NOTE]
+    > If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started.
+
+1. On the next page click **Accept** to the **End User Agrrement** and then click **Manual Setup**. Enter the following credentials:
+
+	- **Email:** CONF_Room1@<Lab Domain>.onmicrosoft.com *Replace <Lab Domain> with your labs domain.*
+
+	- **Password:** *Enter the MOD Administrator account password from the _“Resource”_ section on the right side of the lab window.*
+
+1. The screen will go black a few times before it will eventually login.
 
 ### Task 3 - Manage Surface Hub 3 with the Pro Management Portal.
 
