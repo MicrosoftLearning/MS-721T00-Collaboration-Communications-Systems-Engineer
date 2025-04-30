@@ -30,41 +30,63 @@ As part of the expanding business, the organization has began needing access to 
 
 In this exercise, you will enable users for access to the queues app and control permissions for end-users access to Auto Attendants & Call Queues with Voice Application policies.
 
-### Task 1 - Creating Resource Accounts for Voice Applications
+### Task 1 - Assigning Teams Premium Licenses
+
+In this task, you will sign into the Microsoft 365 admin center and Assign a Teams Premium license to a user that will later use the Queues App.
+
+1. Connect to **MS721-CLIENT01** and sign in as **Admin**. 
+
+1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+
+1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
+
+1. When a **Save password** dialog is displayed, select **Never**.
+
+1. When a **Stay signed in?** dialog is displayed, select **No**.
+
+    > NOTE: You may get a prompt to **Let's keep your account secure**. Click **Next** on this prompt and setup 2-Factor Authentication with the Microsoft Authenticator app. 
+
+1. In the left navigation, select **Users**, select **Active Users**, and then select **Megan Bowen.**
+
+1. Select **Licenses and Apps** on the user card, assign the **Microsoft Teams Premium** license to the user account, and then click **Save changes.**
+
+You have assigned a Teams Premium license to a user
+
+### Task 2 - Creating Resource Accounts for Voice Applications
+
+In this task, you will sign into the Microsoft Teams admin center and create a resource account for a Call Queue that you will later build. All Call Queues that will have a phone number assigned to them will require an underlying Resource Account. We will then license this account.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+
+1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Resource Accounts.**
+
+1. Click **+ Add**, enter the following information, and then click **Save**:
+
+	- **Display Name:** CQ_MainLine
+
+	- **Unique Username:** CQ_MainLine@<Lab Domain>.onmicrosoft.com
+
+	- **Resoure Account Type:** Call Queue
+
+    ![A screenshot showing the basics of Resource Account setup.](Linked_Image_Files/M06_L06_E01_T01_01.png)
+
+### Task 3 - Creating a Call Queue
 
 In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
-### Task 2 - Creating a Call Queue
-
-In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
-
-### Task 1 - Creating a Call Queue
+### Task 4 - Configuring Voice Application Policies
 
 In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
-
-### Task 3 - Configuring Voice Application Policies
-
-In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
-
-### Task 4 - Assigning Teams Premium Licenses
-
-In this task, you will sign into the Microsoft 360 admin center and create a Auto Attendant.
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
 ### Task 5 - Accessing the Queues App
 
 In this task, you will sign into the Microsoft Teams client and access the Queues App.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
 
 ## Exercise 2: Customizing Meetings with Teams Premium
@@ -74,21 +96,6 @@ In this task, you will sign into the Microsoft Teams client and access the Queue
   - **Estimated Time to complete**: 15 minutes
 
 In this exercise, you will create custom meeting templates with Microsoft Teams Premium licensing.
-
-### Task 1 - Blah
-
-In this task, you will sign into the Microsoft Teams admin center and blah.
-
-1. Blah
-
-
-## Exercise 3: Customizing Advanced Meeting Protections with Teams Premium
-
-### Exercise Duration
-
-  - **Estimated Time to complete**: 15 minutes
-
-In this exercise, you will configure Advanced Meeting Protections with Microsoft Teams Premium licensing.
 
 ### Task 1 - Blah
 
