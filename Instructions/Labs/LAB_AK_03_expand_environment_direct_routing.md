@@ -629,13 +629,13 @@ You have successfully assigned the ELIN number to the location for emergency add
 
 ### Task 6 - Configure Emergency Call Routing Policy
 
-In the following task, you create a Emergency Call Routing Policy in Microsoft Teams Admin center. This will enable Dynamic Emergency Calling and route emergency calls to the SBC.
+In the following task, you will modify the Global Emergency Call Routing Policy in Microsoft Teams Admin center. This will enable Dynamic Emergency Calling and route emergency calls to the SBC.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select the three dashes, select **Voice**, then **Emergency policies**, and then **Call routing policies** across the top.
 
-1. Select **Add**, give the policy a name of **Washington** and a description as **Washington Direct Routing**. Change **Dynamic emergency calling** to **On**.
+1. Select the **Global (Org-wide default)** policy, and change **Dynamic emergency calling** to **On**.
 
 1. Select **Add** and then provide the following configuration:
 
@@ -660,13 +660,13 @@ In the following task, you create a Emergency Call Routing Policy in Microsoft T
 
 ### Task 7 - Configure Emergency Calling Policy
 
-In the following task, you create a Emergency Calling Policy in Microsoft Teams Admin center. This will enable external location lookup and enabled 911 call notifications.
+In the following task, you will modify the Global Emergency Calling Policy in Microsoft Teams Admin center. This will enable external location lookup and enable emergency call notifications.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
 1. Select the three dashes, select **Voice**, and then **Emergency policies.**
 
-1. Select **Add**, give the policy a name of **Washington** and a description as **Washington**. Change **External location lookup mode** to **On**.
+1. Select the **Global (Org-wide default)** policy, and change **External location lookup mode** to **On**.
 
 1. In the **Emergency Services Disclaimer** box, enter the following text:
 
@@ -696,8 +696,6 @@ In the following task, you will configure location-based routing to allow connec
 1. Select the three dashes, select **Locations**, then **Network topology.**
 
 1. Select **Add**, give the Network Site a name of **Washington** and description as **Washington Network**. Set the **Network region** to **US** and then hange **Location based routing** to **On**.
-
-1. Under **Emergency calling policy** and **Emergency call routing policy**, select **Washington**.
 
 1. Select **Add subnets,** for **IP address** enter **192.168.0.0** and a **Network Range** of **24,** select **Apply,** and then select **Save**
 
