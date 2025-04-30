@@ -26,7 +26,7 @@ As part of the expanding business, the organization has began deploying various 
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 15 minutes
+  - **Estimated Time to complete**: 30 minutes
 
 In this exercise, you will configure accounts for Teams Shared Devices and Rooms.
 
@@ -49,7 +49,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. In the left navigation, select **Users**, select **Active Users**, and then **Add a user**
 
-1. Use the following parameters for this exercise and then click **Next**:
+1. Use the following parameters for this task and then click **Next**:
 
 	- **Display Name** CAP_Reception
 
@@ -61,32 +61,48 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 ![A screenshot showing the basics of user setup.](Linked_Image_Files/M05_L05_E01_T01_01.png)
 
-1. On the licensing page, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account and then click **Next**.
+1. On the licensing page, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account, and then click **Next.**
 
     > [!NOTE]
     > The lab environment does not have the proper **Teams Shared Devices** licensing avaliable. For what we need, this license will do for lab purposes.
 
-1. Continue clicking **Next** until you get the username and password presented to you. Write these down for future use.
+1. Continue clicking **Next** until you get the username and password presented to you. Write these down for future use. Keep the browser open for the next task.
 
-### Task 2 - Create a resource account for Teams Rooms
+You have created an account that will be used on a common area phone.
 
-In this task, you will sign into the Microsoft 365 admin center and will create a user account for use with a Microsoft Teams Shared Device.
+### Task 2 - Create a M365 Resource Account for Teams Rooms
 
-1. Repeat the steps in Task 1 above, but utilize the following parameters for the account creation
+In this task, you will sign into the Microsoft 365 admin center and will create a rooom resource account for use with a Microsoft Teams Room.
 
-	- **Display Name** CONF_Room1
+1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**
 
-	- **Username** CONF_Room1
+1. In the left navigation, select **Resources**, select **Rooms & equipment**, and then **Add resource**3
 
-	- **Automatically create a password** Check the box
+1. Use the following parameters for this task and then click **Save**:
 
-	- **Require this user to change their password when they first sign in** Uncheck this box
+	- **Resource type** Room
 
-  - **License** Microsoft Teams Rooms Pro & Microsoft Teams Domestic Calling Plan
+	- **Name** CONF_Room1
+
+	- **Email** CONF_Room1
+
+	- **Capacity** 10
+
+    - **Location** Bellevue, WA
+
+![A screenshot showing resource account setup page.](Linked_Image_Files/M05_L05_E01_T02_01.png)
+
+1. In the left navigation, select **Users**, select **Active Users**, and then select the **CONF_Room1** account. 
+
+1. Select **Licenses and Apps** on the user card, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account, and then click **Save changes.**
+
+1. While still in the user card, select **Reset Password** and set the password to that of the **MOD Administrator**, then close the user card.
 
 1. In the **Microsoft 365 Admin Center** under **Active Users** you should see two accounts matching the following:
 
-![A screenshot showing the two created user accounts.](Linked_Image_Files/M05_L05_E01_T02_01.png)
+![A screenshot showing the two created user accounts.](Linked_Image_Files/M05_L05_E01_T02_02.png)
+
+The accounts are now licensed and ready for configuration steps.
 
 ### Task 3 - Aquire phone numbers to assign to the resource accounts
 
@@ -181,7 +197,7 @@ In this task, you will connect to Microsoft Teams PowerShell and create an IP Ph
     ```
 ![A screenshot showing the Global IP Phone policy.](Linked_Image_Files/M05_L05_E02_T01_01.png)
 
-1. Run the New-TeamsIpPhonePolicy cmdlet. This command creates a per-user online IP Phone Policy that will lock down the phone to the CommonAreaSignIn experience. It also disables the home screen and the better together functionality with the Teams client.
+1. Run the New-TeamsIPPhonePolicy cmdlet. This command creates a per-user online IP Phone Policy that will lock down the phone to the CommonAreaSignIn experience. It also disables the home screen and the better together functionality with the Teams client.
 
     ```powershell
    New-CsTeamsIPPhonePolicy -Identity CAP -SignInMode CommonAreaPhoneSignIn -AllowHomeScreen Disabled -AllowBetterTogether Disabled
@@ -221,18 +237,51 @@ You have successfully provisioned an account for use with a Common Area Phone in
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 45 minutes
+  - **Estimated Time to complete**: 60 minutes
 
-In this exercise, you will deploy Microsoft Teams Rooms on Windows and Surface Hub 23
+In this exercise, you will deploy finish configuration of a room resource account for Microsoft Teams Rooms on Windows and Surface Hub 3. You will then test the account and sign into a virtual Surface Hub 3 virtual machine and then manage the room from the Teams Rooms Pro Portal.
 
-### Task 1 - Setup Surface Hub 3.
+### Task 1 - Configure the Room Resource Account
+
+In this task, you will sign into Microsoft Exchange PowerShell and configure the mailbox for the room resource account as a Room and Modify Calendar Processing.
+
+1. You are still on **MS721-CLIENT01** where you are still signed in as “Admin”.
+
+1. Select the Windows symbol in the task bar, type **PowerShell** and open a Administrator-elevated PowerShell window.
+
+1. In Windows PowerShell, enter the following cmdlet to connect to install the Exchange Online Management PowerShell Module:
+
+    ```powershell
+    Install-Module ExchangeOnlineManagement
+
+    ```
+
+1. In Windows PowerShell, enter the following cmdlet to connect to Exchange Online Management:
+
+    ```powershell
+    Connect-ExchangeOnline
+
+    ```
+
+1. In the PowerShell prompt, sign in as **MOD Administrator** with the credentials provided to you.
+
+1. In Windows Powershell, enter the following and then press **Enter**. By running the command, the room resource account will automatically process or deny meeting invites when the room is invited to a meeting based on the room calendar.
+
+    ```powershell
+    Set-CalendarProcessing -Identity "CONF_Room1" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -AllowRecurringMeetings $true -DeleteAttachments $true -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
+
+    ```
+
+### Task 2 - Setup Surface Hub 3.
 
 In this task, you will sign into the Microsoft Teams admin center and blah.
 
 1. Blah
 
-### Task 2 - Manage Surface Hub 3 with the Pro Management Portal.
+### Task 3 - Manage Surface Hub 3 with the Pro Management Portal.
 
 In this task, you will sign into the Microsoft Teams admin center and blah.
 
 1. Blah
+
+https://portal.rooms.microsoft.com/
