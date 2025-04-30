@@ -483,7 +483,7 @@ In the following task, you will create your first voice routing policy and PSTN 
     ```
 
 	> [!NOTE]
-    > If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams**.
+    > If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams** as an administrator.
 
 1. In the PowerShell prompt, sign in as **Allan Deyoung** with the credentials provided to you.
 
@@ -728,6 +728,7 @@ In the following task, you will configure a Microsoft teams dial plan rule to al
     ```powershell
     $nr1=New-CsVoiceNormalizationRule -Parent Global -Name 'NA-Emergency' -Pattern '^9?(911|933)$' -Translation '$1' -InMemory
     Set-CsTenantDialPlan -Identity 'Global' -NormalizationRules @{Add =$nr1}
+    
     ```
 You have successfully created a dial plan rule that supports sending 911 and 933 to the sbc as-is with no modifications. 
 

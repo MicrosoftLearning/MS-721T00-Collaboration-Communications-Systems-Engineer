@@ -95,18 +95,3 @@ In this exercise, you will configure Advanced Meeting Protections with Microsoft
 In this task, you will sign into the Microsoft Teams admin center and blah.
 
 1. Blah
-
-
-## Exercise 4: Configuring Virtual Appointments with Teams Premium
-
-### Exercise Duration
-
-  - **Estimated Time to complete**: 15 minutes
-
-In this exercise, you will configure Virtual Appointments with Microsoft Teams Premium licensing.
-
-### Task 1 - Blah
-
-In this task, you will sign into the Microsoft Teams admin center and blah.
-
-1. Blah
