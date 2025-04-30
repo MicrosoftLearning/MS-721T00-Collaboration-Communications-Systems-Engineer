@@ -134,9 +134,9 @@ In this task, you will sign into the Microsoft Teams admin center and modify the
 
 	- **Logo Dark Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Logo.png)
 
-  - **Images Light Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
+  - **Images Light Theme:** [Theme.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
 
-	- **Images Dark Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
+	- **Images Dark Theme:** [Theme.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
 
 	- **Color Hex Code:** #2760C9
 
@@ -170,6 +170,6 @@ In this task, you will sign into the Microsoft Teams client, create a meeting, a
     ![A screenshot showing the meeting join page.](Linked_Image_Files/M06_L06_E03_T02_02.png)
 
 > [!NOTE]
-> If you do not see the customizations, wait 30 minutes and retry task 2 again.
+> If you do not see the customizations, wait 30 minutes and retry **Task 2** again.
 
 You have successfully created a meeting as a Teams Premium user and validated that your organization's meeting customization policy has taken effect.
