@@ -68,7 +68,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a r
 
 	- **Resoure Account Type:** Call Queue
 
-    ![A screenshot showing the basics of Resource Account setup.](Linked_Image_Files/M06_L06_E01_T01_01.png)
+    ![A screenshot showing the basics of Resource Account setup.](Linked_Image_Files/M06_L06_E01_T02_01.png)
 
 1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
 
@@ -86,7 +86,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
 1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Call Queues.**
 
-1. Click **+ Add** and set the following parameters across multiple pages:
+1. Click **+ Add**, set the following parameters across multiple pages, and then click **Submit** to create the Call Queue.:
 
   - **General Info Tab**
 
@@ -110,21 +110,55 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
 	  - **Add** Megan Bowen
 
-1. Click **Submit** to create the Call Queue.
-
 You have successfully created a Call queue and added an authorized user to the queue.
 
 ### Task 4 - Configuring Voice Application Policies
 
-In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
+In this task, you will create a voice application policy which will give users rights to edit different parameters of Auto Attendants and Call Queues without requiring access to the Microsoft Teams Admin Center. This allows them to make these changes right within their Microsoft Teams client.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+
+1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Voice Applications.**
+
+1. Click **+ Add**, set the following parameters, and then click **Submit** to create the Voice Application policy.:
+
+  - **Name:** Managers
+
+	- **Call Queues Settings Block**
+
+	  - **Greetings:** Toggle All Settings **On**
+
+    - **General:** Toggle All Settings **On**
+
+    - **Exception Handling:** Toggle All Settings **On**
+
+	  - **Agent Monitoring:**
+
+      - **Agent Monitor Mode:** Takeover
+
+      - **Agent Monitoring:** Agent
+
+	  - **Reporting** Toggle All Settings to **Only Authorized Queues**
+
+    ![A screenshot showing Voice Application Policy.](Linked_Image_Files/M06_L06_E01_T04_01.png)
+
+You have successfully created a Voice Application Policy. You are now ready to assign this to a user.
 
 ### Task 5 - Assigning Voice Application Policies
 
-In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
+In this task, you will sign into the Microsoft Teams admin center and assign a voice routing policy to a user.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+
+1. In the **Microsoft Teams admin center**, select **Users** on the left menu, then select **Manage Users.**
+
+1. Select **Megan Bowen**, select **Policies**, and then select **Edit.**
+
+1. Scroll down to **Select Voice Applications Policy**, select the **Managers** policy created earlier, then click **Apply** and **Confirm.**
+
+    ![A screenshot showing the Voice Application Policy being applied to a user.](Linked_Image_Files/M06_L06_E01_T05_01.png)
+
+You have successfully applied a Voice Application policy to a user.
 
 ## Exercise 2: Using the Queues App
 
