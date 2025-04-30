@@ -102,8 +102,7 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
-> [!NOTE]
-> This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+    > NOTE: This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
 
     ```powershell
     Install-Module Microsoft.Graph -Force -AllowClobber
@@ -139,8 +138,7 @@ In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and
 
 1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
 
-> [!NOTE]
-> DNS Records for your lab domain will be created. If it appears that the script has stopped after the _sipfederationtls SRV record has been created, click the PowerShell icon on the taskbar and sign in again to the MOD Administrator account. 
+    > NOTE: DNS Records for your lab domain will be created. If it appears that the script has stopped after the _sipfederationtls SRV record has been created, click the PowerShell icon on the taskbar and sign in again to the MOD Administrator account. 
 
 1. When prompted to **Press any key to continue** to generate a CSR for the lab, press enter.
 
@@ -391,8 +389,7 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;LAB NUMBER&gt;. o365ready.com](*). Ensure that you replace &lt;SBCpublicIPAddress&gt; or &lt;LAB NUMBER&gt; with the IP address of the SBC instance or the lab number you got from o365ready.com.
 
-> [!NOTE]
-> You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
+    > NOTE: You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
 
 1. Logon to the SBC using the following credentials you configured earlier:
 
@@ -482,8 +479,7 @@ In the following task, you will create your first voice routing policy and PSTN 
 
     ```
 
-> [!NOTE]
-> If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams** as an administrator.
+    > NOTE: If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams** as an administrator.
 
 1. In the PowerShell prompt, sign in as **Allan Deyoung** with the credentials provided to you.
 
@@ -798,7 +794,6 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
     ![Screenshot of the Microsoft Teams Client, showing the Emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
 
-    > [!NOTE]
     > If you see "Location Not Detected" You can either set your location manually for this test or restart your Microsoft Teams client. The policies created previously can take some time to take effect.
 
 1. Dial **933** in Microsoft Teams and then verify that +1933 does not show in the translation. If it does, restart the Microsoft Teams client.
