@@ -129,13 +129,17 @@ In this task, you will sign into the Microsoft Graph PowerShell Module and disab
 
 	```
 
-1. When prompted, enter the **Microsoft 365 Administrator** email address and password. Do not use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
+1. When prompted, enter the **Microsoft 365 Administrator** email address and password.
 
-1. Set the password to never expire for each resource account. NOTE: Replace <Lab Domain> in each of the below commands with that of your lab environment.
+1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box for **Consent on behalf of your organization** and then click **Accept**.
+
+    ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
+
+1. Set the password to never expire for each resource account. NOTE: Please replace <Lab Domain> in each of the below commands with that of your lab environment.
 
     ```powershell
-    Update-MgUser -UserId CAP_Reception@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration -PassThru
-    Update-MgUser -UserId CONF_Room1@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration -PassThru
+    Update-MgUser -UserId CAP_Reception@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration
+    Update-MgUser -UserId CONF_Room1@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration
 
 	```
 The accounts anow have password expiration disabled and are ready to have additional configurations applied.
