@@ -787,7 +787,7 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 1. On the **Web Connection** window, provide the following configuration and then click **Connect:**
 
-	- **Address** the IP address or fqdn of your Azure SBC
+	- **Address** the IP address or FQDN of your Azure SBC
 
 	- **Username** sbcadmin
 
@@ -797,6 +797,29 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 1. Now that the syslog capture is running, open the Microsoft Teams client, click on **Calls** and you should see the Belleview Address previously created.
 
-    ![Screenshot of the Microsoft Teams Client, showing the emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
+    ![Screenshot of the Microsoft Teams Client, showing the Emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
 
-1. Dial **933** in Microsoft Teams and then click **Call**. 
+    > [!NOTE]
+    > If you see "Location Not Detected" You can either set your location manually for this test or restart your Microsoft Teams client. The policies created previously can take some time to take effect.
+
+1. Dial **933** in Microsoft Teams and then verify that +1933 does not show in the translation. If it does, restart the Microsoft Teams client.
+
+![Screenshot of the Microsoft Teams Client, showing that 933 has no +1 in front](./Linked_Image_Files/M03_L03_E05_T02_04.png)
+
+1. Once you have confirmed that 933 looks correct, click **Call**. A New call window will open stating that an emergency call is in progress showing your number and address. hang up the call after 5 seconds.
+
+![Screenshot of the Microsoft Teams Client, showing the emergency call in progress](./Linked_Image_Files/M03_L03_E05_T02_05.png)
+
+1. On **MS721-CLIENT02** open the AudioCodes Syslog Viewer and press the **Snowflake** button at the top to pause capture. Then Press the **Blue I** to open the sip ladder.
+
+![Screenshot of Syslog viewer, showing which buttons to press](./Linked_Image_Files/M03_L03_E05_T02_06.png)
+
+1. In the **SIP Flow Diagram** Window, select **Show Calls** in the dropdown on the middle-right. Then select the call to 933 above this. In the message window below, scroll down and you will see XML PIDF/LO XML Data.
+
+![Screenshot of Syslog viewer, showing the XML Data](./Linked_Image_Files/M03_L03_E05_T02_07.png)
+
+1. If you continue scrolling right, you will see the XML encoded version of your Emergency Address.
+
+![Screenshot of Syslog viewer, showing the expanded XML Data](./Linked_Image_Files/M03_L03_E05_T02_08.png)
+
+Congratulations, you have just validated that the SBC is recieving PIDF/LO information when Emergency calls are being placed and that required policies are working as expected.
