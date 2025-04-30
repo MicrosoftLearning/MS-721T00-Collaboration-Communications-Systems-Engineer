@@ -316,7 +316,7 @@ You have successfully setup calendar processing on a Teams Rooms Account.
 
 In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms on Windows and will validate that the account was setup properly.
 
-1.  Connect to **SH3-VM** under the **Resources** in the lab. You will see a **Welcome to Microsoft Teams! A happier place for teams to work together** message. Click **Get Started.**
+1.  Connect to **MS721-SH3** under the **Resources** in the lab. You will see a **Welcome to Microsoft Teams! A happier place for teams to work together** message. Click **Get Started.**
 
     ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
 
@@ -344,7 +344,7 @@ In this task, you will sign into the Teams Rooms Pro Management Portal and add m
 
 1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
 
-1. Once signed in, navigate to Rooms and then click on the **SH3-VM** Room. In the room card, click **Enroll** in the bottom right.
+1. Once signed in, navigate to Rooms and then click on the **MS721-SH3** Room. In the room card, click **Enroll** in the bottom right.
 
     ![A screenshot showing the room card in the Pro Management Portal.](Linked_Image_Files/M05_L05_E03_T03_01.png)
 
