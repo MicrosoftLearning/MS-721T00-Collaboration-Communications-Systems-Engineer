@@ -261,5 +261,3 @@ In this task, you will sign into the Microsoft Teams client, create a meeting, a
 > If you do not see the customizations, wait 30 minutes and retry **Task 2** again.
 
 You have successfully created a meeting as a Teams Premium user and validated that your organization's meeting customization policy has taken effect.
-
-Advanced Meeting Protections???
