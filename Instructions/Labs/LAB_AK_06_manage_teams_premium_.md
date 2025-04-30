@@ -116,10 +116,40 @@ In this task, you will sign into the Microsoft Teams client and access the Queue
 
   - **Estimated Time to complete**: 15 minutes
 
-In this exercise, you will create custom meeting templates with Microsoft Teams Premium licensing.
+In this exercise, you will create custom meeting templates for users that have Microsoft Teams Premium licensing. This will customize the meeting join experience for members of the meeting.
 
-### Task 1 - Blah
+### Task 1 - Create a Meeting Customization Policy
 
-In this task, you will sign into the Microsoft Teams admin center and blah.
+In this task, you will sign into the Microsoft Teams admin center and modify the Global Meeting Customization policy so that organizers with a Teams Premium license can brand their Teams meeting join experience with their company's branding.
 
-1. Blah
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+
+1. In the **Microsoft Teams admin center**, select **Meetings** on the left menu, then select **Customization Policies.**
+
+1. Click on the **Global (Org-wide default)** policy, click the **+ Add a theme** button, set the following parameters, and then click **Save**:
+
+	- **Meeting theme name:** Contoso
+
+	- **Logo Light Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Logo.png)
+
+	- **Logo Dark Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Logo.png)
+
+  - **Images Light Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
+
+	- **Images Dark Theme:** [Logo.png](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/Theme.png)
+
+	- **Color Hex Code:** #2760C9
+
+    ![A screenshot showing the settings on the flyout.](Linked_Image_Files/M06_L06_E03_T01_01.png)
+
+1. Back in the Global Meeting Customization policy, select **Preview** next to the Contoso meeting theme. You will now see what the meeting join experience will look like for your organizers that have a Teams Premium license. Click **Close** and then **Save** to apply to policy to all users.
+
+    ![A screenshot showing the meeting customizatiion policy preview.](Linked_Image_Files/M06_L06_E03_T01_02.png)
+
+You have successfully modified the Global meeting customization policy and applied it to users with Teams premium licensing.
+
+### Task 2 - Create a Meeting as a Teams Premium User and validate the branding has applied.
+
+In this task, you will sign into the Microsoft Teams admin center and modify the Global Meeting Customization policy so that organizers with a Teams Premium license can brand their Teams meeting join experience with their company's branding.
+
+1. You
