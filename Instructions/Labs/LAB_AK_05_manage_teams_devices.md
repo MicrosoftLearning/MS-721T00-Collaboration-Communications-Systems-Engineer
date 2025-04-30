@@ -59,7 +59,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 	- **Require this user to change their password when they first sign in** Uncheck this box
 
-![A screenshot showing the basics of user setup.](Linked_Image_Files/M05_L05_E01_T01_01.png)
+    ![A screenshot showing the basics of user setup.](Linked_Image_Files/M05_L05_E01_T01_01.png)
 
 1. On the licensing page, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account, and then click **Next.**
 
@@ -90,7 +90,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
     - **Location** Bellevue, WA
 
-![A screenshot showing resource account setup page.](Linked_Image_Files/M05_L05_E01_T02_01.png)
+    ![A screenshot showing resource account setup page.](Linked_Image_Files/M05_L05_E01_T02_01.png)
 
 1. In the left navigation, select **Users**, select **Active Users**, and then select the **CONF_Room1** account. 
 
@@ -100,7 +100,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. In the **Microsoft 365 Admin Center** under **Active Users** you should see two accounts matching the following:
 
-![A screenshot showing the two created user accounts.](Linked_Image_Files/M05_L05_E01_T02_02.png)
+    ![A screenshot showing the two created user accounts.](Linked_Image_Files/M05_L05_E01_T02_02.png)
 
 The accounts are now licensed and ready for configuration steps.
 
@@ -235,7 +235,7 @@ In this task, you will connect to Microsoft Teams PowerShell and create an IP Ph
     Get-CsTeamsIPPhonePolicy
 
     ```
-![A screenshot showing the Global IP Phone policy.](Linked_Image_Files/M05_L05_E02_T01_01.png)
+    ![A screenshot showing the Global IP Phone policy.](Linked_Image_Files/M05_L05_E02_T01_01.png)
 
 1. Run the New-TeamsIPPhonePolicy cmdlet. This command creates a per-user online IP Phone Policy that will lock down the phone to the CommonAreaSignIn experience. It also disables the home screen and the better together functionality with the Teams client.
 
@@ -253,7 +253,7 @@ In this task, you will connect to Microsoft Teams PowerShell and create an IP Ph
 
 1. Review the output of the command. You will see the Global and the CAP policy created previously.
 
-![A screenshot showing the two created IP Phone.](Linked_Image_Files/M05_L05_E02_T01_02.png)
+    ![A screenshot showing the two created IP Phone.](Linked_Image_Files/M05_L05_E02_T01_02.png)
 
 1. Leave the PowerShell window open for the next task.
 
