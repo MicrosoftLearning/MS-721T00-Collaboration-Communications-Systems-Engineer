@@ -104,7 +104,43 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 The accounts are now licensed and ready for configuration steps.
 
-### Task 3 - Aquire phone numbers to assign to the resource accounts
+### Task 3 - Disable Password Expiration on the accounts
+
+In this task, you will sign into the Microsoft Graph PowerShell Module and disable Password Expiration on the accounts. Based on organization policies, resource account passwords may be set to expire automatically after a period of time. If the resource account password expires, the Teams Rooms device with sign out and can't sign in again without manual intervention.
+
+1. You are still signed in to MS721-CLIENT01 as **Admin*** with the password provided to you.
+
+1. Open **Windows PowerShell as Administrator**. In the **User Account Control** dialog box, select **Yes**.
+
+1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
+
+    > [!NOTE]
+    > This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+
+    ```powershell
+    Install-Module Microsoft.Graph -Force -AllowClobber
+
+    ```
+
+1. Connect to Microsoft Graph with User.ReadWrite.All permissions:
+
+    ```powershell
+    Connect-MgGraph -Scopes "User.ReadWrite.All"
+
+	```
+
+1. When prompted, enter the **Microsoft 365 Administrator** email address and password. Do not use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
+
+1. Set the password to never expire for each resource account. NOTE: Replace <Lab Domain> in each of the below commands with that of your lab environment.
+
+    ```powershell
+    Update-MgUser -UserId CAP_Reception@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration -PassThru
+    Update-MgUser -UserId CONF_Room1@<LAB Domain>.onmicrosoft.com -PasswordPolicies DisablePasswordExpiration -PassThru
+
+	```
+The accounts anow have password expiration disabled and are ready to have additional configurations applied.
+
+### Task 4 - Aquire phone numbers to assign to the resource accounts
 
 In this task, you will sign into the Microsoft Teams admin center and will aquire two phone numbers for each resource account.
 
@@ -143,7 +179,7 @@ In this task, you will sign into the Microsoft Teams admin center and will aquir
 
 You have successfully ordered a User (subscriber) phone number through the Teams admin center.
 
-### Task 4 - Assign a phone number to each resouce account
+### Task 5 - Assign a phone number to each resouce account
 
 In this task, you will sign into the Microsoft Teams admin center and will assign a phone number to each previously created account.
 
