@@ -209,6 +209,10 @@ You have successfully assigned a phone number to the resource accounts.
 
 In this exercise, you will create policies for Common Area Phones, apply the policy to the previously created user, and enable the phone for Teams Voice.
 
+### Exercise Duration
+
+  - **Estimated Time to complete**: 30 minutes
+
 ### Task 1 - Configure Microsoft Teams IP Phone Policies.
 
 In this task, you will connect to Microsoft Teams PowerShell and create an IP Phone Policy for Common Area Phones. This policy removes the default user experience and locks the phone down so that it cannot be easily signed out of, and restricts the device to make and recieve calls. Access to other apps on the phone is prohibited.
@@ -277,7 +281,7 @@ You have successfully provisioned an account for use with a Common Area Phone in
 
 ### Exercise Duration
 
-  - **Estimated Time to complete**: 60 minutes
+  - **Estimated Time to complete**: 120 minutes
 
 In this exercise, you will deploy finish configuration of a room resource account for Microsoft Teams Rooms on Windows and Surface Hub 3. You will then test the account and sign into a virtual Surface Hub 3 virtual machine and then manage the room from the Teams Rooms Pro Portal.
 
@@ -336,10 +340,28 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
 You have successfully setup a Surface Hub 3 with the Microsoft Teams Rooms on Windows App.
 
-### Task 3 - Manage Surface Hub 3 with the Pro Management Portal.
+### Task 3 - Manage Surface Hub 3 & Teams Rooms on Windows with the Pro Management Portal.
 
-In this task, you will sign into the Microsoft Teams admin center and blah.
+In this task, you will sign into the Teams Rooms Pro Management Portal and add manage the Surface Hub 3 from the portal. NOTE: It can take up to an hour before the room will appear in this portal.
 
-1. Blah
+1. Connect to **MS721-CLIENT01** and sign in as **Admin**. 
 
-https://portal.rooms.microsoft.com/
+1. In **Microsoft Edge**, browse to the Pro Management Portal at [**https://portal.rooms.microsoft.com**](https://portal.rooms.microsoft.com/).
+
+1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
+
+1. Once signed in, navigate to Rooms and then click on the **SH3-VM** Room. In the room card, click **Enroll** in the bottom right.
+
+    ![A screenshot showing the room card in the Pro Management Portal.](Linked_Image_Files/M05_L05_E03_T03_01.png)
+
+1. Under the room card, select **Settings**, then **Theming**, and then change the theme to something else and then click **Apply.**
+
+1. A **Select Schedule** window will appear. On this window, click **Apply Now** and then click **Submit.**
+
+    ![A screenshot showing the Schedule for a room in the Pro Management Portal.](Linked_Image_Files/M05_L05_E03_T03_02.png)
+
+1. Within 5-10 minutes the room will show the theme change that was requested.
+
+    ![A screenshot showing the Schedule for a room in the Pro Management Portal.](Linked_Image_Files/M05_L05_E03_T03_03.png)
+
+You have successfully setup a Microsoft Teams Room and configured settings in the room with the Pro Management Portal.
