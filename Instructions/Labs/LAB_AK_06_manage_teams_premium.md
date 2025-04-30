@@ -170,7 +170,33 @@ In this exercise, you will test the Queues app.
 
 In this task, you will sign into the Microsoft Teams client and access the Queues App.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
+
+1. In the Teams client, click the three dots **...** on the left side app bar and then search & select the app called **Queues.**
+
+    ![A screenshot showing how to access the Queues App.](Linked_Image_Files/M06_L06_E02_T01_01.png)
+
+1. This is the queues app. With your permissions, you can now view call queue analytics, sign others in and out of the queue, and more. Play with the interface to become familiar with the layout.
+
+    ![A screenshot showing  the Queues App.](Linked_Image_Files/M06_L06_E02_T01_02.png)
+
+You have successfully accessed the Teams Queues App as a Microsoft Teams Premium user.
+
+### Task 2 - Modifying Call Queue Parameters from within the Teams client
+
+In this task, you will utilize your Teams Premium license to edit parameters of the Call Queue without being a Microsoft Teams Administrator. Without a Teams Premium license, the user would not see the queues app and would only be able to edit greetings of voice applications.
+
+1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
+
+1. In the Teams client, click the three dots **...** in the top right, click **Settings**, and then click **Calls.**
+
+1. Across the top of the window, you will see **CQ_MainLine** as an option. Click into this. You can now edit any setting of the call queue
+
+    ![A screenshot showing  the users calling settings.](Linked_Image_Files/M06_L06_E02_T02_01.png)
+
+1. Scroll down and click the toggle to on button under the **Presence-based routing** section to enable PBR on the queue. This change takes effect immediately.
+
+You have successfully edited the call queue from within the Microsoft Teams client.
 
 ## Exercise 3: Customizing Meetings with Teams Premium
 
