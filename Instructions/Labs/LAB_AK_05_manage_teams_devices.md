@@ -44,8 +44,8 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. When a **Stay signed in?** dialog is displayed, select **No**.
 
-    > [!NOTE]
-    > You may get a prompt to **Let's keep your account secure**. Click **Next** on this prompt and setup 2-Factor Authentication with the Microsoft Authenticator app. 
+> [!NOTE]
+> You may get a prompt to **Let's keep your account secure**. Click **Next** on this prompt and setup 2-Factor Authentication with the Microsoft Authenticator app. 
 
 1. In the left navigation, select **Users**, select **Active Users**, and then **Add a user**
 
@@ -63,8 +63,8 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. On the licensing page, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account, and then click **Next.**
 
-    > [!NOTE]
-    > The lab environment does not have the proper **Teams Shared Devices** licensing avaliable. For what we need, this license will do for lab purposes.
+> [!NOTE]
+> The lab environment does not have the proper **Teams Shared Devices** licensing avaliable. For what we need, this license will do for lab purposes.
 
 1. Continue clicking **Next** until you get the username and password presented to you. Write these down for future use. Keep the browser open for the next task.
 
@@ -114,8 +114,8 @@ In this task, you will sign into the Microsoft Graph PowerShell Module and disab
 
 1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
-    > [!NOTE]
-    > This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+> [!NOTE]
+> This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
 
     ```powershell
     Install-Module Microsoft.Graph -Force -AllowClobber
@@ -228,8 +228,8 @@ In this task, you will connect to Microsoft Teams PowerShell and create an IP Ph
 
     ```
 
-	> [!NOTE]
-    > If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams** as an administrator.
+> [!NOTE]
+> If you get an error stating that the MicrosoftTeams PowerShell module is not installed, run **Install-Module MicrosoftTeams** as an administrator.
 
 1. In the PowerShell prompt, sign in as **MOD Administrator** with the credentials provided to you.
 
@@ -325,8 +325,8 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
     ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
 
-    > [!NOTE]
-    > If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started.
+> [!NOTE]
+> If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started.
 
 1. On the next page click **Accept** to the **End User Agrrement** and then click **Manual Setup**. Enter the following credentials:
 
