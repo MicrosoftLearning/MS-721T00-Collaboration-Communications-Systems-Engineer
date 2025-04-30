@@ -50,13 +50,13 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. Use the following parameters for this task and then click **Next**:
 
-	- **Display Name** CAP_Reception
+	- **Display Name:** CAP_Reception
 
-	- **Username** CAP_Reception
+	- **Username:** CAP_Reception
 
-	- **Automatically create a password** Check the box
+	- **Automatically create a password:** Check the box
 
-	- **Require this user to change their password when they first sign in** Uncheck this box
+	- **Require this user to change their password when they first sign in:** Uncheck this box
 
     ![A screenshot showing the basics of user setup.](Linked_Image_Files/M05_L05_E01_T01_01.png)
 
@@ -78,15 +78,15 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. Use the following parameters for this task and then click **Save**:
 
-	- **Resource type** Room
+	- **Resource type:** Room
 
-	- **Name** CONF_Room1
+	- **Name:** CONF_Room1
 
-	- **Email** CONF_Room1
+	- **Email:** CONF_Room1
 
-	- **Capacity** 10
+	- **Capacity:** 10
 
-    - **Location** Bellevue, WA
+    - **Location:** Bellevue, WA
 
     ![A screenshot showing resource account setup page.](Linked_Image_Files/M05_L05_E01_T02_01.png)
 

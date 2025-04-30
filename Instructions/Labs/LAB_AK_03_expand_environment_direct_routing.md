@@ -248,13 +248,13 @@ In this task, you will verify and add your SBC to your tenant.
 
 1. Add the FQDN **sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com** and then set the following parameters and then click **Save**. Please note, use **ALL lower case** letters as it is case sensitive. Leave all the other settings as-is. 
 
-	- **Enabled** Toggle On
+	- **Enabled:** Toggle On
 
-	- **Forward call history** Toggle On
+	- **Forward call history:** Toggle On
 
-	- **Forward P-Asserted-Identity (PAI) header** Toggle On
+	- **Forward P-Asserted-Identity (PAI) header:** Toggle On
 
-	- **SBC supports PIDF/LO for emergency Calls** Toggle On
+	- **SBC supports PIDF/LO for emergency Calls:** Toggle On
 
     ![Screenshot of the Teams Admin Center Add SBC page, showing the settings required.](./Linked_Image_Files/M03_E02_T01_01.png)
 
@@ -635,19 +635,19 @@ In the following task, you will modify the Global Emergency Call Routing Policy 
 
 1. Select **Add** and then provide the following configuration:
 
-	- **Emergency dial string** 911
+	- **Emergency dial string:** 911
 
-	- **Emergency dial mask** 911;9911;999;112
+	- **Emergency dial mask:** 911;9911;999;112
 
-	- **PSTN Usage** NA-Emergency
+	- **PSTN Usage:** NA-Emergency
 
 1. Select **Add** again and then provide the following configuration for the second line:
 
-	- **Emergency dial string** 933
+	- **Emergency dial string:** 933
 
-	- **Emergency dial mask** 933;9933
+	- **Emergency dial mask:** 933;9933
 
-	- **PSTN Usage** NA-Emergency
+	- **PSTN Usage:** NA-Emergency
 
 1. Select **Save** and leave the browser window open.
 
@@ -672,11 +672,11 @@ In the following task, you will modify the Global Emergency Calling Policy in Mi
 
 1. Under **Emergency Numbers** select **Add** and then provide the following configuration:
 
-	- **Emergency dial string** default
+	- **Emergency dial string:** default
 
-	- **Notification mode** Send Notification Only
+	- **Notification mode:** Send Notification Only
 
-	- **Users and Groups for emergency calls notifications** Alex Wilber
+	- **Users and Groups for emergency calls notifications:** Alex Wilber
 
 1. Select **Save** and leave the browser window open.
 
@@ -782,11 +782,11 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 1. On the **Web Connection** window, provide the following configuration and then click **Connect:**
 
-	- **Address** the IP address or FQDN of your Azure SBC
+	- **Address:** the IP address or FQDN of your Azure SBC
 
-	- **Username** sbcadmin
+	- **Username:** sbcadmin
 
-	- **Password** The MOD Administrator account password. You can find the password in the “Resource” section on the right side of the lab window.
+	- **Password:** The MOD Administrator account password. You can find the password in the “Resource” section on the right side of the lab window.
 
     ![Screenshot of Syslog Viewer, showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
 

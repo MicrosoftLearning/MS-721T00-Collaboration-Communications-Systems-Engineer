@@ -70,6 +70,14 @@ In this task, you will sign into the Microsoft Teams admin center and create a r
 
     ![A screenshot showing the basics of Resource Account setup.](Linked_Image_Files/M06_L06_E01_T01_01.png)
 
+1. In **Microsoft Edge**, browse to the Microsoft 365 admin center at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+
+1. In the left navigation, select **Users**, select **Active Users**, and then select **CQ_MainLine.**
+
+1. Select **Licenses and Apps** on the user card, assign the **Microsoft Teams Phone Resource Account** license to the account, and then click **Save changes.**
+
+You have successfully created a Teams Phone Resource Account for a Call Queue and licensed it accordingly.
+
 ### Task 3 - Creating a Call Queue
 
 In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
@@ -82,14 +90,27 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
-### Task 5 - Accessing the Queues App
+### Task 5 - Assigning Voice Application Policies
+
+In this task, you will sign into the Microsoft Teams admin center and create a Auto Attendant.
+
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
+
+## Exercise 2: Using the Queues App
+
+### Exercise Duration
+
+  - **Estimated Time to complete**: 30 minutes
+
+In this exercise, you will create custom meeting templates with Microsoft Teams Premium licensing.
+
+### Task 1 - Accessing the Queues App
 
 In this task, you will sign into the Microsoft Teams client and access the Queues App.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
-
-## Exercise 2: Customizing Meetings with Teams Premium
+## Exercise 3: Customizing Meetings with Teams Premium
 
 ### Exercise Duration
 
