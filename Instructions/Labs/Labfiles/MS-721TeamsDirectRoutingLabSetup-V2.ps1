@@ -315,13 +315,15 @@ catch {
     Exit
 }
 
+# Update SBC ini file
+Write-Output "Updating SBC ini file"
+$sbcinifile = "Lab" + $labNumber + "-SBC01-Config.ini"
+Copy-Item "C:\Scripts\Backup\Lab-sbc01-Config.ini" "C:\LabFiles\$sbcinifile" -Force
+(Get-Content "C:\LabFiles\$sbcinifile") | ForEach-Object { $_ -replace "XXXXX", "$labNumber" } | Set-Content "C:\LabFiles\$sbcinifile"
+
 # Confirm completion
 Write-Host "`nLab setup complete. Copy your CSR from the output above or $certReqFilePath and submit it to DigiCert to obtain your signed SSL certificates for the SBC.`n" -ForegroundColor Green
 
-<#
-# Update SBC ini file
-#Write-Output "Updating SBC ini file"
-#$sbcinifile = "Lab" + $labNumber + "-SBC01-Config.ini"
-#Copy-Item "C:\Scripts\Backup\Lab-sbc01-Config.ini" "C:\LabFiles\$sbcinifile" -Force
-#(Get-Content "C:\LabFiles\$sbcinifile") | ForEach-Object { $_ -replace "XXXXX", "$labNumber" } | Set-Content "C:\LabFiles\$sbcinifile"
-#>
+
+
+
