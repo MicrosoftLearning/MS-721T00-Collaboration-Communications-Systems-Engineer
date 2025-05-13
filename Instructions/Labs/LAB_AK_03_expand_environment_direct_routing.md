@@ -401,10 +401,9 @@ You have successfully created an SBC hosted inside Microsoft Azure.
 
 1. Once you have successfully logged onto the SBC, click on **Actions** and then **Configuration File**.
 
-1. Under the **Configuration File** section, select **Choose File**, select the file named **Lab<LAB NUMBER>-SBC01-Config.ini** inside of the **C:\LabFiles** directory, and then click **Upload INI File**. The SBC will reboot
+1. Under the **Configuration File** > **INI FILE** section, select **Choose File**, select the file named **Lab&lt;LAB NUMBER&gt;-SBC01-Config.ini** inside of the **C:\LabFiles** directory, and then click **Upload INI File**. The SBC will reboot
 
 1. Upon reboot of the SBC, log back into the box. To confirm successful configuration, ensure that you see two IP Groups at the top of **Topology View**
-
 
     ![Screenshot of the AudioCodes SBC, showing the Topology View before SSL Cert Import.](./Linked_Image_Files/M03_L03_E03_T06_03.png)
 
@@ -494,7 +493,7 @@ In the following task, you will create your first voice routing policy and PSTN 
 
 1. Review the output of the command.
 
-If you have several usages defined, the names of the usages might truncate. Use the command Get-CSOnlinePSTNUsage to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
+    If you have several usages defined, the names of the usages might truncate. Use the command Get-CSOnlinePSTNUsage to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
 
 1. Run the Set-CSOnlinePSTNUsage cmdlet is used to add or remove phone usages to or from the usage list. This list is global so it can be used by policies and routes throughout the tenant:
 
@@ -744,7 +743,7 @@ In this task, you will validate that Location-Based Routing is blocking calls th
 
 1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
-1. Launch the Microsoft Teams client and sign in as **MeganB@lab<LAB NUMBER>.o365ready.com** using the User Password in the "Resource" section on the right side of the lab window.
+1. Launch the Microsoft Teams client and sign in as **MeganB@lab&lt;LAB NUMBER&gt;.o365ready.com** using the User Password in the "Resource" section on the right side of the lab window.
 
 1. Once signed into Microsoft Teams, navigate to the **Calls** tab and place a call to "+14255550001". The call should fail and show the below error:
 
@@ -774,7 +773,7 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
 1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
-1. Launch the **Microsoft Edge** and download the **AudioCodes Syslog Viewer** at: http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe
+1. Launch the **Microsoft Edge** and download the **AudioCodes Syslog Viewer** at: [http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe](http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe)
 
 1. Run **syslogViewer-setup.exe** once downloaded keeping all defaults in the setup wizard.
 
@@ -792,7 +791,7 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
     ![Screenshot of Syslog Viewer, showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
 
-1. Now that the syslog capture is running, open the Microsoft Teams client, click on **Calls** and you should see the Belleview Address previously created.
+1. Now that the syslog capture is running, open the Microsoft Teams client, click on **Calls** and you should see the Bellevue Address previously created.
 
     ![Screenshot of the Microsoft Teams Client, showing the Emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
 

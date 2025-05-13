@@ -110,7 +110,7 @@ As an admin, you can assign the Teams Domestic Calling Plan license that gives u
 1. In the **Manage product licenses** pane, select **Assign more** and then select the following licenses from the list:
 
     - Microsoft Teams Domestic Calling Plan
-    - Microsoft Teams Premium Introductory Pricing
+    - Microsoft Teams Premium
 
 1. Select **Save changes** and then **Done** to close the pane.
 

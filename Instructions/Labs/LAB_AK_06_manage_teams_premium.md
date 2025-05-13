@@ -50,7 +50,7 @@ In this task, you will sign into the Microsoft 365 admin center and Assign a Tea
 
 1. Select **Licenses and Apps** on the user card, assign the **Microsoft Teams Premium** license to the user account, and then click **Save changes.**
 
-You have assigned a Teams Premium license to a user
+You have assigned a Teams Premium license to a user.
 
 ### Task 2 - Creating Resource Accounts for Voice Applications
 
@@ -64,7 +64,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a r
 
 	- **Display Name:** CQ_MainLine
 
-	- **Unique Username:** CQ_MainLine@<Lab Domain>.onmicrosoft.com
+	- **Unique Username:** CQ_MainLine@&lt;LAB DOMAIN&gt;.onmicrosoft.com
 
 	- **Resoure Account Type:** Call Queue
 
@@ -92,7 +92,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a A
 
 	  - **Add a name for your call queue:** CQ_MainLine
 
-	  - **Resource Accounts:** CQ_MainLine@<Lab Domain>.onmicrosoft.com
+	  - **Resource Accounts:** CQ_MainLine@&lt;Lab Domain&gt;.onmicrosoft.com
 
 	  - **Language:** English (Untied States)
 
@@ -118,7 +118,7 @@ In this task, you will create a voice application policy which will give users r
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
-1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Voice Applications.**
+1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Voice applications policies.**
 
 1. Click **+ Add**, set the following parameters, and then click **Submit** to create the Voice Application policy.:
 
