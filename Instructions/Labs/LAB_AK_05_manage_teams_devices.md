@@ -54,7 +54,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 	- **Username:** CAP_Reception
 
-	- **Automatically create a password:** Check the box
+	- **Automatically create a password:** Uncheck this box and enter the "User Password" for your Microsoft 365 user accounts.
 
 	- **Require this user to change their password when they first sign in:** Uncheck this box
 
@@ -74,7 +74,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**
 
-1. In the left navigation, select **Resources**, select **Rooms & equipment**, and then **Add resource**3
+1. In the left navigation, select **Resources**, select **Rooms & equipment**, and then **Add resource**.
 
 1. Use the following parameters for this task and then click **Save**:
 
@@ -94,7 +94,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. Select **Licenses and Apps** on the user card, assign both a **Microsoft Teams Rooms Pro** and a **Microsoft Teams Domestic Calling Plan** license to the user account, and then click **Save changes.**
 
-1. While still in the user card, select **Reset Password** and set the password to that of the **MOD Administrator**, then close the user card.
+1. While still in the user card, select **Reset Password** and set the password to the **User password** for your Microsoft 365 account, then close the user card.
 
 1. In the **Microsoft 365 Admin Center** under **Active Users** you should see two accounts matching the following:
 
@@ -326,7 +326,7 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
 	- **Email:** CONF_Room1@<Lab Domain>.onmicrosoft.com *Replace <Lab Domain> with your labs domain.*
 
-	- **Password:** *Enter the MOD Administrator account password from the _“Resource”_ section on the right side of the lab window.*
+	- **Password:** *Enter the User password for your Microsoft 365 accounts from the _“Resource”_ section on the right side of the lab window.*
 
 1. The screen will go black a few times before it will eventually login. You will see the screen below and are now able to use the Surface Hub 3.
 

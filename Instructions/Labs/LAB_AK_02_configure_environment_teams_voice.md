@@ -98,7 +98,7 @@ In this task, you will set up your network and sites in Teams Network Planner. C
 
 1. You will be prompted “You haven't added any network sites yet.” Select **Add a network site**.
 
-1. Enter the **Network Site Name** as **Tacoma Site**..
+1. Enter the **Network Site Name** as **Tacoma Site**.
 
 1. Enter the description as **Tacoma Office**.
 
@@ -110,7 +110,7 @@ In this task, you will set up your network and sites in Teams Network Planner. C
 
 1. Tacoma has local internet breakout, enter **50** for **Internet link capacity**.
 
-1. It is not **connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
+1. It is **NOT connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
 
 1. There is no local PSTN on the Tacoma site, so leave **PSTN egress** as **Use VoIP only**.
 
@@ -130,7 +130,7 @@ In this task, you will set up your network and sites in Teams Network Planner. C
 
 1. Bellevue has local internet breakout, enter **20** for **Internet link capacity**.
 
-1. It is not **connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
+1. It is **NOT connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
 
 1. There is no local PSTN on the Tacoma site, so leave **PSTN egress** as **Use VoIP only**
 
@@ -452,8 +452,8 @@ Now that we have added our network Region, Sites and Subnets we can map our netw
 > [!NOTE]
 > The below information explains general best practices for implementing emergency services in Microsoft Teams. None of the information in this document should be interpreted as legal advice. Please consult with your organization's legal department and the following resources for specific requirements by state.
 
-- https://www.intrado.com/enterprise-solutions/e911-regulations
-- https://www.911.gov/
+- [https://www.intrado.com/enterprise-solutions/e911-regulations](https://www.intrado.com/enterprise-solutions/e911-regulations)
+- [https://www.911.gov/](https://www.911.gov/)
 
 US law states that a user utilizing a phone system that supports dynamic emergency dialing must be able to be dynamically have their location determined at the time of the 911 call in order to route the call to the correct/nearest Public Service Answering Point (PSAP). (Kari's Law). It also states that an internal notification be setup to where at least one individual in the organization be notified that a person placed and emergency call and where their location is. (Ray Baums Act) We use the LIS database in Microsoft Teams to map our physical sites out so that emergency calls will connect.
 
@@ -481,7 +481,7 @@ Perform the following steps.
 
 1. Leave IPv4 Selected for **IP Version**.
 
-1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.20.0/24, the network ID is **10.10.20.0**. Additionally also add **192.168.0.0** for a later task.
+1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.10.0/24, the network ID is **10.10.10.0**. Additionally also add **192.168.0.0** for a later task.
 
 1. Enter **Bellevue Subnet** as the **Description**.
 
