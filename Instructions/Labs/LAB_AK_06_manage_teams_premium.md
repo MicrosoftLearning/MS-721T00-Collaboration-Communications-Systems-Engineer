@@ -5,6 +5,9 @@ lab:
     module: 'Learning Path 02: Manage Teams collaboration communications systems'
 ---
 
+> **Abstract:**  
+> This lab explores advanced Teams Premium features, including configuring the Queues app, voice application policies, and meeting customization. The scenario demonstrates how to enable, assign, and validate premium capabilities for specialized Teams experiences.
+
 # Lab 06: Manage Microsoft Teams Premium
 # Student lab answer key
 

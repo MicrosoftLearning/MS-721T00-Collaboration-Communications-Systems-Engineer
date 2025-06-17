@@ -5,6 +5,9 @@ lab:
     module: 'Learning Path 02: Manage Teams collaboration communications systems'
 ---
 
+> **Abstract:**  
+> In this lab, you will configure, deploy, and manage Microsoft Teams devices, including shared devices, Teams Rooms, and Surface Hub. The scenario covers account setup, licensing, device policies, and remote management for Teams-enabled hardware.
+
 # Lab 05: Manage Microsoft Teams Devices
 # Student lab answer key
 
@@ -322,7 +325,7 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
     > NOTE: If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started.
 
-1. On the next page click **Accept** to the **End User Agrrement** and then click **Manual Setup**. Enter the following credentials:
+1. On the next page click **Accept** to the **End User Agreement** and then click **Manual Setup**. Enter the following credentials:
 
 	- **Email:** CONF_Room1@<Lab Domain>.onmicrosoft.com *Replace <Lab Domain> with your labs domain.*
 

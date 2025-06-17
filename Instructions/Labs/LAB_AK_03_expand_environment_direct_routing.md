@@ -5,6 +5,9 @@ lab:
     module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
 ---
 
+> **Abstract:**  
+> In this lab, you will expand the Teams Phone environment by configuring Direct Routing with a Session Border Controller (SBC), integrating on-premises telephony, and assigning voice routing policies. The scenario walks through deploying, configuring, and validating Direct Routing for hybrid voice connectivity.
+
 # Lab 03: Expand your Teams Phone Environment to use Direct Routing
 # Student lab answer key
 

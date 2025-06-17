@@ -5,6 +5,9 @@ lab:
     module: 'Learning Path 02: Manage Teams collaboration communications systems'
 ---
 
+> **Abstract:**  
+> This lab guides you through managing and troubleshooting Teams Phone users, configuring call queues and auto attendants, provisioning Teams devices, and monitoring call quality. The scenario addresses real-world support and operational tasks in a Teams Phone deployment.
+
 # Lab 04: Manage your Teams Phone environment
 # Student lab answer key
 
@@ -79,7 +82,7 @@ In this task, an existing user who isn’t enabled for voice services must be en
 1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
 
     ```powershell
-    Grant-CsOnlineVoiceRoutingPolicy -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PolicyName "North America"
+    Grant-CsOnlineVoiceRoutingPolicy -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PolicyName "NA-National"
 
     ```
 
