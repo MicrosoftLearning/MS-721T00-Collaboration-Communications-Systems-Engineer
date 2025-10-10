@@ -25,7 +25,10 @@ As part of the expanding business, the organization has began deploying various 
 > Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
 > You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. M365x01234567) for your Microsoft 365 account.
 
-## Exercise 1: Configuring Teams Shared Device and Room Resource Accounts
+## Exercise 1 (See NOTE): Configuring Teams Shared Device and Room Resource Accounts
+
+> [!NOTE]
+> Tasks 4 &amp; 5 are unable to be completed at this time. Due to a new verification requirement to meet compliance standards, ordering service and subscriber numbers for Microsoft Teams Phone is not possible in our tenant environment, which means we are unable to test and review live calls.  We hope to mitigate this issue in the future, but in the meantime, use the steps below as a general reference and follow along as practice.
 
 ### Exercise Duration
 
@@ -71,7 +74,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 You have created an account that will be used on a common area phone.
 
-### Task 2 - Create a M365 Resource Account for Teams Rooms
+### Task 2 - Create a Microsoft 365 Resource Account for Teams Rooms
 
 In this task, you will sign into the Microsoft 365 admin center and will create a rooom resource account for use with a Microsoft Teams Room.
 
@@ -105,7 +108,7 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 The accounts are now licensed and ready for configuration steps.
 
-### Task 3 - Disable Password Expiration on the accounts
+### Task 3 - Disable password expiration on the accounts
 
 In this task, you will sign into the Microsoft Graph PowerShell Module and disable Password Expiration on the accounts. Based on organization policies, resource account passwords may be set to expire automatically after a period of time. If the resource account password expires, the Teams Rooms device with sign out and can't sign in again without manual intervention.
 

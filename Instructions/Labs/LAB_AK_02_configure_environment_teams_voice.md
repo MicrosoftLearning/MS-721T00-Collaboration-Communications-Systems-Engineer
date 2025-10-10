@@ -690,7 +690,10 @@ There is a persistent nuisance caller calling users in the Bellevue office and w
 
 You have successfully blocked all inbound calls from 1 (412) 555-1111 via PowerShell to end the unwanted calls from that number. 
 
-## Exercise 5: Prepare for calling
+## Exercise 5 (See NOTE): Prepare for calling
+
+> [!NOTE]
+> This exercise is unable to be completed at this time. Due to a new verification requirement to meet compliance standards, ordering service and subscriber numbers for Microsoft Teams Phone is not possible in our tenant environment.  We hope to mitigate this issue in the future, but in the meantime, use the steps below as a general reference.  There is also a simulated demo experience here: [Microsoft Teams Phone - IT Pro](https://regale.cloud/Microsoft/viewer/2716/teams-phone-it-pro-guided-simulation-dec-2023-update/index.html#/0/0)
 
 ### Exercise Duration
 
@@ -826,7 +829,10 @@ Now Isaiah has a calling plan and phone number and we will perform a test call t
 
 Now we confirmed that Isaiah can make a PSTN call in Teams.
 
-## Exercise 6: Configure audio conferencing settings
+## Exercise 6 (See NOTE): Configure audio conferencing settings
+
+> [!NOTE]
+> This exercise is unable to be completed at this time. Due to a new verification requirement to meet compliance standards, ordering service and subscriber numbers for Microsoft Teams Phone is not possible in our tenant environment.  We hope to mitigate this issue in the future, but in the meantime, use the steps below as a general reference.  There is also a simulated demo experience here: [Microsoft Teams Phone - IT Pro](https://regale.cloud/Microsoft/viewer/2716/teams-phone-it-pro-guided-simulation-dec-2023-update/index.html#/0/0)
 
 ### Exercise Duration
 

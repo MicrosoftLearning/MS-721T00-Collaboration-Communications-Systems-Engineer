@@ -92,8 +92,6 @@ In this task, an existing user who isn’t enabled for voice services must be en
     Set-CsPhoneNumberAssignment -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
 
-
-
 1. Close the PowerShell Window at the end of the task.
 
 Nestor is now configured to use Direct Routing.
@@ -269,7 +267,7 @@ Now we will create an auto attendant and direct one of the options to send calls
 
 1. Leave the Teams Admin Center open for the next task
 
-You have successfully created an Auto Attendant, and aligned it to a Call Queue
+You have successfully created an Auto Attendant, and aligned it to a Call Queue.
 
 ### Task 3 – Configure a Call Queue to use a channel
 
@@ -518,7 +516,10 @@ As devices are provisioned or joined, they will be displayed in the **Devices** 
 
 After applying a tag to devices, you can then use the **Search** box in the device list to choose **Select what you want to search by**, and then choose **Tags**. Enter the tag you’ve assigned to devices, and these devices will be displayed in the search results.
 
-## Exercise 4: Monitor and troubleshoot Teams Phone
+## Exercise 4 (See NOTE): Monitor and troubleshoot Teams Phone
+
+> [!NOTE]
+> Tasks 2, 3, 5, 6, &amp; 7 are unable to be completed at this time. Due to a new verification requirement to meet compliance standards, ordering service and subscriber numbers for Microsoft Teams Phone is not possible in our tenant environment, which means we are unable to test and review live calls.  We hope to mitigate this issue in the future, but in the meantime, use the steps below as a general reference and follow along as practice.
 
 ### Exercise Duration
 
