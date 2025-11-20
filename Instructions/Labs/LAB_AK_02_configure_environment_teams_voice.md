@@ -183,6 +183,9 @@ You have successfully generated a Network Planner Report. We can see from the re
 
 ## Exercise 2: Use the Teams Network Assessment Tool
 
+> [!WARNING]
+> **Known Issue**: The Microsoft Teams Network Assessment Tool has a known issue causing memory corruption errors on virtual machines. If you encounter errors when running the tool, this exercise can be skipped without affecting the remaining lab exercises. The network assessment is important for production deployments but is not required to complete the rest of this lab. Please proceed to Exercise 3 if you encounter issues with this tool.
+
 ### Exercise Duration
 
   - **Estimated Time to complete**: 20 minutes
@@ -192,6 +195,9 @@ In this exercise, you will install and run the Teams Network Assessment Tool to 
 ### Task 1 - Install the Tool
 
 In this task, you will sign into a client machine provided by your training provider and install the Teams Network Assessment Tool which is required to perform different tests.
+
+> [!IMPORTANT]
+> **Known Issue**: The Microsoft Teams Network Assessment Tool is known to cause memory corruption errors on virtual machines. If you encounter errors such as "System.AccessViolationException: Attempted to read or write protected memory", please skip Exercise 2 (Use the Teams Network Assessment Tool) and proceed to Exercise 3. The network assessment functionality is important for production deployments, but for lab purposes, you can continue with the remaining exercises without completing the network assessment tasks.
 
 1. Sign into **MS721-CLIENT01** as **Admin** with the password provided to you.
 
@@ -222,6 +228,9 @@ In this task, you will sign into a client machine provided by your training prov
 You have successfully installed the Teams Network Assessment Tool onto Client01.
 
 ### Task 2 - Run the Network Connectivity Check
+
+> [!NOTE]
+> If you encountered issues during Task 1, or if you're experiencing memory corruption errors when running the tool, please skip this task and the remaining tasks in Exercise 2 (Tasks 3, 4, and 5). Proceed directly to Exercise 3: Configure a basic network topology for dynamic emergency calling.
 
 The Teams Network Assessment Tool is run from the command line. We will now run the network connectivity check, which requires no command line switches. Firstly, the tool will check if it has connectivity to the Teams media relay. These are used to relay audio and video when direct connection between clients is not possible. The checker also checks whether the load-balancer relay is QoS (Quality of Service) capable, which means the load-balancer redirects packets to relay instance ports 3479-3481 (instead of 3478) depending on modality (audio = 3479, video = 3480, screenshare/data = 3481).
 
