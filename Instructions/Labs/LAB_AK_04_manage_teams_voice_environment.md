@@ -382,7 +382,9 @@ In this exercise, we will begin the provisioning process for a Teams Phone. We w
 ### Task 1 - Perform remote provisioning of Teams Phones
 
 > [!NOTE]
-> The instructions provided here are for reference only and will not complete successfully.  To view the demonstration of these steps, visit [https://www.microsoft.com/videoplayer/embed/RWN0wC](https://www.microsoft.com/videoplayer/embed/RWN0wC).
+> The instructions provided here are for reference only and will not complete successfully.  The demonstration video referenced in this step [https://www.microsoft.com/videoplayer/embed/RWN0wC](https://www.microsoft.com/videoplayer/embed/RWN0wC) is currently not accessible and may display a *Playback Error*.
+> The correct video link will be provided as soon as it is available.
+
 
 In this task, you will provision a Teams Phone device in the Teams administration center.
 
