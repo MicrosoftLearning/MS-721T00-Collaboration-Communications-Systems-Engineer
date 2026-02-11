@@ -356,9 +356,7 @@ You have successfully created a holiday relevant to your area and assigned it to
 In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
-
-1. Close the tab and switch back to the Microsoft Teams admin center.
-
+ 
 1. Under **Voice** and **Call Queues**, select **Sales CQ**.
 
 1. Select **Greeting and music**.
