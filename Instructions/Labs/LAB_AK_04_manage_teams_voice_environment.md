@@ -98,7 +98,7 @@ Nestor is now configured to use Direct Routing.
 
 ### Task 3 - Configure call delegation
 
-In this task, you will configure Nestor Wilke so that Allan Deyoung is a delegate of Nestor Wilke and is allowed to make calls on their behalf, but not receive calls.
+In this task, you will configure Nestor Wilke so that Allan Deyoung is a delegate of Nestor Wilke and is allowed to make and receive calls on their behalf.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
