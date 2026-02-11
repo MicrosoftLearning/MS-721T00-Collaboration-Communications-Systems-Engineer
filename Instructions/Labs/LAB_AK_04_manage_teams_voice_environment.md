@@ -23,7 +23,7 @@ Contoso needs to make changes to existing users who are enabled for Teams Voice 
 
 > [!IMPORTANT]
 > Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
-> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. WWLx012345) for your Microsoft 365 account.
+> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. WWLx012345) for your Microsoft 365 account. 
 
 ## Exercise 1: Manage voice users
 
