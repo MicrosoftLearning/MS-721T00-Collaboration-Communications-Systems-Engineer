@@ -429,7 +429,7 @@ In the following task, we will use a combination of Microsoft Graph PowerShell, 
 1. Make sure you have the latest Exchange Online PowerShell modules installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
     ```powershell
-    Install-Module ExchangeOnlineManagement
+    Install-Module ExchangeOnlineManagement -Force
 
     ```
 
