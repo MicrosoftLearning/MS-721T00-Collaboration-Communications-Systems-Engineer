@@ -251,11 +251,11 @@ Now we will create an auto attendant and direct one of the options to send calls
 
 1. Under **Call routing options**, select **Redirect Call**, then select Redirect to **Voice App**, enter **Sales CQ**, then select **Next**
 
-1. Under **Set business hours** leave the defaults and select **next**, 
+1. Under **After-hours call flow** leave the defaults and select **next**, 
 
-1. Under set Holiday call settings select **Next**, 
+1. Under **Holidays call flow** select **Next**, 
 
-1. Under Dial scope select **Next**.
+1. Under **Dial scope** select **Next**.
 
 1. Under **Resource Accounts**, Select **Add**, enter **Sales AA** in the search box, then select **Add Resource Account**, enter the following values:
     - **Display Name** of **Sales AA**
@@ -349,7 +349,7 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 1. Select **Save**.
 
-You have successfully created a holiday relevant to your area and assigned it to a Call queue. 
+You have successfully created a holiday relevant to your area and assigned it to an Auto attendant. 
 
 ### Task 7 - Import MP4 file for custom music on hold
 
