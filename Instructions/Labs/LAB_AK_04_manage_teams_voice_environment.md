@@ -196,6 +196,8 @@ In this task, you will create a call queue. A call queue is a group of agents th
 
 1. Select **Add** and enter the **Sales CQ** as the name
 
+1. Select **Classic Setup**.
+
 1. Under **Resource accounts**, select **Add**.
 
 1. Enter **Sales** in the search box, when no results are found, select **Add resource account**.
@@ -240,6 +242,8 @@ Now we will create an auto attendant and direct one of the options to send calls
 1. Time zone of **(UTC-08:00) Pacific Time (US…)**,
 
 1. Select **English** or your preferred language.
+
+1. Select **Classic Setup**.
 
 1. select **Next**.
 
