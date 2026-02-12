@@ -455,7 +455,7 @@ In the following task, we will use a combination of Microsoft Graph PowerShell, 
 
 ### Task 3 - Configure and license resource account with Microsoft Graph
 
-Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license you acquired in a previous lab and configure the resource account password policy.
+Next, you will use Graph PowerShell to assign the pre-provisioned Teams Rooms Pro trial license and configure the resource account password policy.
 
 1. Open Windows PowerShell as **Administrator** and make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
