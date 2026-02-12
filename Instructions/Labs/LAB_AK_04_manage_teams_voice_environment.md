@@ -539,17 +539,17 @@ Isaiah Langer has reported they are not receiving voicemails. Microsoft offers s
 
 1. On the left menu, select **Show all**, then **Users** and **Active Users**. 
 
-1. Find Isaiah Langer and note down their username and email address, you will need it to run the test. Note this is one value in the format IsaiahL@lab&lt;LAB NUMBER&gt;.o365ready.com.
+1. Find Isaiah Langer and note down their username and email address, you will need it to run the test.
 
 1. On the left menu, select **show all**, then **Support** and under the support menu **Help & support**.
 
 1. In the **How can we help?** dialogue, enter **Diag: Voicemail** and press enter to jump straight to the voicemail diagnostics test.
 
-1. You will see the following diagnostics test **We understand you are having issues with receiving voicemails in Teams**. Under Username or Email enter Megan Bowen’s Username and email.
+1. You will see the following diagnostics test **We understand you are having issues with receiving voicemails in Teams**. Under Username or Email enter Isaiah Langer Username and email.
 
 1. Select **Run Tests**.
 
-1. The result should be **No Teams Voicemail issues were detected**.
+1. The result should be **Our tests didn´t find any problems**.
 
 You have successfully used the Microsoft 365 self-help diagnostics to confirm that there are no configuration issues with Isaiah Langers’s voicemail.
 
