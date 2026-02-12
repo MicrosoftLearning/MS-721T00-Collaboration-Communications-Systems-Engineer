@@ -594,7 +594,8 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
 You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
 
 > [!IMPORTANT]
-> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu.
+> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu. 
+If the desktop client fails to update or loops, you can use the Teams web client at https://teams.microsoft.com, which always runs the latest version.
 
 1. Sign into **MS721-CLIENT02** as **Admin**. You may still be signed in from a previous task.
 
