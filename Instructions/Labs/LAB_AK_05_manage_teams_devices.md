@@ -302,6 +302,7 @@ In this task, you will sign into Microsoft Exchange PowerShell and configure the
     Install-Module ExchangeOnlineManagement
 
     ```
+    > NOTE: If the Install-Module ExchangeOnlineManagement command fails, an older version of the module may already be installed. Close PowerShell, open a new Administrator‑elevated window, and run the command: Uninstall-Module -Name ExchangeOnlineManagement -AllVersions -Force . Then run the installation command again.
 
 1. In Windows PowerShell, enter the following cmdlet to connect to Exchange Online Management:
 
