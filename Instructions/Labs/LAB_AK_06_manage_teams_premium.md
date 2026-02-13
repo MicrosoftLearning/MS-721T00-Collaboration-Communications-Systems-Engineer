@@ -141,7 +141,7 @@ In this task, you will create a voice application policy which will give users r
   
     - **Agent Monitor Mode:** Takeover
     
-    - **Agent Monitoring:** Agent
+    - **Agent Monitor Notification Mode:** Agent
   
   - **Call Queue Reporting** Toggle All Settings to **Only Authorized Queues**
 
