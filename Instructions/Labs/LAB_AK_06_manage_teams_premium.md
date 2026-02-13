@@ -177,7 +177,7 @@ In this exercise, you will test the Queues app.
 
 In this task, you will sign into the Microsoft Teams client and access the Queues App.
 
-1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
+1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Isaiah Langer**
 
 1. In the Teams client, click the three dots **...** on the left side app bar and then search & select the app called **Queues.**
 
