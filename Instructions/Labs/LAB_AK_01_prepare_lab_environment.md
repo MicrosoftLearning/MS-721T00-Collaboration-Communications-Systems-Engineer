@@ -1,8 +1,14 @@
 ---
 lab:
-    title: 'Lab 01: Configure the lab environment'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab 01: Configure the lab environment'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Allan that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
+  duration: 30 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - Microsoft 365
 ---
 
 > **Abstract:**  
