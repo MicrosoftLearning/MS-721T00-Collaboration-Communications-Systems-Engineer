@@ -1,8 +1,16 @@
 ---
 lab:
-    title: 'Lab 05: Manage Microsoft Teams Devices'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 05: Manage Microsoft Teams Devices'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: As part of the expanding business, the organization has began deploying
+    various types of Microsoft Teams devices in their organization. You need to manage
+    the deployment of these devices.
+  duration: 120 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Microsoft Teams
 ---
 
 > **Abstract:**  
