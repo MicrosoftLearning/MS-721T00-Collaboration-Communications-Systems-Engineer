@@ -1,8 +1,12 @@
 ---
 lab:
-    title: 'Lab 02: Configure your environment for Teams Voice Usage'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab 02: Configure your environment for Teams Voice Usage'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: Contoso wants to set up Teams Phone for their users.
+  duration: 155 minutes
+  level: 300
+  islab: true
 ---
 
 > **Abstract:**  
