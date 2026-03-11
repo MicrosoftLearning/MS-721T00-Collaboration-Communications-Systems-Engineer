@@ -1,8 +1,12 @@
 ---
 lab:
-    title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: In the following task, you will assign the voice routing policy you created in an earlier task to your users.
+  duration: 200 minutes
+  level: 400
+  islab: true
 ---
 
 > **Abstract:**  
