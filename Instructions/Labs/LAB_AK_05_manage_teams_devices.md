@@ -1,8 +1,14 @@
 ---
 lab:
-    title: 'Lab 05: Manage Microsoft Teams Devices'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 05: Manage Microsoft Teams Devices'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: In this task, you will connect to Microsoft Teams PowerShell and assign the previously created policy to a user. This policy can only be assigned, managed, and created in PowerShell.
+  duration: 120 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Microsoft Teams
 ---
 
 > **Abstract:**  
