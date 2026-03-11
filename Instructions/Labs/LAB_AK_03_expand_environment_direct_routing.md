@@ -1,8 +1,16 @@
 ---
 lab:
-    title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: As part of the expanding business, the organization has an existing
+    SIP trunk in its primary data center. The contractual obligations mean that it’s
+    more cost-effective to utilize the SIP trunk and move to Microsoft Calling Plans
+    later. As part of the move, Megan will be moved from the old telephone system
+    to the new Microsoft Phone solution.
+  duration: 200 minutes
+  level: 400
+  islab: true
 ---
 
 > **Abstract:**  
