@@ -1,8 +1,12 @@
 ---
 lab:
-    title: 'Lab 04: Manage your Teams Voice Environment'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 04: Manage your Teams Voice Environment'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license you acquired in a previous lab and configure the resource account password policy.
+  duration: 180 minutes
+  level: 400
+  islab: true
 ---
 
 > **Abstract:**  
