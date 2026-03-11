@@ -1,8 +1,15 @@
 ---
 lab:
-    title: 'Lab 04: Manage your Teams Voice Environment'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 04: Manage your Teams Voice Environment'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: Contoso needs to make changes to existing users who are enabled for
+    Teams Voice and add Teams Devices. Whilst making changes, support tickets have
+    been raised due to problems users have reported with connectivity and troubleshooting
+    must be performed.
+  duration: 180 minutes
+  level: 400
+  islab: true
 ---
 
 > **Abstract:**  
