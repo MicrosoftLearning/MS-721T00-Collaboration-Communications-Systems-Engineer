@@ -1,8 +1,19 @@
 ---
 lab:
-    title: 'Lab 01: Configure the lab environment'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab 01: Configure the lab environment'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: In the labs for this course, you are taking on the role of Allan Deyoung,
+    Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed
+    Microsoft 365 in a lab environment, and you have been tasked with completing a
+    pilot project that tests the Voice and Phone device management features in Microsoft
+    Teams as they relate to Contoso's business requirements.
+  duration: 30 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Microsoft 365
+  - Microsoft Teams
 ---
 
 > **Abstract:**  
