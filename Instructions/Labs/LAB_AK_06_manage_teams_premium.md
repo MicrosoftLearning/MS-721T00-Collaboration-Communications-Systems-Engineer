@@ -1,8 +1,15 @@
 ---
 lab:
-    title: 'Lab 06: Manage Microsoft Teams Premium'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 06: Manage Microsoft Teams Premium'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: As part of the expanding business, the organization has began needing
+    access to more specialized areas of Microsoft Teams for different departments.
+  duration: 120 minutes
+  level: 200
+  islab: true
+  primarytopics:
+  - Microsoft Teams
 ---
 
 > **Abstract:**  
