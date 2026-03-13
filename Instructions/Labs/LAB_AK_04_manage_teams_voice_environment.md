@@ -3,7 +3,7 @@ lab:
   title: 'Lab 04: Manage your Teams Voice Environment'
   type: Answer Key
   module: 'Learning Path 02: Manage Teams collaboration communications systems'
-  description: Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license you acquired in a previous lab and configure the resource account password policy.
+  description: This lab guides you through managing and troubleshooting Teams Phone users, configuring call queues and auto attendants, provisioning Teams devices, and monitoring call quality. The scenario addresses real-world support and operational tasks in a Teams Phone deployment.
   duration: 180 minutes
   level: 400
   islab: true

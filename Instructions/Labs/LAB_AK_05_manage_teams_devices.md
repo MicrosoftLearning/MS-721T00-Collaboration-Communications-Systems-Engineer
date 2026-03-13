@@ -3,7 +3,7 @@ lab:
   title: 'Lab 05: Manage Microsoft Teams Devices'
   type: Answer Key
   module: 'Learning Path 02: Manage Teams collaboration communications systems'
-  description: In this task, you will connect to Microsoft Teams PowerShell and assign the previously created policy to a user. This policy can only be assigned, managed, and created in PowerShell.
+  description: In this lab, you will configure, deploy, and manage Microsoft Teams devices, including shared devices, Teams Rooms, and Surface Hub. The scenario covers account setup, licensing, device policies, and remote management for Teams-enabled hardware.
   duration: 120 minutes
   level: 400
   islab: true

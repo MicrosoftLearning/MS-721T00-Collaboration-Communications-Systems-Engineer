@@ -3,9 +3,9 @@ lab:
   title: 'Lab 06: Manage Microsoft Teams Premium'
   type: Answer Key
   module: 'Learning Path 02: Manage Teams collaboration communications systems'
-  description: In this exercise, you will create custom meeting templates for users that have Microsoft Teams Premium licensing. This will customize the meeting join experience for members of the meeting.
+  description: This lab explores advanced Teams Premium features, including configuring the Queues app, voice application policies, and meeting customization. The scenario demonstrates how to enable, assign, and validate premium capabilities for specialized Teams experiences.
   duration: 120 minutes
-  level: 200
+  level: 300
   islab: true
   primarytopics:
     - Microsoft Teams

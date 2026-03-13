@@ -3,7 +3,7 @@ lab:
   title: 'Lab 02: Configure your environment for Teams Voice Usage'
   type: Answer Key
   module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
-  description: In this exercise, you will configure some key voice settings and policies required for the Contoso users to utilize voice services in context with the company policies.
+  description: This lab focuses on preparing the Contoso environment for Microsoft Teams Phone by evaluating network readiness, configuring network topology, emergency calling, voice policies, and assigning phone numbers. The scenario covers end-to-end setup for Teams Voice, including call queues, auto attendants, and audio conferencing.
   duration: 155 minutes
   level: 300
   islab: true

@@ -3,7 +3,7 @@ lab:
   title: 'Lab: Expand your Teams Voice Environment to use Direct Routing'
   type: Answer Key
   module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
-  description: In the following task, you will assign the voice routing policy you created in an earlier task to your users.
+  description: In this lab, you will expand the Teams Phone environment by configuring Direct Routing with a Session Border Controller (SBC), integrating on-premises telephony, and assigning voice routing policies. The scenario walks through deploying, configuring, and validating Direct Routing for hybrid voice connectivity.
   duration: 200 minutes
   level: 400
   islab: true
