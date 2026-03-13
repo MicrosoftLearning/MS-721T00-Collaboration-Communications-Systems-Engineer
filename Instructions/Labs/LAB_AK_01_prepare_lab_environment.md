@@ -1,8 +1,14 @@
 ---
 lab:
-    title: 'Lab 01: Configure the lab environment'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  title: 'Lab 01: Configure the lab environment'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and design Teams collaboration communications systems'
+  description: In this lab, you will configure the foundational Microsoft 365 environment for Contoso Ltd., including user accounts, permissions, and licenses, to support Teams collaboration and voice features. The scenario guides you through preparing the environment for subsequent labs by setting up users, groups, and initial Teams administration tools.
+  duration: 30 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - Microsoft 365
 ---
 
 > **Abstract:**  

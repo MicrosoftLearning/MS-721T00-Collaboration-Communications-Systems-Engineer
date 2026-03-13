@@ -1,8 +1,14 @@
 ---
 lab:
-    title: 'Lab 05: Manage Microsoft Teams Devices'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 05: Manage Microsoft Teams Devices'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: In this lab, you will configure, deploy, and manage Microsoft Teams devices, including shared devices, Teams Rooms, and Surface Hub. The scenario covers account setup, licensing, device policies, and remote management for Teams-enabled hardware.
+  duration: 120 minutes
+  level: 400
+  islab: true
+  primarytopics:
+    - Microsoft Teams
 ---
 
 > **Abstract:**  

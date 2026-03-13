@@ -1,8 +1,14 @@
 ---
 lab:
-    title: 'Lab 06: Manage Microsoft Teams Premium'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 06: Manage Microsoft Teams Premium'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: This lab explores advanced Teams Premium features, including configuring the Queues app, voice application policies, and meeting customization. The scenario demonstrates how to enable, assign, and validate premium capabilities for specialized Teams experiences.
+  duration: 120 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - Microsoft Teams
 ---
 
 > **Abstract:**  

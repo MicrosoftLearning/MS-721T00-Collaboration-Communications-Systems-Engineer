@@ -1,8 +1,12 @@
 ---
 lab:
-    title: 'Lab 04: Manage your Teams Voice Environment'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  title: 'Lab 04: Manage your Teams Voice Environment'
+  type: Answer Key
+  module: 'Learning Path 02: Manage Teams collaboration communications systems'
+  description: This lab guides you through managing and troubleshooting Teams Phone users, configuring call queues and auto attendants, provisioning Teams devices, and monitoring call quality. The scenario addresses real-world support and operational tasks in a Teams Phone deployment.
+  duration: 180 minutes
+  level: 400
+  islab: true
 ---
 
 > **Abstract:**  
