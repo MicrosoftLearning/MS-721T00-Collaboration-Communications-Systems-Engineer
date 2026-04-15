@@ -200,6 +200,8 @@ In this task, you will create a call queue. A call queue is a group of agents th
 
 1. Select **Add** and enter the **Sales CQ** as the name
 
+1. Select **Classic Setup**.
+
 1. Under **Resource accounts**, select **Add**.
 
 1. Enter **Sales** in the search box, when no results are found, select **Add resource account**.
@@ -245,17 +247,19 @@ Now we will create an auto attendant and direct one of the options to send calls
 
 1. Select **English** or your preferred language.
 
+1. Select **Classic Setup**.
+
 1. select **Next**.
 
 1. Under **Call flow**, select **Add a greeting message** and enter, “Thank you for calling Contoso, your call is important to us, please be patient while we handle your call”.
 
 1. Under **Call routing options**, select **Redirect Call**, then select Redirect to **Voice App**, enter **Sales CQ**, then select **Next**
 
-1. Under **Set business hours** leave the defaults and select **next**, 
+1. Under **After-hours call flow** leave the defaults and select **next**, 
 
-1. Under set Holiday call settings select **Next**, 
+1. Under **Holidays call flow** select **Next**, 
 
-1. Under Dial scope select **Next**.
+1. Under **Dial scope** select **Next**.
 
 1. Under **Resource Accounts**, Select **Add**, enter **Sales AA** in the search box, then select **Add Resource Account**, enter the following values:
     - **Display Name** of **Sales AA**
@@ -349,16 +353,14 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 1. Select **Save**.
 
-You have successfully created a holiday relevant to your area and assigned it to a Call queue. 
+You have successfully created a holiday relevant to your area and assigned it to an Auto attendant. 
 
 ### Task 7 - Import MP4 file for custom music on hold
 
 In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
-
-1. Close the tab and switch back to the Microsoft Teams admin center.
-
+ 
 1. Under **Voice** and **Call Queues**, select **Sales CQ**.
 
 1. Select **Greeting and music**.
@@ -431,7 +433,7 @@ In the following task, we will use a combination of Microsoft Graph PowerShell, 
 1. Make sure you have the latest Exchange Online PowerShell modules installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
     ```powershell
-    Install-Module ExchangeOnlineManagement
+    Install-Module ExchangeOnlineManagement -Force
 
     ```
 
@@ -457,7 +459,7 @@ In the following task, we will use a combination of Microsoft Graph PowerShell, 
 
 ### Task 3 - Configure and license resource account with Microsoft Graph
 
-Next, you will use Graph PowerShell to assign the Teams Rooms Pro trial license you acquired in a previous lab and configure the resource account password policy.
+Next, you will use Graph PowerShell to assign the pre-provisioned Teams Rooms Pro trial license and configure the resource account password policy.
 
 1. Open Windows PowerShell as **Administrator** and make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
 
@@ -496,7 +498,7 @@ Upon completion of these steps, you can view the new Teams Room account in the M
 
 In this task, you will configure device tags to allow Contoso to identify devices based on the type of employee that will use the device so that the importance of the device can be identified by a support technician. We will configure two tags, **Executive** and **Contact Center**.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
+1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft 365 admin center** as **Allan Deyoung**.
 
 1. Navigate to the Microsoft Teams admin center at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
 
@@ -541,17 +543,17 @@ Isaiah Langer has reported they are not receiving voicemails. Microsoft offers s
 
 1. On the left menu, select **Show all**, then **Users** and **Active Users**. 
 
-1. Find Isaiah Langer and note down their username and email address, you will need it to run the test. Note this is one value in the format IsaiahL@lab&lt;LAB NUMBER&gt;.o365ready.com.
+1. Find Isaiah Langer and note down their username and email address, you will need it to run the test.
 
 1. On the left menu, select **show all**, then **Support** and under the support menu **Help & support**.
 
 1. In the **How can we help?** dialogue, enter **Diag: Voicemail** and press enter to jump straight to the voicemail diagnostics test.
 
-1. You will see the following diagnostics test **We understand you are having issues with receiving voicemails in Teams**. Under Username or Email enter Megan Bowen’s Username and email.
+1. You will see the following diagnostics test **We understand you are having issues with receiving voicemails in Teams**. Under Username or Email enter Isaiah Langer Username and email.
 
 1. Select **Run Tests**.
 
-1. The result should be **No Teams Voicemail issues were detected**.
+1. The result should be **Our tests didn´t find any problems**.
 
 You have successfully used the Microsoft 365 self-help diagnostics to confirm that there are no configuration issues with Isaiah Langers’s voicemail.
 
@@ -596,7 +598,8 @@ Firstly, we will create a dial plan rule, in this scenario, the organization wou
 You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
 
 > [!IMPORTANT]
-> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu.
+> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu. 
+If the desktop client fails to update or loops, you can use the Teams web client at https://teams.microsoft.com, which always runs the latest version.
 
 1. Sign into **MS721-CLIENT02** as **Admin**. You may still be signed in from a previous task.
 
