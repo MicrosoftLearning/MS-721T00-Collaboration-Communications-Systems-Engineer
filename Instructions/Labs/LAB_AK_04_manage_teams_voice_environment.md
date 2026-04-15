@@ -67,8 +67,8 @@ In this task, an existing user who isn’t enabled for voice services must be en
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
-1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
-
+1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window. 
+ 
 1. Use the following commands to import the module and connect to Microsoft Teams:
 
     ```powershell

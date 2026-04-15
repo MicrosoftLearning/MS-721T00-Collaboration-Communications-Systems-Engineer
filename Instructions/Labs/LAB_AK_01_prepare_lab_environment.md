@@ -146,7 +146,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
-1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu.
+1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu. 
 
 1. Confirm the **User Account Control** message with **Yes** to open a window with elevated permissions.
 
