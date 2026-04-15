@@ -335,7 +335,7 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
     ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
 
-    > NOTE: If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started.
+    > NOTE: If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started. If the Surface Hub 3 still cannot sign in using the `CONF_Room1` resource account, complete an initial sign‑in with this account on **MS721‑CLIENT01** using the Teams desktop app or https://teams.microsoft.com. This first sign‑in finalizes any password updates and completes Teams provisioning for the account.When updating the password, use the **MOD Administrator password**. After signing in successfully on CLIENT01, return to **MS721‑SH3** and sign in on the Surface Hub again.
 
 1. On the next page click **Accept** to the **End User Agreement** and then click **Manual Setup**. Enter the following credentials:
 
