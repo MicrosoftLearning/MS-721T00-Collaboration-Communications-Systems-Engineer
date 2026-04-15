@@ -497,7 +497,7 @@ Perform the following steps.
 
 1. Leave IPv4 Selected for **IP Version**.
 
-1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.10.0/24, the network ID is **10.10.10.0**. Additionally also add **192.168.0.0** for a later task.
+1. Enter the Bellevue Subnet network ID, since our Bellevue Office subnet is 10.10.10.0/24, Enter the network ID **10.10.10.0** in the **Subnet** field. After completing steps 3–8, repeat them again to add the second subnet **192.168.0.0** , which will be used in a later task.
 
 1. Enter **Bellevue Subnet** as the **Description**.
 
