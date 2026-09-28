@@ -28,8 +28,7 @@ As part of the expanding business, the organization has began deploying various 
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
-> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. M365x01234567) for your Microsoft 365 account.
+> This lab runs independently of Lab 3. Replace &lt;LAB Domain&gt; in PowerShell commands with the domain shown for your accounts in **Microsoft 365 admin center > Users > Active users**. Replace &lt;TENANT NAME&gt; with your Microsoft 365 tenant name (for example, M365x01234567). The optional Direct Routing task requires a Lab 3 SBC and voice routing policy in the **same tenant**.
 
 ## Exercise 1: Configuring Teams Shared Device and Room Resource Accounts
 
@@ -37,7 +36,7 @@ As part of the expanding business, the organization has began deploying various 
 
   - **Estimated Time to complete**: 30 minutes
 
-In this exercise, you will configure accounts for Teams Shared Devices and Rooms. Because direct number ordering through the Teams admin center isn't available in this trial tenant, phone numbers are assigned to these resource accounts through **Direct Routing** PowerShell using the Session Border Controller deployed in Lab 3.
+In this exercise, you configure accounts for a shared phone and a Teams Room. Account creation, room booking, and policy configuration don't require a PSTN number or an SBC. Direct Routing number assignments are an optional extension if Lab 3 has been completed in this same tenant.
 
 ### Task 1 - Create a resource account for Teams Shared Devices (Common Area Phones)
 
@@ -69,9 +68,10 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
     ![A screenshot showing the basics of user setup.](Linked_Image_Files/M05_L05_E01_T01_01.png)
 
-1. On the licensing page, assign a **Microsoft Teams Rooms Pro** license to the user account, and then click **Next.**
+1. On the licensing page, assign a **Microsoft Teams Shared Devices** license to the shared phone account if your tenant has one, and then select **Next**.
 
-    > NOTE: The lab environment does not have the proper **Teams Shared Devices** licensing avaliable. For what we need, the Rooms Pro license will do for lab purposes. A Calling Plan license isn't required because this account will receive a phone number through **Direct Routing** in a later task.
+    > [!NOTE]
+    > If this license isn't available in your lab tenant, create the account without it and continue with the account and policy exercises. Don't substitute a Teams Rooms Pro license for a shared phone. Signing a physical shared phone into this account requires the appropriate shared-device license and a supported device; neither is validated without them. A PSTN number is optional for the account and is not needed for the later policy exercise.
 
 1. Continue clicking **Next** until you get the username and password presented to you. Write these down for future use. Keep the browser open for the next task.
 
@@ -101,15 +101,18 @@ In this task, you will sign into the Microsoft 365 admin center and will create 
 
 1. In the left navigation, select **Users**, select **Active Users**, and then select the **CONF_Room1** account. 
 
-1. Select **Licenses and Apps** on the user card, assign a **Microsoft Teams Rooms Pro** license to the user account, and then click **Save changes.** A Calling Plan license isn't required because the account will receive a phone number through **Direct Routing** in a later task.
+1. Select **Licenses and Apps** on the user card, assign a **Microsoft Teams Rooms Pro** license to the room account, and then select **Save changes**. A Calling Plan license or Direct Routing number is not required to book the room or sign in to Teams Rooms for meetings.
 
 1. While still in the user card, select **Reset Password** and set the password to the **User password** for your Microsoft 365 account, then close the user card.
+
+    > [!IMPORTANT]
+    > The Teams Rooms resource account must sign in without an interactive multifactor authentication (MFA) prompt. If an MFA challenge or a Conditional Access block affects **CONF_Room1**, ask your identity administrator to review the policy for this device. Do not disable MFA for the entire tenant to complete the lab.
 
 1. In the **Microsoft 365 Admin Center** under **Active Users** you should see two accounts matching the following:
 
     ![A screenshot showing the two created user accounts.](Linked_Image_Files/M05_L05_E01_T02_02.png)
 
-The accounts are now licensed and ready for configuration steps.
+The room account is licensed and ready for configuration. The shared-phone account is licensed only if your tenant has the Microsoft Teams Shared Devices license.
 
 ### Task 3 - Disable password expiration on the accounts
 
@@ -150,9 +153,9 @@ In this task, you will sign into the Microsoft Graph PowerShell Module and disab
 	```
 The accounts anow have password expiration disabled and are ready to have additional configurations applied.
 
-### Task 4 - Assign phone numbers to the resource accounts through Direct Routing
+### Task 4 - Optional: assign Direct Routing numbers to the accounts
 
-In this task, you will use PowerShell to assign a Direct Routing phone number to each resource account. The numbers route through the SBC you deployed in Lab 3. (In a production environment without the current tenant restrictions, you would order Calling Plan numbers through the Teams admin center and assign them in the **Phone numbers** page. Because that's unavailable in this lab tenant, Direct Routing is used instead.)
+Skip this task in a standalone Lab 5 tenant and continue with Exercise 2. The shared-phone and room policies, room booking, and Teams Rooms meetings don't require a PSTN number. If you completed Lab 3 in **this same tenant**, registered its SBC, and configured the `NA-National` voice routing policy, you can use the following commands to practice Direct Routing number assignment. These assignments alone do not verify PSTN calling.
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** with the password provided to you.
 
@@ -162,7 +165,7 @@ In this task, you will use PowerShell to assign a Direct Routing phone number to
     Connect-MicrosoftTeams
     ```
 
-1. Grant the `NA-National` voice routing policy you created in Lab 3 to both resource accounts so they can route calls through the SBC. Replace `<LAB Domain>` with your lab domain:
+1. Grant the `NA-National` voice routing policy from this tenant to both accounts. Replace `<LAB Domain>` with the domain of the actual account usernames in **Active users**:
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity CAP_Reception@<LAB Domain>.onmicrosoft.com -PolicyName "NA-National"
@@ -185,7 +188,7 @@ In this task, you will use PowerShell to assign a Direct Routing phone number to
 
 1. Leave the PowerShell window open at the end of the task.
 
-You have successfully assigned Direct Routing phone numbers to the resource accounts.
+If you performed the optional task, verify the assignments shown by the readback commands. Otherwise, continue with the licensed room account and the shared-phone policy exercise without PSTN connectivity.
 
 ## Exercise 2: Deploy Microsoft Teams Common Area Phones
 
@@ -276,13 +279,13 @@ In this task, you will sign into Microsoft Exchange PowerShell and configure the
 
 1. Select the Windows symbol in the task bar, type **PowerShell** and open a Administrator-elevated PowerShell window.
 
-1. In Windows PowerShell, enter the following cmdlet to connect to install the Exchange Online Management PowerShell Module:
+1. In Windows PowerShell, check whether the Exchange Online Management module is already installed:
 
     ```powershell
-    Install-Module ExchangeOnlineManagement
-
+    Get-Module -ListAvailable ExchangeOnlineManagement
     ```
-    > NOTE: If the Install-Module ExchangeOnlineManagement command fails, an older version of the module may already be installed. Close PowerShell, open a new Administrator‑elevated window, and run the command: Uninstall-Module -Name ExchangeOnlineManagement -AllVersions -Force . Then run the installation command again.
+
+    If the command returns no installed module, run `Install-Module ExchangeOnlineManagement`. If a version is already installed, use it for the next step. You don't need to uninstall an existing version.
 
 1. In Windows PowerShell, enter the following cmdlet to connect to Exchange Online Management:
 
@@ -299,6 +302,10 @@ In this task, you will sign into Microsoft Exchange PowerShell and configure the
     Set-CalendarProcessing -Identity "CONF_Room1" -AutomateProcessing AutoAccept -AddOrganizerToSubject $false -AllowRecurringMeetings $true -DeleteAttachments $true -DeleteComments $false -DeleteSubject $false -ProcessExternalMeetingMessages $true -RemovePrivateProperty $false -AddAdditionalResponse $true -AdditionalResponse "This is a Microsoft Teams Meeting room!"
 
     ```
+
+    > [!TIP]
+    > To verify booking, send a near-term internal test invitation from a licensed organizer to **CONF_Room1** as the room. Check the organizer's inbox for the room's automatic acceptance response. When the room device is signed in, check its home screen near the booking time to confirm the event appears. The response verifies mailbox processing; the home-screen listing verifies calendar sync. A non-Teams event does not test meeting join.
+
 You have successfully setup calendar processing on a Teams Rooms Account.
 
 ### Task 2 - Setup Surface Hub 3
@@ -309,23 +316,30 @@ In this task, you will sign into the a virtual Surface Hub 3 running Teams Rooms
 
     ![A screenshot showing the Teams Rooms welcome screen.](Linked_Image_Files/M05_L05_E03_T02_01.png)
 
-    > NOTE: If you see an error stating that there is not an active internet connection, reset the virtual machine to restart the application. It likely booted before the RRAS box had fully started. If the Surface Hub 3 still cannot sign in using the `CONF_Room1` resource account, complete an initial sign‑in with this account on **MS721‑CLIENT01** using the Teams desktop app or https://teams.microsoft.com. This first sign‑in finalizes any password updates and completes Teams provisioning for the account.When updating the password, use the **MOD Administrator password**. After signing in successfully on CLIENT01, return to **MS721‑SH3** and sign in on the Surface Hub again.
+    > [!NOTE]
+    > If the device can't reach the internet, confirm that **MS721-RRAS01** is running and that **MS721-CLIENT01** can reach Microsoft Teams. Restart the Surface Hub only after network access is restored. If the device reports **Unable to sign in**, check the saved **CONF_Room1** address and the room account's **User password** in the Teams Rooms **Settings > Account** page. Do not substitute the MOD Administrator password. A successful sign-in to Teams on the web does not verify device sign-in.
+
+    > [!NOTE]
+    > To investigate a persistent sign-in failure, open Event Viewer on **MS721-SH3** as the local Administrator and review **Applications and Services Logs > Microsoft > Windows > AAD > Operational**, Event ID **1098**. **AADSTS50126** reports invalid credentials for the device sign-in. **AADSTS50076** or **AADSTS50079** indicates an MFA requirement, and **AADSTS53003** indicates a Conditional Access block. Ask your identity administrator to investigate policy failures rather than changing tenant-wide MFA. See [Fix Teams Rooms resource account sign-in issues](https://learn.microsoft.com/troubleshoot/microsoftteams/teams-rooms-and-devices/teams-rooms-resource-account-sign-in-issues).
 
 1. On the next page click **Accept** to the **End User Agreement** and then click **Manual Setup**. Enter the following credentials:
 
 	- **Email:** CONF_Room1@<Lab Domain>.onmicrosoft.com *Replace <Lab Domain> with your labs domain.*
 
-	- **Password:** *Enter the User password for your Microsoft 365 accounts from the _“Resource”_ section on the right side of the lab window.*
+	- **Password:** Type the room account's **User password** from the **Resources** section of the lab window directly into the password field on **MS721-SH3**. The **Type Text User Password** control can omit characters when forwarding text to this device. If you use it, verify every character before saving. If you can't verify the masked password, clear the field and type it manually.
 
-1. The screen will go black a few times before it will eventually login. You will see the screen below and are now able to use the Surface Hub 3.
+1. Wait for the Teams Rooms home screen shown below. If the device still displays **Unable to sign in**, do not treat it as configured or continue to Task 3.
 
     ![A screenshot showing the Teams Rooms home screen.](Linked_Image_Files/M05_L05_E03_T02_02.png)
 
-You have successfully setup a Surface Hub 3 with the Microsoft Teams Rooms on Windows App.
+    > [!TIP]
+    > If the device reports **AADSTS50126** after you use **Type Text User Password**, open **Settings > Account** on **MS721-SH3**. Clear the saved password, type the room account's **User password** manually, and select **Save and exit**. Confirm that the home screen appears before you continue.
+
+After the home screen appears, the room account is signed in to the virtual Surface Hub 3.
 
 ### Task 3 - Manage Surface Hub 3 & Teams Rooms on Windows with the Pro Management Portal
 
-In this task, you will sign into the Teams Rooms Pro Management Portal and add manage the Surface Hub 3 from the portal. NOTE: It can take up to an hour before the room will appear in this portal.
+In this task, you sign in to the Teams Rooms Pro Management Portal and manage the Surface Hub 3. Teams Rooms on Windows devices normally install the Pro agent during setup and appear in the portal after Teams sign-in. Allow up to an hour for the room to appear.
 
 1. Connect to **MS721-CLIENT01** and sign in as **Admin**. 
 
@@ -333,9 +347,12 @@ In this task, you will sign into the Teams Rooms Pro Management Portal and add m
 
 1. On the **Sign in** screen, enter the credentials of the Global Admin account of the **MOD Administrator** with the username and password provided to you.
 
-1. Once signed in, navigate to Rooms and then click on the **MS721-SH3** Room. In the room card, click **Enroll** in the bottom right.
+1. Once signed in, navigate to **Rooms** and select the room signed in as **CONF_Room1** when it appears. If the room card shows **Onboarding** and offers **Enroll**, select **Enroll**. Otherwise, continue to the room settings.
 
     ![A screenshot showing the room card in the Pro Management Portal.](Linked_Image_Files/M05_L05_E03_T03_01.png)
+
+    > [!NOTE]
+    > If the room does not appear after an hour, pause this task. On **MS721-SH3**, open an elevated PowerShell window and run `Get-Tpm`. Teams Rooms Pro Management requires a Trusted Platform Module (TPM) to identify and enroll the device. If `TpmPresent` or `TpmReady` is `False`, ask your lab provider whether the virtual machine can be provisioned with a TPM. You can't complete portal enrollment or the theme change on that machine until the TPM prerequisite is met. If the TPM is ready, check Teams sign-in, the **Microsoft Managed Rooms** agent, its **ManagedRoomsLauncher** and **ManagedRoomsUpdater** tasks, and the [required network endpoints](/microsoftteams/rooms/enroll-a-device#urls-required-for-communication). See [Troubleshoot an unmonitored Teams Rooms device](/microsoftteams/devices/pmpsignal-unmonitored-offline). An empty room list does not establish a problem with the room account password.
 
 1. Under the room card, select **Settings**, then **Theming**, and then change the theme to something else and then click **Apply.**
 

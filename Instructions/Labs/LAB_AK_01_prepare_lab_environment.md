@@ -106,7 +106,7 @@ You have successfully signed into your test clients and reviewed the overall num
 As an admin, you can assign the Teams Domestic Calling Plan license that gives users the right to be assigned a phone number and make and receive PSTN calls. In this task, you will activate the **Teams Domestic Calling Plan license** for five users. All users already have an E5 license, so all they need is a calling plan license.
 
 > [!NOTE]
-> Direct number ordering through the Teams admin center is currently unavailable in this trial tenant due to a compliance verification requirement. The Calling Plan license is still assigned here so the license inventory is staged correctly, but later labs (Lab 3 onward) assign phone numbers to users and resource accounts via **Direct Routing** through the lab's Session Border Controller (SBC) instead of through a Microsoft Calling Plan.
+> Direct number ordering through the Teams admin center is currently unavailable in this trial tenant due to a compliance verification requirement. The Calling Plan license is still assigned here so the license inventory is staged correctly. Lab 3 assigns phone numbers through **Direct Routing** by using the lab's Session Border Controller (SBC). The voice-management tasks in Lab 4 don't require a phone number.
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -129,11 +129,29 @@ As an admin, you can assign the Teams Domestic Calling Plan license that gives u
 
 1. Select **Save changes** and then **Done** to close the pane.
 
-1. Sign out the **MOD Administrator** with the MA initials in the circle in the upper right-side corner and select **Sign out**.
+1. Leave the browser open for the next task.
 
-1. Close the browser window at the end of the task.
+You have successfully assigned the licenses to five users and activated Teams Premium features for these accounts. Lab 3 assigns Direct Routing phone numbers separately. Lab 4 voice-management tasks use Enterprise Voice without requiring a phone number.
 
-You have successfully assigned the licenses to five users and activated Teams Premium features for these accounts. Because direct number ordering isn't available in this trial tenant, phone numbers are assigned through Direct Routing PowerShell in later labs rather than through the Teams admin center.
+### Task 4 - Enable Enterprise Voice for voice-management users
+
+The Teams Phone and Calling Plan licenses make voice features available to a user, but they don't automatically enable Enterprise Voice. In this task, you enable Enterprise Voice for the users managed in Lab 4. A phone number or voice routing policy isn't required for this prerequisite.
+
+1. In a new browser tab, go to the Microsoft Teams admin center at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/) and sign in as **MOD Administrator** if prompted.
+
+1. In the left navigation, select **Users**, and then select **Manage users**.
+
+1. Select **Isaiah Langer**, and then select the **Account** tab.
+
+1. Under **Assigned phone number**, turn on **Enterprise Voice**, and then select **Enable** to confirm.
+
+1. Return to **Manage users** and repeat the previous steps for **Nestor Wilke**.
+
+1. Verify that **Enterprise Voice** shows **On** for both users.
+
+1. Sign out of the **MOD Administrator** account, and then close the browser.
+
+Isaiah and Nestor are now available for call groups, delegation, and call queue agent assignments without requiring a phone number or the Lab 3 SBC.
 
 ## Exercise 2: Setup PowerShell for Microsoft Teams administration
 

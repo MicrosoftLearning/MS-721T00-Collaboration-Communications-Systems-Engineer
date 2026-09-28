@@ -26,8 +26,7 @@ Contoso needs to make changes to existing users who are enabled for Teams Voice 
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
-> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. WWLx012345) for your Microsoft 365 account.
+> This lab runs in its own tenant and does not require Lab 3 or an SBC. Use the username shown in **Microsoft 365 admin center > Users > Active users** whenever an exercise asks for a user identity; a custom-domain sign-in name might not have been applied. Replace &lt;TENANT NAME&gt; in PowerShell commands with your tenant's name (for example, WWLx012345). Only the optional Direct Routing task uses &lt;LAB NUMBER&gt; from a Lab 3 deployment in the same tenant.
 
 ## Exercise 1: Manage voice users
 
@@ -41,7 +40,7 @@ In this exercise, you will perform day-to-day management tasks for Teams Phone u
 
 In this task, you will sign into the Microsoft Teams admin center and make changes so that Isaiah’s colleague Allan can pick up their calls.
 
-1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
+1. On **MS721-CLIENT01**, sign in to Windows as **Admin**. Open the **Microsoft Teams admin center** and sign in as **Allan Deyoung** with the Teams Administrator role.
 
 1. In the left navigation menu select **Users** and **Manage users** and find **Isaiah Langer** and select the name to open the user’s properties.
 
@@ -61,13 +60,17 @@ In this task, you will sign into the Microsoft Teams admin center and make chang
 
 The changes are now applied, and a banner will show for calls directed to Isaiah on Allan’s Teams client, allowing them to answer if Isaiah is unable.
 
-### Task 2 - Enable users for Teams Direct Routing
+### Task 2 - Check Teams Phone users (optional Direct Routing extension)
 
-In this task, you enable Nestor Wilke and Isaiah Langer for Direct Routing. Both users already have the required Microsoft Teams and Teams Phone licenses.
+Check that Nestor Wilke and Isaiah Langer have Teams and Teams Phone licenses before you manage their voice settings. You can complete the rest of this lab without a PSTN number. Perform the Direct Routing commands below **only if** you deployed and registered the Lab 3 SBC **in this same tenant** and created its `NA-National` policy; a separate Lab 3 tenant does not provide these resources.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
-1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window. 
+1. In the Microsoft 365 admin center, open **Users > Active users**. Check the licenses and current usernames for **Nestor Wilke** and **Isaiah Langer**. If either user lacks Teams or Teams Phone, ask the lab administrator to assign the available licenses and wait for provisioning before using that user's voice settings.
+
+1. If you don't have the Lab 3 SBC and policy in this tenant, **skip the remaining Direct Routing steps in this task** and continue with Task 3. Don't assign a Direct Routing number without a configured gateway and route.
+
+1. Select Start, type PowerShell and open a non-Administrative **Windows PowerShell** window.
  
 1. Use the following commands to import the module and connect to Microsoft Teams:
 
@@ -83,7 +86,7 @@ In this task, you enable Nestor Wilke and Isaiah Langer for Direct Routing. Both
 
 1. When prompted for credentials, enter the credentials of **Allan Deyoung**.
 
-1. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
+1. Assign the policy to Nestor using the username you verified. Replace the sample identity if the actual username differs:
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PolicyName "NA-National"
@@ -96,7 +99,7 @@ In this task, you enable Nestor Wilke and Isaiah Langer for Direct Routing. Both
     Set-CsPhoneNumberAssignment -Identity NestorW@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551122" -PhoneNumberType DirectRouting
     ```
 
-1. Now grant the same voice routing policy to **Isaiah Langer** and assign Isaiah a Direct Routing phone number. (In a production environment without the current tenant restrictions, you would order Isaiah a Calling Plan number through the Teams admin center. Because that's unavailable in this lab tenant, you'll use Direct Routing through the SBC deployed in Lab 3 instead.)
+1. Assign the same policy and a Direct Routing number to **Isaiah Langer**. Replace both sample identities with Isaiah's actual username if it differs:
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity IsaiahL@lab<LAB NUMBER>.o365ready.com -PolicyName "NA-National"
@@ -105,7 +108,7 @@ In this task, you enable Nestor Wilke and Isaiah Langer for Direct Routing. Both
 
 1. Close the PowerShell Window at the end of the task.
 
-Nestor and Isaiah are now configured to use Direct Routing.
+If you completed the optional commands, Nestor and Isaiah have Direct Routing assignments. Otherwise, continue with the independent Teams user-management tasks.
 
 ### Task 3 - Configure call delegation
 
@@ -149,15 +152,15 @@ In this task, you validate audio conferencing is enabled for Isaiah Langer and c
 
 1. Select the row with **No toll-free numbers** policy that was just created and select **Assign users**.
 
-1. Search for **Isaiah** from **Manage users**, select **Isaiah Langer**, **Add**, **Apply** and **Confirm**.
+1. In the **Manage users** pane, search for **Isaiah**, select **Isaiah Langer**, select **Add** next to the search result, and then select **Apply** and **Confirm**. Wait for the confirmation that the policy was assigned to one user.
 
 1. Select **Users** and **Manage users**.
 
 1. Find **Isaiah Langer** and select the name to open the user’s properties.
 
-1. On the user’s properties page, select the **Account** tab and under **Audio Conferencing** select **Edit**.
+1. On the user's properties page, select the **Account** tab. Confirm that **Audio Conferencing** displays **On**, and then select **Edit**.
 
-1. Check if **Audio Conferencing** is switched to **On**.
+    The **Audio Conferencing** pane shows the toll number. The assigned Audio Conferencing policy controls whether toll-free numbers appear in meeting requests.
 
 1. Select the **Toll number** dropdown and change it to **+1 689 206 9333 Orlando, United States**. If that particular number isn't available, choose any other available toll number from the dropdown.
 
@@ -179,7 +182,7 @@ In this task you will assign a new Dial out policy to Megan Bowen, to restrict h
 
 1. On the user’s properties page, select the **Voice** tab.
 
-1. Under **Outbound calling**, select **Don’t allow** from the drop-down menu.
+1. Under **Outbound calling**, select **Don't allow** from the drop-down menu, and then select **Confirm** when the assignment warning appears.
 
 1. Wait until the notification **The dial out policy was assigned** shows, then select **Manage users** to exit the properties page.
 
@@ -199,7 +202,7 @@ In this exercise, you configure a call queue and auto attendant for the Sales te
 
 ### Task 1 - Create and license resource accounts
 
-In this task, you create and license one resource account for the Sales call queue and one for the Sales auto attendant.
+In this task, you create and license one resource account for the Sales call queue and one for the Sales auto attendant. In the resource-account form, select a domain available in **this tenant**, such as its `onmicrosoft.com` domain. You don't need the `lab<LAB NUMBER>.o365ready.com` domain used in Lab 3.
 
 1. In the **Microsoft Teams admin center**, select **Voice** > **Resource accounts**.
 
@@ -207,14 +210,14 @@ In this task, you create and license one resource account for the Sales call que
 
     - **Display name**: **Sales CQ**
     - **Username**: **SalesCQ**
-    - **Domain name**: **lab&lt;LAB NUMBER&gt;.o365ready.com**
+    - **Domain name**: Select a domain available in this tenant
     - **Resource account type**: **Call queue**
 
 1. Select **Add** again, enter the following values, and then select **Save**:
 
     - **Display name**: **Sales AA**
     - **Username**: **SalesAA**
-    - **Domain name**: **lab&lt;LAB NUMBER&gt;.o365ready.com**
+    - **Domain name**: Select the same available domain as for **Sales CQ**
     - **Resource account type**: **Auto attendant**
 
 1. Open the [Microsoft 365 admin center](https://admin.microsoft.com/), then select **Users** > **Active users**.
@@ -239,13 +242,13 @@ In this task, you create a call queue and add Isaiah Langer as an agent.
 
     - **Name**: **Sales CQ**
     - **Language**: **English (United States)**
-    - **Resource accounts**: Add **Sales CQ**
+    - **Resource accounts**: Select **Add**, search for **Sales CQ**, select the result, select **Add** next to the account, and then select **Save**.
 
     You don't need to assign a calling ID for this lab.
 
 1. Select **Next** to keep the default greeting and music settings.
 
-1. On the **Call answering** page, select **Choose users and groups** > **Add users**. Search for **Isaiah Langer**, select the user, and then select **Add**.
+1. On the **Call answering** page, select **Choose users and groups** > **Add users**. Search for **Isaiah Langer**, select the result, select **Add** next to the user, and then select **Add** at the bottom of the pane.
 
 1. Leave the remaining options at their default values, then select **Submit**.
 
@@ -257,24 +260,26 @@ You have created the Sales CQ call queue and added Isaiah Langer as an agent.
 
 In this task, you create an auto attendant and route its business-hours calls to the Sales call queue.
 
-1. In the **Microsoft Teams admin center**, select **Voice** > **Auto attendants**, then select **Add**.
+1. In the **Microsoft Teams admin center**, select **Voice** > **Auto attendants**, then select **Add**. If **Add** isn't visible, select **More actions** (**...**) > **Add**.
 
-1. Enter **Sales AA** as the name, then select **Advanced setup**.
-
-1. On the **General info** page, configure the following settings:
+1. In **Quick setup**, configure the following settings:
 
     - **Name**: **Sales AA**
-    - **How do callers reach this auto attendant**: **Through a resource account**
-    - **Resource account**: **Sales AA**
+    - **Time zone**: **(UTC-08:00) Pacific Time (US & Canada)**
     - **Language**: **English (United States)**
+    - **How do you receive a call**: **Assign Resource accounts**
 
-1. On the **Call handling hours** page, set the time zone to **(UTC-08:00) Pacific Time (US & Canada)**, keep the default business hours, and then select **Next**.
+1. Search for **Sales AA**, select the result, select **Add** next to the resource account, and then select **Next**.
 
-1. On the **Business-hours call flow** page, select **Add a greeting message** and enter **Thank you for calling Contoso. Your call is important to us. Please wait while we handle your call.**
+1. On the **Select call routing options** page, select **Choose a destination to redirect call to**. Select **Voice app**, search for and select **Sales CQ**, and then select **Submit**.
 
-1. Under **Call routing options**, select **Redirect call** > **Voice app**, select **Sales CQ**, and then select **Next**.
+1. Close the confirmation dialog, and then select **Sales AA** in the auto attendants list.
 
-1. Select **Next** through the after-hours flow, holiday flow, and dial scope pages to keep their default settings. On the final page, select **Submit**, then confirm that **Sales AA** appears in the auto attendants list.
+1. Select **Business-hours call flow**, select **Add a greeting message**, and enter **Thank you for calling Contoso. Your call is important to us. Please wait while we handle your call.**
+
+1. Confirm that **Redirect call** is set to **Voice app** > **Sales CQ**, and then select **Submit**.
+
+1. Confirm that **Sales AA** appears in the auto attendants list with one resource account.
 
 You have created the Sales AA auto attendant and routed its business-hours calls to the Sales CQ call queue.
 
@@ -286,11 +291,13 @@ Collaborative calling enables you to connect a call queue to a channel in Teams.
 
 1. Under **Voice**, and **Call Queues**, select **Sales CQ**.
 
-1. Under **Call answering** select **Choose a team**, select **Add a channel**. 
+1. Under **Call answering**, select **Choose a team**, and then select **Add a channel**.
 
-1. Type **Sales Group**, select the **General** channel and select **Add**, select **General**, select **Apply** and select **Submit**.  
+1. Search for **Sales Group**, select the result, and then select **Add** next to the team.
 
-1. Leave the Teams Admin Center open for the next task
+1. Under **Select the channel**, select **General**, and then select **Apply**.
+
+1. Select **Submit**, and leave the Teams admin center open for the next task.
 
 You have successfully assigned the call answering for the Call Queue to the General channel within the Sales Group team.
 
@@ -300,17 +307,17 @@ By default, if a call to a call queue isn't answered by an agent within the maxi
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
-1. Under **Voice**, and **Call Queues**, select **Sales CQ**
+1. Under **Voice**, select **Call queues**, and then select **Sales CQ**.
 
-1. Under **Exception handling > Call timeout**, select **Redirect this call to**, select Redirect to, from the drop-down menu select **Voicemail (Shared)**
+1. Under **Exception handling**, expand **Call timeout**. Under **When call times out**, select **Redirect this call to**, and then select **Voicemail (shared)** from the **Redirect to** dropdown list.
 
-1. In the search type **Sales Group**, select **Sales Group**, 
+1. Search for and select **Sales Group**.
 
-1. Set Enable **Transcription On**
+1. Turn **Transcription** on.
 
-1. Select **Add a greeting message** and type **We are unable to take your call, please leave a message and we will be back with you as soon as possible.** 
+1. Select **Add a greeting message**, and enter **We are unable to take your call, please leave a message and we will be back with you as soon as possible.**
 
-1. Select **Submit**
+1. Select **Submit**.
 
 You have successfully assigned a voicemail to the Call Queue should it reach a time out period. 
 
@@ -324,7 +331,7 @@ In this task, you will enable conference mode that will pass the call between th
 
 1. Under **Call answering**, find **Conference mode** and validate the toggle is **On**.
 
-1. Click **Submit**.
+1. Select **Submit**.
 
 You have successfully enabled conferencing mode for **Sales CQ** call queue.
 
@@ -334,7 +341,7 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
-1. In the Microsoft Teams admin center, go to **Voice &gt; Holidays**.
+1. In the Microsoft Teams admin center, go to **Voice** > **Holidays**.
 
 1. Select **Add** to start the creation of a new holiday.
 
@@ -356,7 +363,7 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 1. Return to **Voice**, select **Auto attendants**, and then select **Sales AA**.
 
-1. On the **Holiday call settings** page, select **Add**.
+1. In the **Sales AA** editor, select **Holidays call flow**, and then select **Add**.
 
 1. Enter **Contoso holiday** for the call flow name.
 
@@ -366,31 +373,31 @@ In this task, you will create the relevant holiday configuration. Holidays diffe
 
 1. Under **Call routing options**, select **Disconnect**.
 
-1. Select **Next** to continue through the remaining auto attendant settings, and then select **Submit**.
+1. Select **Save** to add the holiday call flow, and then select **Submit** to update **Sales AA**. Confirm that the auto attendants list shows one holiday for **Sales AA**.
 
 You have successfully created a holiday and assigned its call flow to the Sales AA auto attendant.
 
-### Task 8 - Import MP4 file for custom music on hold
+### Task 8 - Import an MP3 file for custom music on hold
 
-In this task, you will obtain a free MP3 to the music on hold solution for the Sales Call Queue
+In this task, you use the provided MP3 file as custom music on hold for the Sales CQ call queue.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
  
-1. Under **Voice** and **Call Queues**, select **Sales CQ**.
+1. Under **Voice**, select **Call queues**, and then select **Sales CQ**.
 
 1. Select **Greeting and music**.
 
 1. Under **Music on hold**, select **Play an audio file**.
 
-1. Select **Upload file**, navigate to the **C:\Labfiles** folder, select **MoH-sample.mp3** and select **Open**.
+1. Select **Upload file**, navigate to the `C:\LabFiles` folder, select **MoH-sample.mp3**, and then select **Open**. Wait for the file name to appear under **Music on hold**.
 
-1. Select **Submit**.
+1. Select **Submit**. Reopen **Sales CQ** and confirm that **MoH-sample.mp3** remains selected under **Greeting and music**.
 
 1. Select the circle with the **AD** initials in the upper right-side and select **Sign out**.
 
 1. Close all browser windows currently open.
 
-You have successfully signed into your test clients and assigned a new MP3 file to the call queue.
+You have assigned a custom MP3 file as music on hold for the call queue.
 
 ## Exercise 3: Manage Teams devices
 
@@ -533,9 +540,10 @@ In this task, you will configure device tags to allow Contoso to identify device
 
 1. Leave the browser window open for the next task.
 
-As devices are provisioned or joined, they will be displayed in the **Devices** section of the Teams Admin Center. Although no devices are available during the lab exercise, you will expect after a device is added that you can then assign the tags to a device, by selecting the **Device** in the list and then selecting **Manage Tags**, then searching for a tag, and selecting **Apply**.
+> [!NOTE]
+> The Teams admin center indicates that Android device management has moved to the Pro Management Portal. You can still create the two tags in **All device tags**, but this lab has no phone on which to verify tag application. The **Manage tags** pane states that tags are assigned to users or resource accounts and applied to devices when they sign in.
 
-After applying a tag to devices, you can then use the **Search** box in the device list to choose **Select what you want to search by**, and then choose **Tags**. Enter the tag you’ve assigned to devices, and these devices will be displayed in the search results.
+With a physical Teams phone, validate how tags appear on a signed-in device in the current management portal. This lab has no phone, so tag application and tag-based device search aren't verified here.
 
 ## Exercise 4: Monitor and troubleshoot Teams Phone
 
@@ -543,7 +551,7 @@ After applying a tag to devices, you can then use the **Search** box in the devi
 
   - **Estimated Time to complete**: 120 minutes
 
-In this exercise, you will perform exercises to help troubleshoot specific issues and monitor call use and quality. All test calls in this exercise route through the Session Border Controller deployed in Lab 3.
+In this exercise, you test dial-plan translation without placing a PSTN call and use a Teams-to-Teams call for live call health. No Lab 3 SBC or PSTN trunk is required. PSTN usage reports can be empty in a new tenant.
 
 ### Task 1 - Troubleshoot Teams voicemail with Support Assistant
 
@@ -559,17 +567,15 @@ Isaiah Langer reports that they aren't receiving voicemails. In this task, you u
 
 1. Confirm that **Support Assistant** is **On**. In the message field, enter **Help me troubleshoot why a Teams user is not receiving voicemail**, then send the message.
 
-1. Review the troubleshooting guidance. When Support Assistant offers diagnostic options, select **Voicemail**, enter Isaiah Langer's username or email address, and select **Run Tests**.
+1. Review the troubleshooting guidance. When Support Assistant offers the Teams voicemail diagnostic, enter Isaiah Langer's exact username from **Active users**, then select **Run Tests**.
 
 1. Review the results. The diagnostic should report that it didn't find any problems. If it reports an issue, review and apply the recommended tenant or policy corrections.
 
 You have successfully used Support Assistant and the Microsoft 365 self-help diagnostic to check Isaiah Langer's voicemail configuration.
 
-### Task 2 - Break a dial plan and check the issue
+### Task 2 - Test and repair a dial-plan rule
 
-In this lab, we are going to create and then break a dial plan rule and check Call Analytics to see the issue.
-
-Firstly, we will create a dial plan rule. In this scenario, the organization would like the short code 0001 to translate to the lab test number +1-425-555-0001 that's reachable through the SBC deployed in Lab 3.
+Create a rule that translates the test extension `00001` to `+14255550001`. The five-digit input avoids a possible four-digit rule left by Lab 3. The Teams admin center's **Test** control verifies normalization without an SBC or PSTN call; it does not prove that the translated number is reachable.
 
 1. You are still signed in to **MS721-CLIENT01** as “Admin” and signed into the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -581,141 +587,59 @@ Firstly, we will create a dial plan rule. In this scenario, the organization wou
     
     1. Under Normalization rules select **Add** to get to the add new rule dialogue.
     
-    1. For **Name** enter **Converts 0001 to lab test number**.
+    1. For **Name** enter **Converts 00001 to lab test number**.
     
-    1. For **Description** enter **Converts 0001 to lab test number**.
+    1. For **Description** enter **Converts 00001 to lab test number**.
     
     1. Select **Advanced**.
 
-    1. In **If the dialed number matches this regular expression**, enter **^(0001)$**.
+    1. In **If the dialed number matches this regular expression**, enter **^(00001)$**.
 
     1. In **Then do this**, enter **+14255550001**.
     
-    1. Test the rule by entering **0001** and pressing Test. The output should be **+14255550001**, if the output is correct select **Save**.
+    1. Test the rule by entering **00001** and selecting **Test**. Verify the output is **+14255550001**, then select **Save**.
     
-    1. In the list of normalization rules, select the rule you just created and choose **Move up** from the action menu at the top of the table.
+    1. In the list of normalization rules, move the new rule above any broader rule that also matches `00001`.
     
-    1. You will see your new rule in the global dial plan, select **Save**. If you receive an error while attempting to save, enter a number in **External dialing prefix** for the Dial Plan, remove it again, and then click **Save**.
+    1. Select **Save** on the global dial plan. If saving fails, read the validation message and correct the indicated field before retrying.
     
-    1. Close the browser window.
+    1. Keep the browser window open for the next test.
 
-You have successfully added a normalization rule to a dial plan to meet the extension dialing organizational requirement. We will now confirm the rule works with a real user.
+You have verified the rule's output, not an actual call. Next, test how a mismatched pattern affects normalization and restore the rule before leaving the task.
 
-> [!IMPORTANT]
-> You will receive a message that Microsoft Teams needs to update when you launch it for the first time. After Teams is finished updating, launch the newly installed version from the Start Menu. 
-If the desktop client fails to update or loops, you can use the Teams web client at https://teams.microsoft.com, which always runs the latest version.
+1. In the Microsoft Teams admin center, open **Voice > Dial plans > Global (Org-wide default)**, then edit **Converts 00001 to lab test number**.
 
-1. Sign into **MS721-CLIENT02** as **Admin**. You may still be signed in from a previous task.
+1. Change its pattern from `^(00001)$` to `^(0001)$`. In **Test this rule**, enter `00001` and select **Test**. Verify that it no longer produces `+14255550001`. Do not interpret this result as a failed call or as evidence in Call Analytics.
 
-1. From the desktop, select and run **Microsoft Teams**.
+1. Restore the pattern to `^(00001)$`, test `00001` again, and verify the output is `+14255550001`.
 
-1. Sign in as **Isaiah Langer** on the Teams Desktop client.
+1. Select **Save** on the rule and **Save** on the global dial plan. Reopen the rule to confirm that the working pattern remains in place.
 
-1. You will be prompted with **Stay signed into all your apps** select **No, sign in to this app only**.
-
-1. If you are prompted with the Teams welcome information, select **X** in the top corner to close the window.
-
-1. If you are prompted **Get the Teams mobile app**, select the top right **X** to close the prompt.
-
-1. Select the calls button on the left rail.
-
-1. Dial **0001** and press call.
-
-1. If your lab machine prompted you to use your microphone select **Allow**.
-
-1. If you are prompted by Windows Defender Firewall for Microsoft Teams select **Allow Access**.
-
-1. Note that the number has been translated to +14255550001 and the call connects through the SBC.
-
-1. Press the red hang-up button to disconnect the call.
-
-Now we have proven the rule works, we will break the rule and confirm the rule.
-
-1. You are still signed into MS721-CLIENT01 as “Admin” from the previous task.
-
-1. Open Microsoft Edge from the task bar and browse to the Microsoft Teams admin center at [https://admin.teams.microsoft.com](https://admin.teams.microsoft.com/).
-
-1. Select **Voice** and **Dial Plan**. 
-
-1. Select the **Global (org wide default)** dial plan.
-
-1. Select the **Converts 0001 to lab test number** rule to edit it.
-
-1. Verify that the rule uses the advanced regular expression **^(0001)$**.
-
-1. In the field the number dialed matches this regular expression, it will read **^(0001)$**.
-
-1. Remove the first 0 to now read, **^(001)$**.
-
-1. Test the rule by entering 0001 and pressing Test. The output of the translated number isn't an E.164 phone number.
-
-1. Select **Save**.
-
-1. At the dial plan page, again select **Save** to update the global dial plan.
-
-Now we have broken our dial plan, we will sign into Teams again and prove it is no longer working
-
-1. You are still signed into MS721-CLIENT02 as "Admin" from the previous task.
-
-1. From the desktop select and run the Microsoft Teams client.
-
-1. Select Get started.
-
-1. When prompted for sign in, enter Isaiah Langer’s username and select **Next**.
-
-1. When prompted enter Isaiah Langer’s password and select **Next**.
-
-1. You will be prompted with “Stay signed into all your apps” select **No, sign in to this app only**.
-
-1. If you are prompted with the Teams welcome information.
-
-	- **Bring your team together,** select **Next**.
-
-	- Chat 1:1 and with groups, select **Next**.
-
-	- Connect through online meetings, select **Next**.
-
-	- Files, notes, apps, and more, all in one place, select **Next**.
-
-	- You're ready!, select **Let’s go**.
-
-1. Once signed in, Select the calls button on the left rail.
-
-1. Dial 0001 and press call.
-
-1. If your lab machine prompted you to use your microphone select **Allow**.
-
-1. If you are prompted by Windows Defender Firewall for Microsoft Teams select **Allow Access**.
-
-1. Note that Teams attempts to ring the number but it does not connect or you get the Teams Announcement Service telling you the call cannot connect.
-
-1. Press the red hang-up button to disconnect the call.
-
-You have successfully created a dial plan, proven it works, broken it and seen the user impact of a broken dial plan.
+You have diagnosed and repaired a normalization error without placing a PSTN call.
 
 ### Task 3 - Review Call Health Real Time Stats on a live call
 
-Users can check on the network performance of their calls live during the call. In this task, we will test the Team call health feature
+Users can check their call's network and audio performance during a Teams-to-Teams call. Arrange for **Allan Deyoung** to sign in to Teams on MS721-CLIENT01 while **Isaiah Langer** signs in on MS721-CLIENT02. Both participants must be available to answer.
 
-1. You are still signed into MS721-CLIENT02 as “Admin” from the previous task
+1. Sign in to **MS721-CLIENT02** as **Admin**.
 
-1. From the desktop select and run **Microsoft Teams** client
+1. Open the **Microsoft Teams** desktop client.
 
-1. You should still be signed in as **Isaiah Langer**.
+1. Sign in as **Isaiah Langer** if Teams is not already signed in.
 
 1. Select the calls button on the left rail.
 
-1. Dial +1-425-555-0001 and press call.
+1. In **Calls**, search for **Allan Deyoung** and start an audio call to his Teams account. On MS721-CLIENT01, answer as Allan. Do not dial the lab test PSTN number.
 
 1. If your lab machine prompted you to use your microphone select **allow**.
 
 1. If you are prompted by Windows Defender Firewall for Microsoft Teams select **Allow Access**.
 
-1. The call should establish through the SBC.
+1. Verify that the Teams-to-Teams call connects. If it does not connect, resolve the sign-in or device problem before trying to inspect call health.
 
-1. While on the call, press the ellipsis (three dots) in the top right of the Teams client and select **Settings**, then **Call health**.
+1. While the call is connected, select **More** (**...**) in the Teams call window, then **Settings > Call health**.
 
-1. You will see a right-hand menu with the network and audio performance.
+1. Review the network and audio metrics, then end the call. This test verifies call health for a Teams-to-Teams call, not Direct Routing or PSTN connectivity.
 
 Call Health shows you the following:
 
@@ -724,9 +648,9 @@ Call Health shows you the following:
 | Metric| Description |
 |:---------|:---------|
 | Roundtrip time| In group calls, it's the response time between your system and the Teams Service. In one-on-one calls, it's the response time between your system and the other participant's. Lower is better. |
-| Received packet loss| In group calls, it's the response time between your system and the Teams Service. In one-on-one calls, it's the response time between your system and the other participant's. Lower is better. |
+| Received packet loss| The percentage of audio packets not received by your system. Lower is better. |
 | Teams send limit| The max limit of data Teams can send based on the current network conditions and how it's used. This isn't your ISP speed limit. |
-| Teams send limit| The max limit of data Teams can receive based on the current network conditions and how it's used. This isn't your ISP speed limit. |
+| Teams receive limit| The maximum amount of data Teams can receive under current network conditions. This isn't your ISP speed limit. |
 
 #### Audio
 
@@ -817,7 +741,7 @@ In this task, we will review the PSTN Usage report.
 
 1. Select **Run report**.
 
-You will see a report showing all the PSTN calls made in the last 7 days. You should see the test calls we made with Isaiah Langer in this exercise. Note, it may take some time for the call records to show. 
+The report shows PSTN activity from the last seven days, if any exists. In a standalone lab with no PSTN connectivity, a report with zero calls is expected. The Teams-to-Teams call from Task 3 does not appear as a PSTN call.
 
 The report shows:
 
@@ -855,7 +779,7 @@ The report shows:
 
 - **Capability** is the license used for the call.
 
-You have successfully generated and reviewed the PSTN usage report
+You have reviewed the PSTN usage report. An empty report does not indicate a failure in this standalone lab.
 
 ### Task 6 - Review Calls in Call Analytics
 
@@ -869,9 +793,9 @@ If we want to review the usage and performance of an individual's Teams calling,
 
 1. Select the **Meetings &amp; calls** tab.
 
-1. You can now see all recent calls and meetings made by or involving Isaiah. Note, you may need to scroll down.
+1. Scroll down to **Completed meetings** to review Isaiah's recent calls and meetings. If the list shows **No data is available**, there is no call record to inspect in this tenant. Continue to the next task; the remaining steps require a completed call.
 
-1. Select one of the longer calls by duration.
+1. If calls are available, select one of the longer calls by duration.
 
 1. In the top bar, note how teams rated the overall Audio quality.
 
@@ -895,9 +819,9 @@ In this task, you open and review Call Quality Dashboard
 
 1. In the navigtion menu on the left, select **Analytics & reports** then select **Call quality dashboard**.
 
-1. This will cause a new browser tab to open going to [https://cqd.teams.microsoft.com/](https://cqd.teams.microsoft.com/).
+1. A new browser tab opens the [Microsoft Call Quality Dashboard](https://cqd.teams.cloud.microsoft/).
 
-1. Select **Sign In** top right, and sign in as **Allan Deyoung**,
+1. If prompted, sign in as **Allan Deyoung**. The dashboard might open with your existing sign-in session.
 
     > [!NOTE]
     > As we have not made many calls in this environment, and when making calls in lab virtual machine, not all metrics are provided to the Teams service, some reports will be blank and incomplete.

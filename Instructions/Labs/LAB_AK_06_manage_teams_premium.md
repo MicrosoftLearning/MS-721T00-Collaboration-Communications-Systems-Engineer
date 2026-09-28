@@ -28,8 +28,7 @@ As part of the expanding business, the organization has began needing access to 
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Lab 3, Exercise 1, Task 2.
-> You will also see &lt;TENANT NAME&GT; used in PowerShell commands and should replace it with the Microsoft 365 TENANT NAME (e.g. M365x01234567) for your Microsoft 365 account.
+> This lab runs independently of Lab 3 and doesn't require an SBC or a PSTN number. Replace &lt;LAB DOMAIN&gt; in account names with the domain shown in **Microsoft 365 admin center > Users > Active users**. Replace &lt;TENANT NAME&gt; in any PowerShell commands with your Microsoft 365 tenant name (for example, M365x01234567).
 
 ## Exercise 1: Setup and Configure the Queues App and Voice Application Policies
 
@@ -59,7 +58,11 @@ In this task, you will sign into the Microsoft 365 admin center and Assign a Tea
 
 1. Select **Licenses and Apps** on the user card, assign the **Microsoft Teams Premium** license to the user account, and then click **Save changes.**
 
-You have assigned a Teams Premium license to a user.
+1. In the Microsoft Teams admin center, select **Users** > **Manage users** > **Megan Bowen** > **Account**.
+
+1. Under **Assigned phone number**, turn on **Enterprise Voice**, select **Enable**, and verify that the setting shows **On**. Megan must be Enterprise Voice-enabled to appear in the call queue agent picker. A phone number isn't required for this step.
+
+You have assigned a Teams Premium license and enabled Megan for call queue agent selection.
 
 ### Task 2 - Creating Resource Accounts for Voice Applications
 
@@ -85,6 +88,8 @@ In this task, you will sign into the Microsoft Teams admin center and create a r
 
 1. Select **Licenses and Apps** on the user card, assign the **Microsoft Teams Phone Resource Account** license to the account, and then click **Save changes.**
 
+1. Return to **Voice** > **Resource accounts** in the Microsoft Teams admin center and verify that **CQ_MainLine** shows **Licensed**. If the new account doesn't appear in **Active users** or the license hasn't appeared in Teams yet, allow time for directory synchronization and refresh before continuing.
+
 You have successfully created a Teams Phone Resource Account for a Call Queue and licensed it accordingly.
 
 ### Task 3 - Creating a Call Queue
@@ -95,7 +100,7 @@ In this task, you will sign into the Microsoft Teams admin center and create a C
 
 1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Call Queues.**
 
-1. Click **+ Add**, set the following parameters across multiple pages, and then click **Submit** to create the Call Queue.:
+1. Select **+ Add**, and then select **Advanced setup**. Set the following parameters across the wizard pages, and then select **Submit** to create the call queue:
 
   - **General Info Tab**
 
@@ -103,17 +108,15 @@ In this task, you will sign into the Microsoft Teams admin center and create a C
 
       - **Language:** English (United States)
 
-      - **Select** Advanced setup
-
-	  - **Resource Accounts:** CQ_MainLine@&lt;Lab Domain&gt;.onmicrosoft.com
+	  - **Resource accounts:** Select **Add**, search for the beginning of **CQ_MainLine@&lt;Lab Domain&gt;.onmicrosoft.com**, select the account, and confirm **Add** in the picker.
 
 	  
 
   - **Call Answering Tab**
 
-	  - **Users:** Megan Bowen
+	  - **Choose users and groups:** Select **Add users**, search for **Megan Bowen**, select **Add** beside her name, and confirm **Add** in the picker.
 
-	  - **Conference Mode:** Toggle On
+	  - **Conference mode:** On
 
   - **Agent Selection Tab**
 
@@ -121,9 +124,9 @@ In this task, you will sign into the Microsoft Teams admin center and create a C
 
   - **Authorized Users Tab**
 
-	  - **Add** Megan Bowen
+	  - **Add:** Megan Bowen. Select **Add** beside her name, and confirm **Add** in the picker.
 
-You have successfully created a Call queue and added an authorized user to the queue.
+Reopen the queue after submitting it and verify that **Megan Bowen** appears under **Call answering** and **Authorized users**.
 
 ### Task 4 - Configuring Voice Application Policies
 
@@ -133,7 +136,7 @@ In this task, you will create a voice application policy which will give users r
 
 1. In the **Microsoft Teams admin center**, select **Voice** on the left menu, then select **Voice applications policies.**
 
-1. Click **+ Add**, set the following parameters, and then click **Submit** to create the Voice Application policy.:
+1. Select **Add**, set the following parameters, and then select **Save** to create the voice applications policy:
 
   - **Name:** Managers
   
@@ -149,7 +152,7 @@ In this task, you will create a voice application policy which will give users r
     
     - **Agent Monitor Notification Mode:** Agent
   
-  - **Call Queue Reporting** Toggle All Settings to **Only Authorized Queues**
+  - **Call Queue Reporting:** Set all four metrics to **Only authorized call queues**.
 
     ![A screenshot showing Voice Application Policy.](Linked_Image_Files/M06_L06_E01_T04_01.png)
 
@@ -157,7 +160,7 @@ You have successfully created a Voice Application Policy. You are now ready to a
 
 ### Task 5 - Assigning Voice Application Policies
 
-In this task, you will sign into the Microsoft Teams admin center and assign a voice routing policy to a user.
+In this task, you assign the Managers voice applications policy to Megan Bowen. A PSTN voice routing policy is not required.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **MOD Administrator**.
 
@@ -167,7 +170,7 @@ In this task, you will sign into the Microsoft Teams admin center and assign a v
 
 1. Scroll down to **Select Voice Applications Policy**, select the **Managers** policy created earlier, then click **Apply** and **Confirm.**
 
-    ![A screenshot showing the Managers voice applications policy and NA-National voice routing policy assigned to Megan Bowen.](Linked_Image_Files/M06_L06_E01_T05_01-v2.png)
+    Confirm that **Voice applications policy** shows **Managers** for Megan. A voice routing policy such as `NA-National` is not required for this lab.
 
 You have successfully applied a Voice Application policy to a user.
 
@@ -185,11 +188,11 @@ In this task, you will sign into the Microsoft Teams client and access the Queue
 
 1. On MS721-CLIENT02, remain signed in to Windows as **Admin**. In Microsoft Teams, sign out as **Isaiah Langer**, and then sign in as **Megan Bowen**.
 
-1. In the Teams client, click the three dots **...** on the left side app bar and then search & select the app called **Queues.**
+1. In the Teams desktop client, select **More apps** (**...**) on the left app bar, search for **Queues**, and open it. The Queues app isn't supported in Teams on the web.
 
     ![A screenshot showing how to access the Queues App.](Linked_Image_Files/M06_L06_E02_T01_01.png)
 
-1. This is the queues app. With your permissions, you can now view call queue analytics, sign others in and out of the queue, and more. Play with the interface to become familiar with the layout.
+1. On the **CQ_MainLine** overview, confirm that **Megan Bowen (You)** appears as an opted-in agent. Review the queue metrics and the available management controls. Without an incoming call to the queue, the metrics don't validate call delivery.
 
     ![A screenshot showing  the Queues App.](Linked_Image_Files/M06_L06_E02_T01_02.png)
 
@@ -197,17 +200,20 @@ You have successfully accessed the Teams Queues App as Megan Bowen.
 
 ### Task 2 - Modifying Call Queue Parameters from within the Teams client
 
-In this task, you will utilize your Teams Premium license to edit parameters of the Call Queue without being a Microsoft Teams Administrator. Without a Teams Premium license, the user would not see the queues app and would only be able to edit greetings of voice applications.
+In this task, you use Megan's assigned voice applications policy and authorization for CQ_MainLine to edit a permitted call queue setting without being a Teams administrator.
 
-1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
+1. Remain signed in to MS721-CLIENT02 as **Admin** and to the Teams desktop client as **Megan Bowen**.
 
-1. In the Teams client, click the three dots **...** in the top right, click **Settings**, and then click **Calls.**
+1. In Teams, select **Settings and more** (**...**) in the upper right, then select **Settings** > **Calls**.
 
-1. Across the top of the window, you will see **CQ_MainLine** as an option. Click into this. You can now edit any setting of the call queue
+1. At the top of the **Calls** settings, select **CQ_MainLine**. The settings you can change depend on Megan's assigned voice applications policy.
 
     ![A screenshot showing  the users calling settings.](Linked_Image_Files/M06_L06_E02_T02_01.png)
 
-1. Scroll down and click the toggle to on button under the **Presence-based routing** section to enable PBR on the queue. This change takes effect immediately.
+1. Under **Call handling and routing**, turn **Presence-based routing** **On**. Select the **Personal** tab, return to **CQ_MainLine**, and confirm that the setting remains **On**.
+
+    > [!NOTE]
+    > This verifies the authorized-user setting change, not call delivery. An inbound call test requires a working phone number and calling configuration for the queue.
 
 You have successfully edited the call queue from within the Microsoft Teams client.
 
@@ -227,7 +233,7 @@ In this task, you will sign into the Microsoft Teams admin center and modify the
 
 1. In the **Microsoft Teams admin center**, select **Meetings** on the left menu, then select **Customization Policies.**
 
-1. Click on the **Global (Org-wide default)** policy, click the **+ Add a theme** button, set the following parameters, and then click **Save**:
+1. Open the **Global (Org-wide default)** policy, select **Add a theme**, and set the following parameters:
 
 	- **Meeting theme name:** Contoso
 
@@ -243,7 +249,10 @@ In this task, you will sign into the Microsoft Teams admin center and modify the
 
     ![A screenshot showing the settings on the flyout.](Linked_Image_Files/M06_L06_E03_T01_01.png)
 
-1. Back in the Global Meeting Customization policy, select **Preview** next to the Contoso meeting theme. You will now see what the meeting join experience will look like for your organizers that have a Teams Premium license. Click **Close** and then **Save** to apply to policy to all users.
+    > [!NOTE]
+    > On MS721-CLIENT01, the image files are available in `C:\LabFiles`. Select `Logo.png` for both logo uploads and `Theme.png` for both image uploads. The theme pane uses **Apply** before the policy's separate **Save** action.
+
+1. In the **Meeting themes** pane, select **Preview** to review the light and dark theme options, then select **Close** and **Apply**. In the Global policy, verify that **Contoso** appears as the active theme. Select **Save** to apply the policy. Reopen the policy to confirm that the theme remains active.
 
     ![A screenshot showing the meeting customizatiion policy preview.](Linked_Image_Files/M06_L06_E03_T01_02.png)
 
@@ -258,15 +267,18 @@ In this task, you will sign into the Microsoft Teams client, create a meeting, a
 
 1. You are still signed in to MS721-CLIENT02 as “Admin” and signed into Microsoft Teams as **Megan Bowen**
 
-1. In the Microsoft Teams client, click on **Calendar** and then click **New Meeting**. Create a Meeting with any name you would like and then click **Save**.
+1. In the Teams desktop client, select **Calendar** > **New**. In the **New event** form, enter a name, choose a future time, turn **Teams meeting** **On**, and select **Save**. The new event form can have **Teams meeting** turned off by default.
 
-1. Click once on the meeting and then click the **Copy** button to the right of the meeting join URL.
+    > [!IMPORTANT]
+    > If Teams can't create a meeting link, select **Don't Send** rather than saving an invitation without a join link. Retry after the service is available. An instant **Meet now** meeting isn't a substitute for validating the theme on a scheduled meeting.
+
+1. Open the saved meeting and select **Copy** beside its Teams meeting join URL. Confirm that the meeting has a join URL before continuing.
 
     ![A screenshot showing the meeting join URL.](Linked_Image_Files/M06_L06_E03_T02_01.png)
 
-1. Open a new **In-Private Microsoft Edge browser window** by right-clicking on the Microsoft Edge icon in the taskbar and selecting **New InPrivate Window** and then navigate to the copied meeting join URL. When there click on **Join in this Browser**
+1. Open a new Microsoft Edge **InPrivate** window, paste the copied meeting join URL, and select **Join in this browser**. If the browser displays an audio and video prompt, select **Continue without audio or video**.
 
-1. You should now see the meeting join page has the customizations applied previously.
+1. On the anonymous prejoin page, compare the background with `Theme.png` and the logo with `Logo.png`. You don't need to enter a name or join the meeting to check the prejoin branding.
 
     ![A screenshot showing the meeting join page.](Linked_Image_Files/M06_L06_E03_T02_02.png)
 
