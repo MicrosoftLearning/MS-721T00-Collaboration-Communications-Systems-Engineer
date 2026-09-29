@@ -182,146 +182,50 @@ For each site, we must now define the number of users of each profile type.
 
 You have successfully generated a Network Planner Report. We can see from the results that, at the default of 30% allowed bandwidth for Microsoft Teams reserved for real-time communications the Tacoma site is fine for bandwidth, but the Bellevue site does not have enough, as we can see by the figure highlighted in red. It would be recommended to increase the internet bandwidth at the Bellevue site.
 
-## Exercise 2: Use the Teams Network Assessment Tool
-
-> [!WARNING]
-> **Known Issue**: The Microsoft Teams Network Assessment Tool has a known issue causing memory corruption errors on virtual machines. If you encounter errors when running the tool, this exercise can be skipped without affecting the remaining lab exercises. The network assessment is important for production deployments but is not required to complete the rest of this lab. Please proceed to Exercise 3 if you encounter issues with this tool.
+## Exercise 2: Test Microsoft 365 network connectivity
 
 ### Exercise Duration
 
   - **Estimated Time to complete**: 20 minutes
 
-In this exercise, you will install and run the Teams Network Assessment Tool to check the connectivity and performance from a client machine. This is an important task to understand if any network issues could probably degrade the user experience for Teams in your company and to develop strategies for optimizing your network.
+In this exercise, you will run the [Microsoft 365 network connectivity test](https://connectivity.m365.cloud.microsoft/) from MS721-CLIENT01. Its browser test shows general Microsoft 365 connectivity. The downloadable advanced Windows client adds Microsoft Teams media connectivity, packet loss, latency, and jitter measurements. Use the results to identify a possible network issue, not to certify your office network from a hosted lab VM.
 
-### Task 1 - Install the Tool
+### Task 1 - Start the network connectivity test
 
-In this task, you will sign into a client machine provided by your training provider and install the Teams Network Assessment Tool which is required to perform different tests.
+1. Sign in to **MS721-CLIENT01** as **Admin** with the password provided to you.
 
-> [!IMPORTANT]
-> **Known Issue**: The Microsoft Teams Network Assessment Tool is known to cause memory corruption errors on virtual machines. If you encounter errors such as "System.AccessViolationException: Attempted to read or write protected memory", please skip Exercise 2 (Use the Teams Network Assessment Tool) and proceed to Exercise 3. The network assessment functionality is important for production deployments, but for lab purposes, you can continue with the remaining exercises without completing the network assessment tasks.
+1. Open Microsoft Edge and browse to [https://connectivity.m365.cloud.microsoft](https://connectivity.m365.cloud.microsoft).
 
-1. Sign into **MS721-CLIENT01** as **Admin** with the password provided to you.
+1. Choose a location for the test. You can allow location access for this test or enter a location manually if location services aren't available. The report's location and nearby comparison depend on this selection; the lab VM's internet exit location might not match your office.
 
-1. Open Microsoft Edge from the task bar and browse to the following site: [**https://www.microsoft.com/en-us/download/details.aspx?id=103017**](https://www.microsoft.com/en-us/download/details.aspx?id=103017).
+1. Select **Run test**. You don't need to sign in for an anonymous test. If you do sign in, the test reports are uploaded to your Microsoft 365 tenant and shared with its administrators.
 
-1. Select **download** to download the installer.
+1. Wait for the browser tests to show the **Network connectivity test results for your location** page. The page then offers a download named `Connectivity.<report-id>.exe` to run the advanced tests on this device. Don't stop at the browser results: they alone don't measure Teams media quality.
 
-1. Go to **Start**, enter **Run** and select **Run**, and enter **Shell:Downloads** in the open dialog and select **OK**, this will open the **Downloads** folder.
+### Task 2 - Run the advanced Windows client
 
-1. Find **MicrosoftTeamsNetworkAssessmentTool.exe**, right select it and **Run as administrator**.
+1. Open the downloaded `Connectivity.<report-id>.exe` from Edge's **Downloads** menu. Run only the file downloaded from the Microsoft 365 network connectivity test site, and check that Windows identifies Microsoft as the publisher.
 
-1. In the **User Account Control** window that asks “Do you want to allow this app to make changes to your device?”, select **Yes**.
+1. If Windows reports that a **.NET Desktop Runtime** is missing, expand **See details** to check the required version and architecture. Select **Download it now**, install the matching Windows Desktop Runtime from Microsoft's download page, then reopen the same `Connectivity.<report-id>.exe` from **Downloads**. In the tested lab VM, the client requested the x64 .NET Desktop Runtime 8.0.31; use the version the client requests if it changes.
 
-1. The Microsoft Teams Network Assessment Tool Setup will start, select to tick **I agree to license terms and conditions** and select **Install**.
-
-1. Select **Next** on the installer.
-
-1. **Tick** to accept the terms in the license agreement and select **Next**.
-
-1. Change the **destination folder** install path to **C:\NetworkTest**, select **next**.
-
-1. Select **Install**.
-
-1. Once the installer completes, select **Finish** to exit.
-
-1. At the **Install successfully completed** prompt, select **Close**.
-
-You have successfully installed the Teams Network Assessment Tool onto Client01.
-
-### Task 2 - Run the Network Connectivity Check
+1. Wait for **Office 365 Network Onboarding Advanced Tests** to finish. Keep the browser report open while the client runs so its results can appear there. The tests might take several minutes on a hosted VM.
 
 > [!NOTE]
-> If you encountered issues during Task 1, or if you're experiencing memory corruption errors when running the tool, please skip this task and the remaining tasks in Exercise 2 (Tasks 3, 4, and 5). Proceed directly to Exercise 3: Configure a basic network topology for dynamic emergency calling.
+> If the download, runtime installation, or advanced tests cannot complete in your hosted VM, record the error and tell your instructor. Browser-only results aren't a pass for Teams media connectivity. Continue to Exercise 3; it doesn't depend on this network test.
 
-The Teams Network Assessment Tool is run from the command line. We will now run the network connectivity check, which requires no command line switches. Firstly, the tool will check if it has connectivity to the Teams media relay. These are used to relay audio and video when direct connection between clients is not possible. The checker also checks whether the load-balancer relay is QoS (Quality of Service) capable, which means the load-balancer redirects packets to relay instance ports 3479-3481 (instead of 3478) depending on modality (audio = 3479, video = 3480, screenshare/data = 3481).
+### Task 3 - Review the Teams measurements
 
-1. You are still signed in to **MS721-CLIENT01** as **Admin** with the password provided to you.
+1. On the browser results page, select **Details** and scroll to **Microsoft Teams**.
 
-1. Select **Start**, enter command prompt, find **Command Prompt** and right select it and chose **Run as administrator**.
+1. Record the **Media connectivity (audio, video, and application sharing)** result and the measured **Packet loss**, **Latency**, and **Jitter**. If a measurement is absent, don't infer a passing result from the browser summary.
 
-1. At the “do you want to allow this app to make changes to your device” prompt, select **Yes**.
+1. Compare your measurements with the targets shown for this tool: packet loss below **1%**, latency below **100 ms**, and jitter below **30 ms**. The packet-loss measurement is based on a short UDP test, not the legacy tool's five-minute quality check. Loss can interrupt audio, latency adds delay, and jitter makes packet arrival less consistent.
 
-1. The command prompt will appear.
+1. Look for warnings elsewhere in **Details**. A passing Teams section doesn't mean all required Microsoft 365 endpoints passed. Report any blocked endpoint separately.
 
-1. Type **cd C:\NetworkTest** and press enter, this changes our directory to the NetworkTest Directory.
+1. Explain whether these results suggest a network issue **from this VM**. The route through a hosted VM, its location services, and its network egress can differ from a real office. Repeat the test on a representative office client before making an office-network recommendation.
 
-1. Enter **NetworkAssessmentTool.exe** and press enter to run that program.
-
-1. You will get a **Windows Defender Firewall Prompt;** Ensure Public networks is checked and select **Allow Access**.
-
-1. The test will complete, and you will see *"Service connectivity result has been written to:"* and a file path, and be put back at the command prompt.
-
-You have started the Network Assessment Tool for the first time.
-
-### Task 3 - Interpret the results of the Network Connectivity Check
-
-In the following task, you will read the results from the network connectivity check.:
-
-1. You are still signed in to MS721-CLIENT01 as “Admin” and with the Network Assessment Tool open.
-
-1. You can see from the command prompt output that the tests have been completed successfully, you can see:
-
-	- Relay connectivity and QoS (Media Priority) check is successful for all relays.
-
-	- Service verifications completed successfully.
-
-You have successfully reviewed the results of the network connectivity check.
-
-### Task 4 - Run the Network Quality Check
-
-The network quality check (performance test) is run with the NetworkAssessmentTool.exe /qualitycheck switch. This will test sending real packets across the network.
-
-1. You are still signed in to MS721-CLIENT01 as **Admin** with the command prompt running.
-
-1. Enter **cd C:\NetworkTest** and press enter, this changes our directory to the NetworkTest Directory.
-
-1. Enter **NetworkAssessmentTool.exe /qualitycheck** and press enter to run that program.
-
-1. Select **Allow** on any Windows Firewall popups that appear, to let the Network Assessment Tool through the firewall.
-
-1. This will now run the test, you will see output come up on the command prompt, note you can see the **Loss Rate**, **Latency** and **Jitter** as the tests are performed.
-
-1. The test will run for 300 seconds with tests every 5 seconds, we will finish the test early. After 10 or more tests have been completed, press **Ctrl+C** to stop the test.
-
-1. When the test is complete, you will see the output *"Call Quality Check Has Finished Call Quality Check result has been written to:"* and a file path, and be put back at the command prompt.
-
-### Task 5 - Interpret Results of the Network Quality Check
-
-In the following task, you will review the results of the Network Quality Check.
-
-- **Packet loss**: This is often defined as a percentage of packets that are lost in a given window of time. Packet loss directly affects audio quality—from small, individual lost packets having almost no impact to back-to-back burst losses that cause audio to cut out completely.
-
-- **Latency:** This is the time it takes to get an IP packet from point A to point B on the network. This network propagation delay is essentially tied to the physical distance between the two points and the speed of light, including additional overhead taken by the various routers in between. Latency is measured as one-way or round-trip time.
-
-- **Inter-packet arrival jitter, or simply jitter:** This is the average change in delay between successive packets. Most modern VoIP software, including Skype for Business, can adapt to some levels of jitter through buffering. It's only when the jitter exceeds the buffering that a participant will notice the effects of jitter.
-
-Review Packet Loss, Latency and Jitter by following these steps:
-
-1. You are still signed in to MS721-CLIENT01 as **Admin** and at the command prompt.
-
-1. Enter the following into the command prompt:
-
-    ```console
-    cd %userprofile%"\AppData\Local\Microsoft Teams Network Assessment Tool\"
-    ```
-
-1. Press **Tab** to tab through files in that directory, when you see a file name ending in **_quality_check_results.csv** press **Enter** to open the file. 
-
-1. Select the top right X to close the activation prompt when excel loads. You can now see your test results in Excel.
-
-1. Close Excel and the command prompt when complete
-
-Microsoft’s performance targets for Teams are:
-
-- **LossRate %**, also called Packet loss <0.1% during any 15s interval – the tests are 5 seconds each, so we should not be breaching this threshold
-
-- **AverageLatency-Ms, (one way)** **&lt; 50ms**
-
-- **AverageJitter-Ms, &lt;30ms during any 15s interval**
-
-Note, due to performing the test on a lab VM, you may see unusual or high results, especially with latency.
-
-At the end of this task, you have successfully reviewed the results of the Network Quality Check.
+You have reviewed the Teams media measurements from the advanced client. Continue to Exercise 3.
 
 ## Exercise 3: Configure a basic network topology for dynamic emergency calling 
 

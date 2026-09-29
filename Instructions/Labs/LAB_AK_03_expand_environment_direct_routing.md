@@ -34,23 +34,25 @@ As part of the expanding business, the organization has an existing SIP trunk in
 
   - **Estimated Time to complete**: 25 minutes
 
-In this exercise, you will run scripts to provision user accounts, groups, teams, and other resources used by the labs in this course. This script will also add your lab's custom domain to Office 365. If you have already added your lab's custom domain, the script will verify that it exists. 
+In this exercise, you will configure DNS, verify your custom domain in Microsoft 365, and prepare local certificate and SBC configuration files. You can rerun each setup phase independently if one fails.
 
 ### Task 1 - Identify your lab's public IP address
 
-In the following task, you will identify your lab’s public IP address to ensure that you can regain access to your lab environment at a later date.
+In this task, you will identify the public IPv4 address used by your lab. You need this address to configure your lab domain's DNS delegation.
 
 1. Sign in to **MS721-CLIENT01** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
-1. Open Microsoft Edge and then browse to **http://www.bing.com**.
+1. Open **Windows PowerShell** on **MS721-CLIENT01**.
 
-1. In the **Search** box, enter **What is my IP** and then press **Enter**.
+1. Run the following command to request your internet-facing IPv4 address:
 
-1. The first result box with the label **Your public IP address** is your IP retrieved by Bing.
+    ```powershell
+    Invoke-RestMethod -Uri 'https://api4.ipify.org' -TimeoutSec 15
+    ```
 
-1. Copy or write down your public IP address. 
+1. Record the IPv4 address returned by the command. Use this address in Task 2, not a private address from `ipconfig`. If the request fails, check that **MS721-CLIENT01** can access HTTPS websites and try again.
 
-You have successfully identified and stored your IP address. When you restart your lab environment, you will possibly be assigned a new public IP address and need to perform the first task again.
+When you restart the lab, run the command again. Your public IPv4 address might change, in which case you must update the DNS delegation in Task 2.
 
 ### Task 2 - Retrieve your lab number
 
@@ -87,67 +89,49 @@ This task updates the o365ready.com DNS server with your lab's public IP address
 
 1. In the **Old public IP address** box, type the previously used public IP address. If you did not write down your original public IP address, open a command prompt and try to ping your lab domain name. Although you will not receive a response, the domain name should resolve to IP.
 
-1. In the **New public IP address** box, type the new public IP address retrieved from Bing and then press Enter.
+1. In the **New public IP address** box, type the new public IPv4 address from Task 1 and then press Enter.
 
 1. Select **Submit** and wait for the update to complete. This may take a couple of minutes.
 
 You have successfully identified your lab number and updated your public IP address.
 
-### Task 3 - Run MS-721TeamsDirectRoutingLabSetup-V2.ps1
+### Task 3 - Run the resumable Lab 3 setup script
 
-In this task, you will run a script to create a new DNS zone on MS721-RRAS01 and the DNS records for Microsoft 365 services.  The script will also connect to Microsoft Graph and add your new student lab domain. Lastly, the script will generate a certificate signing request (CSR) for DigiCert to provision a signed certificate for the SBC.
+When you run V3 without arguments, it shows a menu. Choose **1** to run four phases in order: **Dns** (the zone and Microsoft 365 records on the RRAS VM), **Domain** (the tenant domain, ownership TXT record, and verification), **Csr** (a local certificate signing request), and **Sbc** (a local SBC INI file). You can also choose one phase or **Q** to exit without starting. The RRAS VM is labeled **MS721-RRAS01** in the lab console, but its Windows computer name is **MS720-RRAS01**. The script does not deploy or sign in to an SBC, Azure, or Cloud Slice. Each phase verifies its output. If a phase fails, correct the reported prerequisite or conflict and rerun **only that phase**; existing zones, requests, and INI files are not deleted.
 
 1. You are still signed in to MS721-CLIENT01 as **Admin** with the password provided to you.
 
-1. Download the latest version of the script from: [MS-721TeamsDirectRoutingLabSetup-V2.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/tree/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup-V2.ps1) and save it to **C:\Scripts**.
+1. Obtain [MS-721TeamsDirectRoutingLabSetup-V3.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/blob/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup-V3.ps1) from the published lab repository. Select **Raw**, then save the script as **C:\Scripts\MS-721TeamsDirectRoutingLabSetup-V3.ps1**. If V3 isn't published there yet, ask your instructor for this V3 file from the course repository before continuing. The pre-staged V2 script in **C:\Scripts** is not the resumable version; don't substitute it.
 
 1. Open **Windows PowerShell as Administrator**.
 
 1. In the **User Account Control** dialog box, select **Yes**.
 
-1. Make sure you have the latest Microsoft Graph PowerShell module installed with the following cmdlet. If you receive an **Untrusted repository** prompt, select **[A] Yes to all**.
-
-    > NOTE: This command can take several minutes to complete, wait for the prompt in PowerShell to return or not all the Graph sub-modules will install.
+1. Check whether the Graph modules needed by the **Domain** phase are installed:
 
     ```powershell
-    Install-Module Microsoft.Graph -Force -AllowClobber
-
+    Get-Module -ListAvailable Microsoft.Graph.Authentication, Microsoft.Graph.Identity.DirectoryManagement
     ```
 
-1. Change directories and run MS-721TeamsDirectRoutingLabSetup-V2.ps1:
+    If either module is missing, install Microsoft Graph PowerShell before you run **Domain**:
 
     ```powershell
-	cd C:\Scripts
+    Install-Module Microsoft.Graph -Scope CurrentUser -Force -AllowClobber
+    ```
 
-    Set-ExecutionPolicy Unrestricted
+1. In the elevated Windows PowerShell window, run the script to see the menu:
 
-    .\MS-721TeamsDirectRoutingLabSetup-V2.ps1
+    ```powershell
+    Set-Location C:\Scripts
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    .\MS-721TeamsDirectRoutingLabSetup-V3.ps1
+    ```
 
-	```
+    Select **1** for the guided sequence. Enter your five-digit lab number from Task 2 and the public IPv4 address from Task 1 when prompted. Invalid numbers and private IP addresses prompt you again. To run the guided sequence without the menu, supply `-LabNumber <LAB NUMBER> -PublicIp <PUBLIC IPv4 ADDRESS>` with your own values and without the angle brackets. To retry or independently verify a phase, run the same script with `-Phase Dns`, `-Phase Domain`, `-Phase Csr`, or `-Phase Sbc` and your `-LabNumber`. Only **Dns** needs `-PublicIp`; omit it for the other phases. Run **Dns** before **Domain** on a fresh lab. **Csr** and **Sbc** need neither Graph nor RRAS and can run without an SBC or Cloud Slice.
 
-1. When prompted, select **Work or school account** and then enter the **MOD Administrator** email address and password. **Do not** use the credentials for Allan Deyoung, because we need additional permissions to work with Microsoft Graph.
+1. For **Dns** and **Domain**, enter the **local Administrator** password for the RRAS VM (console label **MS721-RRAS01**, computer name **MS720-RRAS01**) from the lab **Resources** panel when Windows asks for RRAS credentials. Don't use the MOD Administrator password for RRAS. **Domain** separately prompts you to sign in to Microsoft Graph as **MOD Administrator**, not Allan Deyoung. If asked to grant the `Domain.ReadWrite.All` permission, review and accept the consent prompt for your lab tenant. Check the displayed Graph tenant and account. Type `YES` only if this is your lab tenant and domain; the script stops before making changes otherwise.
 
-1. After entering your credentials, you will be asked to provide authorization to Microsoft Graph to access your tenant's data. Check the box for **Consent on behalf of your organization** and then click **Accept**.
-
-    ![A screenshot asking to provide consent for Microsoft Graph.](Linked_Image_Files/M03_E03_T01_01.png)
-
-1. You will be prompted again to enter the username and password for the Administrator account on MS721-RRAS01.  When prompted, fill out the following information and select **OK**:
-
-	- **User name:** Administrator
-
-	- **Password:** *Enter the local Administrator password from the _“Resource”_ section on the right side of the lab window. _DO NOT_ enter the MOD Administrator's account password.*
-
-	![A screenshot asking for local administrator credentials.](Linked_Image_Files/M03_E03_T02_01.png)
-
-1. Next, enter the **5-digit Lab Number** you generated in Task 2.
-
-1. The script will attempt to resolve your student lab domain and output the IP address.  If the values match, enter **Y** or **Yes** to confirm.
-
-    > NOTE: DNS Records for your lab domain will be created. If it appears that the script has stopped after the _sipfederationtls SRV record has been created, click the PowerShell icon on the taskbar and sign in again to the MOD Administrator account. 
-
-1. When prompted to **Press any key to continue** to generate a CSR for the lab, press enter.
-
-1. When you see **Lab setup complete.** you may continue to Task 4.
+1. Continue to Task 4 only after **Domain** reports the domain verified and **Csr** confirms **C:\LabFiles\CertReq-lab&lt;LAB NUMBER&gt;.o365ready.com.txt** exists. **Sbc** prepares **C:\LabFiles\Lab&lt;LAB NUMBER&gt;-SBC01-Config.ini** for the later SBC exercise. If the public IP changed after a lab restart, update the o365ready.com delegation in Task 2 and rerun **Dns** with the new IP; an existing apex A record is updated in place. If domain verification fails, check the public delegation and TXT propagation, then rerun **Domain**. When you rerun **Domain** after verification, it checks the verified state without requiring a new ownership TXT record. Don't remove the DNS zone or an existing certificate request to recover from an error.
 
 ### Task 4 - Request your public certificate from DigiCert
 
@@ -201,13 +185,13 @@ In this task, you will verify your custom domain so you can work with it and ass
 
 1. Select **Settings** then select **Domains**.
 
-1. Verify your custom domain has been added to Microsoft 365. This domain starts with a **lab** and your five digits lab number, followed by the **o365ready.com** domain. The domain may still be listed as Incomplete setup, this will not cause problems in the lab.
+1. Verify your custom domain has been added and is **Verified** in Microsoft 365. This domain starts with **lab** and your five-digit lab number, followed by **o365ready.com**. Its service setup might still show as incomplete; ownership verification is the requirement for assigning it to users. V3 doesn't change the tenant's default domain.
 
 1. Leave the browser window open.
 
-    ![Screenshot of the Microsoft 365 admin center Domains page, showing the custom lab domain as Default.](./Linked_Image_Files/M01_L01_E02_T01.png)
+    ![Screenshot of the Microsoft 365 admin center Domains page, showing the custom lab domain.](./Linked_Image_Files/M01_L01_E02_T01.png)
 
-You have successfully verified the custom domain created from the script is set as the default domain for your tenant, which is important for later tasks.
+You have verified ownership of the custom domain. It doesn't need to be the tenant's default domain for the next task.
 
 ### Task 6 - Assign the custom lab domain to Megan Bowen, Nestor Wilke, and Isaiah Langer
 
