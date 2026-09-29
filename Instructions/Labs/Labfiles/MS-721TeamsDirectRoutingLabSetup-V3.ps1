@@ -2,21 +2,25 @@
 .SYNOPSIS
 Resumable MS-721 Lab 3 setup, without deploying or connecting to an SBC.
 .DESCRIPTION
-Run without arguments to choose a phase from a menu. Supply -LabNumber to run
-the guided sequence, or use -Phase to run one independent phase.
+Run without arguments to choose a phase or view read-only local status.
+Supply -LabNumber to run the guided sequence, or use -Phase for one phase.
 The Dns phase configures MS720-RRAS01; Domain verifies Microsoft 365 ownership;
 Csr creates a local machine certificate request; Sbc prepares a local INI file.
 Existing mismatched records and files are reported, not deleted.
+Status inspects only local prerequisites and files; it does not contact RRAS or
+Microsoft Graph, so it cannot confirm DNS or tenant verification.
 .EXAMPLE
 .\MS-721TeamsDirectRoutingLabSetup-V3.ps1
 .EXAMPLE
 .\MS-721TeamsDirectRoutingLabSetup-V3.ps1 -LabNumber 12345
 .EXAMPLE
 .\MS-721TeamsDirectRoutingLabSetup-V3.ps1 -Phase Domain -LabNumber 12345
+.EXAMPLE
+.\MS-721TeamsDirectRoutingLabSetup-V3.ps1 -Phase Status -LabNumber 12345
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('Guided', 'Dns', 'Domain', 'Csr', 'Sbc')]
+    [ValidateSet('Guided', 'Dns', 'Domain', 'Csr', 'Sbc', 'Status')]
     [string]$Phase = 'Guided',
 
     [ValidatePattern('^\d{5}$')]
@@ -26,42 +30,65 @@ param(
 )
 
 $RrasHost = 'MS720-RRAS01'
+$script:RrasCredential = $null
 
 function Assert-True {
     param([bool]$Condition, [string]$Message)
     if (-not $Condition) { throw $Message }
 }
 
+function Write-SetupHeading {
+    param([string]$Title)
+    Write-Host "`n=== $Title ===" -ForegroundColor Cyan
+}
+
+function Write-SetupResult {
+    param(
+        [ValidateSet('OK', 'CHECK', 'INFO')]
+        [string]$Label,
+        [string]$Message
+    )
+    $color = switch ($Label) {
+        'OK'    { 'Green' }
+        'CHECK' { 'DarkYellow' }
+        'INFO'  { 'DarkGray' }
+    }
+    Write-Host "  [$Label] $Message" -ForegroundColor $color
+}
+
 function Get-PhaseDescription {
     param([string]$Name)
     switch ($Name) {
         'Guided' { return 'Run Dns, Domain, Csr, and Sbc in order.' }
-        'Dns'    { return 'Configure RRAS DNS. Requires the public IPv4 address and RRAS Administrator password.' }
-        'Domain' { return 'Verify the lab domain. Requires completed DNS, Microsoft Graph sign-in, and RRAS Administrator password.' }
+        'Dns'    { return 'Configure RRAS DNS; requires the public IPv4 address and RRAS password.' }
+        'Domain' { return 'Verify the lab domain; requires DNS, Graph sign-in, and RRAS password.' }
         'Csr'    { return 'Create or reuse the local certificate request. No SBC is needed.' }
         'Sbc'    { return 'Prepare the local SBC INI file. No SBC is deployed or configured.' }
+        'Status' { return 'Check local files and prerequisites without contacting RRAS or Microsoft Graph.' }
     }
 }
 
 function Read-SetupPhase {
-    Write-Host ''
-    Write-Host 'Choose what to run:'
+    Write-SetupHeading 'Choose what to run'
     foreach ($entry in @(
-        @('1', 'Guided'), @('2', 'Dns'), @('3', 'Domain'), @('4', 'Csr'), @('5', 'Sbc')
+        @('1', 'Guided'), @('2', 'Dns'), @('3', 'Domain'),
+        @('4', 'Csr'), @('5', 'Sbc'), @('6', 'Status')
     )) {
-        Write-Host ("  {0}. {1} - {2}" -f $entry[0], $entry[1], (Get-PhaseDescription $entry[1]))
+        Write-Host ("  {0}. {1}" -f $entry[0], $entry[1])
+        Write-Host "     $(Get-PhaseDescription $entry[1])" -ForegroundColor DarkGray
     }
-    Write-Host '  Q. Exit without changes.'
+    Write-Host '  Q. Exit without starting a phase.'
     while ($true) {
-        $choice = ([string](Read-Host 'Select 1-5 or Q')).Trim().ToUpperInvariant()
+        $choice = ([string](Read-Host 'Select 1-6 or Q')).Trim().ToUpperInvariant()
         switch ($choice) {
             '1' { return 'Guided' }
             '2' { return 'Dns' }
             '3' { return 'Domain' }
             '4' { return 'Csr' }
             '5' { return 'Sbc' }
-            'Q' { Write-Host 'No changes made.'; return $null }
-            default { Write-Host 'Enter a number from 1 through 5, or Q to exit.' }
+            '6' { return 'Status' }
+            'Q' { Write-Host 'No phase started.'; return $null }
+            default { Write-SetupResult 'CHECK' 'Enter a number from 1 through 6, or Q to exit.' }
         }
     }
 }
@@ -69,9 +96,9 @@ function Read-SetupPhase {
 function Read-LabNumber {
     while ($true) {
         $number = ([string](Read-Host 'Enter your five-digit lab number (or Q to exit)')).Trim()
-        if ($number -ieq 'Q') { Write-Host 'No changes made.'; return $null }
+        if ($number -ieq 'Q') { Write-Host 'No phase started.'; return $null }
         if ($number -match '^\d{5}$') { return $number }
-        Write-Host 'Enter exactly five digits, for example 12345.'
+        Write-SetupResult 'CHECK' 'Enter exactly five digits, for example 12345.'
     }
 }
 
@@ -87,10 +114,94 @@ function Test-PublicIPv4Address {
 function Read-PublicIp {
     while ($true) {
         $address = ([string](Read-Host "Enter the lab's public IPv4 address from Task 1 (or Q to exit)")).Trim()
-        if ($address -ieq 'Q') { Write-Host 'No changes made.'; return $null }
+        if ($address -ieq 'Q') { Write-Host 'No phase started.'; return $null }
         if (Test-PublicIPv4Address $address) { return $address }
-        Write-Host 'Enter the public IPv4 address from Task 1, not a private or local address.'
+        Write-SetupResult 'CHECK' 'Enter the public IPv4 address from Task 1, not a private or local address.'
     }
+}
+
+function Get-LocalSetupState {
+    param([string]$Number)
+    $zone = "lab$Number.o365ready.com"
+    $csrPath = "C:\LabFiles\CertReq-$zone.txt"
+    $templatePath = 'C:\Scripts\Backup\Lab-sbc01-Config.ini'
+    $sbcPath = "C:\LabFiles\Lab$Number-SBC01-Config.ini"
+    $csrPresent = Test-Path -LiteralPath $csrPath -PathType Leaf
+    $templatePresent = Test-Path -LiteralPath $templatePath -PathType Leaf
+    $sbcPresent = Test-Path -LiteralPath $sbcPath -PathType Leaf
+    $templateValid = $false
+    $sbcMatches = $false
+    if ($templatePresent) {
+        $template = Get-Content -LiteralPath $templatePath -Raw -ErrorAction Stop
+        $templateValid = $template.Contains('XXXXX')
+        if ($templateValid -and $sbcPresent) {
+            $sbcMatches = (Get-Content -LiteralPath $sbcPath -Raw -ErrorAction Stop) -ceq
+                $template.Replace('XXXXX', $Number)
+        }
+    }
+    $missingGraphModules = @(
+        foreach ($module in @('Microsoft.Graph.Authentication', 'Microsoft.Graph.Identity.DirectoryManagement')) {
+            if (-not (Get-Module -ListAvailable -Name $module)) { $module }
+        }
+    )
+    [pscustomobject]@{
+        CsrPath = $csrPath
+        CsrPresent = $csrPresent
+        TemplatePath = $templatePath
+        TemplatePresent = $templatePresent
+        TemplateValid = $templateValid
+        SbcPath = $sbcPath
+        SbcPresent = $sbcPresent
+        SbcMatches = $sbcMatches
+        MissingGraphModules = $missingGraphModules
+    }
+}
+
+function Show-SetupStatus {
+    param([string]$Number)
+    $state = Get-LocalSetupState -Number $Number
+    Write-SetupHeading "Local status for lab$Number.o365ready.com"
+    Write-SetupResult 'INFO' 'RRAS DNS: not checked. Run Dns to verify its records.'
+    Write-SetupResult 'INFO' 'Tenant domain: not checked. Run Domain to verify it with Graph.'
+    if ($state.MissingGraphModules.Count) {
+        Write-SetupResult 'CHECK' 'Graph modules missing; install before Domain:'
+        Write-Host "       $($state.MissingGraphModules -join ', ')" -ForegroundColor DarkGray
+    }
+    else {
+        Write-SetupResult 'OK' 'Graph modules for Domain are installed (sign-in and tenant not checked).'
+    }
+    if ($state.CsrPresent) {
+        Write-SetupResult 'CHECK' 'CSR file present; run Csr to validate its request and machine store.'
+    }
+    else {
+        Write-SetupResult 'CHECK' 'CSR file missing; run Csr when needed.'
+    }
+    Write-Host "       $($state.CsrPath)" -ForegroundColor DarkGray
+    if (-not $state.TemplatePresent) {
+        Write-SetupResult 'CHECK' 'SBC template missing; Sbc cannot run.'
+        Write-Host "       $($state.TemplatePath)" -ForegroundColor DarkGray
+    }
+    elseif (-not $state.TemplateValid) {
+        Write-SetupResult 'CHECK' 'SBC template has no XXXXX placeholder; inspect it before Sbc.'
+        Write-Host "       $($state.TemplatePath)" -ForegroundColor DarkGray
+    }
+    elseif ($state.SbcMatches) {
+        Write-SetupResult 'OK' 'SBC INI matches its template.'
+        Write-Host "       $($state.SbcPath)" -ForegroundColor DarkGray
+    }
+    elseif ($state.SbcPresent) {
+        Write-SetupResult 'CHECK' 'SBC INI differs from its template; Sbc will not overwrite it.'
+        Write-Host "       $($state.SbcPath)" -ForegroundColor DarkGray
+    }
+    else {
+        Write-SetupResult 'CHECK' 'SBC INI missing; run Sbc when needed.'
+        Write-Host "       $($state.SbcPath)" -ForegroundColor DarkGray
+    }
+    Write-SetupHeading 'Suggested next step'
+    Write-Host '  New or reset lab: choose Guided (Dns, Domain, Csr, Sbc).'
+    Write-Host '  Continuing a lab: run Dns and Domain to verify remote state,'
+    Write-Host '  then run Csr or Sbc as needed. Matching resources are reused.'
+    Write-Host '  Status never changes resources or proves that DNS/Graph steps are complete.'
 }
 
 function Get-DnsRecords {
@@ -156,7 +267,29 @@ function Ensure-DnsRecord {
         $_.RecordType -eq $Type -and (Get-RecordValue $_) -eq $Expected
     })
     Assert-True ($after.Count -eq 1) "DNS did not retain the expected $Type record for $Name in $Zone."
-    Write-Host "Verified $Type $Name in $Zone"
+    Write-SetupResult 'OK' "Verified $Type $Name in $Zone"
+}
+
+function New-RrasSession {
+    # Prompt once per run so Guided reuses the Dns credential for Domain.
+    if ($null -eq $script:RrasCredential) {
+        Write-SetupResult 'INFO' "Enter the local Administrator password for $RrasHost (not the MOD Administrator password)."
+        $script:RrasCredential = Get-Credential -UserName Administrator -Message "Local Administrator credentials for $RrasHost"
+        Assert-True ($null -ne $script:RrasCredential) 'RRAS credentials were not supplied.'
+    }
+    else {
+        Write-SetupResult 'INFO' "Reusing the $RrasHost credentials entered earlier in this run."
+    }
+    try {
+        $session = New-CimSession -ComputerName $RrasHost -Credential $script:RrasCredential -Authentication Negotiate -ErrorAction Stop
+    }
+    catch {
+        # Forget credentials that failed so the next attempt prompts again.
+        $script:RrasCredential = $null
+        throw
+    }
+    Assert-True ($null -ne $session) "Could not open a CIM session to $RrasHost."
+    return $session
 }
 
 function Invoke-DnsPhase {
@@ -165,10 +298,7 @@ function Invoke-DnsPhase {
     Assert-True ([bool](Get-Command New-CimSession, Get-DnsServerZone, Get-DnsServerResourceRecord, Add-DnsServerPrimaryZone -ErrorAction Stop)) 'DNS Server and CIM commands are required.'
     $session = $null
     try {
-        $credential = Get-Credential -UserName Administrator -Message "Local Administrator credentials for $RrasHost"
-        Assert-True ($null -ne $credential) 'RRAS credentials were not supplied.'
-        $session = New-CimSession -ComputerName $RrasHost -Credential $credential -Authentication Negotiate -ErrorAction Stop
-        Assert-True ($null -ne $session) "Could not open a CIM session to $RrasHost."
+        $session = New-RrasSession
         $zoneInfo = @(Get-DnsServerZone -CimSession $session -ErrorAction Stop | Where-Object ZoneName -eq $Zone)
         Assert-True ($zoneInfo.Count -le 1) "Multiple DNS zones matched $Zone."
         if ($zoneInfo.Count -eq 0) {
@@ -235,7 +365,7 @@ function Invoke-DnsPhase {
                 Add-DnsServerResourceRecord -CimSession $session -ZoneName $Zone -Srv -Name $name -DomainName $target -Port $port -Priority 100 -Weight 1 -ErrorAction Stop
             }
         }
-        Write-Host "DNS phase complete for $Zone on $RrasHost."
+        Write-SetupResult 'OK' "DNS phase complete for $Zone on $RrasHost."
     }
     finally {
         if ($null -ne $session) { Remove-CimSession -CimSession $session -ErrorAction Stop }
@@ -251,17 +381,15 @@ function Invoke-DomainPhase {
     $session = $null
     $connected = $false
     try {
+        Write-SetupResult 'INFO' 'Sign in to Graph as the lab MOD Administrator; review the requested permissions.'
         Connect-MgGraph -Scopes 'Domain.ReadWrite.All' -ContextScope Process -NoWelcome -ErrorAction Stop
         $connected = $true
         $context = Get-MgContext -ErrorAction Stop
         Assert-True ($null -ne $context -and $context.Scopes -contains 'Domain.ReadWrite.All') 'The Graph session lacks Domain.ReadWrite.All.'
-        Write-Host "Graph tenant: $($context.TenantId); account: $($context.Account)"
+        Write-SetupResult 'INFO' "Graph tenant: $($context.TenantId); account: $($context.Account)"
         $approval = Read-Host "Confirm this is your lab tenant for $Zone (type YES to continue)"
         Assert-True ($approval -ceq 'YES') 'Domain phase cancelled before changing tenant or DNS records.'
-        $credential = Get-Credential -UserName Administrator -Message "Local Administrator credentials for $RrasHost"
-        Assert-True ($null -ne $credential) 'RRAS credentials were not supplied.'
-        $session = New-CimSession -ComputerName $RrasHost -Credential $credential -Authentication Negotiate -ErrorAction Stop
-        Assert-True ($null -ne $session) "Could not open a CIM session to $RrasHost."
+        $session = New-RrasSession
         $zones = @(Get-DnsServerZone -CimSession $session -ErrorAction Stop | Where-Object ZoneName -eq $Zone)
         Assert-True ($zones.Count -eq 1 -and $zones[0].ZoneType -eq 'Primary') "Run -Phase Dns first: primary zone $Zone is missing on $RrasHost."
         $domain = @(Get-MgDomain -All -ErrorAction Stop | Where-Object Id -eq $Zone)
@@ -284,7 +412,7 @@ function Invoke-DomainPhase {
         }
         $domain = Get-MgDomain -DomainId $Zone -ErrorAction Stop
         Assert-True ($domain.IsVerified -eq $true) "Graph has not verified $Zone. Check public DNS delegation and TXT propagation; rerun Domain after they resolve."
-        Write-Host "Domain phase complete: Graph confirms $Zone is verified."
+        Write-SetupResult 'OK' "Domain phase complete: Graph confirms $Zone is verified."
     }
     finally {
         if ($null -ne $session) { Remove-CimSession -CimSession $session -ErrorAction Stop }
@@ -316,7 +444,7 @@ function Invoke-CsrPhase {
     if (Test-Path -LiteralPath $path) {
         Assert-True ($requests.Count -eq 1) "Existing CSR $path has no matching machine request for $subject. Inspect both before retrying; nothing was removed."
         Assert-CsrFile -Path $path -Zone $Zone
-        Write-Host "Reusing the existing CSR and matching machine request: $path"
+        Write-SetupResult 'OK' "Reusing the existing CSR and matching machine request: $path"
         return
     }
     Assert-True ($requests.Count -eq 0) "A machine request already exists for $subject but $path is missing. Restore the original CSR file; nothing was removed."
@@ -352,7 +480,7 @@ _continue_ = "dns=$Zone&"
     Assert-CsrFile -Path $path -Zone $Zone
     $requests = @(Get-ChildItem 'Cert:\LocalMachine\Request' -ErrorAction Stop | Where-Object Subject -eq $subject)
     Assert-True ($requests.Count -eq 1) "CSR file exists but the machine request store does not contain exactly one $subject request."
-    Write-Host "CSR phase complete. Reuse $path for the certificate request."
+    Write-SetupResult 'OK' "CSR phase complete. Reuse $path for the certificate request."
 }
 
 function Write-SbcIniFile {
@@ -377,7 +505,7 @@ function Invoke-SbcPhase {
         Write-SbcIniFile -Path $destination -Content $expected
     }
     Assert-True ((Get-Content -LiteralPath $destination -Raw -ErrorAction Stop) -ceq $expected) "SBC INI output did not match the expected template."
-    Write-Host "SBC INI phase complete: $destination (no SBC or cloud configuration was performed)."
+    Write-SetupResult 'OK' "SBC INI phase complete: $destination (no SBC or cloud configuration was performed)."
 }
 
 # Dot-source to load the functions for offline checks without accessing the lab.
@@ -386,25 +514,36 @@ if ($MyInvocation.InvocationName -eq '.') { return }
 $ErrorActionPreference = 'Stop'
 $current = $null
 try {
-    Write-Host "`nMS-721 Lab 3 setup (no SBC or Cloud Slice deployment)"
-    if ($PSBoundParameters.Count -eq 0) {
-        $selectedPhase = Read-SetupPhase
+    Write-SetupHeading 'MS-721 Lab 3 setup'
+    Write-Host '  Prepares DNS, the tenant domain, a CSR, and an SBC INI file.'
+    Write-Host '  No SBC or Cloud Slice is deployed.'
+    $interactive = $PSBoundParameters.Count -eq 0
+    while ($true) {
+        $selectedPhase = if ($interactive) { Read-SetupPhase } else { $Phase }
         if (-not $selectedPhase) { return }
+        if (-not $LabNumber) {
+            $selectedNumber = Read-LabNumber
+            if (-not $selectedNumber) { return }
+            $LabNumber = $selectedNumber
+        }
+        Assert-True ($LabNumber -match '^\d{5}$') 'The lab number must have exactly five digits.'
+        if ($selectedPhase -eq 'Status') {
+            Show-SetupStatus -Number $LabNumber
+            if ($interactive) { continue }
+            return
+        }
         $Phase = $selectedPhase
+        break
     }
-    if (-not $LabNumber) {
-        $selectedNumber = Read-LabNumber
-        if (-not $selectedNumber) { return }
-        $LabNumber = $selectedNumber
-    }
-    Assert-True ($LabNumber -match '^\d{5}$') 'The lab number must have exactly five digits.'
     $zone = "lab$LabNumber.o365ready.com"
     [string[]]$phases = if ($Phase -eq 'Guided') { @('Dns', 'Domain', 'Csr', 'Sbc') } else { @($Phase) }
-    Write-Host "Lab domain: $zone"
-    Write-Host "Selected: $Phase - $(Get-PhaseDescription $Phase)"
-    Write-Host 'Existing matching records and files are reused; conflicts stop the run without deleting them.'
+    Write-SetupHeading 'Run summary'
+    Write-Host "  Lab domain: $zone"
+    Write-Host "  Selected:   $Phase - $(Get-PhaseDescription $Phase)"
+    Write-SetupResult 'INFO' 'Matching records and files are reused; conflicts stop the run without deleting them.'
     foreach ($current in $phases) {
-        Write-Host "`n[$([array]::IndexOf($phases, $current) + 1)/$($phases.Count)] $current - $(Get-PhaseDescription $current)"
+        Write-SetupHeading "Step $([array]::IndexOf($phases, $current) + 1) of $($phases.Count): $current"
+        Write-Host "  $(Get-PhaseDescription $current)"
         switch ($current) {
             'Dns' {
                 if (-not $PublicIp) {
@@ -417,9 +556,10 @@ try {
             'Csr'    { Invoke-CsrPhase -Zone $zone }
             'Sbc'    { Invoke-SbcPhase -Number $LabNumber }
         }
-        Write-Host "Finished $current."
+        Write-SetupResult 'OK' "Finished $current."
     }
-    Write-Host "`nSelected Lab 3 setup phases complete. Continue with the lab instructions."
+    Write-SetupHeading 'Run complete'
+    Write-SetupResult 'OK' 'Selected phases completed. Continue with the lab instructions.'
 }
 catch {
     $retry = if ($current) {
@@ -427,6 +567,7 @@ catch {
         "After correcting the issue, rerun: .\MS-721TeamsDirectRoutingLabSetup-V3.ps1 -Phase $current -LabNumber $LabNumber$ipHint"
     }
     else { 'Correct the input and run the script again.' }
+    Write-SetupHeading 'Run stopped'
     Write-Error "Lab 3 setup stopped: $($_.Exception.Message) $retry" -ErrorAction Continue
     exit 1
 }
