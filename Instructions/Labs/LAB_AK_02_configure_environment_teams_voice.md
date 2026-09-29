@@ -38,7 +38,7 @@ Finally, we will review our default audio conferencing settings.
 - Review audio conferencing settings
 
 > [!NOTE]
-> Direct number ordering through the Teams admin center is currently unavailable in this trial tenant due to a compliance verification requirement. Phone numbers for users and resource accounts are assigned through **Direct Routing** PowerShell in Lab 4 and Lab 5 after the Session Border Controller (SBC) is deployed in Lab 3. The Auto Attendant and Call Queue scenarios used elsewhere in the course are configured in Lab 4 once Direct Routing is in place.
+> Direct number ordering through the Teams admin center is currently unavailable in this trial tenant due to a compliance verification requirement. Lab 3 assigns phone numbers through **Direct Routing** in its own lab environment. Labs 4–6 continue in this environment and don't require Lab 3, a Session Border Controller (SBC), or a phone number.
 
 ## Lab Setup
 
@@ -64,7 +64,7 @@ In the following task, you will create a custom user persona of a network user. 
 
 1. Open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. To adhere the zero-trust security principle of _least privileged access_, you will use **Allan Deyoung** going forward, since you don't need **Global Administrator** permissions for most of the remaining labs. Select the circle in the upper right-side corner and select **Sign in with a different account**.
+1. For least-privileged access, use **Allan Deyoung** instead of a Global Administrator for most remaining tasks. If the admin center opens with another account, select the circle in the upper-right corner, and then select **Sign in with a different account**.
 
 1. Sign in with the credentials of **Allan Deyoung**, the Teams Administrator for this lab.
 
@@ -136,7 +136,7 @@ In this task, you will set up your network and sites in Teams Network Planner. C
 
 1. It is **NOT connected to a WAN** or **ExpressRoute**, so leave those at the default of **off**.
 
-1. There is no local PSTN on the Tacoma site, so leave **PSTN egress** as **Use VoIP only**
+1. There is no local PSTN on the Bellevue site, so leave **PSTN egress** as **Use VoIP only**.
 
 1. Select **Save**.
 
@@ -156,15 +156,13 @@ In the following task, you will run the Network Planner report and review the re
 
 1. Enter the **Report Name** as **Network Report 1**.
 
-1. Enter a description of **Network report for Tacoma and Bellevue**.
-
-For each site, we must now define the number of users of each profile type. 
+1. Enter a description of **Network report for Tacoma and Bellevue**. Next, set the number of users for each persona at each site.
 
 1. For **Bellevue Site**, in the **Office Worker** row, set Network users to **80**.
 
 1. Remove the **Remote Worker** row by selecting the **X** at the end of the row.
 
-1. Click **+Add** and choose **Audio Only User**
+1. Select **+Add** and choose **Audio Only User**.
 
 1. In the  **Audio Only User** row, set Network Users to **10**.
 
@@ -172,15 +170,17 @@ For each site, we must now define the number of users of each profile type.
 
 1. Remove the **Remote Worker** row by selecting the **X** at the end of the row.
 
-1. Click **+Add** and choose **Audio Only User** 
+1. Select **+Add** and choose **Audio Only User**.
 
 1. In the **Audio Only User** row, set Network Users to **20**.
 
 1. Now select **Generate report**.
 
-1. Close the browser window at the end of the task.
+1. Review the report. At the default of 30% of bandwidth reserved for Teams real-time traffic, the Tacoma site has enough bandwidth. The Bellevue figure is highlighted in red because the site doesn't have enough.
 
-You have successfully generated a Network Planner Report. We can see from the results that, at the default of 30% allowed bandwidth for Microsoft Teams reserved for real-time communications the Tacoma site is fine for bandwidth, but the Bellevue site does not have enough, as we can see by the figure highlighted in red. It would be recommended to increase the internet bandwidth at the Bellevue site.
+1. Close the browser window.
+
+You have generated a Network Planner report. It shows that Bellevue needs more internet bandwidth.
 
 ## Exercise 2: Test Microsoft 365 network connectivity
 
@@ -188,44 +188,44 @@ You have successfully generated a Network Planner Report. We can see from the re
 
   - **Estimated Time to complete**: 20 minutes
 
-In this exercise, you will run the [Microsoft 365 network connectivity test](https://connectivity.m365.cloud.microsoft/) from MS721-CLIENT01. Its browser test shows general Microsoft 365 connectivity. The downloadable advanced Windows client adds Microsoft Teams media connectivity, packet loss, latency, and jitter measurements. Use the results to identify a possible network issue, not to certify your office network from a hosted lab VM.
+In this exercise, you run the [Microsoft 365 network connectivity test](https://connectivity.m365.cloud.microsoft/) from MS721-CLIENT01. The browser test checks general Microsoft 365 connectivity. The advanced Windows client adds Teams media measurements. Results from a hosted lab VM can point to a possible network issue, but they don't certify an office network.
 
 ### Task 1 - Start the network connectivity test
 
-1. Sign in to **MS721-CLIENT01** as **Admin** with the password provided to you.
+1. On **MS721-CLIENT01**, open Microsoft Edge and browse to [https://connectivity.m365.cloud.microsoft](https://connectivity.m365.cloud.microsoft).
 
-1. Open Microsoft Edge and browse to [https://connectivity.m365.cloud.microsoft](https://connectivity.m365.cloud.microsoft).
+1. Choose a location for the test. Allow location access, or enter a location manually if location services aren't available.
 
-1. Choose a location for the test. You can allow location access for this test or enter a location manually if location services aren't available. The report's location and nearby comparison depend on this selection; the lab VM's internet exit location might not match your office.
+1. Select **Run test**. You don't need to sign in. If you do sign in, the report is shared with your tenant's administrators.
 
-1. Select **Run test**. You don't need to sign in for an anonymous test. If you do sign in, the test reports are uploaded to your Microsoft 365 tenant and shared with its administrators.
-
-1. Wait for the browser tests to show the **Network connectivity test results for your location** page. The page then offers a download named `Connectivity.<report-id>.exe` to run the advanced tests on this device. Don't stop at the browser results: they alone don't measure Teams media quality.
+1. Wait for the **Network connectivity test results for your location** page. The page offers a download named `Connectivity.<report-id>.exe`. The browser results alone don't measure Teams media quality, so continue to Task 2.
 
 ### Task 2 - Run the advanced Windows client
 
-1. Open the downloaded `Connectivity.<report-id>.exe` from Edge's **Downloads** menu. Run only the file downloaded from the Microsoft 365 network connectivity test site, and check that Windows identifies Microsoft as the publisher.
+1. From Edge's **Downloads** menu, open `Connectivity.<report-id>.exe`. Check that Windows identifies Microsoft as the publisher.
 
-1. If Windows reports that a **.NET Desktop Runtime** is missing, expand **See details** to check the required version and architecture. Select **Download it now**, install the matching Windows Desktop Runtime from Microsoft's download page, then reopen the same `Connectivity.<report-id>.exe` from **Downloads**. In the tested lab VM, the client requested the x64 .NET Desktop Runtime 8.0.31; use the version the client requests if it changes.
+1. If Windows reports that a **.NET Desktop Runtime** is missing, select **Download it now**, install the Windows Desktop Runtime version it requests (x64 8.0.31 when this lab was tested), and then reopen `Connectivity.<report-id>.exe` from **Downloads**.
 
-1. Wait for **Office 365 Network Onboarding Advanced Tests** to finish. Keep the browser report open while the client runs so its results can appear there. The tests might take several minutes on a hosted VM.
+1. Keep the browser report open and wait for **Office 365 Network Onboarding Advanced Tests** to finish. This can take several minutes.
 
 > [!NOTE]
-> If the download, runtime installation, or advanced tests cannot complete in your hosted VM, record the error and tell your instructor. Browser-only results aren't a pass for Teams media connectivity. Continue to Exercise 3; it doesn't depend on this network test.
+> If the download, runtime installation, or advanced tests can't complete in your VM, record the error and tell your instructor. Browser-only results aren't a pass for Teams media connectivity. Exercise 3 doesn't depend on this test.
 
 ### Task 3 - Review the Teams measurements
 
 1. On the browser results page, select **Details** and scroll to **Microsoft Teams**.
 
-1. Record the **Media connectivity (audio, video, and application sharing)** result and the measured **Packet loss**, **Latency**, and **Jitter**. If a measurement is absent, don't infer a passing result from the browser summary.
+1. Record the **Media connectivity (audio, video, and application sharing)** result and the **Packet loss**, **Latency**, and **Jitter** values. If a value is missing, don't treat it as a pass.
 
-1. Compare your measurements with the targets shown for this tool: packet loss below **1%**, latency below **100 ms**, and jitter below **30 ms**. The packet-loss measurement is based on a short UDP test, not the legacy tool's five-minute quality check. Loss can interrupt audio, latency adds delay, and jitter makes packet arrival less consistent.
+1. Compare the values with the targets: packet loss below **1%**, latency below **100 ms**, and jitter below **30 ms**.
 
-1. Look for warnings elsewhere in **Details**. A passing Teams section doesn't mean all required Microsoft 365 endpoints passed. Report any blocked endpoint separately.
+1. Check the rest of **Details** for warnings, such as blocked Microsoft 365 endpoints.
 
-1. Explain whether these results suggest a network issue **from this VM**. The route through a hosted VM, its location services, and its network egress can differ from a real office. Repeat the test on a representative office client before making an office-network recommendation.
+1. Decide whether the results suggest a network issue from this VM. Before making an office-network recommendation, repeat the test on a representative office client.
 
-You have reviewed the Teams media measurements from the advanced client. Continue to Exercise 3.
+1. Close Microsoft Edge.
+
+You have reviewed the Teams media measurements from the advanced client.
 
 ## Exercise 3: Configure a basic network topology for dynamic emergency calling 
 
@@ -233,17 +233,15 @@ You have reviewed the Teams media measurements from the advanced client. Continu
 
   - **Estimated Time to complete**: 20 minutes
 
-Network sites are used for Dynamic emergency calling. Before configuring dynamic emergency calling we must map the relevant Network Regions, Network sites, network subnets and Trusted IP addresses. In this exercise, we will configure a network region and sites
+Dynamic emergency calling uses network sites. In this exercise, you map network regions, sites, subnets, and trusted IP addresses.
 
 ### Task 1 - Add Network Region and sites to Network Topology
 
-In this task, you will sign into client01 and the Teams Admin Center and add our two offices as Network Sites in Network Topology
+In this task, you add the two offices as network sites in the Teams admin center.
 
-1. Sign in to **MS721-CLIENT01** as **Admin** with the password provided to you.
+1. On **MS721-CLIENT01**, open Microsoft Edge from the taskbar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
-
-1. Sign in with the credentials of the Teams Administrator for this lab, **Allan Deyoung**.
+1. If prompted, sign in as **Allan Deyoung**, the Teams Administrator for this lab.
 
 1. Expand the left navigation menu and select to expand **Locations**, then select **Network topology**.
 
@@ -372,7 +370,7 @@ Now that we have added our network Region, Sites and Subnets we can map our netw
 - [https://www.intrado.com/enterprise-solutions/e911-regulations](https://www.intrado.com/enterprise-solutions/e911-regulations)
 - [https://www.911.gov/](https://www.911.gov/)
 
-US law states that a user utilizing a phone system that supports dynamic emergency dialing must be able to be dynamically have their location determined at the time of the 911 call in order to route the call to the correct/nearest Public Service Answering Point (PSAP). (Kari's Law). It also states that an internal notification be setup to where at least one individual in the organization be notified that a person placed an emergency call and where their location is. (Ray Baums Act) We use the LIS database in Microsoft Teams to map our physical sites out so that emergency calls will connect.
+In the US, Kari's Law requires that users can dial 911 directly and that someone in the organization is notified when an emergency call is placed. RAY BAUM'S Act requires a dispatchable location to be sent with the call so it reaches the correct Public Safety Answering Point (PSAP). Teams uses its Location Information Service (LIS) database to map network elements to emergency addresses.
 
 You can map emergency location\addresses to:
 
@@ -416,7 +414,7 @@ In this task, you will configure an emergency calling policy. Emergency calling 
 
 1. From the last task, you are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams Admin Center** open as **Allan Deyoung**.
 
-1. In the left navigation pane select **Voice** and **Emergency polices**.
+1. In the left navigation pane select **Voice** and **Emergency policies**.
 
 1. Select **Add** to add an Emergency Policy.
 
@@ -450,13 +448,9 @@ In this exercise, you will configure some key voice settings and policies requir
 
 ### Task 1 - Create a Dial Plan for extension dialing
 
-In this task, you will sign into the Client01 and the Teams Admin Center and configure a dial plan. Our Tacoma office users are used to using 3 digit short codes to call users internally, from 500 to 550. These 3 digit codes map 1:1 to the last 3 digits of their PSTN number. In Tacoma, the numbers are +44208 566 5xx. XX represents 00 to 99, We own this number range for the Tacoma users.
+In this task, you configure extension dialing. Tacoma users dial three-digit extensions from 500 to 599 to reach each other. Each extension matches the last three digits of the user's number in the range +1 425 555 15xx. For example, dialing 511 reaches +14255551511.
 
-So, for example, if a user’s phone number is +44208 566 511, employees are used to being able to dial 511 to ring that user.
-
-We need to create a dial plan for Tacoma users to enable that scenario. While it is primarily Tacoma users who use this 5xx extension dialing, the organization has asked that Bellevue users should also be able to use the same extensions to dial Tacoma users. 
-
-Since we want all users to be able to do 5xx extension dialing, we will add a new normalization rule to the Global dial plan, as this applies to all tenant users by default. If you only wanted to have the rule apply to selected users, you could create a specific dial plan and assign it to those users.
+Bellevue users must be able to dial the same extensions, so you add the rule to the Global dial plan, which applies to all users. To limit a rule to specific users, you would create a separate dial plan and assign it to them instead.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
@@ -492,9 +486,7 @@ You have successfully added a normalization rule to a dial plan to meet the exte
 
 ### Task 2 - Configure Calling policies
 
-Calling policies are used to control which features are available to users. By default, when a user is on a Call in Teams, a second call coming in will alert them with a toast, giving them the option to pick up the second incoming call. Our organization does not want users interrupted when they are on calls. This feature is called “busy on busy”.
-
-At Contoso, you need to enable the option of convenience recording 1:1 calls, which is disabled by default. Your labs Teams Administrator, Allan Deyoung will create a custom calling policy and apply it to all users via a Group policy assignment.
+Calling policies control which calling features users have. Contoso wants two changes: turn on busy on busy, so users on a call aren't interrupted by a second incoming call, and allow users to record 1:1 calls. You create a custom calling policy and assign it to the **Sales Group** team created in Lab 1.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
@@ -526,7 +518,7 @@ At Contoso, you need to enable the option of convenience recording 1:1 calls, wh
 
 1. Leave the browser open in the Microsoft Teams admin center at the end of this task.
 
-The policy is now applied to all users in the **Sales Group** group. If a user is directly assigned a policy (either individually or through a batch assignment), that policy takes precedence over a policy inherited by being a member of a group. This leaves the option for specific users to be directly assigned a different policy should they want busy on busy disabled.
+The policy now applies to members of the **Sales Group** team. A policy assigned directly to a user takes precedence over a group-assigned policy.
 
 You have successfully created and assigned a calling policy.
 
@@ -550,9 +542,7 @@ The call pickup range is from 10 to 99 but can be customized here. You have succ
 
 ### Task 4 - Configure Caller ID policies
 
-Caller ID policies are used to change or block the Caller ID or phone number presented when making or receiving PSTN calls.
-
-By default, the user's phone number is displayed when an outbound call is made to a PSTN phone number such as a landline or mobile phone. In most cases, most companies will be happy with this default. Some users in our organization do not want their number presented when they make outbound PSTN calls. In this task, we will create a Caller ID policy to block the presentation of any PSTN number, ready to be assigned to those users.
+Caller ID policies change or block the caller ID shown on PSTN calls. By default, a user's phone number is shown on outbound PSTN calls. Some Contoso users don't want their number shown, so you create a policy that presents their calls as anonymous.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and have the **Microsoft Teams admin center** open as **Allan Deyoung**.
 
@@ -614,15 +604,9 @@ In this exercise, you will review the default Microsoft PSTN audio conferencing 
 
 ### Task 1 - Review the default Audio Conferencing Bridge
 
-The default phone number of your conference bridge defines the caller ID that will be used when an outbound call is placed by a participant or the organizer from within a meeting. For example, when they're dialing out to either connect themselves via PSTN or to "dial in" another participant on PSTN.
+The default conference bridge number is the caller ID used when someone dials out from a meeting, for example, to add a PSTN participant. Contoso works with many companies in New York and would prefer a New York number as its default bridge.
 
-Contoso does a lot of work with companies in New York and would prefer a New York number as their default audio conference bridge.
-
-1. Switch back to **MS721-CLIENT01** and sign in as **Admin** with the password provided to you.
-
-1. Open Microsoft Edge from the task bar and browse to the **Microsoft Teams admin center** at [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
-
-1. You are still signed in as the Teams Administrator **Allan Deyoung**.
+1. On **MS721-CLIENT01**, switch to Microsoft Edge, where the **Microsoft Teams admin center** is still open as **Allan Deyoung**.
 
 1. Navigate to **Meetings** on the left menu, then select **Audio Conferencing Bridges**.
 
@@ -637,4 +621,4 @@ You have successfully reviewed the audio conference bridge numbers available to 
 
 ## Next Steps
 
-At this time, you have completed Lab 1 and Lab 2.  Lab 3 will continue on with the same tenant, but introduce an AudioCodes SBC from the Azure Marketplace, which requires additional lab resources.  Launch Lab 3 separately, and when completed, continue on with Lab 4 in this environment.
+You have completed Lab 1 and Lab 2. Lab 3 is a separate lab launch that uses the same Microsoft 365 tenant and adds an AudioCodes SBC in Azure for Direct Routing. Labs 4–6 continue in this lab launch and don't depend on Lab 3.

@@ -26,7 +26,10 @@ As part of the expanding business, the organization has an existing SIP trunk in
 ## Instructions
 
 > [!IMPORTANT]
-> Throughout this lab, you will use PowerShell cmdlets that must be customized for your specific lab configuration. In the instructions below, when you see &lt;LAB NUMBER&gt; in a PowerShell command, you should replace it with the LAB NUMBER obtained in Exercise 1, Task 2. LAB DOMAIN refers to the full lab domain (i.e. lab12345.o365ready.com).
+> This lab is a separate lab launch with its own VMs and an SBC in Azure. It uses the same Microsoft 365 tenant as Labs 1 and 2. It also uses two domains, so keep them straight:
+>
+> - **Lab domain:** lab&lt;LAB NUMBER&gt;.o365ready.com (for example, lab12345.o365ready.com). You get your LAB NUMBER in Exercise 1, Task 2. Direct Routing, the SBC, and Megan Bowen, Nestor Wilke, and Isaiah Langer use this domain.
+> - **Tenant domain:** &lt;TENANT NAME&gt;.onmicrosoft.com (for example, WWLx012345.onmicrosoft.com). All other accounts use this domain.
 
 ## Exercise 1: Configure lab for Direct Routing
 
@@ -145,7 +148,7 @@ Running the script again skips steps that are already complete. It doesn't delet
 
 ### Task 4 - Request your public certificate from DigiCert
 
-In the following task, you will request your public certificate for the SBC (Session Border Controller) so you can use it later in the labs. This is used to authenticate connections to multiple tenants and networks served from a single SBC.
+In this task, you request a public certificate for the Session Border Controller (SBC). The SBC uses it to authenticate its connection to Microsoft Teams.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” with the password provided to you.
 
@@ -157,7 +160,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
 1. In Notepad, select all the text in the file and then press Ctrl+C or right-click or tap and hold and select **Copy** to copy the contents to the clipboard.
 
-1. Open Microsoft Edge, open a new tab and then browse to **https://www.digicert.com/friends/exchange.php**.
+1. In Microsoft Edge, open a new tab and then browse to **https://www.digicert.com/friends/exchange.php**.
 
 1. On the Microsoft Event CSR Submission page, in the **Paste CSR** box, right-click or tap and hold inside the box, and then select **Paste**.
 
@@ -173,7 +176,7 @@ In the following task, you will request your public certificate for the SBC (Ses
 
     ![Screenshot of the Microsoft Event CSR Submission form](./Linked_Image_Files/M01_L01_E01_T04-1.png)
 
-1. Close File Explorer.
+1. Close Notepad and File Explorer.
 
 You have successfully requested the certificate from DigiCert and will download it later.
 
@@ -195,7 +198,7 @@ In this task, you will verify your custom domain so you can work with it and ass
 
 1. Select **Settings** then select **Domains**.
 
-1. Verify your custom domain has been added and is **Verified** in Microsoft 365. This domain starts with **lab** and your five-digit lab number, followed by **o365ready.com**. Its service setup might still show as incomplete; ownership verification is the requirement for assigning it to users. V3 doesn't change the tenant's default domain.
+1. Verify that your custom domain, **lab&lt;LAB NUMBER&gt;.o365ready.com**, is listed with a status of **Verified**. The service setup might still show as incomplete; that's expected.
 
 1. Leave the browser window open.
 
@@ -241,7 +244,7 @@ In this task, you will verify and add your SBC to your tenant.
 
 1. Open a new tab in Microsoft Edge and then browse to [**https://admin.teams.microsoft.com**](https://admin.teams.microsoft.com/).
 
-1. Sign in to the Teams admin center as **MOD Administrator**.
+1. If prompted, sign in to the Teams admin center as **MOD Administrator**.
 
 1. In the left navigation select **Voice**, select **Direct Routing**, and under SBCs, select **Add**.
 
@@ -265,11 +268,11 @@ You have added an SBC to the tenant. Verify its connectivity after you configure
 
 ### Task 2 - Retrieve your public certificate file
 
-In the following task, you will download the DigiCert certificate you requested earlier in the lab so you can use it for your SBC. This step is required to upload the certificate in the compressed archive container in the next task.
+In this task, you download the DigiCert certificate you requested earlier. The next task imports it for the SBC.
 
-1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” 
+1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
-1. Open Microsoft Edge and then browse to **Outlook on the web** [**https://outlook.office.com**](https://outlook.office.com/), where you should still be signed in as the **MOD Administrator**.
+1. In Microsoft Edge, open a new tab and browse to **Outlook on the web** at [**https://outlook.office.com**](https://outlook.office.com/). You should still be signed in as **MOD Administrator**.
 
 1. In the message list, locate and select the email from **DigiCert** with the zip file attachment. The message may arrive in the Focused or Other folder and should arrive within 2-5 minutes.
 
@@ -288,7 +291,7 @@ In the following task, you will import the certificate to the local machine and 
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
-1. Switch to File Explorer and then browse to **C:\Scripts**.
+1. Open File Explorer and then browse to **C:\Scripts**.
 
 1. Double-click **ImportLabCert.exe**.
 
@@ -345,7 +348,7 @@ In the following task you will create the new session border controller resource
 
 ### Task 5 - Retrieve SBC Public IP and configure DNS routing
 
-In the following task you will retrieve the public IP address of the SBC and routing to the public DNS so Teams can locate the SBC.
+In this task, you retrieve the SBC's public IP address and add a public DNS record so Teams can locate the SBC.
 
 1. Select **Go to resource group**.
 
@@ -355,7 +358,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. Select the start button, enter **Windows PowerShell** and select **Run as administrator** below PowerShell from the start menu.
 
-1. When Windows PowerShell window has opened, enter the following cmdlet to a session with the DNS Server (**Note**: the machine name should stay as MS720-RRAS01, despite the course being MS-721):
+1. When Windows PowerShell window has opened, enter the following cmdlet to open a session with the DNS server (**Note**: the machine name is MS720-RRAS01, even though the course is MS-721):
 
     ```powershell
     $Cimsession = New-CimSession -Name MS720-RRAS01 -ComputerName MS720-RRAS01 -Authentication Negotiate -Credential (Get-Credential -Credential Administrator)
@@ -370,13 +373,13 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. After the connection is established, the command prompt appears again.
 
-1. Enter and modify the following cmdlet with your **LAB NUMBER** and **Public SBC IP Address** to configure the DNS Record for the SBC (**Note**: the machine name should be stay as MS720-RRAS01, despite the course being MS-721):
+1. Enter and modify the following cmdlet with your **LAB NUMBER** and **Public SBC IP Address** to configure the DNS record for the SBC:
 
     ```powershell
     Add-DnsServerResourceRecordA -ComputerName MS720-RRAS01 -CimSession $Cimsession -ZoneName lab<LAB NUMBER>.o365ready.com -Name sbc01 -IPv4Address <Public SBC IP>
     ```
 
-1. Verify the DNS zone was created successfully by running the following command.  You should see it pointing to the Public IP Address that the SBC was assigned through Azure:
+1. Verify the DNS record by running the following command. It should return the SBC's Azure public IP address:
 
     ```powershell
 	nslookup sbc01.lab<LAB NUMBER>.o365ready.com
@@ -385,7 +388,7 @@ In the following task you will retrieve the public IP address of the SBC and rou
 
 1. You can close the Windows PowerShell window by selecting the **X** in the top right.
 
-You have successfully created an SBC hosted inside Microsoft Azure.
+You have created the SBC in Azure and added its DNS record.
 
 ### Task 6 – Sign into and apply a base configuration to the SBC
 
@@ -425,45 +428,49 @@ In this exercise, you will configure the session border controller, and install 
 
 In the following task, you will upload the lab certificate you requested earlier to the SBC. This is needed to secure the connection between the SBC and Microsoft Teams  
 
-1. Sign in to the SBC again after the reboot. Navigate to **Setup > IP Network > Security > TLS Contexts**.
+1. In the SBC web interface, navigate to **Setup > IP Network > Security > TLS Contexts**.
 
-2. In the **TLS Contexts** table, select **External**.
+1. In the **TLS Contexts** table, select **External**.
 
-3. Scroll below the **External** TLS context's information and select **Change Certificate**.
+1. Scroll below the **External** TLS context's information and select **Change Certificate**.
 
-4. On the **Change Certificates** page, scroll to **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER**.
+1. On the **Change Certificates** page, scroll to **UPLOAD CERTIFICATE FILES FROM YOUR COMPUTER**.
 
-5. In **Private key pass-phrase (optional)**, enter the **Admin** password for the MS721-CLIENT01 virtual machine.
+1. In **Private key pass-phrase (optional)**, enter the **Admin** password for the MS721-CLIENT01 virtual machine.
  
-6. Under **Send Private Key file from your computer to the device**, select **Load Private Key File**.
+1. Under **Send Private Key file from your computer to the device**, select **Load Private Key File**.
 
-7. In the **Open** window, browse to **C:\LabFiles**. Change the file type from **PEM File (*.pem)** to **All files (*.*)**, select **Labcert.pfx**, and then select **Open**.
+1. In the **Open** window, browse to **C:\LabFiles**. Change the file type from **PEM File (*.pem)** to **All files (*.*)**, select **Labcert.pfx**, and then select **Open**.
 
-8. Wait for the **Completed** dialog to report **File loaded successfully, Private Key & Certificate were replaced**, then select **Close**. Selecting **Open** uploads the PFX; there is no separate **Load File** button.
+1. Wait for the **Completed** dialog to report **File loaded successfully, Private Key & Certificate were replaced**, then select **Close**. Selecting **Open** uploads the PFX; there is no separate **Load File** button.
 
-9. Select the back arrow next to **TLS Context**, select **External**, and scroll to and select **Certificate Information**. Verify that the certificate subject contains `sbc01.lab<LAB NUMBER>.o365ready.com`, its issuer is **DigiCert Global G2 TLS RSA SHA256 2020 CA1**, and **Private Key** shows **Status: OK**.
+1. Select the back arrow next to **TLS Context**, select **External**, and scroll to and select **Certificate Information**. Verify that the certificate subject contains `sbc01.lab<LAB NUMBER>.o365ready.com`, its issuer is **DigiCert Global G2 TLS RSA SHA256 2020 CA1**, and **Private Key** shows **Status: OK**.
 
     Select the back arrow again, select **External**, and scroll to and select **Trusted Root Certificates**. Verify that the list contains **DigiCert Global Root G2** and the intermediate issued by it, **DigiCert Global G2 TLS RSA SHA256 2020 CA1**. Select the intermediate row to see its full subject when the list truncates it.
 
     > [!IMPORTANT]
     > The `Labcert.pfx` upload adds both authorities to this list in this lab. If either is missing, check the DigiCert download and the PFX import before continuing. The older `.cer` files already in `C:\LabFiles` do not contain this G2 chain.
 
-10. Select **Save** at the top right of the page, then select **Yes**.
+1. Select **Save** at the top right of the page, then select **Yes**.
 
-11. Leave the browser window open for the next task.
+1. Leave the browser window open for the next task.
 
 The SBC now has the issued certificate and its G2 chain.
 
 ### Task 2 - Verify the SBC Connections to Teams
 
-In the following task, you verify the SBC's connection to Teams.
+In this task, you verify the SBC's connection to Teams.
 
-On the SBC, select **Monitor > VOIP STATUS > Proxy Sets Status**. Expand **VOIP STATUS** in the left pane if needed. Under the **Teams** proxy set, verify **ONLINE** in the **STATUS** column for `sip.pstnhub.microsoft.com`, `sip2.pstnhub.microsoft.com`, and `sip3.pstnhub.microsoft.com`.
+1. On the SBC, select **Monitor > VOIP STATUS > Proxy Sets Status**. Expand **VOIP STATUS** in the left pane if needed.
 
-If all three endpoints show **ONLINE**, the SBC has established connections to the Teams proxies. Continue with the configuration exercises, but verify Teams-side health and calling separately.
+1. Under the **Teams** proxy set, verify that the **STATUS** column shows **ONLINE** for `sip.pstnhub.microsoft.com`, `sip2.pstnhub.microsoft.com`, and `sip3.pstnhub.microsoft.com`.
+
+1. Optionally, in the Teams admin center, go to **Voice > Direct Routing > SBCs** and review the SBC's status. Select any **TLS connectivity status** warning to see its cause.
 
 > [!NOTE]
-> Also review the SBC under **Voice > Direct Routing > SBCs** in the Teams admin center. Select a **TLS connectivity status** warning to read its specific cause. A short-lived lab certificate can trigger a warning because it expires within 30 days; this warning alone does not mean TLS negotiation failed. Record the expiration date and renew the certificate before it expires. If the overall status is **Inactive**, do not count end-to-end calling as verified. Check the FQDN's DNS record, the certificate on the SBC's SIP signaling port, and SIP OPTIONS responses before diagnosing a connectivity problem. For the meaning of each status, see the [Direct Routing health dashboard](https://learn.microsoft.com/microsoftteams/direct-routing-health-dashboard).
+> A short-lived lab certificate can show a warning because it expires within 30 days; that alone doesn't mean TLS failed. If the status is **Inactive**, check the SBC's DNS record, certificate, and SIP OPTIONS responses. See the [Direct Routing health dashboard](https://learn.microsoft.com/microsoftteams/direct-routing-health-dashboard).
+
+If all three endpoints show **ONLINE**, the SBC is connected to the Teams proxies. End-to-end calling isn't verified by this check.
 
 
 ## Exercise 4: Configure Teams for Direct Routing
@@ -472,11 +479,11 @@ If all three endpoints show **ONLINE**, the SBC has established connections to t
 
   - **Estimated Time to complete**:  120 minutes
 
-In this exercise, you will create a direct route routing policy, PSTN Usage policy, and voice route to enable Megan Bowen to perform voice calls over the SBC. Megan resides in a location where the telephone number assigned to her has a long-standing contract and requires her to continue to use the telephone service provider's telephone number rather than moving to a calling plan from Microsoft. Long term the plan is to move the telephone number over to a calling plan, however, currently, this is cost prohibitive. 
+In this exercise, you create a voice routing policy, PSTN usage, and voice route so Megan Bowen can make calls through the SBC. Megan must keep her existing carrier's phone number, so she uses Direct Routing instead of a Microsoft Calling Plan.
 
 ### Task 1 - Create a voice routing policy with PSTN usages containing voice routes
 
-In the following task, you will create your first voice routing policy and PSTN usage so you can later assign this policy to your users.
+In this task, you create PSTN usages, a voice routing policy, and voice routes.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
@@ -493,25 +500,23 @@ In the following task, you will create your first voice routing policy and PSTN 
 
 1. In the PowerShell prompt, sign in as **Allan Deyoung** with the credentials provided to you.
 
-1. In Windows Powershell, enter the following and then press **Enter**. By running the command you will see that the existing PSTN usages in place. You can see what is in place and what usage plans are being assigned to the identity. 
+1. Run the following command to list the existing PSTN usages:
 
     ```powershell
     Get-CsOnlinePstnUsage
 
     ```
 
-1. Review the output of the command.
+1. Review the output. Reuse an existing usage where it fits, and avoid creating duplicates.
 
-    If you have several usages defined, the names of the usages might truncate. Use the command Get-CSOnlinePSTNUsage to display a list of the defined PSTN usages. An online PSTN usage links an online voice policy to a route. The output will show if there is an identity that can be used or possibly reused, or also excluded from being used. For example, there may be a PSTN usage called Seattle, that can cover all of the Pacific North West of the United States. The overall goal is to keep your PSTN Usage rules to a minimum and keep them simple as it will reduce the overall administration effort later. We want to validate that the information we have in the tenant is relevant and also ensure we do not duplicate any existing PSTN usages. 
-
-1. Run the Set-CSOnlinePSTNUsage cmdlet is used to add or remove phone usages to or from the usage list. This list is global so it can be used by policies and routes throughout the tenant:
+1. Run the following command to add three PSTN usages to the tenant's global usage list:
 
     ```powershell
 	Set-CsOnlinePstnUsage -Identity Global -Usage @{Add = 'NA-Emergency', 'NA-Service', 'NA-National'}
 
     ```
 
-1. Run the New-CSOnlineVoiceRoutingPolicy to create a new online voice routing policy. Online voice routing policies are used in Microsoft Phone System Direct Routing scenarios. Assigning your Teams users an online voice routing policy enables those users to receive and to place phone calls to the public switched telephone network by using your on-premises SIP trunks:
+1. Run the following command to create the **NA-National** voice routing policy. The policy lets assigned users make and receive PSTN calls through Direct Routing:
 
     ```powershell
     New-CsOnlineVoiceRoutingPolicy "NA-National" -OnlinePstnUsages 'NA-Emergency','NA-Service','NA-National'
@@ -536,16 +541,14 @@ In the following task, you will create your first voice routing policy and PSTN 
 	New-CsOnlineVoiceRoute -Identity "NA-National" -NumberPattern '^\+1[2-9]\d\d[2-9]\d{6}$' -OnlinePstnGatewayList sbc01.lab<LAB NUMBER>.o365ready.com -Priority 3 -OnlinePstnUsages 'NA-National'
     ```
 
-    Online voice routes tell Microsoft Teams how to route calls from Microsoft 365 users to phone numbers on the public switched telephone network (PSTN) or a private branch exchange (PBX).
-
-1. Run the Get-CSOnlineVoiceRoute command, this command returns information about the online voice routes configured for use in your tenant. Online voice routes contain instructions that tell Microsoft Teams how to route calls from Office 365 users to phone numbers on the public switched telephone network (PSTN) or a private branch exchange (PBX):
+1. Run the following command to list the voice routes:
 
     ```powershell
     Get-CsOnlineVoiceRoute
 
     ```
 
-1. Review the output of the command and verify that your new voice routes have been added.
+1. Verify that the three new voice routes appear in the output.
 
 1. Leave the PowerShell window open for the next task.
 
@@ -553,14 +556,14 @@ You have successfully created a voice routing policy with PSTN Usages containing
 
 ### Task 2 - Assign the voice routing policy named NA-National to Megan Bowen
 
-In the following task, you will assign the voice routing policy you created in an earlier task to your users.
+In this task, you assign the **NA-National** voice routing policy to Megan Bowen.
 
 > [!IMPORTANT]
-> In **Microsoft 365 admin center > Users > Active users**, check Megan Bowen's actual username before running the next two tasks. If the earlier custom-domain change did not take effect, her sign-in name is still `MeganB@<TENANT NAME>.onmicrosoft.com`. Replace the sample `MeganB@lab<LAB NUMBER>.o365ready.com` identity in both commands with her actual username. A verified lab domain does not by itself change a user's sign-in name.
+> Before you run the next two tasks, check Megan Bowen's username in **Microsoft 365 admin center > Users > Active users**. If the custom-domain change didn't apply, her username is still `MeganB@<TENANT NAME>.onmicrosoft.com`. Replace `MeganB@lab<LAB NUMBER>.o365ready.com` in the commands with her actual username.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”, and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
-2. Run the Grant-CsOnlineVoiceRoutingPolicy, the command assigns a per-user online voice routing policy to one or more users. Online voice routing policies manage online PSTN usages for Phone System users:
+1. Run the following command to assign the voice routing policy to Megan:
 
     ```powershell
     Grant-CsOnlineVoiceRoutingPolicy -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PolicyName "NA-National"
@@ -568,28 +571,28 @@ In the following task, you will assign the voice routing policy you created in a
     ```
 
     > [!NOTE]
-    > If you receive an error stating that the **Policy "NA-National" is not a user policy. You can assign only a user policy to a specific user**, wait 2–3 minutes, and then retry the command. You may need to retry the command several times before it succeeds, and it may take up to 15 minutes before it becomes available. If the policy is still not updated in the service, continue to the next task and return later.
+    > If you receive an error stating that the **Policy "NA-National" is not a user policy. You can assign only a user policy to a specific user**, wait 2–3 minutes, and then retry the command. It can take up to 15 minutes for the policy to become available. If it's still not available, continue to the next task and return later.
 
-3. Run the Get-CsOnlineUser command, the command returns information about users who have accounts homed on Microsoft Teams:
+1. Run the following command to check Megan's voice routing policy:
 
     ```powershell
     Get-CsOnlineUser MeganB | select OnlineVoiceRoutingPolicy
 
     ```
 
-4. Review the output of the command. If the policy is empty, try the command again.
+1. Verify that the output shows **NA-National**. If the policy is empty, try the command again.
 
-5. Leave the PowerShell window open for the next task.
+1. Leave the PowerShell window open for the next task.
 
-You have successfully used PowerShell to assign your voice routing policy to your users.
+You have assigned the voice routing policy to Megan Bowen.
 
 ### Task 3 - Enable users for Direct Routing
 
-In the following task, you will enable the end user for voice services through the direct routing SBC, assign the telephone number, and enable the user for dial pad service.
+In this task, you assign a Direct Routing phone number to Megan Bowen. Assigning the number also enables Enterprise Voice for her.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin” and you have an open **Teams PowerShell** session signed in as **Allan Deyoung**.
 
-1. Run the Set-CsPhoneNumberAssignment command, the command assigns a phone number to a user or resource account. When you assign a phone number the EnterpriseVoiceEnabled flag is automatically set to True.:
+1. Run the following command to assign a Direct Routing phone number to Megan:
 
     ```powershell
     Set-CsPhoneNumberAssignment -Identity MeganB@lab<LAB NUMBER>.o365ready.com -PhoneNumber "+14255551234" -PhoneNumberType DirectRouting
@@ -598,17 +601,17 @@ In the following task, you will enable the end user for voice services through t
 
 1. The cmdlet does not provide any output. When you are back on the command prompt, leave the window open for the next task.
 
-You have successfully assigned a telephone number to the end user and you have enabled the end user for the dial pad.
+You have assigned a Direct Routing phone number to Megan Bowen.
 
 ### Task 4 - Translate numbers to an alternate format
 
-In the following task, you will create a normalization record for a 4-digit dial plan
+In this task, you add a normalization rule so users can dial four-digit extensions.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin”.
 
 1. Open Microsoft Edge and then browse to the **Microsoft Teams admin center** at https://admin.teams.microsoft.com.
 
-1. Sign in with **Allan Deyoung**, who is your Teams Administrator in this lab.
+1. If prompted, sign in as **Allan Deyoung**, who is your Teams Administrator in this lab.
 
 1. In the left navigation pane select **Voice,** select **Dial Plans** and select **Global (Org-wide default).**
 
@@ -624,14 +627,14 @@ In the following task, you will create a normalization record for a 4-digit dial
 
 1. Select **Save**.
 
-1. Leave the browser window open for the end of this task.
+1. Leave the browser window open.
 
-You have successfully you have assigned a 4-digit extension dial to the global group.
+You have added a four-digit extension dialing rule to the Global dial plan.
 
 
 ### Task 5 - Configure Emergency Location Identification Number (ELIN)
 
-In this task, check the Emergency Location Identification Number (ELIN) on the address created in Lab 2, Exercise 3, Task 3. The ELIN is optional and isn't required in most E911 deployments. If **Bellevue Office Address** isn't listed, complete that Lab 2 task with its documented civic address and ELIN before you continue. Don't substitute the SBC's public IP or invent an address or ELIN. If the lab environment doesn't allow you to create or validate the address, record this check as not verified.
+In this task, you check the Emergency Location Identification Number (ELIN) on the **Bellevue Office Address** from Lab 2, Exercise 3, Task 3. If the address isn't listed, create it with the address and ELIN from that Lab 2 task first. If you can't create or validate it in this environment, record this check as not verified.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -639,17 +642,17 @@ In this task, check the Emergency Location Identification Number (ELIN) on the a
 
 1. Select **Bellevue Office Address** and then select **Edit**.
 
-1. Review the **ELIN** setting. Lab 2 sets it to **425-555-1200**. If the validated location doesn't show this value, don't claim that the ELIN check passed. A validated location's properties, including the ELIN, can't be changed here.
+1. Review the **ELIN** setting. It should be **425-555-1200**. You can't change the properties of a validated address here.
 
 1. Select **Cancel** if no changes were made, and **Save** if you made changes.
 
 1. Leave the browser window open.
 
-If the address exists with the expected ELIN, you have verified the value configured in Lab 2. This check doesn't verify emergency call delivery.
+If the address shows the expected ELIN, you have verified the Lab 2 setting. This check doesn't verify emergency call delivery.
 
 ### Task 6 - Configure Emergency Call Routing Policy
 
-In the following task, you configure emergency dial strings and a PSTN usage in the Global Emergency Call Routing Policy. This configures Teams-side routing; it does not establish a working emergency service. Direct Routing also requires a suitable emergency routing service provider connection or a configured SBC ELIN application. Do not place an emergency call as part of this configuration task.
+In this task, you add emergency dial strings and a PSTN usage to the Global emergency call routing policy. This configures Teams-side routing only; a working emergency service also needs an emergency routing provider or SBC ELIN configuration. Don't place an emergency call.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -680,7 +683,7 @@ In the following task, you configure emergency dial strings and a PSTN usage in 
 
 ### Task 7 - Configure Emergency Calling Policy
 
-In the following task, you configure external location lookup and emergency call notifications in the Global Emergency Calling Policy. Saving the policy does not verify notification delivery or emergency call completion.
+In this task, you turn on external location lookup and emergency call notifications in the Global emergency calling policy. Saving the policy doesn't verify that notifications are delivered.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -709,7 +712,7 @@ In the following task, you configure external location lookup and emergency call
 
 ### Task 8 - Configure location-based routing for a network site and gateway
 
-Configure location-based routing (LBR) for the network site, gateway, and test user's calling policy. The Global emergency policies configured in Tasks 6 and 7 apply by default; this task does not assign site-specific emergency policies or demonstrate an override of user policies. Site-specific assignments require selecting policies on the network site.
+In this task, you configure location-based routing (LBR) for a network site, the SBC gateway, and Megan's calling policy. The Global emergency policies from Tasks 6 and 7 apply to the site by default.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and signed into the **Microsoft Teams admin center** as **Allan Deyoung**.
 
@@ -735,15 +738,15 @@ Configure location-based routing (LBR) for the network site, gateway, and test u
 
     ![Screenshot of the Teams Admin Center SBC Page, showing the settings required.](./Linked_Image_Files/M03_L03_E04_T08_03.png)
 
-1. Under **Voice > Calling policies**, open the policy assigned to Megan Bowen. Turn on **Prevent toll bypass and send calls through the PSTN** and select **Save**. If her assigned policy is Global, this change affects all users who inherit Global. In a shared tenant, use a dedicated calling policy assigned to Megan instead of changing Global.
+1. Under **Voice > Calling policies**, open the policy assigned to Megan Bowen. Turn on **Prevent toll bypass and send calls through the PSTN** and select **Save**. If her policy is Global, this change affects every user who inherits Global.
 
 1. Leave the browser window open.
 
-You have configured the LBR site, gateway, and calling-policy prerequisites. Confirm the effective user policy and site association before testing. These readbacks do not prove that a call is blocked by LBR or reaches a PSTN destination.
+You have configured the LBR network site, gateway, and calling policy. You test LBR in Exercise 5.
 
 ### Task 9 - Modify the Global Dial Plan to Support Dialing 911 and 933
 
-In the following task, you will configure a Microsoft teams dial plan rule to allow 911 and 933 to be sent out to the SBC as is. Without this rule, Microsoft Teams' Tenant Dial Plan rules will normalize this to +1911 as an example.
+In this task, you add a dial plan rule that sends 911 and 933 to the SBC unchanged. Without it, Teams normalizes them to numbers such as +1911.
 
 1. In the PowerShell window from Task 1, run the following commands:
 
@@ -753,9 +756,11 @@ In the following task, you will configure a Microsoft teams dial plan rule to al
 
     ```
 
-1. In **Voice > Dial plans > Global (Org-wide default)**, confirm the new `NA-Emergency` rule appears above the four-digit extension rule. If it appears below that rule, select it, choose **Move up**, and save the dial plan. The four-digit rule also matches `9911` and `9933`, so rule order matters. Use **Test dial plan** for `911`, `9911`, `933`, and `9933` and verify the expected dial strings without placing calls.
+1. In the Teams admin center, go to **Voice > Dial plans > Global (Org-wide default)**. Confirm that the `NA-Emergency` rule is above the four-digit extension rule. If it's below, select it, select **Move up**, and save the dial plan.
 
-You have configured an emergency-number normalization rule. This test checks translation only; it does not verify delivery through the SBC or an emergency provider.
+1. Use **Test dial plan** to test `911`, `9911`, `933`, and `9933`. Verify that each translates to `911` or `933`. Don't place calls.
+
+You have added an emergency-number normalization rule. This test checks translation only, not call delivery.
 
 ## Exercise 5: Test and Validate your Configuration
 
@@ -763,16 +768,15 @@ You have configured an emergency-number normalization rule. This test checks tra
 
   - **Estimated Time to complete**: 30 minutes
 
-In this exercise, you will validate that the SBC is accepting calls, and test E911 configuration to ensure items created work as expected.
+In this exercise, you test location-based routing through the SBC and check that emergency location information reaches the SBC.
 
 > [!IMPORTANT]
-> **Check the call path before Task 1.** Confirm that the SBC is connected to a configured PSTN trunk or test destination and that the intended test number can actually be answered. If no trunk or destination exists, stop the call-dependent steps here. A failed call cannot establish that LBR blocked it, and a connected call cannot be expected after LBR is disabled. You can still review the saved policies, site, gateway, and normalization tests from Exercise 4; record call delivery and LBR behavior as **not verified**.
->
-> **Check the emergency test service before Task 2.** Direct Routing does not automatically route `933` to the Microsoft Calling Plan test bot. Coordinate a permitted test service and approved test procedure with your emergency routing service provider or SBC ELIN operator. If no such service is available, do not place a `933` call or claim that PIDF/LO delivery was tested. Never place a `911` call for this lab.
+> - **Before Task 1:** Confirm that the SBC has a PSTN trunk or test destination that can answer the test number. If it doesn't, skip the test calls and record call delivery and LBR behavior as **not verified**.
+> - **Before Task 2:** Direct Routing doesn't send `933` to the Microsoft test bot. Only place a `933` call if your emergency routing provider or SBC operator has approved a test service. **Never place a `911` call for this lab.**
 
 ### Task 1 - Validate Location-Based Routing blocks calls not allowed
 
-In this task, you will validate that Location-Based Routing is blocking calls that are not permitted on the gateway defined.
+In this task, you confirm that LBR blocks a call that isn't allowed through the gateway, and then turn off LBR and call again.
 
 1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
 
@@ -780,9 +784,9 @@ In this task, you will validate that Location-Based Routing is blocking calls th
 
 1. Once signed into Microsoft Teams, navigate to the **Calls** tab and place a call to "+14255550001". The call should fail and show the below error:
 
-    ![Screenshot of the Teams client for Michelle, showing location-based routing blocking calls.](./Linked_Image_Files/M03_L03_E05_T01_01.png)
+    ![Screenshot of the Teams client for Megan, showing location-based routing blocking calls.](./Linked_Image_Files/M03_L03_E05_T01_01.png)
 
-1. To correct this issue, we are going to disable Location-Based Routing. Open the **Microsoft Teams admin center** as **Allan Deyoung**.
+1. Switch to **MS721-CLIENT01**, where the **Microsoft Teams admin center** is open as **Allan Deyoung**.
 
 1. Select the three dashes, select **Locations**, then **Network topology**, and then select **Washington**. Turn off **Location Based Routing** and then click **Save**
 
@@ -792,21 +796,21 @@ In this task, you will validate that Location-Based Routing is blocking calls th
 
     ![Screenshot of the Teams Admin Center, showing location-based routing being turned off.](./Linked_Image_Files/M03_L03_E05_T01_02.png)
 
-1. After about 30 minutes, attempt to place the call again to +14255550001. The call should connect. The call should show a connected window with a timer in the top left as shown below:
+1. After about 30 minutes, switch to **MS721-CLIENT02** and call +14255550001 again. The call should connect and show a timer in the top left:
 
     ![Screenshot of the Teams client, showing a test call connected through the SBC.](./Linked_Image_Files/M03_L03_E05_T01_03.png)
 
 1. Leave the Teams client window open and continue with the next task.
 
-You have successfully placed a test call in the lab through your SBC and validated correct routing.
+You have tested location-based routing and placed a test call through your SBC.
 
 ### Task 2 - Validate PIDF/LO Information is being sent to the SBC
 
-In this task, you will validate that PIDF/LO information from the LIS database in Microsoft Teams is being sent to the SBC. 
+In this task, you check that Teams sends PIDF/LO location information to the SBC.
 
-1. Sign in to **MS721-CLIENT02** as “Admin” with the password provided to you. You can find the password in the “Resource” section on the right side of the lab window.
+1. You are still on **MS721-CLIENT02**, where Teams is signed in as Megan Bowen.
 
-1. Launch the **Microsoft Edge** and download the **AudioCodes Syslog Viewer** at: [http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe](http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe)
+1. Open **Microsoft Edge** and download the **AudioCodes Syslog Viewer** at: [http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe](http://redirect.audiocodes.com/install/syslogViewer/syslogViewer-setup.exe)
 
 1. Run **syslogViewer-setup.exe** once downloaded keeping all defaults in the setup wizard.
 
@@ -824,7 +828,7 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
     ![Screenshot of Syslog Viewer, showing the "Web Connection" window](./Linked_Image_Files/M03_L03_E05_T02_02.png)
 
-1. Now that the syslog capture is running, open the Microsoft Teams client, click on **Calls** and you should see the Bellevue Address previously created.
+1. With the syslog capture running, switch to Microsoft Teams and select **Calls**. Verify that the Bellevue address appears.
 
     ![Screenshot of the Microsoft Teams Client, showing the Emergency Address](./Linked_Image_Files/M03_L03_E05_T02_03.png)
 
@@ -834,11 +838,11 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
     ![Screenshot of the Microsoft Teams Client, showing that 933 has no +1 in front](./Linked_Image_Files/M03_L03_E05_T02_04.png)
 
-1. Only if you confirmed an approved `933` test service and procedure in the prerequisite check above, select **Call**. End the test as directed by your provider. If no approved service is available, stop this task after checking the dial-plan test; do not start a call.
+1. Only if you confirmed an approved `933` test service before Task 1, select **Call** and end the test as your provider directs. Otherwise, don't start a call; stop this task here.
 
     ![Screenshot of the Microsoft Teams Client, showing the emergency call in progress](./Linked_Image_Files/M03_L03_E05_T02_05.png)
 
-1. On **MS721-CLIENT02** open the AudioCodes Syslog Viewer and press the **Snowflake** button at the top to pause capture. Then Press the **Blue I** to open the sip ladder.
+1. Switch to the AudioCodes Syslog Viewer and press the **Snowflake** button at the top to pause capture. Then Press the **Blue I** to open the sip ladder.
 
     ![Screenshot of Syslog viewer, showing which buttons to press](./Linked_Image_Files/M03_L03_E05_T02_06.png)
 
@@ -850,4 +854,4 @@ In this task, you will validate that PIDF/LO information from the LIS database i
 
     ![Screenshot of Syslog viewer, showing the expanded XML Data](./Linked_Image_Files/M03_L03_E05_T02_08.png)
 
-If you completed an approved test call and observed the PIDF/LO payload in the SBC log, you have verified its delivery to the SBC for that test. Otherwise, record PIDF/LO delivery as **not verified**; saved Teams policies and an ELIN field alone do not verify emergency service.
+If you placed an approved test call and saw the PIDF/LO data in the SBC log, you have verified that Teams sends location information to the SBC. Otherwise, record PIDF/LO delivery as **not verified**.

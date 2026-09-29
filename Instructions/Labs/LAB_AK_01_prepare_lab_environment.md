@@ -21,7 +21,7 @@ lab:
 
 In the labs for this course, you are taking on the role of Allan Deyoung, Contoso Ltd.’s Collaboration Communications Systems Engineer. You have deployed Microsoft 365 in a lab environment, and you have been tasked with completing a pilot project that tests the Voice and Phone device management features in Microsoft Teams as they relate to Contoso's business requirements.
 
-You have just started the pilot project. In this first lab you will set up a personalized Microsoft 365 user account for Allan that will be used throughout all the labs in this course. This first exercise also requires that you perform several setup tasks that will initialize your trial tenant for the remaining labs in this course. You must configure your trial tenant, create a personalized Teams Service user account in Microsoft 365 for Kate, configure several test users and groups that will be used throughout the remaining labs, and request a certificate signed by a public certificate authority.
+You have just started the pilot project. In this first lab, you prepare the trial tenant for the remaining labs: you assign admin roles to Allan Deyoung, review and assign licenses, enable Enterprise Voice for test users, and set up Teams PowerShell.
 
 ## Lab Duration
 
@@ -46,7 +46,7 @@ In this exercise, you will assign the required admin permissions to continue wit
 
 ### Task 1 - Assign Allan Deyoung to the required roles
 
-In the following task, you will use the global administrator account MOD Administrator to assign Teams Service Administrator permissions to the account for Allan Deyoung.
+In this task, you use the global administrator account, MOD Administrator, to assign admin roles to Allan Deyoung.
 
 1. Log in to MS721-CLIENT01 as “Admin”.
 
@@ -73,11 +73,11 @@ In the following task, you will use the global administrator account MOD Adminis
 
 1. **Close** the settings pane and leave the browser window open for the next task.
 
-You have successfully assigned the Teams Service administrator permission to Allan Deyoung.
+You have assigned the Exchange Administrator, Teams Administrator, and User Administrator roles to Allan Deyoung.
 
 ### Task 2 - Validate licenses in the admin portal
 
-In this task you will sign into the clients provided by your training provider and run a certain script also provided by the lab hoster, to understand what licenses are inside the tenant and what licenses are applied.
+In this task, you review which licenses are available in the tenant and which are assigned.
 
 1. You are still signed in to MS721-CLIENT01 as “Admin” and in the **Microsoft 365 admin center** as **MOD Administrator**.
 
@@ -99,7 +99,7 @@ In this task you will sign into the clients provided by your training provider a
 
 1. Leave the browser open at the end of the task.
 
-You have successfully signed into your test clients and reviewed the overall number of licenses applied to the Office 365 tenant.
+You have reviewed the licenses available and assigned in the Microsoft 365 tenant.
 
 ### Task 3 - Assign additional Teams licenses to users
 
@@ -131,7 +131,7 @@ As an admin, you can assign the Teams Domestic Calling Plan license that gives u
 
 1. Leave the browser open for the next task.
 
-You have successfully assigned the licenses to five users and activated Teams Premium features for these accounts. Lab 3 assigns Direct Routing phone numbers separately. Lab 4 voice-management tasks use Enterprise Voice without requiring a phone number.
+You have assigned Calling Plan and Teams Premium licenses to five users.
 
 ### Task 4 - Enable Enterprise Voice for voice-management users
 
@@ -201,7 +201,7 @@ In this task, you will install the latest Teams PowerShell module on your lab cl
     Connect-MicrosoftTeams
     ```
 
-1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@&lt;TenantName&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
+1. When the **Sign in to your account** window opens, enter the credentials of Allan Deyoung (AllanD@&lt;TENANT NAME&gt;.onmicrosoft.com) to sign in with your Teams Administrator user.
 
 1. When you are successfully signed in you will be returned to the **PowerShell**.
 
