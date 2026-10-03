@@ -1,0 +1,19 @@
+github_repo: MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer
+default_branch: main
+getting_started: Instructions/Labs/00-getting-started.md
+intro: These hands-on labs give you practice planning, configuring, and managing Microsoft Teams Phone, Direct Routing, Teams devices, and Teams Premium. They complement course MS-721 on Microsoft Learn.
+start_prompt: Read about the lab VMs, the AllFiles (F:) drive, and which labs share an environment.
+totals_note: Complete Lab 01 first. Lab 03 runs in its own lab environment.
+sections:
+  - id: labs
+    title: Labs
+    item_label: Lab
+    glob: Instructions/Labs/LAB_AK_*.md
+    front_matter_key: lab
+    groups:
+      - title: "Learning path 1: Plan and design Teams collaboration communications systems"
+        match: Learning Path 01
+        learn_url: https://learn.microsoft.com/training/paths/plan-configure-teams-voice/
+      - title: "Learning path 2: Manage Teams collaboration communications systems"
+        match: Learning Path 02
+        learn_url: https://learn.microsoft.com/training/paths/manage-teams-voice/
