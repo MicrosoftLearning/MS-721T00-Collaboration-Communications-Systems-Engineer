@@ -102,9 +102,9 @@ You have successfully identified your lab number and updated your public IP addr
 
 In this task, you run a script that configures DNS, verifies your lab domain in Microsoft 365, and creates your certificate request and SBC configuration file. It's safe to run the script again if a step fails.
 
-1. On **MS721-CLIENT01**, open [MS-721TeamsDirectRoutingLabSetup-V3.ps1](https://github.com/MicrosoftLearning/MS-721T00-Collaboration-Communications-Systems-Engineer/blob/main/Instructions/Labs/Labfiles/MS-721TeamsDirectRoutingLabSetup-V3.ps1), select **Raw**, and save the file to **C:\Scripts**.
+1. On **MS721-CLIENT01**, open File Explorer, go to **AllFiles (F:)** > **Lab03**, and copy **MS-721TeamsDirectRoutingLabSetup-V3.ps1** to **C:\Scripts**.
 
-    > **Note**: Use the V3 script. Don't use the older V2 script that's already in **C:\Scripts**.
+    > **Note**: Use the V3 script. Don't use the older V2 script that's already in **C:\Scripts**. If you aren't using the hosted lab environment, download [MS-721TeamsDirectRoutingLabSetup-V3.ps1](../../Allfiles/Lab03/MS-721TeamsDirectRoutingLabSetup-V3.ps1) and save it to **C:\Scripts**.
 
 1. Open **Windows PowerShell** as Administrator. In the **User Account Control** dialog box, select **Yes**.
 
@@ -396,7 +396,7 @@ You have created the SBC in Azure and added its DNS record.
 
 1. You are still on MS721-CLIENT01 where you are still signed in as “Admin”.
 
-1. Open a new Microsoft Edge browser window and navigate to [**https://&lt;SBCpublicIPAddress&gt;**](*) or [https://sbc01.lab&lt;LAB NUMBER&gt;. o365ready.com](*). Ensure that you replace &lt;SBCpublicIPAddress&gt; or &lt;LAB NUMBER&gt; with the IP address of the SBC instance or the lab number you got from o365ready.com.
+1. Open a new Microsoft Edge browser window and navigate to **https://&lt;SBCpublicIPAddress&gt;** or **https://sbc01.lab&lt;LAB NUMBER&gt;.o365ready.com**. Ensure that you replace &lt;SBCpublicIPAddress&gt; or &lt;LAB NUMBER&gt; with the IP address of the SBC instance or the lab number you got from o365ready.com.
 
     > NOTE: You may see a connection message indicating your connection isn't private (NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED or NET::ERR_CERT_COMMON_NAME_INVALID).  Select **Advanced** and then the link at the bottom to **Continue to &lt;SBCpublicIPAddress&gt;**.
 
